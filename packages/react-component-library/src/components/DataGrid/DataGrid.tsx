@@ -24,7 +24,12 @@ import { useDataGridState } from './useDataGridState'
 import { getColumns } from './getColumns'
 import { Table } from './Table'
 import { Pagination } from './Pagination'
-import { StyledDataGrid } from './partials'
+import { ProgressIndicator } from '../ProgressIndicator'
+import {
+  StyledDataGrid,
+  StyledLoadingOverlay,
+  StyledTableContainer,
+} from './partials'
 
 export interface DataGridBaseProps<T extends object>
   extends Pick<Partial<PaginationProps>, 'pageSize'>,
@@ -52,6 +57,7 @@ export interface DataGridBaseProps<T extends object>
   isFullWidth?: boolean
   hasHover?: boolean
   hideCheckboxes?: boolean
+  isLoading?: boolean
   onSelectedRowsChange?: (rows: T[]) => void
   onExpandedChange?: (expanded: ExpandedState) => void
   onColumnFiltersChange?: (columnFilters: ColumnFiltersState) => void
@@ -117,6 +123,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     hideCheckboxes,
     initialRowSelection,
     isFullWidth,
+    isLoading,
     className,
     onColumnFiltersChange,
     onSelectedRowsChange,
@@ -265,16 +272,23 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
 
   return (
     <StyledDataGrid className={className}>
-      <Table
-        table={table}
-        caption={caption}
-        enableRowSelection={!!enableRowSelection}
-        hideCheckboxes={!!hideCheckboxes}
-        hasHover={!!hasHover}
-        isFullWidth={!!isFullWidth}
-        hasSubRows={hasSubRows}
-        totalColumns={totalColumns}
-      />
+      <StyledTableContainer>
+        <Table
+          table={table}
+          caption={caption}
+          enableRowSelection={!!enableRowSelection}
+          hideCheckboxes={!!hideCheckboxes}
+          hasHover={!!hasHover}
+          isFullWidth={!!isFullWidth}
+          hasSubRows={hasSubRows}
+          totalColumns={totalColumns}
+        />
+        {isLoading && (
+          <StyledLoadingOverlay>
+            <ProgressIndicator />
+          </StyledLoadingOverlay>
+        )}
+      </StyledTableContainer>
       {isPaginated && (
         <Pagination
           pagination={paginationState}

@@ -1493,4 +1493,49 @@ describe('DataGrid', () => {
       expect(screen.queryByText('page2-item3')).not.toBeInTheDocument()
     })
   })
+
+  describe('loading state', () => {
+    it('should render ProgressIndicator when isLoading is true', () => {
+      render(<DataGrid data={data} columns={columns} isLoading />)
+
+      expect(screen.getByTestId('progress-indicator')).toBeInTheDocument()
+      expect(screen.getByTestId('loader')).toBeInTheDocument()
+      expect(screen.getByText('Loading...')).toBeInTheDocument()
+    })
+
+    it('should not render ProgressIndicator when isLoading is false', () => {
+      render(<DataGrid data={data} columns={columns} isLoading={false} />)
+
+      expect(screen.queryByTestId('progress-indicator')).not.toBeInTheDocument()
+      expect(screen.queryByTestId('loader')).not.toBeInTheDocument()
+      expect(screen.queryByText('Loading...')).not.toBeInTheDocument()
+    })
+
+    it('should render loading overlay only over the data grid and not the pagination', async () => {
+      render(<DataGrid data={data} columns={columns} pageSize={10} isLoading />)
+
+      // Verify that the progress indicator is present
+      expect(screen.getByTestId('progress-indicator')).toBeInTheDocument()
+
+      // Check that pagination controls are still clickable/visible
+      expect(
+        screen.getByRole('button', { name: 'Next page' })
+      ).toBeInTheDocument()
+    })
+
+    it('should contain loading overlay within the table container', () => {
+      const { container } = render(
+        <DataGrid data={data} columns={columns} pageSize={10} isLoading />
+      )
+
+      const tableContainer = container.querySelector(
+        'div[class^="StyledTableContainer"]'
+      ) as HTMLElement
+      const loadingOverlay = container.querySelector(
+        'div[class^="StyledLoadingOverlay"]'
+      ) as HTMLElement
+
+      expect(tableContainer).toContainElement(loadingOverlay)
+    })
+  })
 })

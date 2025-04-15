@@ -649,10 +649,12 @@ KitchenSink.args = {
 export const ManualSorting: StoryFn<typeof DataGrid> = () => {
   const [sortedData, setSortedData] = useState(data)
   const [sorting, setSorting] = useState<SortingState>([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSortingChange = useCallback(
     (newSorting: SortingState) => {
       setSorting(newSorting)
+      setIsLoading(true)
 
       setTimeout(() => {
         const sorted = [...sortedData]
@@ -681,6 +683,7 @@ export const ManualSorting: StoryFn<typeof DataGrid> = () => {
         }
 
         setSortedData(sorted)
+        setIsLoading(false)
       }, 500)
     },
     [sortedData]
@@ -692,6 +695,7 @@ export const ManualSorting: StoryFn<typeof DataGrid> = () => {
         columns={columnsWithSorting as ColumnDef<Order>[]}
         data={sortedData}
         manualSorting
+        isLoading={isLoading}
         onSortingChange={(updaterOrValue) => {
           const newSorting =
             typeof updaterOrValue === 'function'
@@ -722,6 +726,7 @@ export const ManualPagination: StoryFn<typeof DataGrid> = () => {
     pageIndex: 0,
     pageSize: 3,
   })
+  const [isLoading, setIsLoading] = useState(false)
 
   const totalCount = data.length
   const totalPages = Math.ceil(totalCount / 3)
@@ -729,12 +734,14 @@ export const ManualPagination: StoryFn<typeof DataGrid> = () => {
   const handlePaginationChange = useCallback(
     (newPagination: PaginationState) => {
       setPagination(newPagination)
+      setIsLoading(true)
 
       setTimeout(() => {
         const startIndex = newPagination.pageIndex * newPagination.pageSize
         const endIndex = startIndex + newPagination.pageSize
         const newPageData = data.slice(startIndex, endIndex)
         setPaginatedData(newPageData)
+        setIsLoading(false)
       }, 500)
     },
     []
@@ -748,6 +755,7 @@ export const ManualPagination: StoryFn<typeof DataGrid> = () => {
         manualPagination
         pageSize={3}
         pageCount={totalPages}
+        isLoading={isLoading}
         onPaginationChange={(updaterOrValue) => {
           const newPagination =
             typeof updaterOrValue === 'function'
@@ -768,6 +776,32 @@ ManualPagination.parameters = {
   docs: {
     description: {
       story: `Manual pagination allows you to handle the pagination logic externally, typically on the server side (simulated with a 500ms delay).`,
+    },
+  },
+}
+
+export const Loading: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid {...props} isLoading />
+    </Wrapper>
+  )
+}
+
+Loading.args = {
+  columns,
+  data,
+  isFullWidth: true,
+  onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
+}
+
+Loading.parameters = {
+  docs: {
+    description: {
+      story:
+        'The `isLoading` prop displays a loading overlay with a progress indicator. This is useful when loading data from a server.',
     },
   },
 }
