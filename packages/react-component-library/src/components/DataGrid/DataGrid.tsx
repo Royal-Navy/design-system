@@ -9,6 +9,7 @@ import {
   type RowSelectionState,
   type ColumnFiltersState,
   type SortingState,
+  type PaginationState,
   useReactTable,
   getCoreRowModel,
   getExpandedRowModel,
@@ -23,7 +24,12 @@ import { useDataGridState } from './useDataGridState'
 import { getColumns } from './getColumns'
 import { Table } from './Table'
 import { Pagination } from './Pagination'
-import { StyledDataGrid } from './partials'
+import { ProgressIndicator } from '../ProgressIndicator'
+import {
+  StyledDataGrid,
+  StyledLoadingOverlay,
+  StyledTableContainer,
+} from './partials'
 
 export interface DataGridBaseProps<T extends object>
   extends Pick<Partial<PaginationProps>, 'pageSize'>,
@@ -51,17 +57,21 @@ export interface DataGridBaseProps<T extends object>
   isFullWidth?: boolean
   hasHover?: boolean
   hideCheckboxes?: boolean
+  isLoading?: boolean
   onSelectedRowsChange?: (rows: T[]) => void
   onExpandedChange?: (expanded: ExpandedState) => void
   onColumnFiltersChange?: (columnFilters: ColumnFiltersState) => void
   pageCount?: number
+  manualSorting?: boolean
+  sortingState?: SortingState
+  /**
+   * @deprecated Use onPaginationChange instead
+   */
   onPageChange?: (
     event: OnChangeEventType,
     currentPage: number,
     totalPages: number
   ) => void
-  manualSorting?: boolean
-  sortingState?: SortingState
 }
 
 export interface DataGridPropsWithExternalSorting<T extends object>
@@ -78,9 +88,29 @@ export interface DataGridPropsWithInternalSorting<T extends object>
   sorting?: never
 }
 
+export interface DataGridPropsWithExternalPagination<T extends object>
+  extends DataGridBaseProps<T>,
+    Pick<TableOptions<T>, 'onPaginationChange'> {
+  manualPagination: true
+  pagination: PaginationState
+}
+
+export interface DataGridPropsWithInternalPagination<T extends object>
+  extends DataGridBaseProps<T> {
+  onPaginationChange?: never
+  manualPagination?: false
+  pagination?: never
+}
+
 export type DataGridProps<T extends object> =
-  | DataGridPropsWithExternalSorting<T>
-  | DataGridPropsWithInternalSorting<T>
+  | (DataGridPropsWithExternalSorting<T> &
+      DataGridPropsWithExternalPagination<T>)
+  | (DataGridPropsWithExternalSorting<T> &
+      DataGridPropsWithInternalPagination<T>)
+  | (DataGridPropsWithInternalSorting<T> &
+      DataGridPropsWithExternalPagination<T>)
+  | (DataGridPropsWithInternalSorting<T> &
+      DataGridPropsWithInternalPagination<T>)
 
 export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
   const {
@@ -93,17 +123,20 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     hideCheckboxes,
     initialRowSelection,
     isFullWidth,
+    isLoading,
     className,
     onColumnFiltersChange,
     onSelectedRowsChange,
     onExpandedChange,
     onPageChange,
     manualPagination,
+    onPaginationChange,
     pageCount,
     pageSize,
     manualSorting,
     onSortingChange,
     sorting: externalSorting,
+    pagination: externalPagination,
     ...rest
   } = props
 
@@ -114,7 +147,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     setExpanded,
     rowSelection,
     setRowSelection,
-    pagination,
+    pagination: internalPagination,
     setPagination,
     columnFilters,
     setColumnFilters,
@@ -137,19 +170,21 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
       sorting: externalSorting ?? internalSorting,
       rowSelection,
       expanded,
-      pagination,
+      pagination: externalPagination ?? internalPagination,
       columnFilters,
     },
     enableRowSelection,
     onRowSelectionChange: setRowSelection,
     onSortingChange: manualSorting ? onSortingChange : setSorting,
     onExpandedChange: setExpanded,
-    onPaginationChange: setPagination,
+    onPaginationChange: manualPagination ? onPaginationChange : setPagination,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: manualSorting ? undefined : getSortedRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
+    getPaginationRowModel: manualPagination
+      ? undefined
+      : getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     manualPagination,
     paginateExpandedRows: false,
@@ -177,12 +212,35 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
 
   const handlePagination = useCallback(
     (...args) => {
-      const [_, currentPage] = args
-      table.setPageIndex(currentPage - 1)
-      // @ts-ignore
-      onPageChange?.(...args)
+      const [event, currentPage, totalPages] = args
+      const pageIndex = currentPage - 1
+
+      if (!manualPagination) {
+        table.setPageIndex(pageIndex)
+      }
+
+      if (onPaginationChange) {
+        const newPaginationState = {
+          pageIndex,
+          pageSize: (externalPagination ?? internalPagination).pageSize,
+        }
+
+        onPaginationChange(newPaginationState)
+
+        return
+      }
+
+      // Legacy support for onPageChange
+      onPageChange?.(event, currentPage, totalPages)
     },
-    [table, onPageChange]
+    [
+      table,
+      manualPagination,
+      onPaginationChange,
+      onPageChange,
+      externalPagination,
+      internalPagination,
+    ]
   )
 
   const isPaginated = manualPagination || !!pageSize
@@ -210,23 +268,32 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     return baseColumnCount
   }, [enableRowSelection, hideCheckboxes, hasSubRows, columns])
 
+  const paginationState = externalPagination ?? internalPagination
+
   return (
     <StyledDataGrid className={className}>
-      <Table
-        table={table}
-        caption={caption}
-        enableRowSelection={!!enableRowSelection}
-        hideCheckboxes={!!hideCheckboxes}
-        hasHover={!!hasHover}
-        isFullWidth={!!isFullWidth}
-        hasSubRows={hasSubRows}
-        totalColumns={totalColumns}
-      />
+      <StyledTableContainer>
+        <Table
+          table={table}
+          caption={caption}
+          enableRowSelection={!!enableRowSelection}
+          hideCheckboxes={!!hideCheckboxes}
+          hasHover={!!hasHover}
+          isFullWidth={!!isFullWidth}
+          hasSubRows={hasSubRows}
+          totalColumns={totalColumns}
+        />
+        {isLoading && (
+          <StyledLoadingOverlay>
+            <ProgressIndicator />
+          </StyledLoadingOverlay>
+        )}
+      </StyledTableContainer>
       {isPaginated && (
         <Pagination
-          pagination={pagination}
+          pagination={paginationState}
           pageSize={pageSize!}
-          dataLength={data.length}
+          dataLength={manualPagination ? undefined : data.length}
           pageCount={pageCount!}
           onChange={handlePagination}
         />
