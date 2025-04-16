@@ -3,6 +3,8 @@ import { Meta, StoryFn } from '@storybook/react'
 
 import { ProgressBar } from '.'
 
+import { getSpacings } from '../../tokens/utils'
+
 export default {
   component: ProgressBar,
   title: 'Components/Progress Bar',
@@ -11,13 +13,15 @@ export default {
   },
   argTypes: {
     size: {
-      options: ['2', '4', '8'],
+      options: [...getSpacings()],
       control: { type: 'select' },
     },
   },
 } as Meta<typeof ProgressBar>
 
-const Template: StoryFn<typeof ProgressBar> = (props) => <ProgressBar {...props} />
+const Template: StoryFn<typeof ProgressBar> = (props) => (
+  <ProgressBar {...props} />
+)
 
 export const Default = Template.bind({})
 
@@ -25,8 +29,15 @@ Default.args = {
   value: 45,
 }
 
+export const WithPercentageText = Template.bind({})
+WithPercentageText.args = {
+  value: 75,
+  showPercentage: true,
+}
+
 export const Disabled = Template.bind({})
 Disabled.args = {
   isDisabled: true,
-  value: 75
+  showPercentage: true,
+  value: 75,
 }

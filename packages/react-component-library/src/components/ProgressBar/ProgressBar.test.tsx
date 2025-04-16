@@ -2,42 +2,51 @@ import React from 'react'
 
 import { render, screen } from '@testing-library/react'
 
-import { spacing } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 
 import { ProgressBar } from './ProgressBar'
 
 describe('ProgressBar', () => {
-  it('should render the component', () => {
+  it('should display the text percentage', () => {
+    render(<ProgressBar value={50} showPercentage />)
+    expect(screen.getByTestId('percentage-text')).toHaveTextContent('50%')
+  })
+
+  it('should render the simple component', () => {
     render(<ProgressBar value={50} />)
     expect(screen.getByRole('progressbar')).toBeInTheDocument()
+    expect(screen.queryByTestId('percentage-text')).not.toBeInTheDocument()
   })
 
   it('should handle negative values', () => {
-    render(<ProgressBar value={-50} />)
+    render(<ProgressBar value={-50} showPercentage />)
     expect(screen.getByRole('progressbar')).toHaveAttribute(
       'aria-valuenow',
       '0'
     )
     expect(screen.getByRole('progressbar')).toHaveAttribute('title', '0%')
+    expect(screen.getByTestId('percentage-text')).toHaveTextContent('0%')
   })
 
   it('should handle values above 100', () => {
-    render(<ProgressBar value={150} />)
+    render(<ProgressBar value={150} showPercentage />)
     expect(screen.getByRole('progressbar')).toHaveAttribute(
       'aria-valuenow',
       '100'
     )
     expect(screen.getByRole('progressbar')).toHaveAttribute('title', '100%')
+    expect(screen.getByTestId('percentage-text')).toHaveTextContent('100%')
   })
 
   it('should handle invalid values', () => {
     // @ts-ignore
-    render(<ProgressBar value="not3" />)
+    render(<ProgressBar value="not3" showPercentage />)
     expect(screen.getByRole('progressbar')).toHaveAttribute(
       'aria-valuenow',
       '0'
     )
     expect(screen.getByRole('progressbar')).toHaveAttribute('title', '0%')
+    expect(screen.getByTestId('percentage-text')).toHaveTextContent('0%')
   })
 
   it('should set the progress bar values', () => {
@@ -72,8 +81,12 @@ describe('ProgressBar', () => {
   })
 
   it('should render the component as disabled', () => {
-    render(<ProgressBar value={50} isDisabled />)
+    const disabledColor = color('neutral', '200')
+    render(<ProgressBar value={50} isDisabled showPercentage />)
 
     expect(screen.getByRole('progressbar')).toHaveStyle('cursor: not-allowed')
+    expect(screen.getByTestId('percentage-text')).toHaveStyle(
+      `color: ${disabledColor}`
+    )
   })
 })

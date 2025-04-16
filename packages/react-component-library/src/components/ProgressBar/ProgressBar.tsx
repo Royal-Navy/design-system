@@ -1,10 +1,15 @@
 import React from 'react'
-import { type Spacing } from '@royalnavy/design-tokens'
+import { color, type Spacing } from '@royalnavy/design-tokens'
 
-import { StyledProgressBar, StyledProgressIndicator } from './partials'
+import {
+  StyledProgressBar,
+  StyledProgressContainer,
+  StyledProgressIndicator,
+} from './partials'
 import { fixProgressValue } from './fixProgressValue'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { Text } from '../Text'
 
 interface ProgressBarProps extends Omit<ComponentWithClass, 'children'> {
   /**
@@ -12,40 +17,55 @@ interface ProgressBarProps extends Omit<ComponentWithClass, 'children'> {
    */
   value: number
   /**
-   * Toggles whether the component is disabled or not (preventing user interaction).
+   * Toggles whether the component appears disabled or not.
    */
   isDisabled?: boolean
   /**
-   * Height of the control, `'2'` by default.
+   * Height of the control, `'4'` by default.
    */
   size?: Spacing
+  /**
+   * Optional whether to display the percentage as text. Defaults to false.
+   */
+  showPercentage?: boolean
 }
 
 export const ProgressBar = ({
   value,
   className,
   isDisabled = false,
-  size = '2',
+  size = '4',
+  showPercentage = false,
 }: ProgressBarProps) => {
   const fixedValue = fixProgressValue(value)
 
+  const textColour = isDisabled
+    ? color('neutral', '200')
+    : color('neutral', '500')
+
   return (
-    <StyledProgressBar
-      className={className}
-      $isDisabled={isDisabled}
-      role="progressbar"
-      aria-valuenow={fixedValue}
-      aria-valuemin={0}
-      aria-valuemax={100}
-      aria-valuetext={`${fixedValue} percent complete`}
-      title={`${fixedValue}%`}
-    >
-      <StyledProgressIndicator
-        role="presentation"
+    <StyledProgressContainer>
+      <StyledProgressBar
+        className={className}
         $height={size}
         $isDisabled={isDisabled}
-        style={{ width: `${fixedValue}%` }}
-      />
-    </StyledProgressBar>
+        role="progressbar"
+        aria-valuenow={fixedValue}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuetext={`${fixedValue} percent complete`}
+        title={`${fixedValue}%`}
+      >
+        <StyledProgressIndicator
+          role="presentation"
+          $height={size}
+          $isDisabled={isDisabled}
+          style={{ width: `${fixedValue}%` }}
+        />
+      </StyledProgressBar>
+      {showPercentage && (
+        <Text el="span" data-testid="percentage-text" aria-hidden="true" variant="small" color={textColour}>{`${fixedValue}%`}</Text>
+      )}
+    </StyledProgressContainer>
   )
 }
