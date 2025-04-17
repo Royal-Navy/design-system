@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.33.0](https://github.com/Royal-Navy/design-system/compare/4.32.0...4.33.0) (2025-04-17)
+
+### Features
+
+- **DataGrid:** Add isLoading prop for handling async ([2632c3b](https://github.com/Royal-Navy/design-system/commit/2632c3bf6240fe99c27d4bdd9269743395cb621d))
+- **DataGrid:** Add support for manual (server-side) pagination ([8cfd4f0](https://github.com/Royal-Navy/design-system/commit/8cfd4f0b4e9ff51ed7605d98bfcda806382b9244))
+
 # [4.32.0](https://github.com/Royal-Navy/design-system/compare/4.31.1...4.32.0) (2025-03-28)
 
 ### Features
