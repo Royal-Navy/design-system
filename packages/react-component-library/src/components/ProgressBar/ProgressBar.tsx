@@ -1,5 +1,5 @@
 import React from 'react'
-import { color, type Spacing } from '@royalnavy/design-tokens'
+import { type Spacing } from '@royalnavy/design-tokens'
 
 import {
   StyledProgressBar,
@@ -39,10 +39,6 @@ export const ProgressBar = ({
 }: ProgressBarProps) => {
   const fixedValue = fixProgressValue(value)
 
-  const textColour = isDisabled
-    ? color('neutral', '200')
-    : color('neutral', '500')
-
   return (
     <StyledProgressContainer>
       <StyledProgressBar
@@ -64,7 +60,7 @@ export const ProgressBar = ({
         />
       </StyledProgressBar>
       {showPercentage && (
-        <Text el="span" data-testid="percentage-text" aria-hidden="true" variant="small" color={textColour}>{`${fixedValue}%`}</Text>
+        <Text el="span" data-testid="percentage-text" aria-hidden="true" variant="small">{`${fixedValue}%`}</Text>
       )}
     </StyledProgressContainer>
   )

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render, screen } from '@testing-library/react'
 
-import { color, spacing } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 
 import { ProgressBar } from './ProgressBar'
 
@@ -81,12 +81,7 @@ describe('ProgressBar', () => {
   })
 
   it('should render the component as disabled', () => {
-    const disabledColor = color('neutral', '200')
     render(<ProgressBar value={50} isDisabled showPercentage />)
-
     expect(screen.getByRole('progressbar')).toHaveStyle('cursor: not-allowed')
-    expect(screen.getByTestId('percentage-text')).toHaveStyle(
-      `color: ${disabledColor}`
-    )
   })
 })
