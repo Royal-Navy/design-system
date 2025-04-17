@@ -11,8 +11,9 @@ export const StyledTable = styled.table<StyledTableProps>`
   table-layout: fixed;
   width: ${({ $isFullWidth }) => ($isFullWidth ? '100%' : 'auto')};
   border-spacing: 0;
-  border-radius: 4px;
-  border: 1px solid ${color('neutral', '200')};
+
+  //border-left: 1px solid ${color('neutral', '200')};
+  //border-right: 1px solid ${color('neutral', '200')};
 
   ${({ $hasRowSelection }) =>
     $hasRowSelection &&

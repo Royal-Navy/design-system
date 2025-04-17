@@ -191,6 +191,7 @@ const columns = [
 
 const Wrapper = styled.div`
   padding: ${spacing('4')};
+  height: 250px;
 `
 
 export default {
