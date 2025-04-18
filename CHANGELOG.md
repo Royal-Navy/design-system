@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.34.0](https://github.com/Royal-Navy/design-system/compare/4.33.0...4.34.0) (2025-04-18)
+
+### Bug Fixes
+
+- **ProgressBar:** Make progress percentage text legible when disabled ([38f5e29](https://github.com/Royal-Navy/design-system/commit/38f5e292da1a7ac4337f48931b214af749c32e5f))
+
+### Features
+
+- **ProgressBar:** Add new progress bar component ([1d2f9fc](https://github.com/Royal-Navy/design-system/commit/1d2f9fc329b7a61fb97a0de56f1be60b8bdcbcb2))
+- **ProgressBar:** Add percentage text to display ([8597c48](https://github.com/Royal-Navy/design-system/commit/8597c48b65ad4ee379944bcf56f69c497f23bc2f))
+
 # [4.33.0](https://github.com/Royal-Navy/design-system/compare/4.32.0...4.33.0) (2025-04-17)
 
 ### Features
