@@ -1,5 +1,5 @@
 /* eslint-disable no-shadow */
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import { OnChangeEventType } from '.'
 
@@ -64,6 +64,10 @@ export const usePageChange = (
     },
     [changePage, totalPages]
   )
+
+  useEffect(() => {
+    setCurrentPage(initialPage)
+  }, [initialPage])
 
   return {
     currentPage,
