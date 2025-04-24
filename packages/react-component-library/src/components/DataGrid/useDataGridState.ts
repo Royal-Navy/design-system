@@ -9,8 +9,7 @@ import {
 
 export const useDataGridState = (
   initialRowSelection: RowSelectionState | undefined,
-  pageSize: number | undefined,
-  dataLength: number
+  pageSize: number
 ) => {
   const [sorting, setSorting] = useState<SortingState>([])
 
@@ -24,19 +23,19 @@ export const useDataGridState = (
 
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
-    pageSize: pageSize ?? dataLength,
+    pageSize,
   })
 
   return {
-    sorting,
-    setSorting,
-    expanded,
-    setExpanded,
-    rowSelection,
-    setRowSelection,
-    pagination,
-    setPagination,
     columnFilters,
+    expanded,
+    pagination,
+    rowSelection,
     setColumnFilters,
+    setExpanded,
+    setPagination,
+    setRowSelection,
+    setSorting,
+    sorting,
   }
 }

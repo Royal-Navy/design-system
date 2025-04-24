@@ -35,10 +35,12 @@ interface RowsPerPageProps {
 
 export const ROWS_PER_PAGE_OPTIONS = ['10', '25', '50', '100']
 
+export const DEFAULT_ROWS_PER_PAGE = Number(ROWS_PER_PAGE_OPTIONS[0])
+
 export const RowsPerPage = (props: RowsPerPageProps) => (
   <Select
     hideClearButton
-    initialValue={ROWS_PER_PAGE_OPTIONS[0]}
+    initialValue={DEFAULT_ROWS_PER_PAGE.toString()}
     label="Rows per page"
     {...props}
   >

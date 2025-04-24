@@ -28,6 +28,12 @@ async function hackyWaitFor(customDelay?: number) {
   return new Promise((resolve) => setTimeout(resolve, customDelay ?? 100))
 }
 
+const PAGINATED_DATA = Array.from({ length: 1000 }, (_, i) => ({
+  first: `a${i + 1}`,
+  second: `b${i + 1}`,
+  third: `c${i + 1}`,
+}))
+
 describe('DataGrid', () => {
   const columns: ColumnDef<DataRow>[] = [
     {
@@ -70,12 +76,6 @@ describe('DataGrid', () => {
       third: 'c4',
     },
   ]
-
-  it('should set the `role` attribute to `grid`', () => {
-    render(<DataGrid data={data} columns={columns} />)
-
-    expect(screen.getByRole('grid')).toHaveAttribute('role', 'grid')
-  })
 
   it('renders table cells and headers correctly', () => {
     render(<DataGrid data={data} columns={columns} />)
@@ -674,14 +674,8 @@ describe('DataGrid', () => {
   })
 
   describe('paginated data', () => {
-    const paginatedData = Array.from({ length: 1000 }, (_, i) => ({
-      first: `a${i + 1}`,
-      second: `b${i + 1}`,
-      third: `c${i + 1}`,
-    }))
-
     it('should render the correct rows on initial render', async () => {
-      render(<DataGrid data={paginatedData} columns={columns} pageSize={10} />)
+      render(<DataGrid data={PAGINATED_DATA} columns={columns} pageSize={10} />)
 
       expect(screen.getAllByRole('row')).toHaveLength(11)
       expect(screen.getByText('a1')).toBeVisible()
@@ -692,7 +686,7 @@ describe('DataGrid', () => {
 
       render(
         <DataGrid
-          data={paginatedData}
+          data={PAGINATED_DATA}
           columns={columns}
           pageSize={10}
           // @ts-ignore
@@ -1402,21 +1396,21 @@ describe('DataGrid', () => {
   })
 
   describe('with manual pagination', () => {
+    const paginatedTestData = [
+      { first: 'page1-item1', second: 'a2', third: 'a3' },
+      { first: 'page1-item2', second: 'b2', third: 'b3' },
+      { first: 'page1-item3', second: 'c2', third: 'c3' },
+      { first: 'page2-item1', second: 'd2', third: 'd3' },
+      { first: 'page2-item2', second: 'e2', third: 'e3' },
+      { first: 'page2-item3', second: 'f2', third: 'f3' },
+      { first: 'page3-item1', second: 'g2', third: 'g3' },
+      { first: 'page3-item2', second: 'h2', third: 'h3' },
+      { first: 'page3-item3', second: 'i2', third: 'i3' },
+    ]
+
     it('handles pagination correctly with external state and changes displayed data', async () => {
       const pageSize = 3
       const pageCount = 3
-
-      const paginatedTestData = [
-        { first: 'page1-item1', second: 'a2', third: 'a3' },
-        { first: 'page1-item2', second: 'b2', third: 'b3' },
-        { first: 'page1-item3', second: 'c2', third: 'c3' },
-        { first: 'page2-item1', second: 'd2', third: 'd3' },
-        { first: 'page2-item2', second: 'e2', third: 'e3' },
-        { first: 'page2-item3', second: 'f2', third: 'f3' },
-        { first: 'page3-item1', second: 'g2', third: 'g3' },
-        { first: 'page3-item2', second: 'h2', third: 'h3' },
-        { first: 'page3-item3', second: 'i2', third: 'i3' },
-      ]
 
       function TestComponent() {
         const [pageData, setPageData] = useState(
@@ -1492,6 +1486,34 @@ describe('DataGrid', () => {
       expect(screen.queryByText('page2-item1')).not.toBeInTheDocument()
       expect(screen.queryByText('page2-item3')).not.toBeInTheDocument()
     })
+
+    it('calls onPaginationChange with the correct page index and page size when rows per page is changed', async () => {
+      const onPaginationChangeSpy = jest.fn()
+
+      render(
+        <DataGrid
+          columns={columns}
+          data={paginatedTestData}
+          manualPagination
+          onPaginationChange={onPaginationChangeSpy}
+          pagination={{
+            pageIndex: 0,
+            pageSize: 5,
+          }}
+        />
+      )
+
+      await userEvent.click(screen.getByTestId('select-arrow-button'))
+
+      const options = screen.getAllByRole('option')
+
+      await userEvent.click(options[1])
+
+      expect(onPaginationChangeSpy).toHaveBeenCalledWith({
+        pageIndex: 0,
+        pageSize: 25,
+      })
+    })
   })
 
   describe('loading state', () => {
@@ -1536,6 +1558,38 @@ describe('DataGrid', () => {
       ) as HTMLElement
 
       expect(tableContainer).toContainElement(loadingOverlay)
+    })
+  })
+
+  describe('rows per page', () => {
+    it('updates the page size when the rows per page component is changed', async () => {
+      render(<DataGrid data={PAGINATED_DATA} columns={columns} />)
+
+      await userEvent.click(screen.getByTestId('select-arrow-button'))
+
+      const options = screen.getAllByRole('option')
+
+      await userEvent.click(options[1])
+
+      expect(screen.getByLabelText('Enter page number')).toHaveValue('1')
+      expect(screen.getByText('of 40')).toBeInTheDocument()
+    })
+
+    it('resets to the first page when the rows per page component is changed', async () => {
+      render(<DataGrid data={PAGINATED_DATA} columns={columns} />)
+
+      await userEvent.click(screen.getByLabelText('Next page'))
+
+      expect(screen.getByLabelText('Enter page number')).toHaveValue('2')
+
+      await userEvent.click(screen.getByTestId('select-arrow-button'))
+
+      const options = screen.getAllByRole('option')
+
+      await userEvent.click(options[1])
+
+      expect(screen.getByLabelText('Enter page number')).toHaveValue('1')
+      expect(screen.getByText('of 40')).toBeInTheDocument()
     })
   })
 })

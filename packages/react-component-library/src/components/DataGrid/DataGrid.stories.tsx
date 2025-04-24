@@ -12,6 +12,7 @@ import type {
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DataGrid, TABLE_COLUMN_ALIGNMENT } from '.'
 import { Badge } from '../Badge'
+import { DEFAULT_ROWS_PER_PAGE } from '../RowsPerPage/RowsPerPage'
 
 type Order = {
   id: number
@@ -103,6 +104,66 @@ const data: Order[] = [
     productName: 'Practical Wooden Ball',
     quantity: 10,
     price: '£673.00',
+  },
+  {
+    id: 11,
+    productName: 'Handcrafted Wooden Table',
+    quantity: 25,
+    price: '£512.00',
+  },
+  {
+    id: 12,
+    productName: 'Ergonomic Cotton Chair',
+    quantity: 47,
+    price: '£299.00',
+  },
+  {
+    id: 13,
+    productName: 'Fantastic Granite Shoes',
+    quantity: 19,
+    price: '£120.00',
+  },
+  {
+    id: 14,
+    productName: 'Incredible Plastic Gloves',
+    quantity: 73,
+    price: '£89.00',
+  },
+  {
+    id: 15,
+    productName: 'Tasty Fresh Tuna',
+    quantity: 56,
+    price: '£230.00',
+  },
+  {
+    id: 16,
+    productName: 'Awesome Rubber Keyboard',
+    quantity: 33,
+    price: '£410.00',
+  },
+  {
+    id: 17,
+    productName: 'Refined Concrete Soap',
+    quantity: 22,
+    price: '£58.00',
+  },
+  {
+    id: 18,
+    productName: 'Sleek Steel Mouse',
+    quantity: 41,
+    price: '£199.00',
+  },
+  {
+    id: 19,
+    productName: 'Gorgeous Wooden Pizza',
+    quantity: 15,
+    price: '£320.00',
+  },
+  {
+    id: 20,
+    productName: 'Incredible Fresh Salad',
+    quantity: 60,
+    price: '£150.00',
   },
 ]
 
@@ -721,15 +782,18 @@ ManualSorting.parameters = {
 }
 
 export const ManualPagination: StoryFn<typeof DataGrid> = () => {
-  const [paginatedData, setPaginatedData] = useState(data.slice(0, 3))
+  const [paginatedData, setPaginatedData] = useState(
+    data.slice(0, DEFAULT_ROWS_PER_PAGE)
+  )
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
-    pageSize: 3,
+    pageSize: DEFAULT_ROWS_PER_PAGE,
   })
   const [isLoading, setIsLoading] = useState(false)
-
   const totalCount = data.length
-  const totalPages = Math.ceil(totalCount / 3)
+  const [totalPages, setTotalPages] = useState(
+    Math.ceil(data.length / DEFAULT_ROWS_PER_PAGE)
+  )
 
   const handlePaginationChange = useCallback(
     (newPagination: PaginationState) => {
@@ -741,10 +805,11 @@ export const ManualPagination: StoryFn<typeof DataGrid> = () => {
         const endIndex = startIndex + newPagination.pageSize
         const newPageData = data.slice(startIndex, endIndex)
         setPaginatedData(newPageData)
+        setTotalPages(Math.ceil(totalCount / newPagination.pageSize))
         setIsLoading(false)
       }, 500)
     },
-    []
+    [totalCount]
   )
 
   return (
@@ -804,4 +869,30 @@ Loading.parameters = {
         'The `isLoading` prop displays a loading overlay with a progress indicator. This is useful when loading data from a server.',
     },
   },
+}
+
+export const RowsPerPage: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
+}
+
+RowsPerPage.args = {
+  columns: [
+    {
+      header: 'Product Name',
+      accessorKey: 'productName',
+    },
+  ],
+  data: Array.from({ length: 100 }, (_, i) => ({
+    id: i + 1,
+    productName: `Product ${i + 1}`,
+  })),
+  hasRowsPerPage: true,
+  isFullWidth: true,
+  onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
 }

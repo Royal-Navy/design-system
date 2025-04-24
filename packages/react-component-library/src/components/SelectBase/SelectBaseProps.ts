@@ -2,6 +2,8 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 
 import { SelectChildrenType } from './types'
 
+export type OnChangeType = (value: string | null) => void
+
 export interface SelectBaseProps extends ComponentWithClass {
   /**
    * Collection of options to display within the Select.
@@ -38,7 +40,7 @@ export interface SelectBaseProps extends ComponentWithClass {
   /**
    * Optional handler invoked when the selected value changes.
    */
-  onChange?: (value: string | null) => void
+  onChange?: OnChangeType
   /**
    * The selected value when the component is controlled.
    */
