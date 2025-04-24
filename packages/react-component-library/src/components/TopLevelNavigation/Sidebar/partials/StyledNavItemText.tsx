@@ -8,7 +8,7 @@ import {
 import { StyledNavItem } from './StyledNavItem'
 
 interface StyledTextProps extends TransitionProps {
-  isOpen?: boolean
+  $isOpen?: boolean
 }
 
 export const StyledNavItemText = styled.div<StyledTextProps>`
@@ -24,8 +24,8 @@ export const StyledNavItemText = styled.div<StyledTextProps>`
     color: ${color('neutral', 'white')};
   }
 
-  ${({ isOpen }) =>
-    !isOpen &&
+  ${({ $isOpen }) =>
+    !$isOpen &&
     css`
       display: none;
     `}

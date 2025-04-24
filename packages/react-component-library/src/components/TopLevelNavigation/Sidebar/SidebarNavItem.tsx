@@ -45,7 +45,7 @@ export const SidebarNavItem = ({
     ...link.props,
     children: (
       <>
-        {icon && <StyledNavItemIcon isOpen={isOpen}>{icon}</StyledNavItemIcon>}
+        {icon && <StyledNavItemIcon $isOpen={isOpen}>{icon}</StyledNavItemIcon>}
         <Transition
           nodeRef={nodeRef}
           in={isOpen}
@@ -56,7 +56,7 @@ export const SidebarNavItem = ({
             <StyledNavItemText
               ref={nodeRef}
               $transitionStatus={state}
-              isOpen={isOpen}
+              $isOpen={isOpen}
               data-testid="sidebar-nav-item-text"
             >
               {linkElement.props.children}
