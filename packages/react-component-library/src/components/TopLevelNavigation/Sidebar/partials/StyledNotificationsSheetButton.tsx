@@ -7,7 +7,7 @@ import { StyledNotificationDot } from './StyledNotificationDot'
 import { StyledNotificationsLabel } from './StyledNotificationsLabel'
 
 interface StyledNotificationsSheetButtonProps extends SheetButtonProps {
-  isOpen: boolean
+  $isOpen: boolean
 }
 
 export const StyledNotificationsSheetButton = styled<
@@ -25,8 +25,8 @@ export const StyledNotificationsSheetButton = styled<
     height: 20px;
   }
 
-  ${({ isOpen }) =>
-    isOpen &&
+  ${({ $isOpen }) =>
+    $isOpen &&
     css`
       width: 100%;
       padding: ${spacing('8')} ${spacing('7')};

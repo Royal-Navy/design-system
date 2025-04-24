@@ -47,7 +47,7 @@ export const SidebarNotifications = ({
           aria-label="Show notifications"
           data-testid="notification-button"
           icon={<IconNotifications />}
-          isOpen={isOpen}
+          $isOpen={isOpen}
         >
           {hasUnreadNotification && (
             <StyledNotificationDot data-testid="not-read">

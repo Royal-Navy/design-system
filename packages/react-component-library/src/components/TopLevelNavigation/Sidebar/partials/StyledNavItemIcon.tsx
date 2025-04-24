@@ -4,7 +4,7 @@ import { color } from '@royalnavy/design-tokens'
 import { StyledNavItem } from './StyledNavItem'
 
 interface StyledNavItemIconProps {
-  isOpen?: boolean
+  $isOpen?: boolean
 }
 
 export const StyledNavItemIcon = styled.div<StyledNavItemIconProps>`
@@ -24,8 +24,8 @@ export const StyledNavItemIcon = styled.div<StyledNavItemIconProps>`
     }
   }
 
-  ${({ isOpen }) =>
-    isOpen &&
+  ${({ $isOpen }) =>
+    $isOpen &&
     css`
       width: auto;
       padding: 0.55rem;
