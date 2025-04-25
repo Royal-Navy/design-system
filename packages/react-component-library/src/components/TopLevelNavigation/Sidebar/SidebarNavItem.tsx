@@ -78,7 +78,7 @@ export const SidebarNavItem = ({
 
   return (
     <StyledNavItem
-      isActive={isActive}
+      $isActive={isActive}
       onMouseEnter={(_) => setHasMouseOver(true)}
       onMouseLeave={(_) => setHasMouseOver(false)}
     >

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { color, spacing } from '@royalnavy/design-tokens'
 
 interface StyledNavItemProps {
-  isActive?: boolean
+  $isActive?: boolean
 }
 
 export const StyledNavItem = styled.div<StyledNavItemProps>`
@@ -17,8 +17,8 @@ export const StyledNavItem = styled.div<StyledNavItemProps>`
     width: 100%;
   }
 
-  ${({ isActive }) =>
-    isActive &&
+  ${({ $isActive }) =>
+    $isActive &&
     css`
       background-color: ${color('action', '500')};
 
