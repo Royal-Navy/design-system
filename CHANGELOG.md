@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.35.0](https://github.com/Royal-Navy/design-system/compare/4.34.2...4.35.0) (2025-04-28)
+
+### Bug Fixes
+
+- **Pagination:** Allow initialPage to be updated externally ([93e957e](https://github.com/Royal-Navy/design-system/commit/93e957efdfcde9c6b545bc207dcffc9eeb163c94))
+
+### Features
+
+- **DataGrid:** Integrate RowsPerPage ([a368674](https://github.com/Royal-Navy/design-system/commit/a368674099ebdd0f2640d3e4b121ef567ca24df4))
+- **RowsPerPage:** Add basic component ([1d58b80](https://github.com/Royal-Navy/design-system/commit/1d58b8017f51fd9e5e8e827a7c0b9f8bcaa4dff8))
+
 ## [4.34.2](https://github.com/Royal-Navy/design-system/compare/4.34.1...4.34.2) (2025-04-28)
 
 ### Bug Fixes
