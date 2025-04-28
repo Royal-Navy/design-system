@@ -17,9 +17,7 @@ import { DataGrid } from './DataGrid'
 import { Button } from '../Button'
 
 type DataRow = {
-  first: string
-  second: string
-  third: string
+  [key: string]: string | number | DataRow[]
 }
 
 async function hackyWaitFor(customDelay?: number) {
@@ -556,7 +554,7 @@ describe('DataGrid', () => {
   })
 
   describe('with sub rows', () => {
-    const subRowData = [
+    const subRowData: DataRow[] = [
       {
         first: 'b1',
         second: 'b2',
@@ -1007,11 +1005,15 @@ describe('DataGrid', () => {
       },
     ]
 
-    const dataWithFiltering = [
-      { first: 'alpha', second: 'bravo', third: 'charlie', numeric: 11 },
-      { first: 'delta', second: 'echo', third: 'foxtrot', numeric: 111 },
-      { first: 'golf', second: 'hotel', third: 'india', numeric: 3 },
-    ]
+    let dataWithFiltering: DataRow[]
+
+    beforeEach(() => {
+      dataWithFiltering = [
+        { first: 'alpha', second: 'bravo', third: 'charlie', numeric: 11 },
+        { first: 'delta', second: 'echo', third: 'foxtrot', numeric: 111 },
+        { first: 'golf', second: 'hotel', third: 'india', numeric: 3 },
+      ]
+    })
 
     it('renders filter buttons for columns with enableColumnFilter', () => {
       render(
@@ -1400,16 +1402,37 @@ describe('DataGrid', () => {
       { first: 'page1-item1', second: 'a2', third: 'a3' },
       { first: 'page1-item2', second: 'b2', third: 'b3' },
       { first: 'page1-item3', second: 'c2', third: 'c3' },
-      { first: 'page2-item1', second: 'd2', third: 'd3' },
-      { first: 'page2-item2', second: 'e2', third: 'e3' },
-      { first: 'page2-item3', second: 'f2', third: 'f3' },
-      { first: 'page3-item1', second: 'g2', third: 'g3' },
-      { first: 'page3-item2', second: 'h2', third: 'h3' },
-      { first: 'page3-item3', second: 'i2', third: 'i3' },
+      { first: 'page1-item4', second: 'd2', third: 'd3' },
+      { first: 'page1-item5', second: 'e2', third: 'e3' },
+      { first: 'page1-item6', second: 'f2', third: 'f3' },
+      { first: 'page1-item7', second: 'g2', third: 'g3' },
+      { first: 'page1-item8', second: 'h2', third: 'h3' },
+      { first: 'page1-item9', second: 'i2', third: 'i3' },
+      { first: 'page1-item10', second: 'j2', third: 'j3' },
+      { first: 'page2-item1', second: 'k2', third: 'k3' },
+      { first: 'page2-item2', second: 'l2', third: 'l3' },
+      { first: 'page2-item3', second: 'm2', third: 'm3' },
+      { first: 'page2-item4', second: 'n2', third: 'n3' },
+      { first: 'page2-item5', second: 'o2', third: 'o3' },
+      { first: 'page2-item6', second: 'p2', third: 'p3' },
+      { first: 'page2-item7', second: 'q2', third: 'q3' },
+      { first: 'page2-item8', second: 'r2', third: 'r3' },
+      { first: 'page2-item9', second: 's2', third: 's3' },
+      { first: 'page2-item10', second: 't2', third: 't3' },
+      { first: 'page3-item1', second: 'u2', third: 'u3' },
+      { first: 'page3-item2', second: 'v2', third: 'v3' },
+      { first: 'page3-item3', second: 'w2', third: 'w3' },
+      { first: 'page3-item4', second: 'x2', third: 'x3' },
+      { first: 'page3-item5', second: 'y2', third: 'y3' },
+      { first: 'page3-item6', second: 'z2', third: 'z3' },
+      { first: 'page3-item7', second: 'a2', third: 'a3' },
+      { first: 'page3-item8', second: 'b2', third: 'b3' },
+      { first: 'page3-item9', second: 'c2', third: 'c3' },
+      { first: 'page3-item10', second: 'd2', third: 'd3' },
     ]
 
     it('handles pagination correctly with external state and changes displayed data', async () => {
-      const pageSize = 3
+      const pageSize = 10
       const pageCount = 3
 
       function TestComponent() {
@@ -1498,7 +1521,7 @@ describe('DataGrid', () => {
           onPaginationChange={onPaginationChangeSpy}
           pagination={{
             pageIndex: 0,
-            pageSize: 5,
+            pageSize: 10,
           }}
         />
       )
@@ -1534,7 +1557,7 @@ describe('DataGrid', () => {
     })
 
     it('should render loading overlay only over the data grid and not the pagination', async () => {
-      render(<DataGrid data={data} columns={columns} pageSize={10} isLoading />)
+      render(<DataGrid data={PAGINATED_DATA} columns={columns} isLoading />)
 
       // Verify that the progress indicator is present
       expect(screen.getByTestId('progress-indicator')).toBeInTheDocument()
@@ -1590,6 +1613,34 @@ describe('DataGrid', () => {
 
       expect(screen.getByLabelText('Enter page number')).toHaveValue('1')
       expect(screen.getByText('of 40')).toBeInTheDocument()
+    })
+  })
+
+  describe('footer', () => {
+    it.each([9, 10])(
+      'does not render the footer when there are %s rows',
+      (numberOfRows) => {
+        render(
+          <DataGrid
+            data={PAGINATED_DATA.slice(0, numberOfRows)}
+            columns={columns}
+          />
+        )
+
+        expect(
+          screen.queryByLabelText('Enter page number')
+        ).not.toBeInTheDocument()
+        expect(screen.queryByText('Rows per page')).not.toBeInTheDocument()
+      }
+    )
+
+    it('renders the footer when there are 11 rows', async () => {
+      render(<DataGrid data={PAGINATED_DATA.slice(0, 11)} columns={columns} />)
+
+      expect(
+        await screen.findByLabelText('Enter page number')
+      ).toBeInTheDocument()
+      expect(await screen.findByText('Rows per page')).toBeInTheDocument()
     })
   })
 })

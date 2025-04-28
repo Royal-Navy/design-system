@@ -293,6 +293,9 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
   }, [enableRowSelection, hideCheckboxes, hasSubRows, columns])
 
   const paginationState = externalPagination ?? internalPagination
+  const hasFooter =
+    (internalPagination && data.length > localPageSize) ||
+    (pageCount && pageCount > 1)
 
   return (
     <StyledDataGrid className={className}>
@@ -313,14 +316,16 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
           </StyledLoadingOverlay>
         )}
       </StyledTableContainer>
-      <Footer
-        dataLength={manualPagination ? undefined : data.length}
-        isPaginated={isPaginated}
-        onPaginationChange={handlePagination}
-        onRowsPerPageChange={handleRowsPerPageChange}
-        pageCount={pageCount!}
-        pagination={paginationState}
-      />
+      {hasFooter && (
+        <Footer
+          dataLength={manualPagination ? undefined : data.length}
+          isPaginated={isPaginated}
+          onPaginationChange={handlePagination}
+          onRowsPerPageChange={handleRowsPerPageChange}
+          pageCount={pageCount!}
+          pagination={paginationState}
+        />
+      )}
     </StyledDataGrid>
   )
 }
