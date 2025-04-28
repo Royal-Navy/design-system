@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.34.2](https://github.com/Royal-Navy/design-system/compare/4.34.1...4.34.2) (2025-04-28)
+
+### Bug Fixes
+
+- **Sidebar:** Prevent isActive prop leaking to DOM elements ([420feee](https://github.com/Royal-Navy/design-system/commit/420feee812940d50f0fe7f47582d6e43a3668b49))
+
 ## [4.34.1](https://github.com/Royal-Navy/design-system/compare/4.34.0...4.34.1) (2025-04-25)
 
 ### Bug Fixes
