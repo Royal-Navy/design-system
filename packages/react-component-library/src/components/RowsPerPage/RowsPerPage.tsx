@@ -1,14 +1,8 @@
-import { ComponentWithClass } from '../../common/ComponentWithClass'
+import React from 'react'
 
-import { SelectChildrenType } from './types'
+import { Select, SelectOption } from '../Select'
 
-export type OnChangeType = (value: string | null) => void
-
-export interface SelectBaseProps extends ComponentWithClass {
-  /**
-   * Collection of options to display within the Select.
-   */
-  children: SelectChildrenType
+interface RowsPerPageProps {
   /**
    * Optional HTML `id` attribute to apply to the component.
    */
@@ -30,19 +24,32 @@ export interface SelectBaseProps extends ComponentWithClass {
    */
   isInvalid?: boolean
   /**
-   * Whether to hide the clear button.
-   */
-  hideClearButton?: boolean
-  /**
-   * Text label to display within the component.
-   */
-  label: string
-  /**
    * Optional handler invoked when the selected value changes.
    */
-  onChange?: OnChangeType
+  onChange?: (value: string | null) => void
   /**
    * The selected value when the component is controlled.
    */
   value?: string | null
 }
+
+export const ROWS_PER_PAGE_OPTIONS = ['10', '25', '50', '100']
+
+export const DEFAULT_ROWS_PER_PAGE = Number(ROWS_PER_PAGE_OPTIONS[0])
+
+export const RowsPerPage = (props: RowsPerPageProps) => (
+  <Select
+    hideClearButton
+    initialValue={DEFAULT_ROWS_PER_PAGE.toString()}
+    label="Rows per page"
+    {...props}
+  >
+    {ROWS_PER_PAGE_OPTIONS.map((option) => (
+      <SelectOption key={option} value={option}>
+        {option}
+      </SelectOption>
+    ))}
+  </Select>
+)
+
+RowsPerPage.displayName = 'RowsPerPage'

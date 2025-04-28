@@ -12,6 +12,12 @@ import { useExternalId } from '../../hooks/useExternalId'
 
 const KEY_PREFIX = 'pagination-item'
 
+export type OnChangeType = (
+  event: OnChangeEventType,
+  currentPage: number,
+  totalPages: number
+) => void
+
 export type OnChangeEventType = React.KeyboardEvent | React.MouseEvent
 
 export interface PaginationProps {
@@ -26,11 +32,7 @@ export interface PaginationProps {
   /**
    * Optional handler called when the value of currently selected page changes.
    */
-  onChange?: (
-    event: OnChangeEventType,
-    currentPage: number,
-    totalPages: number
-  ) => void
+  onChange?: OnChangeType
   /**
    * Number of items within a paginated collection per page.
    */

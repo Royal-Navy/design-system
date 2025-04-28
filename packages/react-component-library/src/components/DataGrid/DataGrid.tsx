@@ -18,22 +18,22 @@ import {
   getPaginationRowModel,
 } from '@tanstack/react-table'
 
-import { type PaginationProps, type OnChangeEventType } from '../Pagination'
+import { type OnChangeEventType } from '../Pagination'
 import { type ComponentWithClass } from '../../common/ComponentWithClass'
 import { useDataGridState } from './useDataGridState'
 import { getColumns } from './getColumns'
 import { Table } from './Table'
-import { Pagination } from './Pagination'
+import { Footer } from './Footer'
 import { ProgressIndicator } from '../ProgressIndicator'
 import {
   StyledDataGrid,
   StyledLoadingOverlay,
   StyledTableContainer,
 } from './partials'
+import { DEFAULT_ROWS_PER_PAGE } from '../RowsPerPage/RowsPerPage'
 
 export interface DataGridBaseProps<T extends object>
-  extends Pick<Partial<PaginationProps>, 'pageSize'>,
-    Omit<
+  extends Omit<
       TableOptions<T>,
       | 'state'
       | 'data'
@@ -62,6 +62,10 @@ export interface DataGridBaseProps<T extends object>
   onExpandedChange?: (expanded: ExpandedState) => void
   onColumnFiltersChange?: (columnFilters: ColumnFiltersState) => void
   pageCount?: number
+  /**
+   * @deprecated There is a nested RowsPerPage component that controls the page size.
+   */
+  pageSize?: number
   manualSorting?: boolean
   sortingState?: SortingState
   /**
@@ -132,13 +136,14 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     manualPagination,
     onPaginationChange,
     pageCount,
-    pageSize,
     manualSorting,
     onSortingChange,
     sorting: externalSorting,
     pagination: externalPagination,
     ...rest
   } = props
+
+  const localPageSize = DEFAULT_ROWS_PER_PAGE
 
   const {
     sorting: internalSorting,
@@ -151,7 +156,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     setPagination,
     columnFilters,
     setColumnFilters,
-  } = useDataGridState(initialRowSelection, pageSize, data.length)
+  } = useDataGridState(initialRowSelection, localPageSize)
 
   const hasSubRows = useMemo(() => {
     // @ts-ignore
@@ -243,7 +248,26 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     ]
   )
 
-  const isPaginated = manualPagination || !!pageSize
+  const handleRowsPerPageChange = useCallback(
+    (value: string | null) => {
+      if (!manualPagination && value) {
+        setPagination({
+          pageIndex: 0,
+          pageSize: Number(value),
+        })
+      }
+
+      if (onPaginationChange) {
+        onPaginationChange({
+          pageIndex: 0,
+          pageSize: Number(value),
+        })
+      }
+    },
+    [setPagination, onPaginationChange, manualPagination]
+  )
+
+  const isPaginated = manualPagination || !!localPageSize
 
   const totalColumns = useMemo(() => {
     let baseColumnCount = columns.length
@@ -289,15 +313,14 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
           </StyledLoadingOverlay>
         )}
       </StyledTableContainer>
-      {isPaginated && (
-        <Pagination
-          pagination={paginationState}
-          pageSize={pageSize!}
-          dataLength={manualPagination ? undefined : data.length}
-          pageCount={pageCount!}
-          onChange={handlePagination}
-        />
-      )}
+      <Footer
+        dataLength={manualPagination ? undefined : data.length}
+        isPaginated={isPaginated}
+        onPaginationChange={handlePagination}
+        onRowsPerPageChange={handleRowsPerPageChange}
+        pageCount={pageCount!}
+        pagination={paginationState}
+      />
     </StyledDataGrid>
   )
 }
