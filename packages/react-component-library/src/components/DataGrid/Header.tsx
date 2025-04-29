@@ -10,12 +10,14 @@ import {
   type SortDirection,
 } from '@tanstack/react-table'
 
+import { TABLE_DEFAULT_LAYOUT, type TableLayout } from './constants'
 import { StyledHead, StyledRow, StyledCol, StyledColButton } from './partials'
 import { FilterPopover } from './FilterPopover'
 
 interface HeaderProps<T extends object> {
   table: TanstackTable<T>
   hasGroupedHeaders: boolean
+  layout?: TableLayout
 }
 
 type AriaSortType = 'ascending' | 'descending' | 'none'
@@ -65,9 +67,11 @@ export function getAriaSort(
 export const Header = <T extends object>({
   table,
   hasGroupedHeaders,
+  layout = TABLE_DEFAULT_LAYOUT,
 }: HeaderProps<T>) => {
+  const hasScrolling = layout === 'scroll'
   return (
-    <StyledHead>
+    <StyledHead $hasScrolling={hasScrolling} data-testid="styled-tablehead">
       {table.getHeaderGroups().map((headerGroup) => (
         <StyledRow key={headerGroup.id}>
           {headerGroup.headers.map((header) => {

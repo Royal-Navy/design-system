@@ -1592,4 +1592,42 @@ describe('DataGrid', () => {
       expect(screen.getByText('of 40')).toBeInTheDocument()
     })
   })
+
+  describe('Layout', () => {
+    it('should expand the container when layout is autoHeight', () => {
+      const { container } = render(
+        <DataGrid data={data} columns={columns} pageSize={0} isLoading />
+      )
+
+      expect(
+        within(container).getByTestId('styled-datagrid')
+      ).not.toHaveStyleRule('height', '100%')
+
+      expect(
+        within(container).getByTestId('styled-tablehead')
+      ).not.toHaveStyleRule('position', 'sticky')
+    })
+
+    it('should not expand when layout is normal', () => {
+      const { container } = render(
+        <DataGrid
+          data={data}
+          columns={columns}
+          pageSize={0}
+          isLoading
+          layout="scroll"
+        />
+      )
+
+      expect(within(container).getByTestId('styled-datagrid')).toHaveStyleRule(
+        'height',
+        '100%'
+      )
+
+      expect(within(container).getByTestId('styled-tablehead')).toHaveStyleRule(
+        'position',
+        'sticky'
+      )
+    })
+  })
 })

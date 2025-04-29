@@ -22,6 +22,7 @@ import { type OnChangeEventType } from '../Pagination'
 import { type ComponentWithClass } from '../../common/ComponentWithClass'
 import { useDataGridState } from './useDataGridState'
 import { getColumns } from './getColumns'
+import { TABLE_DEFAULT_LAYOUT, type TableLayout } from './constants'
 import { Table } from './Table'
 import { Footer } from './Footer'
 import { ProgressIndicator } from '../ProgressIndicator'
@@ -76,6 +77,12 @@ export interface DataGridBaseProps<T extends object>
     currentPage: number,
     totalPages: number
   ) => void
+  /**
+   * How the grid should lay out the rows.
+   * autoHeight (default) - The grid will resize to fit all visible rows.
+   * scroll - The grid will fit to the container height and scroll rows if needed.
+   */
+  layout?: TableLayout
 }
 
 export interface DataGridPropsWithExternalSorting<T extends object>
@@ -140,6 +147,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     onSortingChange,
     sorting: externalSorting,
     pagination: externalPagination,
+    layout = TABLE_DEFAULT_LAYOUT,
     ...rest
   } = props
 
@@ -294,9 +302,18 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
 
   const paginationState = externalPagination ?? internalPagination
 
+  const hasScrolling = layout === 'scroll'
+
   return (
-    <StyledDataGrid className={className}>
-      <StyledTableContainer>
+    <StyledDataGrid
+      className={className}
+      $hasScrolling={hasScrolling}
+      data-testid="styled-datagrid"
+    >
+      <StyledTableContainer
+        $hasScrolling={hasScrolling}
+        tabIndex={hasScrolling ? 0 : undefined}
+      >
         <Table
           table={table}
           caption={caption}
@@ -305,6 +322,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
           hasHover={!!hasHover}
           isFullWidth={!!isFullWidth}
           hasSubRows={hasSubRows}
+          layout={layout}
           totalColumns={totalColumns}
         />
         {isLoading && (
