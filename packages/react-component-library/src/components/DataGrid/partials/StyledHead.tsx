@@ -1,14 +1,14 @@
-import styled from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import styled, { css } from 'styled-components'
+import { color, zIndex } from '@royalnavy/design-tokens'
 
-export const StyledHead = styled.thead`
+import { StyledLayoutProps } from './types'
+
+export const StyledHead = styled.thead<StyledLayoutProps>`
   background: ${color('neutral', '000')};
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
 
-  tr,
-  th {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-  }
+  ${({$hasScrolling}) => $hasScrolling && css`
+    position: sticky;
+    top: 0;
+    z-index: ${zIndex('header', 1)};
+  `}
 `

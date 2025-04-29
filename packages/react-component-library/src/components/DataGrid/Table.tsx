@@ -4,6 +4,8 @@ import { type Table as TanstackTable } from '@tanstack/react-table'
 import { Header } from './Header'
 import { Body } from './Body'
 import { StyledTable, StyledCaption } from './partials'
+import { TABLE_DEFAULT_LAYOUT, type TableLayout } from './constants'
+
 
 interface TableProps<T extends object> {
   table: TanstackTable<T>
@@ -14,6 +16,7 @@ interface TableProps<T extends object> {
   isFullWidth: boolean
   hasSubRows: boolean
   totalColumns: number
+  layout?: TableLayout
 }
 
 export const Table = <T extends object>({
@@ -25,6 +28,7 @@ export const Table = <T extends object>({
   isFullWidth,
   hasSubRows,
   totalColumns,
+  layout = TABLE_DEFAULT_LAYOUT,
 }: TableProps<T>) => {
   const hasGroupedHeaders = useMemo(() => {
     return table.getHeaderGroups().reduce((acc, group) => {
@@ -40,7 +44,7 @@ export const Table = <T extends object>({
       role="grid"
     >
       {caption && <StyledCaption>{caption}</StyledCaption>}
-      <Header table={table} hasGroupedHeaders={hasGroupedHeaders} />
+      <Header table={table} hasGroupedHeaders={hasGroupedHeaders} layout={layout} />
       <Body
         table={table}
         enableRowSelection={enableRowSelection}

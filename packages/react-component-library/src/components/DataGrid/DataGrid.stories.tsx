@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { spacing } from '@royalnavy/design-tokens'
 import { fn } from '@storybook/test'
 import { Meta, StoryFn } from '@storybook/react'
@@ -250,8 +250,13 @@ const columns = [
   },
 ]
 
-const Wrapper = styled.div`
-  padding: ${spacing('4')};
+const Wrapper = styled.div<{ $hasScrolling?: boolean }>`
+  ${({ $hasScrolling }) =>
+    $hasScrolling &&
+    css`
+      height: 420px;
+    `};
+  padding: 0 ${spacing('4')} 2rem ${spacing('4')};
 `
 
 export default {
@@ -268,11 +273,21 @@ export default {
       },
     },
   },
+  argTypes: {
+    columns: {
+      control: false,
+    },
+    data: { control: false },
+    layout: {
+      control: 'select',
+      options: ['scroll', 'autoHeight'],
+    },
+  },
 } as Meta<typeof DataGrid>
 
 export const Default: StoryFn<typeof DataGrid> = (props) => {
   return (
-    <Wrapper>
+    <Wrapper $hasScrolling={props.layout === 'scroll'}>
       <DataGrid {...props} />
     </Wrapper>
   )
@@ -286,6 +301,16 @@ Default.args = {
   onExpandedChange: fn(),
   onColumnFiltersChange: fn(),
 }
+
+export const ScrollingContent: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper $hasScrolling>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
+}
+
+ScrollingContent.args = { ...Default.args, layout: 'scroll' }
 
 const columnsWithSorting = columns.map((item) => ({
   ...item,
