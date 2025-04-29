@@ -362,5 +362,31 @@ describe('TabSet', () => {
     it('displays a right scroll button', () => {
       expect(wrapper.getByTestId('scroll-right')).toBeInTheDocument()
     })
+
+    it('does not have overflow visible by default', () => {
+      expect(wrapper.getByTestId('tabset-styledbody')).not.toHaveStyleRule(
+        'overflow',
+        'visible'
+      )
+    })
+  })
+
+  describe('when the tab set hasOverflow', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <TabSet hasOverflow>
+          <TabSetItem title="Title 1">Content 1</TabSetItem>
+          <TabSetItem title="Title 2">Content 2</TabSetItem>
+          <TabSetItem title="Title 3">Content 3</TabSetItem>
+        </TabSet>
+      )
+    })
+
+    it('should have overflow visible', () => {
+      expect(wrapper.getByTestId('tabset-styledbody')).toHaveStyleRule(
+        'overflow',
+        'visible'
+      )
+    })
   })
 })
