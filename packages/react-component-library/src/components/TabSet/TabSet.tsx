@@ -36,6 +36,10 @@ export interface TabSetProps extends ComponentWithClass {
    * Toggles whether to render the scrollable variant of the component.
    */
   isScrollable?: never
+  /**
+   * Toggles whether content can overflow the component. Defaults to false.
+   */
+  hasOverflow?: boolean
 }
 
 export interface ScrollableTabSetProps extends ComponentWithClass {
@@ -55,6 +59,10 @@ export interface ScrollableTabSetProps extends ComponentWithClass {
    * Toggles whether to render the scrollable variant of the component.
    */
   isScrollable?: boolean
+  /**
+   * Toggles whether content can overflow the component. Defaults to false.
+   */
+  hasOverflow?: never
 }
 
 export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
@@ -63,6 +71,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
   onChange,
   isFullWidth,
   isScrollable,
+  hasOverflow = false,
   ...rest
 }) => {
   function getActiveIndex(tabs: React.ReactNode | React.ReactNode[]): number {
@@ -157,7 +166,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
           </StyledScrollRight>
         )}
       </StyledHeader>
-      <StyledBody $isScrollable={isScrollable}>
+      <StyledBody $isScrollable={isScrollable} $hasOverflow={hasOverflow} data-testid="tabset-styledbody">
         {Children.map(
           children,
           (child: React.ReactElement<TabSetItemProps>, index: number) => {

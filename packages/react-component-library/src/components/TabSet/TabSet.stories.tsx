@@ -1,7 +1,12 @@
 import React from 'react'
+import styled from 'styled-components'
+
 import { StoryFn as Story, Meta } from '@storybook/react'
 
 import { ScrollableTabSetProps, TabSetItem, TabSet, TabSetProps } from '.'
+import { Select, SelectOption } from '../Select'
+import { Stack } from '../Stack'
+import { Text } from '../Text'
 
 export default {
   component: TabSet,
@@ -175,3 +180,29 @@ export const Scrollable: Story<ScrollableTabSetProps> = (props) => (
 )
 
 Scrollable.storyName = 'Scrollable paged tabs'
+
+const StyledWrapper = styled.div`
+  height: 400px;
+  padding: 1rem;
+`
+
+export const HasOverflow: Story<TabSetProps> = (props) => (
+  <StyledWrapper>
+    <TabSet {...props}>
+      <TabSetItem title="Has Overflow">
+          <Stack gap="4">
+            <Text>Sometimes we need to allow the content to overflow:</Text>
+            <Select label="Select a colour">
+              <SelectOption value="r">Red</SelectOption>
+              <SelectOption value="g">Green</SelectOption>
+              <SelectOption value="b">Blue</SelectOption>
+            </Select>
+          </Stack>
+      </TabSetItem>
+    </TabSet>
+  </StyledWrapper>
+)
+
+HasOverflow.args = {
+  hasOverflow: true,
+}
