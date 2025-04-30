@@ -24,6 +24,7 @@ export const StyledContent = styled.div<StyledContentProps>`
   ${({ $isActive }) =>
     $isActive &&
     css`
-      display: block;
+      display: flex;
+      flex-direction: column;
     `}
 `

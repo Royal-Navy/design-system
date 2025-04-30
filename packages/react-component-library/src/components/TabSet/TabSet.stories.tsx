@@ -69,6 +69,21 @@ export const FullWidth: Story<TabSetProps> = (props) => (
 
 FullWidth.storyName = 'Full width'
 
+export const FullHeight: Story<TabSetProps> = (props) => (
+  <div css={{ height: '100vh', padding: '1rem' }}>
+    <TabSet {...props} isFullHeight>
+      <TabSetItem title="Example Tab 1">
+        <p>Example tab 1 content</p>
+      </TabSetItem>
+      <TabSetItem title="Example Tab 2">
+        <p>Example tab 2 content</p>
+      </TabSetItem>
+    </TabSet>
+  </div>
+)
+
+FullHeight.storyName = 'Full height'
+
 export const ScrollableBody: Story<TabSetProps> = (props) => (
   <div css={{ height: '200px' }}>
     <TabSet {...props}>
@@ -190,14 +205,14 @@ export const HasOverflow: Story<TabSetProps> = (props) => (
   <StyledWrapper>
     <TabSet {...props}>
       <TabSetItem title="Has Overflow">
-          <Stack gap="4">
-            <Text>Sometimes we need to allow the content to overflow:</Text>
-            <Select label="Select a colour">
-              <SelectOption value="r">Red</SelectOption>
-              <SelectOption value="g">Green</SelectOption>
-              <SelectOption value="b">Blue</SelectOption>
-            </Select>
-          </Stack>
+        <Stack gap="4">
+          <Text>Sometimes we need to allow the content to overflow:</Text>
+          <Select label="Select a colour">
+            <SelectOption value="r">Red</SelectOption>
+            <SelectOption value="g">Green</SelectOption>
+            <SelectOption value="b">Blue</SelectOption>
+          </Select>
+        </Stack>
       </TabSetItem>
     </TabSet>
   </StyledWrapper>

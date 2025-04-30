@@ -254,9 +254,10 @@ const Wrapper = styled.div<{ $hasScrolling?: boolean }>`
   ${({ $hasScrolling }) =>
     $hasScrolling &&
     css`
-      height: 420px;
+      height: 400px;
     `};
-  padding: 0 ${spacing('4')} 2rem ${spacing('4')};
+
+  padding: ${spacing('4')};
 `
 
 export default {
