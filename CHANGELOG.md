@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.36.0](https://github.com/Royal-Navy/design-system/compare/4.35.0...4.36.0) (2025-05-01)
+
+### Features
+
+- **TabSet:** Add an optional hasOverflow prop ([712715f](https://github.com/Royal-Navy/design-system/commit/712715f82b0604d52ac68ffa802d6fa352580a9c))
+
 # [4.35.0](https://github.com/Royal-Navy/design-system/compare/4.34.2...4.35.0) (2025-04-28)
 
 ### Bug Fixes
