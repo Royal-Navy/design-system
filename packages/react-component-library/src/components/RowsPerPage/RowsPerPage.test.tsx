@@ -9,8 +9,8 @@ describe('RowsPerPage', () => {
     render(<RowsPerPage />)
 
     expect(
-      screen.getByLabelText('Rows per page', { selector: 'input' })
-    ).toHaveValue(ROWS_PER_PAGE_OPTIONS[0])
+      screen.getByRole('combobox', { name: 'Rows per page' })
+    ).toHaveValue(ROWS_PER_PAGE_OPTIONS[0].toString())
     expect(screen.queryByLabelText('Clear value')).not.toBeInTheDocument()
   })
 
@@ -22,7 +22,7 @@ describe('RowsPerPage', () => {
     const options = screen.getAllByRole('option')
 
     options.forEach((option, index) => {
-      expect(option).toHaveTextContent(ROWS_PER_PAGE_OPTIONS[index])
+      expect(option).toHaveTextContent(ROWS_PER_PAGE_OPTIONS[index].toString())
     })
   })
 })

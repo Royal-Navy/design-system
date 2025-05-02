@@ -11,6 +11,12 @@ export default {
   },
 } as Meta<typeof RowsPerPage>
 
-export const Default: StoryFn<typeof RowsPerPage> = () => {
-  return <RowsPerPage />
+export const Default: StoryFn<typeof RowsPerPage> = (props) => {
+  return <RowsPerPage {...props} />
 }
+
+Default.args = {
+  value: 10,
+  isDisabled: false,
+}
+
