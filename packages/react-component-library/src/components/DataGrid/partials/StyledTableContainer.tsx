@@ -9,9 +9,5 @@ export const StyledTableContainer = styled.div<StyledLayoutProps>`
   overflow: ${({ $hasScrolling }) => ($hasScrolling ? 'auto' : 'hidden')};
   height: ${({ $hasScrolling }) => ($hasScrolling ? '100%' : 'inherit')};
 
-  border-bottom: 1px solid ${color('neutral', '200')};
-  border-left: 1px solid ${color('neutral', '200')};
-  border-right: 1px solid ${color('neutral', '200')};
-
   border-radius: 4px;
 `

@@ -14,8 +14,6 @@ export const StyledDataGrid = styled.div<StyledLayoutProps>`
       height: 100%;
     `}
 
-  border-top: 1px solid ${color('neutral', '200')};
-
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 `

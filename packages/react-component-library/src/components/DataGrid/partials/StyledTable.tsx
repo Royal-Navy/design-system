@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { spacing } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 
 interface StyledTableProps {
   $hasRowSelection?: boolean
@@ -11,6 +11,10 @@ export const StyledTable = styled.table<StyledTableProps>`
   table-layout: fixed;
   width: ${({ $isFullWidth }) => ($isFullWidth ? '100%' : 'auto')};
   border-spacing: 0;
+
+  border: 1px solid ${color('neutral', '200')};
+  border-radius: 4px;
+  padding: 1px;
 
   ${({ $hasRowSelection }) =>
     $hasRowSelection &&
