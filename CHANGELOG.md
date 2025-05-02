@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.37.0](https://github.com/Royal-Navy/design-system/compare/4.36.0...4.37.0) (2025-05-02)
+
+### Bug Fixes
+
+- **DataGrid:** Preserve existing column sizing behaviour ([a2f0eac](https://github.com/Royal-Navy/design-system/commit/a2f0eacd62bc21b6bdabcfe561f582c5dfdbbd68))
+
+### Features
+
+- **DataGrid:** Scroll contents within the grid by default ([97575e7](https://github.com/Royal-Navy/design-system/commit/97575e769433709bf6f3d38b14e7697b1fec62d3))
+- **TabSet:** Add isFullHeight support to component ([41d6284](https://github.com/Royal-Navy/design-system/commit/41d6284ed991abb88c7c9687aeffff9701fe859d))
+
 # [4.36.0](https://github.com/Royal-Navy/design-system/compare/4.35.0...4.36.0) (2025-05-01)
 
 ### Features
