@@ -311,7 +311,10 @@ export const ScrollingContent: StoryFn<typeof DataGrid> = (props) => {
   )
 }
 
-ScrollingContent.args = { ...Default.args, layout: 'scroll' }
+ScrollingContent.args = {
+  ...Default.args,
+  layout: 'scroll',
+}
 
 const columnsWithSorting = columns.map((item) => ({
   ...item,

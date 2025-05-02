@@ -22,7 +22,11 @@ import { type OnChangeEventType } from '../Pagination'
 import { type ComponentWithClass } from '../../common/ComponentWithClass'
 import { useDataGridState } from './useDataGridState'
 import { getColumns } from './getColumns'
-import { TABLE_DEFAULT_LAYOUT, type TableLayout } from './constants'
+import {
+  TABLE_DEFAULT_LAYOUT,
+  TABLE_LAYOUT,
+  type TableLayout,
+} from './constants'
 import { Table } from './Table'
 import { Footer } from './Footer'
 import { ProgressIndicator } from '../ProgressIndicator'
@@ -32,6 +36,7 @@ import {
   StyledTableContainer,
 } from './partials'
 import { DEFAULT_ROWS_PER_PAGE } from '../RowsPerPage/RowsPerPage'
+import logger from '../../utils/logger'
 
 export interface DataGridBaseProps<T extends object>
   extends Omit<
@@ -150,6 +155,18 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     layout = TABLE_DEFAULT_LAYOUT,
     ...rest
   } = props
+
+  const isFullWidthOverride = useMemo(() => {
+    if (layout === TABLE_LAYOUT.SCROLL && !isFullWidth) {
+      logger.warn(
+        'DataGrid: `TABLE_LAYOUT.SCROLL` only supported with `isFullWidth === true`'
+      )
+
+      return true
+    }
+
+    return !!isFullWidth
+  }, [layout, isFullWidth])
 
   const localPageSize = DEFAULT_ROWS_PER_PAGE
 
@@ -302,12 +319,13 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
 
   const paginationState = externalPagination ?? internalPagination
 
-  const hasScrolling = layout === 'scroll'
+  const hasScrolling = layout === TABLE_LAYOUT.SCROLL
 
   return (
     <StyledDataGrid
       className={className}
       $hasScrolling={hasScrolling}
+      $isFullWidth={isFullWidthOverride}
       data-testid="styled-datagrid"
     >
       <StyledTableContainer
@@ -320,7 +338,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
           enableRowSelection={!!enableRowSelection}
           hideCheckboxes={!!hideCheckboxes}
           hasHover={!!hasHover}
-          isFullWidth={!!isFullWidth}
+          isFullWidth={isFullWidthOverride}
           hasSubRows={hasSubRows}
           layout={layout}
           totalColumns={totalColumns}
@@ -338,6 +356,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
         onRowsPerPageChange={handleRowsPerPageChange}
         pageCount={pageCount!}
         pagination={paginationState}
+        isFullWidth={isFullWidthOverride}
       />
     </StyledDataGrid>
   )

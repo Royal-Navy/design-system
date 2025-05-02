@@ -16,6 +16,7 @@ interface FooterProps {
   onRowsPerPageChange: BaseSelectOnChangeType
   pagination: PaginationState
   pageCount: number
+  isFullWidth: boolean
 }
 
 export const Footer = ({
@@ -25,8 +26,9 @@ export const Footer = ({
   onRowsPerPageChange,
   pageCount,
   pagination,
+  isFullWidth,
 }: FooterProps) => (
-  <StyledFooter>
+  <StyledFooter $isFullWidth={isFullWidth}>
     {isPaginated && (
       <Pagination
         name="datagrid-pagination"

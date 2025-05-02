@@ -1,10 +1,15 @@
-const TABLE_COLUMN_ALIGNMENT = {
+import { ValueOf } from '../../helpers'
+
+export const TABLE_COLUMN_ALIGNMENT = {
   LEFT: 'left',
   CENTER: 'center',
   RIGHT: 'right',
 } as const
 
-export { TABLE_COLUMN_ALIGNMENT }
+export const TABLE_LAYOUT = {
+  SCROLL: 'scroll',
+  AUTO_HEIGHT: 'autoHeight',
+} as const
 
-export type TableLayout = 'scroll' | 'autoHeight'
-export const TABLE_DEFAULT_LAYOUT = 'autoHeight'
+export type TableLayout = ValueOf<typeof TABLE_LAYOUT>
+export const TABLE_DEFAULT_LAYOUT: TableLayout = TABLE_LAYOUT.AUTO_HEIGHT
