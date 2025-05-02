@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import {
   render,
   screen,
-  within,
   waitForElementToBeRemoved,
+  within,
 } from '@testing-library/react'
 import type {
   ColumnDef,
-  SortingState,
   PaginationState,
+  SortingState,
 } from '@tanstack/react-table'
-import { userEvent, PointerEventsCheckLevel } from '@testing-library/user-event'
+import { PointerEventsCheckLevel, userEvent } from '@testing-library/user-event'
 import { color } from '@royalnavy/design-tokens'
 
 import { DataGrid } from './DataGrid'
@@ -1515,11 +1515,9 @@ describe('DataGrid', () => {
         />
       )
 
-      await userEvent.click(screen.getByTestId('select-arrow-button'))
+      const select = screen.getByRole('combobox', { name: 'Rows per page' })
 
-      const options = screen.getAllByRole('option')
-
-      await userEvent.click(options[1])
+      await userEvent.selectOptions(select, '25');
 
       expect(onPaginationChangeSpy).toHaveBeenCalledWith({
         pageIndex: 0,
@@ -1577,11 +1575,8 @@ describe('DataGrid', () => {
     it('updates the page size when the rows per page component is changed', async () => {
       render(<DataGrid data={PAGINATED_DATA} columns={columns} />)
 
-      await userEvent.click(screen.getByTestId('select-arrow-button'))
-
-      const options = screen.getAllByRole('option')
-
-      await userEvent.click(options[1])
+      const select = screen.getByRole('combobox', { name: 'Rows per page' })
+      await userEvent.selectOptions(select, '25');
 
       expect(screen.getByLabelText('Enter page number')).toHaveValue('1')
       expect(screen.getByText('of 40')).toBeInTheDocument()
@@ -1594,11 +1589,8 @@ describe('DataGrid', () => {
 
       expect(screen.getByLabelText('Enter page number')).toHaveValue('2')
 
-      await userEvent.click(screen.getByTestId('select-arrow-button'))
-
-      const options = screen.getAllByRole('option')
-
-      await userEvent.click(options[1])
+      const select = screen.getByRole('combobox', { name: 'Rows per page' })
+      await userEvent.selectOptions(select, '25');
 
       expect(screen.getByLabelText('Enter page number')).toHaveValue('1')
       expect(screen.getByText('of 40')).toBeInTheDocument()
