@@ -31,7 +31,7 @@ const disableEmptyTableHeaderRule = {
   },
 }
 
-const generateRandomData = (length: number, seed? = 123): Order[] => {
+const generateRandomData = (length: number, seed = 123): Order[] => {
   faker.seed(seed)
   return Array.from({ length }, (_, i) => {
     return {
