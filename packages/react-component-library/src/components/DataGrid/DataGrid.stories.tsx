@@ -10,7 +10,7 @@ import type {
 } from '@tanstack/react-table'
 
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
-import { DataGrid, TABLE_COLUMN_ALIGNMENT } from '.'
+import { DataGrid, TABLE_COLUMN_ALIGNMENT, TABLE_LAYOUT } from '.'
 import { Badge } from '../Badge'
 import { Button } from '../Button'
 import { DEFAULT_ROWS_PER_PAGE } from '../RowsPerPage/RowsPerPage'
@@ -903,7 +903,7 @@ Loading.parameters = {
 
 export const RowsPerPage: StoryFn<typeof DataGrid> = (props) => {
   return (
-    <Wrapper>
+    <Wrapper $hasScrolling={props.layout === TABLE_LAYOUT.SCROLL}>
       <DataGrid {...props} />
     </Wrapper>
   )
@@ -920,11 +920,11 @@ RowsPerPage.args = {
     id: i + 1,
     productName: `Product ${i + 1}`,
   })),
-  hasRowsPerPage: true,
   isFullWidth: true,
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
   onColumnFiltersChange: fn(),
+  footerLeftSlotContent: <Button size="small">Download</Button>
 }
 
 export const WithFooterLeftSlot: StoryFn<typeof DataGrid> = (props) => {
