@@ -33,6 +33,10 @@ export interface TabSetProps extends ComponentWithClass {
    */
   isFullWidth?: boolean
   /**
+   * Toggles whether to display the tab set full height.
+   */
+  isFullHeight?: boolean
+  /**
    * Toggles whether to render the scrollable variant of the component.
    */
   isScrollable?: never
@@ -56,6 +60,10 @@ export interface ScrollableTabSetProps extends ComponentWithClass {
    */
   isFullWidth?: never
   /**
+   * Toggles whether to display the tab set full height.
+   */
+  isFullHeight?: boolean
+  /**
    * Toggles whether to render the scrollable variant of the component.
    */
   isScrollable?: boolean
@@ -70,6 +78,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
   children,
   onChange,
   isFullWidth,
+  isFullHeight,
   isScrollable,
   hasOverflow = false,
   ...rest
@@ -116,7 +125,12 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
   }
 
   return (
-    <StyledTabSet className={className} data-testid="tab-set" {...rest}>
+    <StyledTabSet
+      className={className}
+      data-testid="tab-set"
+      $isFullWidth={isFullWidth}
+      {...rest}
+    >
       <StyledHeader $isScrollable={isScrollable}>
         {isScrollable && (
           <StyledScrollLeft
@@ -166,7 +180,12 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
           </StyledScrollRight>
         )}
       </StyledHeader>
-      <StyledBody $isScrollable={isScrollable} $hasOverflow={hasOverflow} data-testid="tabset-styledbody">
+      <StyledBody
+        $isScrollable={isScrollable}
+        $hasOverflow={hasOverflow}
+        $isFullHeight={isFullHeight}
+        data-testid="tabset-styledbody"
+      >
         {Children.map(
           children,
           (child: React.ReactElement<TabSetItemProps>, index: number) => {
