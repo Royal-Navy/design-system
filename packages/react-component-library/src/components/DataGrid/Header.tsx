@@ -15,8 +15,19 @@ import { StyledHead, StyledRow, StyledCol, StyledColButton } from './partials'
 import { FilterPopover } from './FilterPopover'
 
 interface HeaderProps<T extends object> {
+  /**
+   * The tanstack/react-table instance.
+   */
   table: TanstackTable<T>
+  /**
+   * Whether the table has grouped headers (multi-level column headers).
+   */
   hasGroupedHeaders: boolean
+  /**
+   * How the table should lay out the rows.
+   * autoHeight (default) - The table will resize to fit all visible rows.
+   * scroll - The table will fit to the container height and scroll rows if needed.
+   */
   layout?: TableLayout
 }
 
