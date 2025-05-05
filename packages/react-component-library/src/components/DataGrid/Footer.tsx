@@ -17,6 +17,7 @@ interface FooterProps {
   pagination: PaginationState
   pageCount: number
   isFullWidth: boolean
+  footerLeftSlot?: React.ReactNode
 }
 
 export const Footer = ({
@@ -27,8 +28,10 @@ export const Footer = ({
   pageCount,
   pagination,
   isFullWidth,
+  footerLeftSlot,
 }: FooterProps) => (
   <StyledFooter $isFullWidth={isFullWidth}>
+    {footerLeftSlot || <div />}
     {isPaginated && (
       <Pagination
         name="datagrid-pagination"

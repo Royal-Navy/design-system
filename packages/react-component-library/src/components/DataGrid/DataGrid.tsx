@@ -64,6 +64,7 @@ export interface DataGridBaseProps<T extends object>
   hasHover?: boolean
   hideCheckboxes?: boolean
   isLoading?: boolean
+  footerLeftSlot?: React.ReactNode
   onSelectedRowsChange?: (rows: T[]) => void
   onExpandedChange?: (expanded: ExpandedState) => void
   onColumnFiltersChange?: (columnFilters: ColumnFiltersState) => void
@@ -153,6 +154,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     sorting: externalSorting,
     pagination: externalPagination,
     layout = TABLE_DEFAULT_LAYOUT,
+    footerLeftSlot,
     ...rest
   } = props
 
@@ -357,6 +359,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
         pageCount={pageCount!}
         pagination={paginationState}
         isFullWidth={isFullWidthOverride}
+        footerLeftSlot={footerLeftSlot}
       />
     </StyledDataGrid>
   )

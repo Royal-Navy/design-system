@@ -12,6 +12,7 @@ import type {
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DataGrid, TABLE_COLUMN_ALIGNMENT } from '.'
 import { Badge } from '../Badge'
+import { Button } from '../Button'
 import { DEFAULT_ROWS_PER_PAGE } from '../RowsPerPage/RowsPerPage'
 
 type Order = {
@@ -924,4 +925,34 @@ RowsPerPage.args = {
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
   onColumnFiltersChange: fn(),
+}
+
+export const WithFooterLeftSlot: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid
+        {...props}
+        footerLeftSlot={<Button variant="primary">Download</Button>}
+      />
+    </Wrapper>
+  )
+}
+
+WithFooterLeftSlot.storyName = 'With footer left slot'
+WithFooterLeftSlot.args = {
+  columns,
+  data,
+  isFullWidth: true,
+  onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
+}
+
+WithFooterLeftSlot.parameters = {
+  docs: {
+    description: {
+      story:
+        'The `footerLeftSlot` prop allows you to inject arbitrary content (like a button) into the left side of the DataGrid footer.',
+    },
+  },
 }
