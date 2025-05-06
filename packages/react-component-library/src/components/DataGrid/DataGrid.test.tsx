@@ -134,6 +134,18 @@ describe('DataGrid', () => {
     expect(screen.getByText('c6').tagName).toBe('DIV')
   })
 
+  it('renders footerLeftSlot content in the footer', () => {
+    render(
+      <DataGrid
+        data={data}
+        columns={columns}
+        footerLeftSlot={<Button>Download</Button>}
+      />
+    )
+
+    expect(screen.getByRole('button', { name: 'Download' })).toBeInTheDocument()
+  })
+
   it('renders table with row selection', async () => {
     render(<DataGrid data={data} columns={columns} enableRowSelection />)
 

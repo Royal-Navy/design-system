@@ -56,23 +56,74 @@ export interface DataGridBaseProps<T extends object>
       | 'onSortingChange'
     >,
     Omit<ComponentWithClass, 'children'> {
+  /**
+   * The data to display in the table.
+   */
   data: T[]
+  /**
+   * The columns configuration for the table.
+   */
   columns: ColumnDef<T>[]
+  /**
+   * Accessible caption for the table.
+   */
   caption?: string
+  /**
+   * Initial row selection state. Use this to pre-select rows when the table renders.
+   */
   initialRowSelection?: RowSelectionState
+  /**
+   * Whether the table should take up the full width of its container.
+   */
   isFullWidth?: boolean
+  /**
+   * Whether to apply hover styling to rows.
+   */
   hasHover?: boolean
+  /**
+   * Whether to hide the selection checkboxes when row selection is enabled.
+   */
   hideCheckboxes?: boolean
+  /**
+   * Whether to display a loading indicator over the table.
+   */
   isLoading?: boolean
+  /**
+   * Content to be displayed in the left side of the footer.
+   * Useful for adding action buttons or custom controls.
+   */
+  footerLeftSlot?: React.ReactNode
+  /**
+   * Callback function that is called when selected rows change.
+   * Receives the array of selected row objects.
+   */
   onSelectedRowsChange?: (rows: T[]) => void
+  /**
+   * Callback function that is called when expanded state changes.
+   * Useful for tracking which rows are expanded when using sub-rows.
+   */
   onExpandedChange?: (expanded: ExpandedState) => void
+  /**
+   * Callback function that is called when column filters change.
+   */
   onColumnFiltersChange?: (columnFilters: ColumnFiltersState) => void
+  /**
+   * Total number of pages when using manual pagination.
+   */
   pageCount?: number
   /**
    * @deprecated There is a nested RowsPerPage component that controls the page size.
    */
   pageSize?: number
+  /**
+   * Whether sorting is handled manually (externally).
+   * When true, the component will not sort data internally.
+   */
   manualSorting?: boolean
+  /**
+   * Initial sorting state. Defines which column(s) to sort by initially.
+   * @deprecated Use 'sorting' prop instead.
+   */
   sortingState?: SortingState
   /**
    * @deprecated Use onPaginationChange instead
@@ -93,31 +144,75 @@ export interface DataGridBaseProps<T extends object>
 export interface DataGridPropsWithExternalSorting<T extends object>
   extends DataGridBaseProps<T>,
     Pick<TableOptions<T>, 'onSortingChange'> {
+  /**
+   * Flag indicating sorting is handled manually.
+   * Must be set to true for external sorting to work.
+   */
   manualSorting: true
+  /**
+   * Current sorting state, required when using external sorting.
+   * Controls which column(s) are sorted and in which direction.
+   */
   sorting: SortingState
 }
 
 export interface DataGridPropsWithInternalSorting<T extends object>
   extends DataGridBaseProps<T> {
+  /**
+   * Not needed when using internal sorting.
+   */
   onSortingChange?: never
+  /**
+   * Must be omitted or set to false when using internal sorting.
+   */
   manualSorting?: false
+  /**
+   * Not needed when using internal sorting.
+   */
   sorting?: never
 }
 
 export interface DataGridPropsWithExternalPagination<T extends object>
   extends DataGridBaseProps<T>,
     Pick<TableOptions<T>, 'onPaginationChange'> {
+  /**
+   * Flag indicating pagination is handled manually.
+   * Must be set to true for external pagination to work.
+   */
   manualPagination: true
+  /**
+   * Current pagination state, required when using external pagination.
+   * Controls the current page index and page size.
+   */
   pagination: PaginationState
 }
 
 export interface DataGridPropsWithInternalPagination<T extends object>
   extends DataGridBaseProps<T> {
+  /**
+   * Not needed when using internal pagination.
+   */
   onPaginationChange?: never
+  /**
+   * Must be omitted or set to false when using internal pagination.
+   */
   manualPagination?: false
+  /**
+   * Not needed when using internal pagination.
+   */
   pagination?: never
 }
 
+/**
+ * DataGrid props type - a union of the four possible combinations:
+ * 1. External sorting + External pagination
+ * 2. External sorting + Internal pagination
+ * 3. Internal sorting + External pagination
+ * 4. Internal sorting + Internal pagination
+ *
+ * This allows TypeScript to enforce the correct props based on whether
+ * sorting and pagination are handled internally or externally.
+ */
 export type DataGridProps<T extends object> =
   | (DataGridPropsWithExternalSorting<T> &
       DataGridPropsWithExternalPagination<T>)
@@ -130,29 +225,30 @@ export type DataGridProps<T extends object> =
 
 export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
   const {
-    data,
-    columns,
     caption,
+    className,
+    columns,
+    data,
     debugTable,
     enableRowSelection,
+    footerLeftSlot,
     hasHover,
     hideCheckboxes,
     initialRowSelection,
     isFullWidth,
     isLoading,
-    className,
+    layout = TABLE_DEFAULT_LAYOUT,
+    manualPagination,
+    manualSorting,
     onColumnFiltersChange,
-    onSelectedRowsChange,
     onExpandedChange,
     onPageChange,
-    manualPagination,
     onPaginationChange,
-    pageCount,
-    manualSorting,
+    onSelectedRowsChange,
     onSortingChange,
-    sorting: externalSorting,
+    pageCount,
     pagination: externalPagination,
-    layout = TABLE_DEFAULT_LAYOUT,
+    sorting: externalSorting,
     ...rest
   } = props
 
@@ -357,6 +453,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
         pageCount={pageCount!}
         pagination={paginationState}
         isFullWidth={isFullWidthOverride}
+        footerLeftSlot={footerLeftSlot}
       />
     </StyledDataGrid>
   )

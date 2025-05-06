@@ -8,17 +8,44 @@ import {
 import { StyledBody, StyledRow, StyledCell } from './partials'
 
 interface RowProps<T extends object> {
+  /**
+   * The tanstack/react-table row instance.
+   */
   row: TanstackRow<T>
+  /**
+   * The tanstack/react-table instance.
+   */
   table: TanstackTable<T>
+  /**
+   * Whether row selection is enabled.
+   */
   enableRowSelection: boolean
+  /**
+   * Whether to apply hover styling to rows.
+   */
   hasHover: boolean
+  /**
+   * Total number of columns to display.
+   */
   totalColumns: number
 }
 
 interface BodyProps<T extends object> {
+  /**
+   * The tanstack/react-table instance.
+   */
   table: TanstackTable<T>
+  /**
+   * Whether row selection is enabled.
+   */
   enableRowSelection: boolean
+  /**
+   * Whether to apply hover styling to rows.
+   */
   hasHover: boolean
+  /**
+   * Total number of columns to display.
+   */
   totalColumns: number
 }
 

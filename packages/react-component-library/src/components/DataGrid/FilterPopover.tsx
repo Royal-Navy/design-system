@@ -9,7 +9,13 @@ import { Popover } from '../Popover'
 import { StyledFilterInput, StyledColButton } from './partials'
 
 interface FilterPopoverProps<T extends object> {
+  /**
+   * The tanstack/react-table header instance.
+   */
   header: TanstackHeader<T, unknown>
+  /**
+   * The tanstack/react-table instance.
+   */
   table: TanstackTable<T>
 }
 
