@@ -14,7 +14,6 @@ import { DataGrid, TABLE_COLUMN_ALIGNMENT, TABLE_LAYOUT } from '.'
 import { Badge } from '../Badge'
 import { Button } from '../Button'
 import { DEFAULT_ROWS_PER_PAGE } from '../RowsPerPage/RowsPerPage'
-import { Button } from '../Button'
 
 type Order = {
   id: number
