@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.38.0](https://github.com/Royal-Navy/design-system/compare/4.37.0...4.38.0) (2025-05-06)
+
+### Features
+
+- **DataGrid:** Add footerLeftSlot supporting arbitrary JSX ([ba7e3ac](https://github.com/Royal-Navy/design-system/commit/ba7e3ac53c5894ed73048baf35928c2119ea257d))
+
 # [4.37.0](https://github.com/Royal-Navy/design-system/compare/4.36.0...4.37.0) (2025-05-02)
 
 ### Bug Fixes
