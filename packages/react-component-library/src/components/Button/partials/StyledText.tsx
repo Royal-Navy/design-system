@@ -2,8 +2,10 @@ import styled from 'styled-components'
 
 interface StyledTextProps {
   $isLoading: boolean
+  $showLoadingText: boolean
 }
 
 export const StyledText = styled.span<StyledTextProps>`
-  visibility: ${({ $isLoading }) => ($isLoading ? 'hidden' : 'initial')};
+  visibility: ${({ $isLoading, $showLoadingText }) =>
+    $isLoading && !$showLoadingText ? 'hidden' : 'initial'};
 `

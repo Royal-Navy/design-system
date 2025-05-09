@@ -33,6 +33,10 @@ interface ButtonBaseProps extends Omit<ComponentWithClass, 'children'> {
    */
   isLoading?: boolean
   /**
+   * Whether to show the button text when in a loading state. Defaults to false.
+   */
+  showLoadingText?: boolean
+  /**
    * Optional handler called when the component is clicked.
    */
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>
@@ -86,6 +90,7 @@ export const Button = ({
   title,
   type = 'button',
   variant = BUTTON_VARIANT.PRIMARY,
+  showLoadingText = false,
   ...rest
 }: ButtonProps) => {
   return (
@@ -94,6 +99,7 @@ export const Button = ({
       $variant={variant}
       $size={size}
       $iconPosition={iconPosition}
+      $showLoadingText={showLoadingText}
       data-testid="button"
       disabled={isDisabled || isLoading}
       type={type}
@@ -103,11 +109,17 @@ export const Button = ({
       {...rest}
     >
       {isLoading && (
-        <StyledIconLoaderWrapper data-testid="loading-icon" aria-hidden>
+        <StyledIconLoaderWrapper
+          data-testid="loading-icon"
+          aria-hidden
+          $showLoadingText={showLoadingText}
+        >
           <IconLoader size={size === COMPONENT_SIZE.FORMS ? 26 : 21} />
         </StyledIconLoaderWrapper>
       )}
-      <StyledText $isLoading={isLoading}>{children}</StyledText>
+      <StyledText $isLoading={isLoading} $showLoadingText={showLoadingText}>
+        {children}
+      </StyledText>
       {icon && (
         <StyledIconWrapper
           $buttonHasText={Boolean(children)}
