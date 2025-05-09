@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.39.0](https://github.com/Royal-Navy/design-system/compare/4.38.0...4.39.0) (2025-05-09)
+
+### Features
+
+- **Button:** Add showLoadingText prop to display text in loading state ([035d245](https://github.com/Royal-Navy/design-system/commit/035d245d8d54297e0a0d61f03992290641f02761))
+
 # [4.38.0](https://github.com/Royal-Navy/design-system/compare/4.37.0...4.38.0) (2025-05-06)
 
 ### Features
