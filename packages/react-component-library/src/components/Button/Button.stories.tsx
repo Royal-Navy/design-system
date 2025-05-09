@@ -26,6 +26,9 @@ export default {
     isLoading: {
       control: 'boolean',
     },
+    showLoadingText: {
+      control: 'boolean',
+    },
     iconPosition: {
       control: 'select',
       options: Object.values(BUTTON_ICON_POSITION),
@@ -157,6 +160,12 @@ export const RegularButtons: StoryFn<typeof Button> = (args) => {
       <ButtonStrip {...iconRightArgs} title="With icons right" />
       <ButtonStrip {...iconOnlyArgs} title="Icon only" hideText />
       <ButtonStrip {...loadingArgs} title="Loading" hideNoContainer />
+      <ButtonStrip
+        {...loadingArgs}
+        title="Loading with text"
+        hideNoContainer
+        showLoadingText
+      />
     </>
   )
 }
@@ -164,6 +173,9 @@ export const RegularButtons: StoryFn<typeof Button> = (args) => {
 const paletteArgTypes = {
   isDisabled: { table: { disable: true } },
   isLoading: {
+    control: 'boolean',
+  },
+  showLoadingText: {
     control: 'boolean',
   },
   size: { table: { disable: true } },
