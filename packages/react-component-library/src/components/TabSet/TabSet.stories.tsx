@@ -73,10 +73,12 @@ export const FullHeight: Story<TabSetProps> = (props) => (
   <div css={{ height: '100vh', padding: '1rem' }}>
     <TabSet {...props} isFullHeight>
       <TabSetItem title="Example Tab 1">
-        <p>Example tab 1 content</p>
+        <Stack align="center" justify="center" css={{flex: 1}}>
+          <Text>Example tab 1 content</Text>
+        </Stack>
       </TabSetItem>
       <TabSetItem title="Example Tab 2">
-        <p>Example tab 2 content</p>
+        <Text>Example tab 2 content</Text>
       </TabSetItem>
     </TabSet>
   </div>

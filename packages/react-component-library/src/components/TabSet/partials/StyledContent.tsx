@@ -25,6 +25,7 @@ export const StyledContent = styled.div<StyledContentProps>`
     $isActive &&
     css`
       display: flex;
+      flex: 1;
       flex-direction: column;
     `}
 `
