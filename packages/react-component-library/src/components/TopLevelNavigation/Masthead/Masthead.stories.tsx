@@ -22,7 +22,7 @@ import { Notification, Notifications } from '../NotificationPanel'
 import { MASTHEAD_SUBCOMPONENT } from './constants'
 import { ClassificationBar } from '../../ClassificationBar'
 
-import { TextE } from '../../Text'
+import { Text } from '../../Text'
 
 const StyledContainer = styled.div`
   min-height: 10rem;
@@ -313,7 +313,7 @@ export const RightSlot: StoryFn<typeof Masthead> = (props) => (
     {...props}
     rightSlot={
       <StyledClientComponent>
-        <TextE>Arbitrary text</TextE>
+        <Text>Arbitrary text</Text>
       </StyledClientComponent>
     }
   />
