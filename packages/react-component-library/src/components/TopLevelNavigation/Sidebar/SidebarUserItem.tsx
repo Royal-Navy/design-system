@@ -5,6 +5,7 @@ import {
   StyledUserItemText,
 } from './partials'
 import { NavItem } from '../../../common/Nav'
+import { Group } from '../../Group'
 
 export interface SidebarUserItemProps extends NavItem {
   /**
@@ -21,12 +22,12 @@ export const SidebarUserItem = ({ icon, link }: SidebarUserItemProps) => {
       {React.cloneElement(linkElement, {
         ...link.props,
         children: (
-          <>
+          <Group gap="4">
             {icon && <StyledUserItemIcon>{icon}</StyledUserItemIcon>}
             <StyledUserItemText>
               {linkElement.props.children}
             </StyledUserItemText>
-          </>
+          </Group>
         ),
       })}
     </StyledUserItem>

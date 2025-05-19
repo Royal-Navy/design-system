@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
+import { spacing } from '@royalnavy/design-tokens'
 import { IconExitToApp, IconPerson } from '@royalnavy/icon-library'
+import styled from 'styled-components'
 import { Transition } from 'react-transition-group'
 
 import { SidebarContext } from './context'
@@ -43,13 +45,17 @@ export interface SidebarUserProps extends ComponentWithClass {
 
 type SidebarAvatarWithItemsProps = Omit<SidebarUserProps, 'link'>
 
+const StyledSheet = styled(Sheet)`
+  margin-left: ${spacing('4')};
+`
+
 const SidebarAvatarWithItems = ({
   initials,
   initialIsOpen,
   userLink,
   exitLink,
 }: SidebarAvatarWithItemsProps) => (
-  <Sheet
+  <StyledSheet
     aria-label="User options"
     button={
       <StyledUserSheetButton
@@ -69,7 +75,7 @@ const SidebarAvatarWithItems = ({
       {userLink && <SidebarUserItem icon={<IconPerson />} link={userLink} />}
       {exitLink && <SidebarUserItem icon={<IconExitToApp />} link={exitLink} />}
     </StyledSheetList>
-  </Sheet>
+  </StyledSheet>
 )
 
 export const SidebarUser = ({
