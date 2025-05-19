@@ -31,6 +31,7 @@ const StyledSelect = styled.select<{ $isDisabled: boolean }>`
   padding: 0 0.5rem;
   border-radius: 12px;
 
+  // @ts-ignore - Will only apply styles when supported by the browser
   @supports (appearance: base-select) {
     &, &::picker(select) {
       appearance: base-select;
@@ -38,8 +39,6 @@ const StyledSelect = styled.select<{ $isDisabled: boolean }>`
 
     &::picker(select) {
       border: 0;
-      top: calc(anchor(bottom) + 5px);
-      left: anchor(10%);
       border-radius: 12px;
       box-shadow: 0 0 0 1px ${color('neutral', '200')};
     }
