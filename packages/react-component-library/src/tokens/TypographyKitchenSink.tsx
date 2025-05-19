@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { color } from '@royalnavy/design-tokens'
-import { TextE } from '../components/Text'
+import { Text } from '../components/Text'
 import { Group } from '../components/Group'
 import { Logo } from '../components/TopLevelNavigation/Masthead/Logo'
 
@@ -16,39 +16,39 @@ const StyledTextContainer = styled.div`
 export const KitchenSink = () => {
   return (
     <>
-      <TextE el="h1">
+      <Text el="h1">
         <Logo /> Typography
-      </TextE>
+      </Text>
       <StyledContainer>
-        <TextE>
+        <Text>
           This document demonstrates how to use the{' '}
-          <TextE el="code">&lt;Text&gt;</TextE> component to create consistent
+          <Text el="code">&lt;Text&gt;</Text> component to create consistent
           blocks of content within your{' '}
-          <TextE color={color('action', '700')} el="span">
+          <Text color={color('action', '700')} el="span">
             Royal Navy Design System
-          </TextE>
+          </Text>
           &nbsp; application. Notice how the different font sizes align to the
           vertical baseline
-        </TextE>
+        </Text>
 
-        <TextE el="h2" color={color('neutral', '700')}>
+        <Text el="h2" color={color('neutral', '700')}>
           Multi columnar text panels using a &lt;Group&gt; component
-        </TextE>
-        <Group grow gap="4">
+        </Text>
+        <Group gap="8" grow align="start">
           <StyledTextContainer>
-            <TextE wordWrap={false} el="h2">
+            <Text wordWrap={false} el="h2">
               Paragraph text (default settings)
-            </TextE>
-            <TextE>
+            </Text>
+            <Text>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Pellentesque facilisis, magna eget tempus ultrices, nulla enim
               posuere augue, quis vehicula magna sapien vel diam. Phasellus orci
               lectus, ultricies vitae fringilla ut, dapibus eget ipsum. Cras
               viverra hendrerit ex, id sollicitudin nibh pulvinar at. Vestibulum
               facilisis sem in bibendum ultricies.{' '}
-              <TextE backgroundColor={color('warning', '200')} el="span">
+              <Text backgroundColor={color('warning', '200')} el="span">
                 It is possible to nest and individually style the components
-              </TextE>{' '}
+              </Text>{' '}
               Aenean eu lacus ultricies, auctor lacus in, blandit eros. Nunc
               maximus sodales est, ut convallis ipsum facilisis nec. Cras eu
               accumsan massa. Sed tempus nunc vitae vulputate imperdiet. Sed
@@ -56,26 +56,26 @@ export const KitchenSink = () => {
               dolor ut enim posuere suscipit. Integer lacus metus, pulvinar at
               mi varius, scelerisque porttitor enim. Quisque luctus scelerisque
               elit, ut accumsan felis hendrerit id.
-            </TextE>
+            </Text>
           </StyledTextContainer>
           <StyledTextContainer>
-            <TextE wordWrap={false} el="h2">
+            <Text wordWrap={false} el="h2">
               Small text variant
-            </TextE>
-            <TextE variant="small">
+            </Text>
+            <Text variant="small">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Pellentesque facilisis, magna eget tempus ultrices, nulla enim
               posuere augue, quis vehicula magna sapien vel diam. Phasellus orci
               lectus, ultricies vitae fringilla ut, dapibus eget ipsum. Cras
               viverra hendrerit ex, id sollicitudin nibh pulvinar at. Vestibulum
               facilisis sem in bibendum ultricies.{' '}
-              <TextE
+              <Text
                 el="span"
                 variant="small"
                 backgroundColor={color('supb', '100')}
               >
                 Which allows us to mix styles (if we really must)
-              </TextE>{' '}
+              </Text>{' '}
               Aenean eu lacus ultricies, auctor lacus in, blandit eros. Nunc
               maximus sodales est, ut convallis ipsum facilisis nec. Cras eu
               accumsan massa. Sed tempus nunc vitae vulputate imperdiet. Sed
@@ -83,17 +83,17 @@ export const KitchenSink = () => {
               dolor ut enim posuere suscipit. Integer lacus metus, pulvinar at
               mi varius, scelerisque porttitor enim. Quisque luctus scelerisque
               elit, ut accumsan felis hendrerit id.
-            </TextE>
+            </Text>
           </StyledTextContainer>
         </Group>
 
-        <TextE el="h2">Justified text</TextE>
-        <Group grow gap="4">
+        <Text el="h2">Justified text</Text>
+        <Group grow gap="8" align="start">
           <StyledTextContainer>
-            <TextE wordWrap={false} el="h2">
+            <Text wordWrap={false} el="h2">
               Paragraph text (default settings)
-            </TextE>
-            <TextE align="justify">
+            </Text>
+            <Text align="justify">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Pellentesque facilisis, magna eget tempus ultrices, nulla enim
               posuere augue, quis vehicula magna sapien vel diam. Phasellus orci
@@ -107,13 +107,13 @@ export const KitchenSink = () => {
               suscipit. Integer lacus metus, pulvinar at mi varius, scelerisque
               porttitor enim. Quisque luctus scelerisque elit, ut accumsan felis
               hendrerit id.
-            </TextE>
+            </Text>
           </StyledTextContainer>
           <StyledTextContainer>
-            <TextE wordWrap={false} el="h2">
+            <Text wordWrap={false} el="h2">
               Small text variant
-            </TextE>
-            <TextE align="justify" variant="small">
+            </Text>
+            <Text align="justify" variant="small">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Pellentesque facilisis, magna eget tempus ultrices, nulla enim
               posuere augue, quis vehicula magna sapien vel diam. Phasellus orci
@@ -127,15 +127,15 @@ export const KitchenSink = () => {
               suscipit. Integer lacus metus, pulvinar at mi varius, scelerisque
               porttitor enim. Quisque luctus scelerisque elit, ut accumsan felis
               hendrerit id.
-            </TextE>
+            </Text>
           </StyledTextContainer>
         </Group>
-        <TextE variant="display" el="h1">
+        <Text variant="display" el="h1">
           Display text
-        </TextE>
-        <TextE variant="display">
+        </Text>
+        <Text variant="display">
           For use on display screens or signage. Not all elements are available
-        </TextE>
+        </Text>
       </StyledContainer>
     </>
   )
