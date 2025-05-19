@@ -16,7 +16,6 @@ export const Default: StoryFn<typeof RowsPerPage> = (props) => {
 }
 
 Default.args = {
-  value: 10,
   isDisabled: false,
 }
 
