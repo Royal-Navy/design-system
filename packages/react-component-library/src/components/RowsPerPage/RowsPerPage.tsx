@@ -17,8 +17,7 @@ const StyledLabel = styled.label<{ $isDisabled: boolean }>`
     `}
 `
 const StyledSelect = styled.select<{ $isDisabled: boolean }>`
-  margin-left: ${spacing('4')};
-  color: ${color('neutral', '600')};
+  color: ${color('neutral', '400')};
   ${({ $isDisabled }) =>
     $isDisabled &&
     css`
@@ -28,7 +27,39 @@ const StyledSelect = styled.select<{ $isDisabled: boolean }>`
   outline: 0;
   border: 0;
   height: 31px;
+  line-height: 31px;
+  padding: 0 0.5rem;
   border-radius: 12px;
+
+  @supports (appearance: base-select) {
+    &, &::picker(select) {
+      appearance: base-select;
+    }
+
+    &::picker(select) {
+      border: 0;
+      top: calc(anchor(bottom) + 5px);
+      left: anchor(10%);
+      border-radius: 12px;
+      box-shadow: 0 0 0 1px ${color('neutral', '200')};
+    }
+
+    &::picker-icon {
+      color: ${color('neutral', '200')};
+      transition: 0.1s rotate;
+    }
+
+    &:open::picker-icon {
+      rotate: 180deg;
+    }
+
+    option {
+      padding: 0 ${spacing('4')};
+    }
+
+  }
+
+
 `
 
 interface RowsPerPageProps {
