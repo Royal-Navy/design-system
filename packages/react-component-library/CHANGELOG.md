@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.39.2](https://github.com/Royal-Navy/design-system/compare/4.39.1...4.39.2) (2025-05-20)
+
+### Bug Fixes
+
+- **Sidebar:** Adjust user menu popover position and layout ([e11153b](https://github.com/Royal-Navy/design-system/commit/e11153bc2e877a75ca25e8ef92c64e25befaf6d1))
+
 ## [4.39.1](https://github.com/Royal-Navy/design-system/compare/4.39.0...4.39.1) (2025-05-19)
 
 **Note:** Version bump only for package @royalnavy/react-component-library
