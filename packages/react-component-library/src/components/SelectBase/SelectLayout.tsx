@@ -19,9 +19,12 @@ import { StyledTooltip } from './partials/StyledTooltip'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
 import { StyledFloatingBox } from './partials/StyledFloatingBox'
+import { PopupPosition } from './SelectBaseProps'
 
 type ComboboxReturnValueType = UseComboboxReturnValue<SelectChildWithStringType>
 type SelectReturnValueType = UseSelectReturnValue<SelectChildWithStringType>
+
+
 
 export interface SelectLayoutProps extends ComponentWithClass {
   hasLabelFocus?: boolean
@@ -44,6 +47,7 @@ export interface SelectLayoutProps extends ComponentWithClass {
     | ReturnType<SelectReturnValueType['getToggleButtonProps']>
   tooltipText: string
   value?: string
+  popupPosition?: PopupPosition
 }
 
 const isEllipsisActive = (el: HTMLInputElement | null): boolean => {
@@ -68,6 +72,7 @@ export const SelectLayout = ({
   toggleButtonProps,
   tooltipText,
   value,
+  popupPosition = 'below',
   ...rest
 }: SelectLayoutProps) => {
   const [hasHover, setHasHover] = useState<boolean>(false)
@@ -138,15 +143,15 @@ export const SelectLayout = ({
             </StyledInlineButtons>
           </StyledOuterWrapper>
         </StyledTextInput>
-        <StyledOptionsWrapper $isVisible={isOpen}>
-          <StyledOptions
-            {...menuProps}
-            aria-labelledby={labelId}
-            data-testid="select-options"
-          >
-            {children}
-          </StyledOptions>
-        </StyledOptionsWrapper>
+          <StyledOptionsWrapper $isVisible={isOpen} $position={popupPosition}>
+            <StyledOptions
+              {...menuProps}
+              aria-labelledby={labelId}
+              data-testid="select-options"
+            >
+              {children}
+            </StyledOptions>
+          </StyledOptionsWrapper>
       </StyledSelect>
       <StyledFloatingBox
         placement="bottom"

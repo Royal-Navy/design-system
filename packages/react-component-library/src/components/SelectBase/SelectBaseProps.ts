@@ -3,6 +3,7 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { SelectChildrenType } from './types'
 
 export type OnChangeType = (value: string | null) => void
+export type PopupPosition = 'above' | 'below' // | 'auto'
 
 export interface SelectBaseProps extends ComponentWithClass {
   /**
@@ -45,4 +46,8 @@ export interface SelectBaseProps extends ComponentWithClass {
    * The selected value when the component is controlled.
    */
   value?: string | null
+  /**
+   * Whether the dropdown should appear above or below the text
+   */
+  popupPosition?: PopupPosition
 }

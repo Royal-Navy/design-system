@@ -37,7 +37,7 @@ export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
       border: none;
       border-radius: ${BORDER_RADIUS[$size]};
       box-shadow: 0 0 0 1px ${color('neutral', '200')};
-      transition: border-color 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      transition: border-color 50ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
         box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     `
 
