@@ -24,8 +24,6 @@ import { PopupPosition } from './SelectBaseProps'
 type ComboboxReturnValueType = UseComboboxReturnValue<SelectChildWithStringType>
 type SelectReturnValueType = UseSelectReturnValue<SelectChildWithStringType>
 
-
-
 export interface SelectLayoutProps extends ComponentWithClass {
   hasLabelFocus?: boolean
   hasSelectedItem: boolean
@@ -143,15 +141,15 @@ export const SelectLayout = ({
             </StyledInlineButtons>
           </StyledOuterWrapper>
         </StyledTextInput>
-          <StyledOptionsWrapper $isVisible={isOpen} $position={popupPosition}>
-            <StyledOptions
-              {...menuProps}
-              aria-labelledby={labelId}
-              data-testid="select-options"
-            >
-              {children}
-            </StyledOptions>
-          </StyledOptionsWrapper>
+        <StyledOptionsWrapper $isVisible={isOpen} $position={popupPosition}>
+          <StyledOptions
+            {...menuProps}
+            aria-labelledby={labelId}
+            data-testid="select-options"
+          >
+            {children}
+          </StyledOptions>
+        </StyledOptionsWrapper>
       </StyledSelect>
       <StyledFloatingBox
         placement="bottom"
