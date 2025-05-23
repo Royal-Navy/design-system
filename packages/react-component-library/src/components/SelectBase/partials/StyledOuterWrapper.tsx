@@ -13,6 +13,10 @@ export const StyledOuterWrapper = styled(
   display: inline-flex;
   flex-direction: row;
 
+  // Override default styles to fix the slow border fade
+  // when the dropdown is visible
+  transition: border-color 10ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 10ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
   ${({ $hasFocus, $size = COMPONENT_SIZE.FORMS }) => {
     if ($hasFocus) {
       return css`

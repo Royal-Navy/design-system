@@ -9,8 +9,9 @@ export const StyledOptions = styled.ul`
   list-style-type: none;
   padding-left: 0;
   margin-left: 0;
-  border-radius: 0 0 ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]}
-    ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]};
+
+  // TODO - Check whether this was ever needed!
+  // border-radius: 0 0 ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]} ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]};
 
   &:focus {
     outline: none;

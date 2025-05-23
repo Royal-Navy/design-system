@@ -20,6 +20,7 @@ export const Select = ({
   initialValue,
   onChange,
   value,
+  popupPosition = 'below',
   ...rest
 }: SelectBaseProps) => {
   const id = useExternalId('select', externalId)
@@ -93,6 +94,7 @@ export const Select = ({
       toggleButtonProps={getToggleButtonProps()}
       tooltipText={selectedItemText}
       value={selectedItemText}
+      popupPosition={popupPosition}
       {...{
         readOnly: true,
         ...rest,

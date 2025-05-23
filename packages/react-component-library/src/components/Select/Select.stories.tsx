@@ -41,12 +41,12 @@ const Template: StoryFn<typeof Select> = (args) => (
     <Select {...args}>
       <SelectOption value="one">A</SelectOption>
       <SelectOption value="two">B</SelectOption>
+      <SelectOption value="three" isDisabled>
+        Three (disabled)
+      </SelectOption>
       <SelectOption value="long">
         This is a really, really long select option label that overflows the
         container when selected
-      </SelectOption>
-      <SelectOption value="three" isDisabled>
-        Three (disabled)
       </SelectOption>
     </Select>
   </StyledWrapper>
@@ -100,3 +100,32 @@ Value.args = {
 }
 
 export const IconsAndBadges = TemplateWithIconsAndBadges.bind({})
+
+const StyledAlignEndWrapper = styled.div`
+  height: 18rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 20rem;
+`
+
+export const PopupAbove: StoryFn<typeof Select> = (args) => (
+  <StyledAlignEndWrapper>
+    <Select {...args}>
+      <SelectOption value="one">A</SelectOption>
+      <SelectOption value="two">B</SelectOption>
+      <SelectOption value="three" isDisabled>
+        Three (disabled)
+      </SelectOption>
+      <SelectOption value="long">
+        This is a really, really long select option label that overflows the
+        container when selected
+      </SelectOption>
+    </Select>
+  </StyledAlignEndWrapper>
+)
+PopupAbove.args = {
+  label: 'Popup above',
+  initialIsOpen: true,
+  popupPosition: 'above',
+}

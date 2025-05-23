@@ -42,6 +42,7 @@ export const RowsPerPage = (props: RowsPerPageProps) => (
     hideClearButton
     initialValue={DEFAULT_ROWS_PER_PAGE.toString()}
     label="Rows per page"
+    popupPosition='above'
     {...props}
   >
     {ROWS_PER_PAGE_OPTIONS.map((option) => (
