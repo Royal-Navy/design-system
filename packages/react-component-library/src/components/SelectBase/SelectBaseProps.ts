@@ -3,6 +3,7 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { SelectChildrenType } from './types'
 
 export type OnChangeType = (value: string | null) => void
+export type PopupPosition = 'above' | 'below' // | 'auto'
 
 export interface SelectBaseProps extends ComponentWithClass {
   /**

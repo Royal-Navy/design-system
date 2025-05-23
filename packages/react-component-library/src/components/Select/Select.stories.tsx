@@ -100,3 +100,39 @@ Value.args = {
 }
 
 export const IconsAndBadges = TemplateWithIconsAndBadges.bind({})
+
+const StyledBottomRightWrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 2rem;
+`
+
+export const AutoPositioning: StoryFn<typeof Select> = (args) => (
+  <StyledBottomRightWrapper>
+    <Select {...args}>
+      <SelectOption value="one">Option One</SelectOption>
+      <SelectOption value="two">Option Two</SelectOption>
+      <SelectOption value="three">Option Three</SelectOption>
+      <SelectOption value="four">Option Four</SelectOption>
+      <SelectOption value="five">Option Five</SelectOption>
+      <SelectOption value="six">Option Six</SelectOption>
+      <SelectOption value="seven">Option Seven</SelectOption>
+      <SelectOption value="eight">Option Eight</SelectOption>
+    </Select>
+  </StyledBottomRightWrapper>
+)
+AutoPositioning.args = {
+  label: 'Auto-positioning Select',
+  initialIsOpen: true,
+}
+AutoPositioning.parameters = {
+  docs: {
+    description: {
+      story:
+        'This story demonstrates the automatic positioning of the dropdown based on available space. The Select is positioned in the bottom right corner, so the dropdown should open upwards.',
+    },
+  },
+}
