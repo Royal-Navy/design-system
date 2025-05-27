@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { useSelect } from 'downshift'
 import { isNil } from 'lodash'
+import mergeRefs from 'react-merge-refs'
 
 import {
   getSelectedItem,
@@ -12,6 +13,7 @@ import { useExternalId } from '../../hooks/useExternalId'
 import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useSelectMenu } from './hooks/useSelectMenu'
 import { SelectOptionProps } from './SelectOption'
+import { useDropdownDirection } from './hooks/useDropdownDirection'
 
 export const Select = ({
   children,
@@ -20,11 +22,11 @@ export const Select = ({
   initialValue,
   onChange,
   value,
-  popupPosition = 'below',
   ...rest
 }: SelectBaseProps) => {
   const id = useExternalId('select', externalId)
   const inputRef = useRef<HTMLInputElement>(null)
+  const { triggerRef, popupPosition } = useDropdownDirection()
 
   const filteredItems = React.Children.toArray(children).filter(
     React.isValidElement<SelectOptionProps>
@@ -81,7 +83,7 @@ export const Select = ({
             event.preventDefault()
           },
         }),
-        ref: inputRef,
+        ref: mergeRefs([inputRef, triggerRef]),
         'aria-expanded': undefined,
       }}
       isOpen={isOpen}
