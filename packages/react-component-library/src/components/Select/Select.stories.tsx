@@ -41,12 +41,12 @@ const Template: StoryFn<typeof Select> = (args) => (
     <Select {...args}>
       <SelectOption value="one">A</SelectOption>
       <SelectOption value="two">B</SelectOption>
-      <SelectOption value="three" isDisabled>
-        Three (disabled)
-      </SelectOption>
       <SelectOption value="long">
         This is a really, really long select option label that overflows the
         container when selected
+      </SelectOption>
+      <SelectOption value="three" isDisabled>
+        Three (disabled)
       </SelectOption>
     </Select>
   </StyledWrapper>
