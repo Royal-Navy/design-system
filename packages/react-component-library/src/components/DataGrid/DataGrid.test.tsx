@@ -1117,10 +1117,10 @@ describe('DataGrid', () => {
       await hackyWaitFor()
 
       const rows = screen.getAllByRole('row')
-      expect(rows).toHaveLength(4) // Header row + 3 data rows
       expect(screen.getByText('alpha')).toBeInTheDocument()
       expect(screen.getByText('delta')).toBeInTheDocument()
       expect(screen.getByText('golf')).toBeInTheDocument()
+      expect(rows).toHaveLength(4) // Header row + 3 data rows
     })
 
     it('does not render filter button for columns with enableColumnFilter set to false', () => {
@@ -1627,6 +1627,7 @@ describe('DataGrid', () => {
           columns={columns}
           pageSize={0}
           isLoading
+          isFullWidth
           layout="scroll"
         />
       )

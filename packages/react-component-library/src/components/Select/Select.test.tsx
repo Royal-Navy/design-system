@@ -13,6 +13,7 @@ import { BORDER_WIDTH } from '../../styled-components'
 import { COMPONENT_SIZE } from '../Forms'
 import { Select } from '.'
 import { SelectOption } from './SelectOption'
+import { TEXT_INPUT_INPUT_HEIGHT } from '../TextInput/partials/StyledInput'
 
 describe('Select', () => {
   let onChangeSpy: (value: string | null) => void
@@ -105,6 +106,18 @@ describe('Select', () => {
         expect(options[1]).toHaveTextContent('Two')
         expect(options[2]).toHaveTextContent('Three')
         expect(options).toHaveLength(3)
+      })
+
+      it('displays the dropdown below the textbox', () => {
+        expect(wrapper.getByTestId('select-options-wrapper')).toHaveStyle({
+          position: 'absolute',
+          marginBottom: '999',
+        })
+
+        expect(wrapper.getByTestId('select-options-wrapper')).toHaveStyleRule(
+          'margin-bottom',
+          '5px'
+        )
       })
 
       describe('and the second item is clicked', () => {
@@ -312,6 +325,81 @@ describe('Select', () => {
         'id',
         initialId
       )
+    })
+  })
+
+  describe('popupLocation', () => {
+    describe('when unset', () => {
+      beforeEach(() => {
+        wrapper = render(
+          <Select label="default props">
+            <SelectOption value="one">One</SelectOption>
+            <SelectOption value="two">Two</SelectOption>
+            <SelectOption value="three">Three</SelectOption>
+          </Select>
+        )
+      })
+      it('should render the dropdown below the textbox', () => {
+        const optionsWrapper = wrapper.getByTestId('select-options-wrapper')
+        expect(optionsWrapper).toHaveStyleRule('margin-bottom', '5px')
+        expect(optionsWrapper).toHaveStyleRule('top', undefined)
+        expect(optionsWrapper).toHaveStyleRule('bottom', undefined)
+
+        const expectedTopPosition = `-${
+          TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.FORMS]
+        }`
+        expect(optionsWrapper).toHaveStyleRule('top', expectedTopPosition, {
+          modifier: '::after',
+        })
+        expect(optionsWrapper).toHaveStyleRule('bottom', '0', {
+          modifier: '::after',
+        })
+      })
+    })
+
+    describe('when set to above', () => {
+      beforeEach(() => {
+        Element.prototype.getBoundingClientRect = jest.fn(() => ({
+          top: 900,
+          bottom: 950,
+          left: 0,
+          right: 100,
+          width: 100,
+          height: 50,
+          x: 0,
+          y: 900,
+          toJSON: () => {},
+        }))
+
+        wrapper = render(
+          <Select label="default props">
+            <SelectOption value="one">One</SelectOption>
+            <SelectOption value="two">Two</SelectOption>
+            <SelectOption value="three">Three</SelectOption>
+          </Select>
+        )
+      })
+
+      it('should render the dropdown above the textbox', () => {
+        const optionsWrapper = wrapper.getByTestId('select-options-wrapper')
+        expect(optionsWrapper).toHaveStyleRule('margin-bottom', '0')
+        expect(optionsWrapper).toHaveStyleRule('top', 'auto')
+        expect(optionsWrapper).toHaveStyleRule('bottom', '100%')
+
+        const expectedBottomPosition = `-${
+          TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.FORMS]
+        }`
+        expect(optionsWrapper).toHaveStyleRule(
+          'bottom',
+          expectedBottomPosition,
+          {
+            modifier: '::before',
+          }
+        )
+        expect(optionsWrapper).toHaveStyleRule('top', '0', {
+          modifier: '::before',
+        })
+      })
     })
   })
 
