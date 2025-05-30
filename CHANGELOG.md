@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.40.0](https://github.com/Royal-Navy/design-system/compare/4.39.2...4.40.0) (2025-05-30)
+
+### Features
+
+- **Select:** Enable vertical positioning for Select ([89eac17](https://github.com/Royal-Navy/design-system/commit/89eac17f6ca6e48dec4f1c90ebb90845c0ab9d54))
+
 ## [4.39.2](https://github.com/Royal-Navy/design-system/compare/4.39.1...4.39.2) (2025-05-20)
 
 ### Bug Fixes
