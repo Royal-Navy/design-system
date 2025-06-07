@@ -1,8 +1,10 @@
 import React from 'react'
 
 import { Select, SelectOption } from '../Select'
+import { StyledShowingText } from './partials/StyledShowingSelect'
+import { StyledWrapper } from './partials/StyledWrapper'
 
-interface RowsPerPageProps {
+export interface RowsPerPageProps {
   /**
    * Optional HTML `id` attribute to apply to the component.
    */
@@ -31,25 +33,72 @@ interface RowsPerPageProps {
    * The selected value when the component is controlled.
    */
   value?: string | null
+  /**
+   * Toggles whether to show the "Showing X to Y of Z" text.
+   */
+  showItemRange?: boolean
+  /**
+   * The current page number (1-indexed).
+   */
+  currentPage?: number
+  /**
+   * The total number of items.
+   */
+  totalItems?: number
 }
 
 export const ROWS_PER_PAGE_OPTIONS = ['10', '25', '50', '100']
-
 export const DEFAULT_ROWS_PER_PAGE = Number(ROWS_PER_PAGE_OPTIONS[0])
 
-export const RowsPerPage = (props: RowsPerPageProps) => (
-  <Select
-    hideClearButton
-    initialValue={DEFAULT_ROWS_PER_PAGE.toString()}
-    label="Rows per page"
-    {...props}
-  >
-    {ROWS_PER_PAGE_OPTIONS.map((option) => (
-      <SelectOption key={option} value={option}>
-        {option}
-      </SelectOption>
-    ))}
-  </Select>
-)
+const RowsPerPageSelect = ({
+  value,
+  initialValue = DEFAULT_ROWS_PER_PAGE.toString(),
+  ...props
+}: RowsPerPageProps) => {
+  return (
+    <Select
+      hideClearButton
+      initialValue={initialValue}
+      label="Rows per page"
+      value={value}
+      {...props}
+    >
+      {ROWS_PER_PAGE_OPTIONS.map((option) => (
+        <SelectOption key={option} value={option}>
+          {option}
+        </SelectOption>
+      ))}
+    </Select>
+  )
+}
+
+export const RowsPerPage = ({
+  showItemRange = false,
+  currentPage = 1,
+  totalItems = 0,
+  value,
+  initialValue = DEFAULT_ROWS_PER_PAGE.toString(),
+  ...props
+}: RowsPerPageProps) => {
+  const rowsPerPage = Number(value || initialValue)
+  const startItem = totalItems > 0 ? (currentPage - 1) * rowsPerPage + 1 : 0
+  const endItem = Math.min(currentPage * rowsPerPage, totalItems)
+
+  if (!showItemRange) {
+    return (
+      <RowsPerPageSelect value={value} initialValue={initialValue} {...props} />
+    )
+  }
+
+  return (
+    <StyledWrapper>
+      <StyledShowingText>
+        Showing <strong>{startItem}</strong> to <strong>{endItem}</strong> of{' '}
+        <strong>{totalItems}</strong>
+      </StyledShowingText>
+      <RowsPerPageSelect value={value} initialValue={initialValue} {...props} />
+    </StyledWrapper>
+  )
+}
 
 RowsPerPage.displayName = 'RowsPerPage'

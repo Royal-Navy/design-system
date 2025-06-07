@@ -848,7 +848,6 @@ export const ManualPagination: StoryFn<typeof DataGrid> = () => {
         columns={columns as ColumnDef<Order>[]}
         data={paginatedData}
         manualPagination
-        pageSize={3}
         pageCount={totalPages}
         isLoading={isLoading}
         onPaginationChange={(updaterOrValue) => {
@@ -953,6 +952,99 @@ WithFooterLeftSlot.parameters = {
     description: {
       story:
         'The `footerLeftSlot` prop allows you to inject arbitrary content (like a button) into the left side of the DataGrid footer.',
+    },
+  },
+}
+
+export const WithRowsPerPageItemRange: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
+}
+
+WithRowsPerPageItemRange.storyName = 'With rows per page item range'
+WithRowsPerPageItemRange.args = {
+  columns,
+  data,
+  isFullWidth: true,
+  showRowsPerPageItemRange: true,
+  onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
+}
+
+WithRowsPerPageItemRange.parameters = {
+  docs: {
+    description: {
+      story:
+        'The `showRowsPerPageItemRange` prop displays "Showing X to Y of Z" text next to the rows per page selector.',
+    },
+  },
+}
+
+export const ManualPaginationWithItemRange: StoryFn<typeof DataGrid> = () => {
+  const [paginatedData, setPaginatedData] = useState(
+    data.slice(0, DEFAULT_ROWS_PER_PAGE)
+  )
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: DEFAULT_ROWS_PER_PAGE,
+  })
+  const [isLoading, setIsLoading] = useState(false)
+  const totalCount = data.length
+  const [totalPages, setTotalPages] = useState(
+    Math.ceil(totalCount / DEFAULT_ROWS_PER_PAGE)
+  )
+
+  const handlePaginationChange = useCallback(
+    (newPagination: PaginationState) => {
+      setPagination(newPagination)
+      setIsLoading(true)
+
+      setTimeout(() => {
+        const startIndex = newPagination.pageIndex * newPagination.pageSize
+        const endIndex = startIndex + newPagination.pageSize
+        const newPageData = data.slice(startIndex, endIndex)
+        setPaginatedData(newPageData)
+        setTotalPages(Math.ceil(totalCount / newPagination.pageSize))
+        setIsLoading(false)
+      }, 500)
+    },
+    [totalCount]
+  )
+
+  return (
+    <Wrapper>
+      <DataGrid
+        columns={columns as ColumnDef<Order>[]}
+        data={paginatedData}
+        manualPagination
+        pageCount={totalPages}
+        totalCount={totalCount}
+        isLoading={isLoading}
+        showRowsPerPageItemRange
+        onPaginationChange={(updaterOrValue) => {
+          const newPagination =
+            typeof updaterOrValue === 'function'
+              ? updaterOrValue(pagination)
+              : updaterOrValue
+
+          handlePaginationChange(newPagination)
+        }}
+        pagination={pagination}
+        isFullWidth
+      />
+    </Wrapper>
+  )
+}
+
+ManualPaginationWithItemRange.storyName = 'Manual pagination with item range'
+ManualPaginationWithItemRange.parameters = {
+  docs: {
+    description: {
+      story: `This example shows manual pagination with the item range display.`,
     },
   },
 }
