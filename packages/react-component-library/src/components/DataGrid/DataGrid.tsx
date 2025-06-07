@@ -112,6 +112,11 @@ export interface DataGridBaseProps<T extends object>
    */
   pageCount?: number
   /**
+   * Total number of items when using manual pagination.
+   * Used to display accurate "Showing X to Y of Z" text.
+   */
+  totalCount?: number
+  /**
    * @deprecated There is a nested RowsPerPage component that controls the page size.
    */
   pageSize?: number
@@ -139,6 +144,10 @@ export interface DataGridBaseProps<T extends object>
    * scroll - The grid will fit to the container height and scroll rows if needed.
    */
   layout?: TableLayout
+  /**
+   * Whether to show the "Showing X to Y of Z" text in the RowsPerPage component.
+   */
+  showRowsPerPageItemRange?: boolean
 }
 
 export interface DataGridPropsWithExternalSorting<T extends object>
@@ -249,6 +258,8 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     pageCount,
     pagination: externalPagination,
     sorting: externalSorting,
+    showRowsPerPageItemRange,
+    totalCount,
     ...rest
   } = props
 
@@ -314,7 +325,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     getFilteredRowModel: getFilteredRowModel(),
     manualPagination,
     paginateExpandedRows: false,
-    pageCount: manualPagination ? pageCount : undefined,
+    pageCount: manualPagination ? pageCount! : undefined,
     // @ts-ignore
     getSubRows: (row) => row?.subRows || [],
     debugTable,
@@ -446,14 +457,15 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
         )}
       </StyledTableContainer>
       <Footer
-        dataLength={manualPagination ? undefined : data.length}
+        dataLength={manualPagination ? totalCount : data.length}
         isPaginated={isPaginated}
         onPaginationChange={handlePagination}
         onRowsPerPageChange={handleRowsPerPageChange}
-        pageCount={pageCount!}
+        pageCount={manualPagination ? pageCount! : table.getPageCount()}
         pagination={paginationState}
         isFullWidth={isFullWidthOverride}
         footerLeftSlot={footerLeftSlot}
+        showRowsPerPageItemRange={showRowsPerPageItemRange}
       />
     </StyledDataGrid>
   )

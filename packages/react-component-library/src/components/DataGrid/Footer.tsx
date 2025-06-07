@@ -43,6 +43,10 @@ interface FooterProps {
    * Useful for adding action buttons or custom controls.
    */
   footerLeftSlot?: React.ReactNode
+  /**
+   * Whether to show the "Showing X to Y of Z" text in the RowsPerPage component.
+   */
+  showRowsPerPageItemRange?: boolean
 }
 
 export const Footer = ({
@@ -54,18 +58,31 @@ export const Footer = ({
   pagination,
   isFullWidth,
   footerLeftSlot,
-}: FooterProps) => (
-  <StyledFooter $isFullWidth={isFullWidth}>
-    {footerLeftSlot || <div />}
-    {isPaginated && (
-      <Pagination
-        name="datagrid-pagination"
-        initialPage={pagination.pageIndex + 1}
-        pageSize={pagination.pageSize}
-        total={dataLength ?? pageCount * pagination.pageSize}
-        onChange={onPaginationChange}
+  showRowsPerPageItemRange,
+}: FooterProps) => {
+  // For internal pagination, use dataLength directly
+  // For manual pagination without totalCount, fallback to pageCount * pageSize
+  const totalItems = dataLength ?? pageCount * pagination.pageSize
+
+  return (
+    <StyledFooter $isFullWidth={isFullWidth}>
+      {footerLeftSlot || <div />}
+      {isPaginated && (
+        <Pagination
+          name="datagrid-pagination"
+          initialPage={pagination.pageIndex + 1}
+          pageSize={pagination.pageSize}
+          total={totalItems}
+          onChange={onPaginationChange}
+        />
+      )}
+      <RowsPerPage
+        onChange={onRowsPerPageChange}
+        showItemRange={showRowsPerPageItemRange}
+        currentPage={pagination.pageIndex + 1}
+        totalItems={totalItems}
+        value={pagination.pageSize.toString()}
       />
-    )}
-    <RowsPerPage onChange={onRowsPerPageChange} />
-  </StyledFooter>
-)
+    </StyledFooter>
+  )
+}
