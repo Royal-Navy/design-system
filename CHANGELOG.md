@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.41.0](https://github.com/Royal-Navy/design-system/compare/4.40.0...4.41.0) (2025-06-10)
+
+### Features
+
+- **RowsPerPage:** Add optional "Showing X to Y of Z" display ([1dd4578](https://github.com/Royal-Navy/design-system/commit/1dd45789187b1af2c26f5b9503254603c7aa757e))
+
 # [4.40.0](https://github.com/Royal-Navy/design-system/compare/4.39.2...4.40.0) (2025-05-30)
 
 ### Features
