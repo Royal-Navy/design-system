@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.42.0](https://github.com/Royal-Navy/design-system/compare/4.41.0...4.42.0) (2025-06-12)
+
+### Features
+
+- **DatePicker:** Add inline clear button ([98e9658](https://github.com/Royal-Navy/design-system/commit/98e9658703f7a3024a50294d176f5421b18d9561))
+
 # [4.41.0](https://github.com/Royal-Navy/design-system/compare/4.40.0...4.41.0) (2025-06-10)
 
 ### Features
