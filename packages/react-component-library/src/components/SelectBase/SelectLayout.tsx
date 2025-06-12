@@ -3,10 +3,9 @@ import React, { useState } from 'react'
 import mergeRefs from 'react-merge-refs'
 
 import { ArrowButton } from '../Select/ArrowButton'
-import { ClearButton } from '../Select/ClearButton'
+import { ClearButton } from '../InlineButtons/ClearButton'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { SelectChildWithStringType } from './types'
-import { StyledInlineButtons } from './partials/StyledInlineButtons'
 import { StyledInput } from './partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledLabel } from '../TextInput/partials/StyledLabel'
@@ -20,6 +19,7 @@ import { useExternalId } from '../../hooks/useExternalId'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
 import { StyledFloatingBox } from './partials/StyledFloatingBox'
 import { PopupPosition } from './SelectBaseProps'
+import { StyledInlineButtonsNoBorder } from '../InlineButtons/partials/StyledInlineButtons'
 
 type ComboboxReturnValueType = UseComboboxReturnValue<SelectChildWithStringType>
 type SelectReturnValueType = UseSelectReturnValue<SelectChildWithStringType>
@@ -36,13 +36,13 @@ export interface SelectLayoutProps extends ComponentWithClass {
   hideClearButton?: boolean
   label: string
   menuProps:
-    | ReturnType<ComboboxReturnValueType['getMenuProps']>
-    | ReturnType<SelectReturnValueType['getMenuProps']>
+  | ReturnType<ComboboxReturnValueType['getMenuProps']>
+  | ReturnType<SelectReturnValueType['getMenuProps']>
   onChange?: (value: string | null) => void
   onClearButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void
   toggleButtonProps:
-    | ReturnType<ComboboxReturnValueType['getToggleButtonProps']>
-    | ReturnType<SelectReturnValueType['getToggleButtonProps']>
+  | ReturnType<ComboboxReturnValueType['getToggleButtonProps']>
+  | ReturnType<SelectReturnValueType['getToggleButtonProps']>
   tooltipText: string
   value?: string
   popupPosition?: PopupPosition
@@ -125,7 +125,7 @@ export const SelectLayout = ({
                 id={id}
               />
             </StyledInputWrapper>
-            <StyledInlineButtons>
+            <StyledInlineButtonsNoBorder>
               {hasSelectedItem && !hideClearButton && (
                 <ClearButton
                   isDisabled={isDisabled}
@@ -138,10 +138,14 @@ export const SelectLayout = ({
                 isOpen={isOpen}
                 {...toggleButtonProps}
               />
-            </StyledInlineButtons>
+            </StyledInlineButtonsNoBorder>
           </StyledOuterWrapper>
         </StyledTextInput>
-        <StyledOptionsWrapper data-testid="select-options-wrapper" $isVisible={isOpen} $position={popupPosition}>
+        <StyledOptionsWrapper
+          data-testid="select-options-wrapper"
+          $isVisible={isOpen}
+          $position={popupPosition}
+        >
           <StyledOptions
             {...menuProps}
             aria-labelledby={labelId}

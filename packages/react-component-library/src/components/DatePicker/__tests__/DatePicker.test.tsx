@@ -273,62 +273,67 @@ describe('DatePicker', () => {
               return user.tab()
             })
 
-            it('focuses the picker open/close button', () => {
+            it('focuses the picker clear button', () => {
               expect(
-                wrapper.getByTestId('datepicker-input-button')
+                wrapper.getByTestId('datepicker-clear-button')
               ).toHaveFocus()
             })
 
-            describe('and the space key is pressed', () => {
+            describe('and the tab key is pressed', () => {
               beforeEach(() => {
-                const button = wrapper.getByTestId('datepicker-input-button')
-
-                return user.type(button, '[Space]', { skipClick: true })
+                return user.tab()
               })
-
-              it('opens the picker container', () => {
-                expect(
-                  wrapper.getByTestId('datepicker-input-button')
-                ).toHaveAttribute('aria-label', 'Hide day picker')
-              })
-
-              describe('and the tab key is pressed again', () => {
+              describe('and the space key is pressed', () => {
                 beforeEach(() => {
-                  return user.tab()
+                  const button = wrapper.getByTestId('datepicker-input-button')
+
+                  return user.type(button, '[Space]', { skipClick: true })
                 })
 
-                it('focuses the previous month button', () => {
+                it('opens the picker container', () => {
                   expect(
-                    wrapper.getByLabelText(PREVIOUS_MONTH_BUTTON_LABEL)
-                  ).toHaveFocus()
-                })
-              })
-
-              describe('and clicks on a day', () => {
-                beforeEach(() => {
-                  return user.click(wrapper.getByText('31'))
+                    wrapper.getByTestId('datepicker-input-button')
+                  ).toHaveAttribute('aria-label', 'Hide day picker')
                 })
 
-                it('set the value of the component to this date', () => {
-                  expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
-                    '31/05/2016'
-                  )
-                })
+                describe('and the tab key is pressed again', () => {
+                  beforeEach(() => {
+                    return user.tab()
+                  })
 
-                it('invokes the onChange callback', () => {
-                  expect(onChange).toHaveBeenLastCalledWith({
-                    startDate: new Date('2016-05-31T12:00:00.000Z'),
-                    startDateValidity: DATE_VALIDITY.VALID,
-                    endDate: new Date('2016-05-31T12:00:00.000Z'),
-                    endDateValidity: DATE_VALIDITY.VALID,
+                  it('focuses the previous month button', () => {
+                    expect(
+                      wrapper.getByLabelText(PREVIOUS_MONTH_BUTTON_LABEL)
+                    ).toHaveFocus()
                   })
                 })
 
-                it('hides the day picker container', () => {
-                  return waitFor(() => {
-                    expect(
-                      wrapper.queryByTestId('floating-box')
-                    ).not.toBeInTheDocument()
+                describe('and clicks on a day', () => {
+                  beforeEach(() => {
+                    return user.click(wrapper.getByText('31'))
+                  })
+
+                  it('set the value of the component to this date', () => {
+                    expect(wrapper.getByTestId('datepicker-input')).toHaveValue(
+                      '31/05/2016'
+                    )
+                  })
+
+                  it('invokes the onChange callback', () => {
+                    expect(onChange).toHaveBeenLastCalledWith({
+                      startDate: new Date('2016-05-31T12:00:00.000Z'),
+                      startDateValidity: DATE_VALIDITY.VALID,
+                      endDate: new Date('2016-05-31T12:00:00.000Z'),
+                      endDateValidity: DATE_VALIDITY.VALID,
+                    })
+                  })
+
+                  it('hides the day picker container', () => {
+                    return waitFor(() => {
+                      expect(
+                        wrapper.queryByTestId('floating-box')
+                      ).not.toBeInTheDocument()
+                    })
                   })
                 })
               })
@@ -576,6 +581,41 @@ describe('DatePicker', () => {
           startDateValidity: DATE_VALIDITY.VALID,
           endDate: new Date('2021-05-01T12:00:00.000Z'),
           endDateValidity: DATE_VALIDITY.VALID,
+        })
+      })
+    })
+  })
+
+  describe('when the `hideClearButton` prop is true', () => {
+    beforeEach(() => {
+      wrapper = render(<DatePicker hideClearButton startDate={new Date()} />)
+    })
+    it('does not render the clear button', () => {
+      expect(wrapper.queryByTestId('datepicker-clear-button')).toBeNull()
+    })
+  })
+
+  describe('when the hideClearButton prop is false', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <DatePicker onChange={onChange} startDate={new Date()} />
+      )
+    })
+    it('renders the clear button', () => {
+      expect(wrapper.getByTestId('datepicker-clear-button')).toBeInTheDocument()
+    })
+
+    describe('and the clear button is clicked', () => {
+      beforeEach(() => {
+        return user.click(wrapper.getByTestId('datepicker-clear-button'))
+      })
+
+      it('calls the `onChange` callback', () => {
+        expect(onChange).toHaveBeenLastCalledWith({
+          startDate: null,
+          startDateValidity: null,
+          endDate: null,
+          endDateValidity: null,
         })
       })
     })
