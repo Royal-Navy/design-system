@@ -9,7 +9,7 @@ import { hasClass } from '../../helpers'
 import { InlineButton } from '../InlineButtons/InlineButton'
 import { isDateValid } from './utils'
 import { StyledDatePickerInput } from './partials/StyledDatePickerInput'
-import { StyledInlineButtons } from '../InlineButtons/partials/StyledInlineButtons'
+import { StyledInlineButtons, StyledInlineButtonsNoBorder } from '../InlineButtons/partials/StyledInlineButtons'
 import { StyledInput } from '../TextInput/partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledLabel } from '../TextInput/partials/StyledLabel'
@@ -19,6 +19,7 @@ import { useExternalId } from '../../hooks/useExternalId'
 import { useFocus } from '../../hooks/useFocus'
 import { useInput } from './useInput'
 import { useProcessDayClick } from './useProcessDayClick'
+import { ClearButton } from '../InlineButtons/ClearButton'
 
 export interface InputProps
   extends Pick<
@@ -32,6 +33,7 @@ export interface InputProps
       | 'label'
       | 'onBlur'
       | 'onChange'
+      | 'hideClearButton'
     >,
     Omit<React.ComponentPropsWithoutRef<'input'>, 'onChange' | 'onBlur'> {
   buttonRef: React.RefObject<HTMLButtonElement>
@@ -59,6 +61,7 @@ export const Input = memo(
     onChange,
     setFloatingBoxTarget,
     titleId,
+    hideClearButton,
     ...rest
   }: InputProps) => {
     const id = useExternalId(externalId)
@@ -140,6 +143,27 @@ export const Input = memo(
       })
     }, [dispatch, isOpen])
 
+    const handleOnClear = useCallback(() => {
+      dispatch({
+        type: DATEPICKER_ACTION.UPDATE,
+        data: {
+          startDate: null,
+          endDate: null,
+          inputValue: '',
+          hasError: false,
+        },
+      })
+
+      if (onChange) {
+        onChange({
+          startDate: null,
+          startDateValidity: null,
+          endDate: null,
+          endDateValidity: null,
+        })
+      }
+    }, [dispatch, onChange])
+
     return (
       <StyledDatePickerInput
         className={className}
@@ -184,6 +208,15 @@ export const Input = memo(
               {...rest}
             />
           </StyledInputWrapper>
+          {inputValue && !hideClearButton && (
+            <StyledInlineButtonsNoBorder>
+              <ClearButton
+                isDisabled={isDisabled}
+                data-testid="datepicker-clear-button"
+                onClick={handleOnClear}
+              />
+            </StyledInlineButtonsNoBorder>
+          )}
           <StyledInlineButtons>
             <InlineButton
               aria-expanded={isOpen}

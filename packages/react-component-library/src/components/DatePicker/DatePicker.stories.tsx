@@ -1,6 +1,13 @@
 import { Meta, StoryFn } from '@storybook/react'
-import { parseISO } from 'date-fns'
+import {
+  addDays,
+  endOfMonth,
+  parseISO,
+  startOfMonth,
+  subDays,
+} from 'date-fns'
 import React from 'react'
+import styled from 'styled-components'
 
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DatePicker } from '.'
@@ -18,7 +25,16 @@ export default {
   },
 } as Meta<typeof DatePicker>
 
-const Template: StoryFn<typeof DatePicker> = (args) => <DatePicker {...args} />
+const StyledWrapper = styled.div`
+  height: 20rem;
+  width: 20rem;
+`
+
+const Template: StoryFn<typeof DatePicker> = (args) => (
+  <StyledWrapper>
+    <DatePicker {...args} />
+  </StyledWrapper>
+)
 
 export const Default = Template.bind({})
 
@@ -55,16 +71,23 @@ Disabled.args = {
 export const DisabledDays = Template.bind({})
 DisabledDays.storyName = 'Disabled days'
 DisabledDays.args = {
-  initialStartDate: parseISO('2024-01-01'),
   disabledDays: [
-    parseISO('2024-06-12'),
-    parseISO('2024-06-18'),
-    new Date(),
+    // It isn't always obvious that today's date is disabled
+    subDays(new Date(), 1),
+    addDays(new Date(), 1),
     {
-      after: parseISO('2024-12-31'),
-      before: parseISO('2024-01-01'),
+      before: startOfMonth(new Date()),
+      after: endOfMonth(new Date()),
     },
   ],
+}
+DisabledDays.parameters = {
+  docs: {
+    description: {
+      story:
+        'Can choose dates from the current month except yesterday and tomorrow.',
+    },
+  },
 }
 
 export const Open = Template.bind({})

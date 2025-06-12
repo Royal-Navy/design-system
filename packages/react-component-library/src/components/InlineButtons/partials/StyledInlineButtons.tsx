@@ -18,3 +18,7 @@ export const StyledInlineButtons = styled.div`
     }
   }
 `
+
+export const StyledInlineButtonsNoBorder = styled(StyledInlineButtons)`
+  border-left: none;
+`

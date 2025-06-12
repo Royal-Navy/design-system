@@ -130,6 +130,10 @@ export interface DatePickerProps
    * Enable navigation via the Month and Year grids.
    */
   navigateMonthYear?: boolean
+  /**
+   * Whether to hide the clear button.
+   */
+  hideClearButton?: boolean
 }
 
 export const DatePicker = ({
@@ -156,7 +160,7 @@ export const DatePicker = ({
 
   // Formik can pass value – drop it to stop it being forwarded to the input
   value: _,
-
+  hideClearButton = false,
   ...rest
 }: DatePickerProps) => {
   const titleId = useExternalId('datepicker-title')
@@ -194,6 +198,7 @@ export const DatePicker = ({
         onChange={onChange}
         setFloatingBoxTarget={setFloatingBoxTarget}
         titleId={titleId}
+        hideClearButton={hideClearButton}
         {...rest}
       />
       <FloatingCalendar
