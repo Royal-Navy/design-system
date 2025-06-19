@@ -40,10 +40,10 @@ const TABLE_SORT_ORDER = {
 
 const SORT_ORDER_ICONS_MAP = {
   [TABLE_SORT_ORDER.ASCENDING]: (
-    <IconArrowDownward aria-hidden data-testid="ascending" />
+    <IconArrowUpward aria-hidden data-testid="ascending" />
   ),
   [TABLE_SORT_ORDER.DESCENDING]: (
-    <IconArrowUpward aria-hidden data-testid="descending" />
+    <IconArrowDownward aria-hidden data-testid="descending" />
   ),
 }
 
