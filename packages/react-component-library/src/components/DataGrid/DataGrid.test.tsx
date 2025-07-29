@@ -15,6 +15,7 @@ import { color } from '@royalnavy/design-tokens'
 
 import { DataGrid } from './DataGrid'
 import { Button } from '../Button'
+import { DEFAULT_ROWS_PER_PAGE } from '../RowsPerPage'
 
 type DataRow = {
   first: string
@@ -689,7 +690,7 @@ describe('DataGrid', () => {
     it('should render the correct rows on initial render', async () => {
       render(<DataGrid data={PAGINATED_DATA} columns={columns} pageSize={10} />)
 
-      expect(screen.getAllByRole('row')).toHaveLength(11)
+      expect(screen.getAllByRole('row')).toHaveLength(DEFAULT_ROWS_PER_PAGE + 1)
       expect(screen.getByText('a1')).toBeVisible()
     })
 
@@ -713,13 +714,13 @@ describe('DataGrid', () => {
       )
       await hackyWaitFor()
 
-      expect(screen.getAllByRole('row')).toHaveLength(11)
+      expect(screen.getAllByRole('row')).toHaveLength(DEFAULT_ROWS_PER_PAGE + 1)
 
       expect(screen.queryByText('a1')).not.toBeInTheDocument()
-      expect(screen.getByText('a11')).toBeVisible()
+      expect(screen.getByText('a51')).toBeVisible()
 
       expect(onPageChangeSpy).toHaveBeenCalledTimes(1)
-      expect(onPageChangeSpy).toHaveBeenCalledWith(expect.any(Object), 2, 100)
+      expect(onPageChangeSpy).toHaveBeenCalledWith(expect.any(Object), 2, 20)
     })
   })
 
@@ -1523,7 +1524,7 @@ describe('DataGrid', () => {
 
       expect(onPaginationChangeSpy).toHaveBeenCalledWith({
         pageIndex: 0,
-        pageSize: 25,
+        pageSize: 250,
       })
     })
   })
@@ -1584,7 +1585,7 @@ describe('DataGrid', () => {
       await userEvent.click(options[1])
 
       expect(screen.getByLabelText('Enter page number')).toHaveValue('1')
-      expect(screen.getByText('of 40')).toBeInTheDocument()
+      expect(screen.getByText('of 4')).toBeInTheDocument()
     })
 
     it('resets to the first page when the rows per page component is changed', async () => {
@@ -1601,7 +1602,7 @@ describe('DataGrid', () => {
       await userEvent.click(options[1])
 
       expect(screen.getByLabelText('Enter page number')).toHaveValue('1')
-      expect(screen.getByText('of 40')).toBeInTheDocument()
+      expect(screen.getByText('of 4')).toBeInTheDocument()
     })
   })
 
@@ -1645,7 +1646,7 @@ describe('DataGrid', () => {
   })
 
   describe('with showRowsPerPageItemRange', () => {
-    const largeData = Array.from({ length: 134 }, (_, i) => ({
+    const largeData = Array.from({ length: 1500 }, (_, i) => ({
       first: `a${i + 1}`,
       second: `b${i + 1}`,
       third: `c${i + 1}`,
@@ -1658,8 +1659,8 @@ describe('DataGrid', () => {
 
       expect(screen.getByText(/Showing/)).toBeInTheDocument()
       expect(screen.getByText('1')).toBeInTheDocument()
-      expect(screen.getByText('10')).toBeInTheDocument()
-      expect(screen.getByText('134')).toBeInTheDocument()
+      expect(screen.getByText('50')).toBeInTheDocument()
+      expect(screen.getByText('1500')).toBeInTheDocument()
     })
 
     it('does not show the item range text when showRowsPerPageItemRange is false', () => {
@@ -1679,16 +1680,16 @@ describe('DataGrid', () => {
         <DataGrid columns={columns} data={largeData} showRowsPerPageItemRange />
       )
 
-      // Initially showing 1 to 10 (default page size)
+      // Initially showing 1 to 50 (default page size)
       expect(screen.getByText('1')).toBeInTheDocument()
-      expect(screen.getByText('10')).toBeInTheDocument()
+      expect(screen.getByText('50')).toBeInTheDocument()
 
       // Go to next page
       await userEvent.click(screen.getByRole('button', { name: 'Next page' }))
 
       // Now showing 11 to 20
-      expect(screen.getByText('11')).toBeInTheDocument()
-      expect(screen.getByText('20')).toBeInTheDocument()
+      expect(screen.getByText('51')).toBeInTheDocument()
+      expect(screen.getByText('100')).toBeInTheDocument()
     })
 
     it('updates the item range when changing rows per page', async () => {
@@ -1696,18 +1697,18 @@ describe('DataGrid', () => {
         <DataGrid columns={columns} data={largeData} showRowsPerPageItemRange />
       )
 
-      // Initially showing 1 to 10
+      // Initially showing 1 to 50
       expect(screen.getByText('1')).toBeInTheDocument()
-      expect(screen.getByText('10')).toBeInTheDocument()
+      expect(screen.getByText('50')).toBeInTheDocument()
 
-      // Change to 25 rows per page
+      // Change to 250 rows per page
       await userEvent.click(screen.getByTestId('select-arrow-button'))
       const options = screen.getAllByRole('option')
-      await userEvent.click(options[1]) // 25
+      await userEvent.click(options[1]) // 250
 
-      // Now showing 1 to 25
+      // Now showing 1 to 250
       expect(screen.getByText('1')).toBeInTheDocument()
-      expect(screen.getByText('25')).toBeInTheDocument()
+      expect(screen.getByText('250')).toBeInTheDocument()
     })
 
     it('works with manual pagination', () => {

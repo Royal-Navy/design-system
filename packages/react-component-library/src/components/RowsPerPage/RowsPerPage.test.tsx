@@ -40,7 +40,7 @@ describe('RowsPerPage', () => {
 
       expect(screen.getByText(/Showing/)).toBeInTheDocument()
       expect(screen.getByText('1')).toBeInTheDocument()
-      expect(screen.getByText('10')).toBeInTheDocument()
+      expect(screen.getByText('50')).toBeInTheDocument()
       expect(screen.getByText('134')).toBeInTheDocument()
     })
 
@@ -141,9 +141,9 @@ describe('RowsPerPage', () => {
       )
 
       await userEvent.click(screen.getByTestId('select-arrow-button'))
-      await userEvent.click(screen.getByRole('option', { name: '25' }))
+      await userEvent.click(screen.getByRole('option', { name: '250' }))
 
-      expect(onChange).toHaveBeenCalledWith('25')
+      expect(onChange).toHaveBeenCalledWith('250')
     })
   })
 })
