@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.43.0](https://github.com/Royal-Navy/design-system/compare/4.42.0...4.43.0) (2025-07-29)
+
+### Features
+
+- **RowsPerPage:** Update page sizes ([4a283d4](https://github.com/Royal-Navy/design-system/commit/4a283d4e7cca136a45a5c2cd9701950e3cddd16e))
+
 # [4.42.0](https://github.com/Royal-Navy/design-system/compare/4.41.0...4.42.0) (2025-06-12)
 
 ### Features
