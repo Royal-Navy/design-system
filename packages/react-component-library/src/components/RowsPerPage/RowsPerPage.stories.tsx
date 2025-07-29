@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { StoryFn, Meta } from '@storybook/react'
+import styled from 'styled-components'
 
 import { RowsPerPage } from './RowsPerPage'
 
@@ -11,8 +12,12 @@ export default {
   },
 } as Meta<typeof RowsPerPage>
 
+const Wrapper = styled.div`
+    min-height: 18rem;
+`
+
 export const Default: StoryFn<typeof RowsPerPage> = () => {
-  return <RowsPerPage />
+  return <Wrapper><RowsPerPage /></Wrapper>
 }
 
 export const WithItemRange: StoryFn<typeof RowsPerPage> = () => {
@@ -31,7 +36,7 @@ export const WithItemRange: StoryFn<typeof RowsPerPage> = () => {
   }
 
   return (
-    <div>
+    <Wrapper>
       <RowsPerPage
         showItemRange
         currentPage={currentPage}
@@ -57,7 +62,7 @@ export const WithItemRange: StoryFn<typeof RowsPerPage> = () => {
           Next Page
         </button>
       </div>
-    </div>
+    </Wrapper>
   )
 }
 

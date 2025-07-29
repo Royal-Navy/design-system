@@ -47,7 +47,8 @@ export interface RowsPerPageProps {
   totalItems?: number
 }
 
-export const ROWS_PER_PAGE_OPTIONS = ['10', '25', '50', '100']
+export const ROWS_PER_PAGE_OPTIONS = ['50', '250', '500', '1000']
+// export const ROWS_PER_PAGE_OPTIONS = ['10', '25', '50', '100']
 export const DEFAULT_ROWS_PER_PAGE = Number(ROWS_PER_PAGE_OPTIONS[0])
 
 const RowsPerPageSelect = ({
