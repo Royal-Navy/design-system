@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.43.1](https://github.com/Royal-Navy/design-system/compare/4.43.0...4.43.1) (2025-08-04)
+
+### Bug Fixes
+
+- **DataGrid:** Make sorting arrows externally consistent ([df48cd7](https://github.com/Royal-Navy/design-system/commit/df48cd785c8f3e4c16c10758762dbbd62d0c458c))
+
 # [4.43.0](https://github.com/Royal-Navy/design-system/compare/4.42.0...4.43.0) (2025-07-29)
 
 ### Features

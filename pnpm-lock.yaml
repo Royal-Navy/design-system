@@ -60,7 +60,7 @@ importers:
         specifier: ^7.24.7
         version: 7.24.7(@babel/core@7.25.2)
       '@royalnavy/eslint-config-react':
-        specifier: ^4.43.0
+        specifier: ^4.43.1
         version: link:../eslint-config-react
       '@testing-library/jest-dom':
         specifier: ^6.5.0
@@ -195,7 +195,7 @@ importers:
         specifier: ^7.24.7
         version: 7.24.7(@babel/core@7.25.2)
       '@royalnavy/eslint-config-react':
-        specifier: ^4.43.0
+        specifier: ^4.43.1
         version: link:../eslint-config-react
       '@svgr/cli':
         specifier: ^8.1.0
@@ -243,13 +243,13 @@ importers:
         specifier: ^2.9.2
         version: 2.11.8
       '@royalnavy/design-tokens':
-        specifier: ^4.43.0
+        specifier: ^4.43.1
         version: link:../design-tokens
       '@royalnavy/fonts':
-        specifier: ^4.43.0
+        specifier: ^4.43.1
         version: link:../fonts
       '@royalnavy/icon-library':
-        specifier: ^4.43.0
+        specifier: ^4.43.1
         version: link:../icon-library
       '@tanstack/react-table':
         specifier: ^8.5.28
@@ -358,7 +358,7 @@ importers:
         specifier: ^1.47.2
         version: 1.47.2
       '@royalnavy/eslint-config-react':
-        specifier: ^4.43.0
+        specifier: ^4.43.1
         version: link:../eslint-config-react
       '@storybook/addon-a11y':
         specifier: ^8.3.4
