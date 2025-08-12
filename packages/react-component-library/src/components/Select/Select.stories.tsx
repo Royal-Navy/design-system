@@ -58,6 +58,17 @@ const TemplateWithIconsAndBadges: StoryFn<typeof Select> = (args) => (
       <SelectOption badge={100} icon={<IconAnchor />} value="one">
         One
       </SelectOption>
+      <SelectOption
+        badge="A custom badge"
+        badgeProps={{
+          color: 'supf',
+          colorVariant: 'faded',
+        }}
+        icon={<IconAnchor />}
+        value="JSX badge"
+      >
+        Two
+      </SelectOption>
       <SelectOption badge={110} icon={<IconRemove />} value="two">
         Two
       </SelectOption>
