@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render, RenderResult, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { ColorDanger800 } from '@royalnavy/design-tokens'
+import {color , ColorDanger800 } from '@royalnavy/design-tokens'
 import {
   IconAgriculture,
   IconAnchor,
@@ -570,6 +570,13 @@ describe('Select', () => {
           <SelectOption badge={3} value="three">
             Three
           </SelectOption>
+          <SelectOption
+            badge="custom"
+            badgeProps={{ color: 'supf', colorVariant: 'faded' }}
+            value="custom"
+          >
+            Custom
+          </SelectOption>
         </Select>
       )
     })
@@ -579,13 +586,22 @@ describe('Select', () => {
         return userEvent.click(wrapper.getByTestId('select-input'))
       })
 
-      it('displays 3 badges', () => {
+      it('displays 4 badges', () => {
         const badges = wrapper.queryAllByTestId('select-badge')
         expect(badges[0]).toHaveTextContent('1')
         expect(badges[1]).toHaveTextContent('2')
         expect(badges[2]).toHaveTextContent('3')
-        expect(badges).toHaveLength(3)
+        expect(badges).toHaveLength(4)
       })
+
+      it('displays custom badge props', () => {
+        const customBadge = wrapper.queryAllByTestId('select-badge')[3]
+        expect(customBadge).toHaveTextContent('custom')
+
+        const backgroundColor = color('supf', '200')
+        expect(customBadge).toHaveStyleRule('background-color', backgroundColor)
+      })
+
     })
   })
 
