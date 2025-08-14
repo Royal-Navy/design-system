@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.44.0](https://github.com/Royal-Navy/design-system/compare/4.43.1...4.44.0) (2025-08-14)
+
+### Features
+
+- **Select:** Accept custom Badge props ([78fe399](https://github.com/Royal-Navy/design-system/commit/78fe3995901cb8af1d63e6ba6aa7e2dce68c1c39))
+
 ## [4.43.1](https://github.com/Royal-Navy/design-system/compare/4.43.0...4.43.1) (2025-08-04)
 
 ### Bug Fixes
