@@ -22,39 +22,50 @@ export function getColumns<T>(
 
   const rowSelectExpandColumn: ColumnDef<T> = {
     id: 'select-expand',
-    header: ({
-      table: {
+    header: ({ table }) => {
+      const {
         getIsAllRowsSelected,
         getIsSomeRowsSelected,
         getToggleAllRowsSelectedHandler,
         getToggleAllRowsExpandedHandler,
         getIsAllRowsExpanded,
         getCanSomeRowsExpand,
-      },
-    }) => (
-      <>
-        {showCheckboxes && (
-          <IndeterminateCheckbox
-            checked={getIsAllRowsSelected()}
-            indeterminate={getIsSomeRowsSelected()}
-            onChange={getToggleAllRowsSelectedHandler()}
-            aria-label="Select / deselect all rows"
-          />
-        )}
-        {getCanSomeRowsExpand() && (
-          <StyledExpandButton
-            onClick={getToggleAllRowsExpandedHandler()}
-            aria-label="Expand / collapse all rows"
-          >
-            {getIsAllRowsExpanded() ? (
-              <IconKeyboardArrowDown />
-            ) : (
-              <IconKeyboardArrowRight />
-            )}
-          </StyledExpandButton>
-        )}
-      </>
-    ),
+      } = table
+
+      const anySelectedGlobally =
+        Object.keys(table.getState().rowSelection || {}).length > 0
+
+      const isAllSelectedOnPage = getIsAllRowsSelected()
+      const isSomeSelectedOnPage = getIsSomeRowsSelected()
+
+      const isIndeterminate =
+        isSomeSelectedOnPage || (anySelectedGlobally && !isAllSelectedOnPage)
+
+      return (
+        <>
+          {showCheckboxes && (
+            <IndeterminateCheckbox
+              checked={isAllSelectedOnPage}
+              indeterminate={isIndeterminate}
+              onChange={getToggleAllRowsSelectedHandler()}
+              aria-label="Select / deselect all rows"
+            />
+          )}
+          {getCanSomeRowsExpand() && (
+            <StyledExpandButton
+              onClick={getToggleAllRowsExpandedHandler()}
+              aria-label="Expand / collapse all rows"
+            >
+              {getIsAllRowsExpanded() ? (
+                <IconKeyboardArrowDown />
+              ) : (
+                <IconKeyboardArrowRight />
+              )}
+            </StyledExpandButton>
+          )}
+        </>
+      )
+    },
     cell: ({
       row: {
         getIsSelected,

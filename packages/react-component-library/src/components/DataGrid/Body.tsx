@@ -79,6 +79,7 @@ const Row = <T extends object>({
   return (
     <>
       <StyledRow
+        key={`${row.id}-main`}
         id={row.id}
         $depth={row.depth}
         $isLastInBranch={isLastInBranch(row, table.getRowModel().rows)}
@@ -136,14 +137,15 @@ export const Body = <T extends object>({
   return (
     <StyledBody>
       {table.getRowModel().rows.map((row) => (
-        <Row
-          key={row.id}
-          row={row}
-          table={table}
-          enableRowSelection={enableRowSelection}
-          hasHover={hasHover}
-          totalColumns={totalColumns}
-        />
+        <React.Fragment key={row.id}>
+          <Row
+            row={row}
+            table={table}
+            enableRowSelection={enableRowSelection}
+            hasHover={hasHover}
+            totalColumns={totalColumns}
+          />
+        </React.Fragment>
       ))}
     </StyledBody>
   )

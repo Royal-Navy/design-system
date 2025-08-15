@@ -241,7 +241,6 @@ const columns = [
     accessorKey: 'quantity',
     enableSorting: false,
     enableColumnFilter: false,
-    filterFn: 'equalsString',
   },
   {
     header: 'Price',
@@ -980,6 +979,85 @@ WithRowsPerPageItemRange.parameters = {
     description: {
       story:
         'The `showRowsPerPageItemRange` prop displays "Showing X to Y of Z" text next to the rows per page selector.',
+    },
+  },
+}
+
+export const ControlledRowSelection: StoryFn<typeof DataGrid> = () => {
+  const [rowSelection, setRowSelection] = useState<Record<string, boolean>>({})
+
+  return (
+    <Wrapper>
+      <DataGrid
+        columns={columns}
+        data={data}
+        enableRowSelection
+        // Use a stable ID; defaults to `id` but we show it explicitly
+        getRowId={(row: Order) => String(row.id)}
+        rowSelection={rowSelection}
+        onRowSelectionChange={setRowSelection}
+        isFullWidth
+      />
+    </Wrapper>
+  )
+}
+
+ControlledRowSelection.storyName = 'Controlled row selection (by ID)'
+ControlledRowSelection.parameters = {
+  docs: {
+    description: {
+      story:
+        'Selection is controlled externally via `rowSelection` and keyed by a stable row ID using `getRowId` (defaults to `row.id`).',
+    },
+  },
+}
+
+export const ManualPaginationWithControlledSelection: StoryFn<
+  typeof DataGrid
+> = () => {
+  const pageSize = 5
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize,
+  })
+  const [rowSelection, setRowSelection] = useState<Record<string, boolean>>({})
+
+  const startIndex = pagination.pageIndex * pagination.pageSize
+  const endIndex = startIndex + pagination.pageSize
+  const pageData = data.slice(startIndex, endIndex)
+
+  return (
+    <Wrapper>
+      <DataGrid
+        columns={columns}
+        data={pageData}
+        enableRowSelection
+        manualPagination
+        pageCount={Math.ceil(data.length / pageSize)}
+        pagination={pagination}
+        onPaginationChange={(updaterOrValue) => {
+          const next =
+            typeof updaterOrValue === 'function'
+              ? updaterOrValue(pagination)
+              : updaterOrValue
+          setPagination(next)
+        }}
+        getRowId={(row: Order) => String(row.id)}
+        rowSelection={rowSelection}
+        onRowSelectionChange={setRowSelection}
+        isFullWidth
+      />
+    </Wrapper>
+  )
+}
+
+ManualPaginationWithControlledSelection.storyName =
+  'Manual pagination with controlled selection'
+ManualPaginationWithControlledSelection.parameters = {
+  docs: {
+    description: {
+      story:
+        'Demonstrates server-side pagination with externally controlled, ID-based selection that persists across pages.',
     },
   },
 }

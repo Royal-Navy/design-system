@@ -10,6 +10,7 @@ import {
   type ColumnFiltersState,
   type SortingState,
   type PaginationState,
+  type Updater,
   useReactTable,
   getCoreRowModel,
   getExpandedRowModel,
@@ -94,8 +95,9 @@ export interface DataGridBaseProps<T extends object>
    */
   footerLeftSlot?: React.ReactNode
   /**
-   * Callback function that is called when selected rows change.
-   * Receives the array of selected row objects.
+   * Callback function that is called when selected rows change for the
+   * current data slice (e.g. current page / filtered view). If you need
+   * cross-page selections, use the controlled `rowSelection` API.
    */
   onSelectedRowsChange?: (rows: T[]) => void
   /**
@@ -212,25 +214,66 @@ export interface DataGridPropsWithInternalPagination<T extends object>
   pagination?: never
 }
 
+export interface DataGridPropsWithExternalRowSelection<T extends object>
+  extends DataGridBaseProps<T>,
+    Pick<TableOptions<T>, 'onRowSelectionChange'> {
+  /**
+   * Controlled row selection state keyed by stable row IDs.
+   */
+  rowSelection: RowSelectionState
+}
+
+export interface DataGridPropsWithInternalRowSelection<T extends object>
+  extends DataGridBaseProps<T> {
+  /**
+   * Not needed when using internal row selection.
+   */
+  onRowSelectionChange?: never
+  /**
+   * Not needed when using internal row selection.
+   */
+  rowSelection?: never
+}
+
 /**
- * DataGrid props type - a union of the four possible combinations:
+ * DataGrid props type - a union of the possible combinations:
  * 1. External sorting + External pagination
  * 2. External sorting + Internal pagination
  * 3. Internal sorting + External pagination
  * 4. Internal sorting + Internal pagination
+ * 5. External sorting + External pagination + Controlled row selection
+ * 6. External sorting + Internal pagination + Controlled row selection
+ * 7. Internal sorting + External pagination + Controlled row selection
+ * 8. Internal sorting + Internal pagination + Controlled row selection
  *
  * This allows TypeScript to enforce the correct props based on whether
  * sorting and pagination are handled internally or externally.
  */
 export type DataGridProps<T extends object> =
   | (DataGridPropsWithExternalSorting<T> &
-      DataGridPropsWithExternalPagination<T>)
+      DataGridPropsWithExternalPagination<T> &
+      DataGridPropsWithExternalRowSelection<T>)
   | (DataGridPropsWithExternalSorting<T> &
-      DataGridPropsWithInternalPagination<T>)
+      DataGridPropsWithInternalPagination<T> &
+      DataGridPropsWithExternalRowSelection<T>)
   | (DataGridPropsWithInternalSorting<T> &
-      DataGridPropsWithExternalPagination<T>)
+      DataGridPropsWithExternalPagination<T> &
+      DataGridPropsWithExternalRowSelection<T>)
   | (DataGridPropsWithInternalSorting<T> &
-      DataGridPropsWithInternalPagination<T>)
+      DataGridPropsWithInternalPagination<T> &
+      DataGridPropsWithExternalRowSelection<T>)
+  | (DataGridPropsWithExternalSorting<T> &
+      DataGridPropsWithExternalPagination<T> &
+      DataGridPropsWithInternalRowSelection<T>)
+  | (DataGridPropsWithExternalSorting<T> &
+      DataGridPropsWithInternalPagination<T> &
+      DataGridPropsWithInternalRowSelection<T>)
+  | (DataGridPropsWithInternalSorting<T> &
+      DataGridPropsWithExternalPagination<T> &
+      DataGridPropsWithInternalRowSelection<T>)
+  | (DataGridPropsWithInternalSorting<T> &
+      DataGridPropsWithInternalPagination<T> &
+      DataGridPropsWithInternalRowSelection<T>)
 
 export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
   const {
@@ -244,6 +287,8 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     hasHover,
     hideCheckboxes,
     initialRowSelection,
+    rowSelection: externalRowSelection,
+    onRowSelectionChange: externalOnRowSelectionChange,
     isFullWidth,
     isLoading,
     layout = TABLE_DEFAULT_LAYOUT,
@@ -295,6 +340,52 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     return data.some((row) => row?.subRows?.length > 0)
   }, [data])
 
+  const resolvedRowSelection = externalRowSelection ?? rowSelection
+
+  const handleRowSelectionChange = useCallback(
+    (updater: Updater<RowSelectionState>) => {
+      const nextSelection =
+        typeof updater === 'function'
+          ? (updater as (old: RowSelectionState) => RowSelectionState)(
+              resolvedRowSelection
+            )
+          : updater
+
+      if (externalOnRowSelectionChange) {
+        externalOnRowSelectionChange(nextSelection)
+        return
+      }
+
+      setRowSelection(nextSelection)
+    },
+    [externalOnRowSelectionChange, resolvedRowSelection, setRowSelection]
+  )
+
+  // Provides a sensible default getRowId that uses
+  // stable unique key if present.
+  const defaultGetRowId = useCallback(
+    (
+      originalRow: Record<string, unknown>,
+      index: number,
+      parent?: {
+        id: string
+      }
+    ) => {
+      const candidate = originalRow?.id ?? originalRow?.uuid ?? originalRow?.key
+      if (
+        (typeof candidate === 'string' && candidate.length > 0) ||
+        typeof candidate === 'number'
+      ) {
+        return String(candidate)
+      }
+      if (parent?.id) {
+        return `${parent.id}.${index}`
+      }
+      return String(index)
+    },
+    []
+  )
+
   const table = useReactTable({
     data,
     columns: getColumns(
@@ -305,13 +396,13 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     ),
     state: {
       sorting: externalSorting ?? internalSorting,
-      rowSelection,
+      rowSelection: resolvedRowSelection,
       expanded,
       pagination: externalPagination ?? internalPagination,
       columnFilters,
     },
     enableRowSelection,
-    onRowSelectionChange: setRowSelection,
+    onRowSelectionChange: handleRowSelectionChange,
     onSortingChange: manualSorting ? onSortingChange : setSorting,
     onExpandedChange: setExpanded,
     onPaginationChange: manualPagination ? onPaginationChange : setPagination,
@@ -331,13 +422,19 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     debugTable,
     manualSorting,
     ...rest,
+    // Prefer consumer-provided getRowId if present in props; fall back to default
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore - getRowId is part of TableOptions and allowed via props extension
+    getRowId:
+      (props as unknown as { getRowId?: (row: T) => string }).getRowId ??
+      defaultGetRowId,
   } as TableOptions<T>)
 
   useEffect(() => {
     onSelectedRowsChange?.(
       table.getSelectedRowModel().flatRows.map(({ original }) => original)
     )
-  }, [rowSelection, table, onSelectedRowsChange])
+  }, [resolvedRowSelection, table, onSelectedRowsChange])
 
   useEffect(() => {
     onExpandedChange?.(expanded)
