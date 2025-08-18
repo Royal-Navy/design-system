@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.45.0](https://github.com/Royal-Navy/design-system/compare/4.44.0...4.45.0) (2025-08-18)
+
+### Features
+
+- **DataGrid:** Add support for external row selection state ([e8738da](https://github.com/Royal-Navy/design-system/commit/e8738da3feff829c00cae565fa1b188f229d7c8b))
+
 # [4.44.0](https://github.com/Royal-Navy/design-system/compare/4.43.1...4.44.0) (2025-08-14)
 
 ### Features
