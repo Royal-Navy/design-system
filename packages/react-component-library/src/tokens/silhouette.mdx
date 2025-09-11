@@ -1,0 +1,19 @@
+
+import { Meta, Source, Unstyled } from '@storybook/blocks'
+
+import { IconGrid, SilhouetteGrid, SilhouetteText } from './IconGrid'
+
+import { GlobalStyleProvider } from '../styled-components'
+
+<Meta title="Tokens/Silhouette Library" />
+
+# Silhouette Library
+
+The icon library has been extended and supplemented with domain specific icons.
+
+<Source dark code={SilhouetteText} />
+
+<Unstyled>
+  <GlobalStyleProvider />
+  <SilhouetteGrid size={128}/>
+</Unstyled>

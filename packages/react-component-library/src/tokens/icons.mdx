@@ -1,0 +1,20 @@
+import { Meta, Source, Unstyled } from '@storybook/blocks'
+
+import { IconGrid, SilhouetteGrid, IconText } from './IconGrid'
+
+import { GlobalStyleProvider } from '../styled-components'
+
+<Meta title="Tokens/Icon Library" />
+
+# Icon Library
+
+The icon library uses the [Google Material icon set](https://material.io/resources/icons/) as a baseline.
+
+It has been extended and supplemented with domain specific icons and [silhouettes](?path=/docs/tokens-silhouette-library--docs).
+
+<Source dark code={IconText} />
+
+<Unstyled>
+  <GlobalStyleProvider />
+  <IconGrid size={48} />
+</Unstyled>
