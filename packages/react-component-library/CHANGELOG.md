@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.46.0](https://github.com/Royal-Navy/design-system/compare/4.45.0...4.46.0) (2025-09-17)
+
+### Features
+
+- **IconLibrary:** Add additional icons ([a9d72bd](https://github.com/Royal-Navy/design-system/commit/a9d72bdc3362f4abad9306d5c5d8f216b095c2a9))
+
 # [4.45.0](https://github.com/Royal-Navy/design-system/compare/4.44.0...4.45.0) (2025-08-18)
 
 ### Features
