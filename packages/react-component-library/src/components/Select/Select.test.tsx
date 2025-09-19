@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render, RenderResult, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import {color , ColorDanger800 } from '@royalnavy/design-tokens'
+import { color, ColorDanger800 } from '@royalnavy/design-tokens'
 import {
   IconAgriculture,
   IconAnchor,
@@ -601,7 +601,6 @@ describe('Select', () => {
         const backgroundColor = color('supf', '200')
         expect(customBadge).toHaveStyleRule('background-color', backgroundColor)
       })
-
     })
   })
 
@@ -674,6 +673,109 @@ describe('Select', () => {
         expect(screen.getByText('Option 2')).toBeVisible()
         expect(screen.getByText('Option 3')).toBeVisible()
       })
+    })
+  })
+
+  describe('when isMulti', () => {
+    let onChangeIsMultiSpy: (value: string[] | null) => void
+
+    beforeEach(() => {
+      onChangeIsMultiSpy = jest.fn()
+
+      wrapper = render(
+        <Select
+          className="custom-class"
+          id="select-id"
+          label="Label"
+          isMulti
+          onChange={onChangeIsMultiSpy}
+        >
+          <SelectOption value="one">One</SelectOption>
+          <SelectOption value="two">Two</SelectOption>
+          <SelectOption value="three">Three</SelectOption>
+        </Select>
+      )
+    })
+
+    it('displays checkboxes next to the options', async () => {
+      await userEvent.click(wrapper.getByTestId('select-input'))
+
+      const checkboxes = wrapper.getAllByRole('checkbox')
+      expect(checkboxes).toHaveLength(3)
+    })
+
+    it('calls onChange with an array of selections', async () => {
+      await userEvent.click(wrapper.getByTestId('select-input'))
+
+      await userEvent.click(wrapper.getByText('One'))
+      expect(onChangeIsMultiSpy).toHaveBeenCalledWith(['one'])
+
+      await userEvent.click(wrapper.getByText('Two'))
+      expect(onChangeIsMultiSpy).toHaveBeenCalledWith(['one', 'two'])
+
+      await userEvent.click(wrapper.getByText('One'))
+      expect(onChangeIsMultiSpy).toHaveBeenCalledWith(['two'])
+    })
+
+    it('correctly selects the initial selected values', async () => {
+      wrapper.unmount()
+      wrapper = render(
+        <Select
+          className="custom-class"
+          id="select-id"
+          label="Label"
+          isMulti
+          initialValue={['one', 'two']}
+          onChange={onChangeIsMultiSpy}
+        >
+          <SelectOption value="one">One</SelectOption>
+          <SelectOption value="two">Two</SelectOption>
+          <SelectOption value="three">Three</SelectOption>
+        </Select>
+      )
+
+      expect(wrapper.getByTestId('select-input')).not.toHaveValue('')
+
+      await userEvent.click(wrapper.getByTestId('select-input'))
+
+      const checkboxes = wrapper.getAllByRole('checkbox')
+      expect(checkboxes[0]).toBeChecked()
+      expect(checkboxes[1]).toBeChecked()
+      expect(checkboxes[2]).not.toBeChecked()
+    })
+
+    it('correctly handles being in controlled mode', async () => {
+      wrapper.unmount()
+      wrapper = render(
+        <Select
+          className="custom-class"
+          id="select-id"
+          label="Label"
+          isMulti
+          value={['one', 'two']}
+          onChange={onChangeIsMultiSpy}
+        >
+          <SelectOption value="one">One</SelectOption>
+          <SelectOption value="two">Two</SelectOption>
+          <SelectOption value="three">Three</SelectOption>
+        </Select>
+      )
+
+      expect(wrapper.getByTestId('select-input')).not.toHaveValue('')
+
+      await userEvent.click(wrapper.getByTestId('select-input'))
+
+      const checkboxes = wrapper.getAllByRole('checkbox')
+      expect(checkboxes[0]).toBeChecked()
+      expect(checkboxes[1]).toBeChecked()
+      expect(checkboxes[2]).not.toBeChecked()
+
+      // Because we don't handle the value updating in this test expect the third checkbox to still be unchecked
+      await userEvent.click(wrapper.getByText('Three'))
+
+      expect(checkboxes[0]).toBeChecked()
+      expect(checkboxes[1]).toBeChecked()
+      expect(checkboxes[2]).not.toBeChecked()
     })
   })
 })

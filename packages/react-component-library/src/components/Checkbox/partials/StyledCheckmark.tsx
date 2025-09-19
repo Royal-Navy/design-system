@@ -33,6 +33,11 @@ export const StyledCheckmark = styled.span<CheckmarkProps>`
     display: none;
     border-radius: 2px;
     color: ${color('neutral', 'white')};
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 0;
   }
 
   ${({ $hasContainer }) => {
