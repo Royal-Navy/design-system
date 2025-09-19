@@ -36,13 +36,13 @@ export interface SelectLayoutProps extends ComponentWithClass {
   hideClearButton?: boolean
   label: string
   menuProps:
-  | ReturnType<ComboboxReturnValueType['getMenuProps']>
-  | ReturnType<SelectReturnValueType['getMenuProps']>
+    | ReturnType<ComboboxReturnValueType['getMenuProps']>
+    | ReturnType<SelectReturnValueType['getMenuProps']>
   onChange?: (value: string | null) => void
   onClearButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void
   toggleButtonProps:
-  | ReturnType<ComboboxReturnValueType['getToggleButtonProps']>
-  | ReturnType<SelectReturnValueType['getToggleButtonProps']>
+    | ReturnType<ComboboxReturnValueType['getToggleButtonProps']>
+    | ReturnType<SelectReturnValueType['getToggleButtonProps']>
   tooltipText: string
   value?: string
   popupPosition?: PopupPosition

@@ -2,10 +2,10 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 
 import { SelectChildrenType } from './types'
 
-export type OnChangeType = (value: string | null) => void
+export type OnChangeType<T> = (value: T) => void
 export type PopupPosition = 'above' | 'below' // | 'auto'
 
-export interface SelectBaseProps extends ComponentWithClass {
+export interface SelectBaseProps<T> extends ComponentWithClass {
   /**
    * Collection of options to display within the Select.
    */
@@ -21,7 +21,7 @@ export interface SelectBaseProps extends ComponentWithClass {
   /**
    * The initially selected item when the component is uncontrolled.
    */
-  initialValue?: string | null
+  initialValue?: T
   /**
    * Toggles whether the component is disabled or not (preventing user interaction).
    */
@@ -41,9 +41,9 @@ export interface SelectBaseProps extends ComponentWithClass {
   /**
    * Optional handler invoked when the selected value changes.
    */
-  onChange?: OnChangeType
+  onChange?: OnChangeType<T>
   /**
    * The selected value when the component is controlled.
    */
-  value?: string | null
+  value?: T
 }

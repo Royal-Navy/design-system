@@ -25,7 +25,7 @@ interface FooterProps {
   /**
    * Callback function triggered when the rows-per-page value changes.
    */
-  onRowsPerPageChange: BaseSelectOnChangeType
+  onRowsPerPageChange: BaseSelectOnChangeType<string | null>
   /**
    * Current pagination state object.
    */

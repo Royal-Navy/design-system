@@ -16,7 +16,7 @@ import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useToggleButton } from './hooks/useToggleButton'
 
-export interface AutocompleteProps extends SelectBaseProps {
+export interface AutocompleteProps extends SelectBaseProps<string | null> {
   /**
    * Whether to hide the clear button. (Note that the component can still
    * be cleared by manually deleting the text in the input.)

@@ -5,6 +5,8 @@ import { StyledOption } from './partials/StyledOption'
 import { StyledOptionBadge } from './partials/StyledOptionBadge'
 import { StyledOptionText } from './partials/StyledOptionText'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
+import { StyledCheckbox } from './partials/StyledCheckbox'
 
 type CustomBadgeProps = Omit<BadgeProps, 'children'>
 
@@ -16,6 +18,8 @@ export interface SelectBaseOptionProps extends ComponentWithClass {
   value: string
   title?: string
   isDisabled?: boolean
+  showCheckbox?: boolean
+  isSelected?: boolean
 }
 
 export interface SelectBaseOptionAsStringProps extends SelectBaseOptionProps {
@@ -35,6 +39,8 @@ export const SelectBaseOption = React.forwardRef<
       isHighlighted,
       title,
       isDisabled,
+      showCheckbox,
+      isSelected,
       ...rest
     },
     ref
@@ -47,6 +53,13 @@ export const SelectBaseOption = React.forwardRef<
         disabled={isDisabled}
         {...rest}
       >
+        {showCheckbox && (
+          <StyledCheckbox
+            isDisabled={isDisabled}
+            checked={isSelected}
+            variant={CHECKBOX_RADIO_VARIANT.NO_CONTAINER}
+          />
+        )}
         {icon}
         <StyledOptionText title={title}>{children}</StyledOptionText>
         {badge && (

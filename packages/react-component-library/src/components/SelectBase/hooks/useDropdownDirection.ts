@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { PopupPosition } from '../../SelectBase/SelectBaseProps'
+import { PopupPosition } from '../SelectBaseProps'
 
 export function useDropdownDirection(dropdownHeight = 230) {
   const triggerRef = useRef<HTMLElement>(null)
