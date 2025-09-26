@@ -150,6 +150,11 @@ export interface DataGridBaseProps<T extends object>
    * Whether to show the "Showing X to Y of Z" text in the RowsPerPage component.
    */
   showRowsPerPageItemRange?: boolean
+  /**
+   * Whether to reset the current page index when the data changes.
+   * Defaults to true.
+   */
+  autoResetPageIndex?: boolean
 }
 
 export interface DataGridPropsWithExternalSorting<T extends object>
@@ -305,6 +310,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     sorting: externalSorting,
     showRowsPerPageItemRange,
     totalCount,
+    autoResetPageIndex,
     ...rest
   } = props
 
@@ -421,6 +427,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     getSubRows: (row) => row?.subRows || [],
     debugTable,
     manualSorting,
+    autoResetPageIndex,
     ...rest,
     // Prefer consumer-provided getRowId if present in props; fall back to default
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

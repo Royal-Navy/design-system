@@ -163,6 +163,9 @@ export default {
       control: 'select',
       options: ['scroll', 'autoHeight'],
     },
+    autoResetPageIndex: {
+      control: 'boolean',
+    },
   },
 } as Meta<typeof DataGrid>
 
@@ -1003,6 +1006,49 @@ ManualPaginationWithItemRange.parameters = {
   docs: {
     description: {
       story: `This example shows manual pagination with the item range display.`,
+    },
+  },
+}
+
+export const DataUpdates: StoryFn<typeof DataGrid> = (props) => {
+  const [updateData, setUpdateData] = useState(props.data)
+
+  const handleUpdateClick = () => {
+    setUpdateData((prev: Order[]) => {
+      return prev.map((item) => ({
+        ...item,
+        quantity: faker.number.int({ min: 1, max: 100 }),
+      }))
+    })
+  }
+
+  return (
+    <Wrapper $hasScrolling>
+      <DataGrid
+        {...props}
+        data={updateData}
+        footerLeftSlot={
+          <Button size="small" onClick={handleUpdateClick}>
+            Update quantities
+          </Button>
+        }
+      />
+    </Wrapper>
+  )
+}
+
+DataUpdates.args = {
+  columns,
+  data: generateRandomData(500),
+  layout: 'scroll',
+  autoResetPageIndex: undefined,
+}
+
+DataUpdates.parameters = {
+  docs: {
+    description: {
+      story:
+        'By default the DataGrid will reset the page index after a data refresh. Set `autoResetPageIndex` to false to override this behaviour',
     },
   },
 }
