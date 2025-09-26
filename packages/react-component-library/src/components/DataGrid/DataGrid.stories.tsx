@@ -1006,3 +1006,46 @@ ManualPaginationWithItemRange.parameters = {
     },
   },
 }
+
+export const DataUpdates: StoryFn<typeof DataGrid> = (props) => {
+  const [updateData, setUpdateData] = useState(props.data)
+
+  function handleUpdateClick() {
+    setUpdateData((prev: Order[]) => {
+      return prev.map((item) => ({
+        ...item,
+        quantity: faker.number.int({ min: 1, max: 100 }),
+      }))
+    })
+  }
+
+  return (
+    <Wrapper $hasScrolling>
+      <DataGrid
+        {...props}
+        data={updateData}
+        footerLeftSlot={
+          <Button size="small" onClick={handleUpdateClick}>
+            Update quantities
+          </Button>
+        }
+      />
+    </Wrapper>
+  )
+}
+
+DataUpdates.args = {
+  columns,
+  data: generateRandomData(500),
+  layout: 'scroll',
+  autoResetPageIndex: true,
+}
+
+DataUpdates.parameters = {
+  docs: {
+    description: {
+      story:
+        'By default the DataGrid will reset the page index after a data refresh. Set `autoRefreshPathIndex` to false to override this behaviour',
+    },
+  },
+}
