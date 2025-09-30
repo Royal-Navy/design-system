@@ -1,4 +1,4 @@
-name: Build & Test
+onarame: Build & Test
 
 on:
   pull_request:
@@ -122,6 +122,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.nodejs.executable=${{ env.NODE_HOME }}/bin/node
 
   Build_storybook_e2e:
     runs-on: ubuntu-latest
