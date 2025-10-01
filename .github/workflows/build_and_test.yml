@@ -117,7 +117,7 @@ jobs:
           pnpm --prefix packages/react-component-library run test --ci --coverage --silent --no-cache --reporters=default --reporters=jest-junit --runInBand --testResultsProcessor=jest-sonar-reporter
 
       - name: SonarCloud Scan
-        uses: Royal-Navy/design-system-sonarcloud-action@master
+        uses: SonarSource/sonarcloud-github-action@v2
         if: (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && github.actor != 'dependabot[bot]'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
