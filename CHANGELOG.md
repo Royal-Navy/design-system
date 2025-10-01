@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.47.0](https://github.com/Royal-Navy/design-system/compare/4.46.0...4.47.0) (2025-10-01)
+
+### Features
+
+- **DataGrid:** Expose autoResetPageIndex ([af6b961](https://github.com/Royal-Navy/design-system/commit/af6b961d51c17d25ece0a65eebabad865b264ec1))
+
 # [4.46.0](https://github.com/Royal-Navy/design-system/compare/4.45.0...4.46.0) (2025-09-17)
 
 ### Features
