@@ -26,7 +26,11 @@ type DataRow = {
 async function hackyWaitFor(customDelay?: number) {
   // @tanstack/react-table updates asynchronously and
   // waitFor swallows failed assertions (untrustworthy)
-  return new Promise((resolve) => setTimeout(resolve, customDelay ?? 100))
+  const isGithubAction =
+    process.env.GITHUB_ACTIONS === 'true' || process.env.GITHUB_ACTIONS === '1'
+  return new Promise((resolve) =>
+    setTimeout(resolve, customDelay ?? isGithubAction ? 500 : 100)
+  )
 }
 
 const PAGINATED_DATA = Array.from({ length: 1000 }, (_, i) => ({

@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker'
 import React, { useCallback, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { spacing } from '@royalnavy/design-tokens'
@@ -31,142 +32,21 @@ const disableEmptyTableHeaderRule = {
   },
 }
 
-// const generateRandomData = (length: number): Order[] => {
-//   const data: Order[] = Array.from({ length }, (_, i) => {
-//     return {
-//       id: i + 1,
-//       productName: faker.commerce.productName(),
-//       quantity: faker.number.int({ min: 1, max: 100 }),
-//       price: `£${faker.commerce.price()}`,
-//     }
-//   })
+const generateRandomData = (length: number): Order[] => {
+  const data: Order[] = Array.from({ length }, (_, i) => {
+    return {
+      id: i + 1,
+      productName: faker.commerce.productName(),
+      quantity: faker.number.int({ min: 1, max: 100 }),
+      price: `£${faker.commerce.price()}`,
+    }
+  })
 
-//   return data
-// }
+  return data
+}
 
-// Static copy from Faker (play nice with Chromatic snapshots)
-const data: Order[] = [
-  {
-    id: 1,
-    productName: 'Unbranded Steel Sausages',
-    quantity: 59,
-    price: '£782.00',
-  },
-  {
-    id: 2,
-    productName: 'Modern Plastic Sausages',
-    quantity: 38,
-    price: '£175.00',
-  },
-  {
-    id: 3,
-    productName: 'Oriental Bronze Tuna',
-    quantity: 34,
-    price: '£72.00',
-  },
-  {
-    id: 4,
-    productName: 'Rustic Steel Bike',
-    quantity: 59,
-    price: '£693.00',
-  },
-  {
-    id: 5,
-    productName: 'Electronic Frozen Chips',
-    quantity: 11,
-    price: '£837.00',
-  },
-  {
-    id: 6,
-    productName: 'Small Bronze Computer',
-    quantity: 111,
-    price: '£694.00',
-  },
-  {
-    id: 7,
-    productName: 'Licensed Steel Hat',
-    quantity: 84,
-    price: '£415.00',
-  },
-  {
-    id: 8,
-    productName: 'Intelligent Steel Ball',
-    quantity: 14,
-    price: '£441.00',
-  },
-  {
-    id: 9,
-    productName: 'Licensed Concrete Bacon',
-    quantity: 68,
-    price: '£337.00',
-  },
-  {
-    id: 10,
-    productName: 'Practical Wooden Ball',
-    quantity: 10,
-    price: '£673.00',
-  },
-  {
-    id: 11,
-    productName: 'Handcrafted Wooden Table',
-    quantity: 25,
-    price: '£512.00',
-  },
-  {
-    id: 12,
-    productName: 'Ergonomic Cotton Chair',
-    quantity: 47,
-    price: '£299.00',
-  },
-  {
-    id: 13,
-    productName: 'Fantastic Granite Shoes',
-    quantity: 19,
-    price: '£120.00',
-  },
-  {
-    id: 14,
-    productName: 'Incredible Plastic Gloves',
-    quantity: 73,
-    price: '£89.00',
-  },
-  {
-    id: 15,
-    productName: 'Tasty Fresh Tuna',
-    quantity: 56,
-    price: '£230.00',
-  },
-  {
-    id: 16,
-    productName: 'Awesome Rubber Keyboard',
-    quantity: 33,
-    price: '£410.00',
-  },
-  {
-    id: 17,
-    productName: 'Refined Concrete Soap',
-    quantity: 22,
-    price: '£58.00',
-  },
-  {
-    id: 18,
-    productName: 'Sleek Steel Mouse',
-    quantity: 41,
-    price: '£199.00',
-  },
-  {
-    id: 19,
-    productName: 'Gorgeous Wooden Pizza',
-    quantity: 15,
-    price: '£320.00',
-  },
-  {
-    id: 20,
-    productName: 'Incredible Fresh Salad',
-    quantity: 60,
-    price: '£150.00',
-  },
-]
+faker.seed(54321)
+const data: Order[] = generateRandomData(20)
 
 const subRowsData = [
   {
@@ -282,6 +162,9 @@ export default {
     layout: {
       control: 'select',
       options: ['scroll', 'autoHeight'],
+    },
+    autoResetPageIndex: {
+      control: 'boolean',
     },
   },
 } as Meta<typeof DataGrid>
@@ -1123,6 +1006,49 @@ ManualPaginationWithItemRange.parameters = {
   docs: {
     description: {
       story: `This example shows manual pagination with the item range display.`,
+    },
+  },
+}
+
+export const DataUpdates: StoryFn<typeof DataGrid> = (props) => {
+  const [updateData, setUpdateData] = useState(props.data)
+
+  const handleUpdateClick = () => {
+    setUpdateData((prev: Order[]) => {
+      return prev.map((item) => ({
+        ...item,
+        quantity: faker.number.int({ min: 1, max: 100 }),
+      }))
+    })
+  }
+
+  return (
+    <Wrapper $hasScrolling>
+      <DataGrid
+        {...props}
+        data={updateData}
+        footerLeftSlot={
+          <Button size="small" onClick={handleUpdateClick}>
+            Update quantities
+          </Button>
+        }
+      />
+    </Wrapper>
+  )
+}
+
+DataUpdates.args = {
+  columns,
+  data: generateRandomData(500),
+  layout: 'scroll',
+  autoResetPageIndex: undefined,
+}
+
+DataUpdates.parameters = {
+  docs: {
+    description: {
+      story:
+        'By default the DataGrid will reset the page index after a data refresh. Set `autoResetPageIndex` to false to override this behaviour',
     },
   },
 }
