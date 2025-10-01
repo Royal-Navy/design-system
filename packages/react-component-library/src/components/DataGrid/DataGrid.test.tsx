@@ -1732,6 +1732,56 @@ describe('DataGrid', () => {
     })
   })
 
+  describe('autoresetpageindex', () => {
+    it('should reset pagination by default when data changes', async () => {
+      const Wrapper = () => {
+        const [rows, setRows] = useState(PAGINATED_DATA)
+        return (
+          <>
+            <Button onClick={() => setRows([...PAGINATED_DATA])}>Update</Button>
+            <DataGrid data={rows} columns={columns} />
+          </>
+        )
+      }
+
+      render(<Wrapper />)
+
+      await userEvent.click(screen.getByLabelText('Next page'))
+      expect(screen.getByLabelText('Enter page number')).toHaveValue('2')
+
+      await userEvent.click(screen.getByRole('button', { name: 'Update' }))
+      await hackyWaitFor()
+
+      expect(screen.getByLabelText('Enter page number')).toHaveValue('1')
+    })
+
+    it('should maintain page index when flag is set', async () => {
+      const Wrapper = () => {
+        const [rows, setRows] = useState(PAGINATED_DATA)
+        return (
+          <>
+            <Button onClick={() => setRows([...PAGINATED_DATA])}>Update</Button>
+            <DataGrid
+              data={rows}
+              columns={columns}
+              autoResetPageIndex={false}
+            />
+          </>
+        )
+      }
+
+      render(<Wrapper />)
+
+      await userEvent.click(screen.getByLabelText('Next page'))
+      expect(screen.getByLabelText('Enter page number')).toHaveValue('2')
+
+      await userEvent.click(screen.getByRole('button', { name: 'Update' }))
+      await hackyWaitFor()
+
+      expect(screen.getByLabelText('Enter page number')).toHaveValue('2')
+    })
+  })
+
   describe('rows per page', () => {
     it('updates the page size when the rows per page component is changed', async () => {
       render(<DataGrid data={PAGINATED_DATA} columns={columns} />)
