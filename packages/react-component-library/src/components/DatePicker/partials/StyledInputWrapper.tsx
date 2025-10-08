@@ -12,7 +12,7 @@ export const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
     $isRange &&
     css`
       input {
-        cursor: default;
+        cursor: pointer;
       }
     `}
 `
