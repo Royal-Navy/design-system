@@ -122,3 +122,18 @@ export const Blank = Template.bind({})
 Blank.args = {
   'aria-label': 'Blank modal',
 }
+
+export const AsyncAction = Template.bind({})
+AsyncAction.storyName = 'Async loading'
+AsyncAction.args = {
+  title: 'Example Title',
+  primaryButton: {
+    ...primaryButton,
+    onClick: () =>
+      new Promise((resolve) => {
+        setTimeout(resolve, 2000)
+      }),
+  },
+  secondaryButton,
+  tertiaryButton,
+}

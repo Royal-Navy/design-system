@@ -1,6 +1,12 @@
 import React from 'react'
 
-import { render, RenderResult, fireEvent } from '@testing-library/react'
+import {
+  render,
+  RenderResult,
+  fireEvent,
+  waitFor,
+  screen,
+} from '@testing-library/react'
 
 import { ButtonProps } from '../Button'
 import { Modal } from './Modal'
@@ -273,6 +279,57 @@ describe('Modal', () => {
 
     it('does not generate new IDs', () => {
       expect(getIds()).toEqual(initialIds)
+    })
+  })
+
+  it('disables the buttons when `primaryButton.onClick` is async and primary is clicked', async () => {
+    let resolvePromise: () => void = () => {}
+
+    const onClickMock: (
+      event: React.MouseEvent<HTMLButtonElement>
+    ) => Promise<void> = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          resolvePromise = resolve
+        })
+    )
+
+    const asyncPrimaryButton: ButtonProps = {
+      onClick: onClickMock,
+      children: 'Confirm',
+    }
+
+    render(
+      <Modal
+        isOpen
+        title="Modal Title"
+        primaryButton={asyncPrimaryButton}
+        secondaryButton={secondaryButton}
+        tertiaryButton={tertiaryButton}
+      >
+        <span>Modal content</span>
+      </Modal>
+    )
+
+    fireEvent.click(screen.getByTestId('modal-primary'))
+
+    expect(await screen.findByTestId('loading-icon')).toBeInTheDocument()
+
+    const buttons = screen.getAllByRole('button')
+    const modalButtons = buttons.slice(1, 4)
+
+    modalButtons.forEach((button) => {
+      expect(button).toBeDisabled()
+    })
+
+    resolvePromise()
+
+    await waitFor(() => {
+      expect(screen.queryByTestId('loading-icon')).not.toBeInTheDocument()
+    })
+
+    modalButtons.forEach((button) => {
+      expect(button).toBeEnabled()
     })
   })
 })
