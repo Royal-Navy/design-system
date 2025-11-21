@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.48.0](https://github.com/Royal-Navy/design-system/compare/4.47.2...4.48.0) (2025-11-21)
+
+### Features
+
+- **Modal:** Show loading spinner if onClick is async ([801c9a7](https://github.com/Royal-Navy/design-system/commit/801c9a71a2a331fb62a21dfe10318682bdab4861))
+
 ## [4.47.2](https://github.com/Royal-Navy/design-system/compare/4.47.1...4.47.2) (2025-10-09)
 
 ### Bug Fixes

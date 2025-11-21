@@ -60,7 +60,7 @@ importers:
         specifier: ^7.24.7
         version: 7.24.7(@babel/core@7.25.2)
       '@royalnavy/eslint-config-react':
-        specifier: ^4.47.2
+        specifier: ^4.48.0
         version: link:../eslint-config-react
       '@testing-library/jest-dom':
         specifier: ^6.5.0
@@ -195,7 +195,7 @@ importers:
         specifier: ^7.24.7
         version: 7.24.7(@babel/core@7.25.2)
       '@royalnavy/eslint-config-react':
-        specifier: ^4.47.2
+        specifier: ^4.48.0
         version: link:../eslint-config-react
       '@svgr/cli':
         specifier: ^8.1.0
@@ -243,13 +243,13 @@ importers:
         specifier: ^2.9.2
         version: 2.11.8
       '@royalnavy/design-tokens':
-        specifier: ^4.47.2
+        specifier: ^4.48.0
         version: link:../design-tokens
       '@royalnavy/fonts':
-        specifier: ^4.47.2
+        specifier: ^4.48.0
         version: link:../fonts
       '@royalnavy/icon-library':
-        specifier: ^4.47.2
+        specifier: ^4.48.0
         version: link:../icon-library
       '@tanstack/react-table':
         specifier: ^8.21.3
@@ -358,7 +358,7 @@ importers:
         specifier: ^1.47.2
         version: 1.47.2
       '@royalnavy/eslint-config-react':
-        specifier: ^4.47.2
+        specifier: ^4.48.0
         version: link:../eslint-config-react
       '@storybook/addon-a11y':
         specifier: ^8.3.4
@@ -7414,6 +7414,7 @@ packages:
       {
         integrity: sha512-+kn8561vHAY+dt+0gMqqj1oY+g5xWrsuGMk4QGxotT2WS545nVqqjs37z6hrYfIuucwqthzwJfCJUEYqixyljg==,
       }
+    deprecated: ⚠️ The 'expect-playwright' package is deprecated. The Playwright core assertions (via @playwright/test) now cover the same functionality. Please migrate to built-in expect. See https://playwright.dev/docs/test-assertions for migration.
 
   expect@29.7.0:
     resolution:
@@ -9239,6 +9240,7 @@ packages:
       {
         integrity: sha512-+dGZ1X2KqtwXaabVjTGxy0a3VzYfvYsWaRcuO8vMhyclHSOpGSI1+5cmlqzzCwQ3+fv0EjkTc7I5aV9lo08dYw==,
       }
+    deprecated: ⚠️ The 'jest-playwright-preset' package is deprecated. Please migrate to Playwright's built-in test runner (@playwright/test) which now includes full Jest-style features and parallel testing. See https://playwright.dev/docs/intro for details.
     peerDependencies:
       jest: ^29.3.1
       jest-circus: ^29.3.1
@@ -9262,6 +9264,7 @@ packages:
       {
         integrity: sha512-80Y6snDyb0p8GG83pDxGI/kQzwVTkCxc7ep5FPe/F6JYdvRDhwr6RzRmPSP7SEwuLhxo80lBS/NqOdUIbHIfhw==,
       }
+    deprecated: ⚠️ The 'jest-process-manager' package is deprecated. Please migrate to Playwright's built-in test runner (@playwright/test) which now includes full Jest-style features and parallel testing. See https://playwright.dev/docs/intro for details.
 
   jest-regex-util@29.6.3:
     resolution:
