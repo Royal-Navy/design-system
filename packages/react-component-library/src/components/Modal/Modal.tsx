@@ -1,4 +1,4 @@
-import React, { useRef, useImperativeHandle } from 'react'
+import React, { useRef, useImperativeHandle, useState } from 'react'
 import { IconForward } from '@royalnavy/icon-library'
 
 import { ButtonProps } from '../Button'
@@ -100,10 +100,34 @@ export const Modal = React.forwardRef<ModalImperativeHandle, ModalProps>(
     ref
   ) => {
     const dialogRef = useRef<HTMLDialogElement>(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     const primaryButtonWithIcon = primaryButton && {
-      icon: <IconForward data-testid="modal-primary-confirm" />,
       ...primaryButton,
+      icon:
+        'icon' in primaryButton ? (
+          primaryButton.icon
+        ) : (
+          <IconForward data-testid="modal-primary-confirm" />
+        ),
+      onClick: async (event: React.MouseEvent<HTMLButtonElement>) => {
+        setIsLoading(true)
+
+        await primaryButton.onClick?.(event)
+
+        setIsLoading(false)
+      },
+      isLoading,
+    }
+
+    const modifiedSecondaryButton = secondaryButton && {
+      ...secondaryButton,
+      isDisabled: isLoading || secondaryButton.isDisabled,
+    }
+
+    const modifiedTertiaryButton = tertiaryButton && {
+      ...tertiaryButton,
+      isDisabled: isLoading || tertiaryButton.isDisabled,
     }
 
     const descriptionId = useExternalId(
@@ -157,8 +181,8 @@ export const Modal = React.forwardRef<ModalImperativeHandle, ModalProps>(
           {(primaryButton || secondaryButton || tertiaryButton) && (
             <Footer
               primaryButton={primaryButtonWithIcon}
-              secondaryButton={secondaryButton}
-              tertiaryButton={tertiaryButton}
+              secondaryButton={modifiedSecondaryButton}
+              tertiaryButton={modifiedTertiaryButton}
             />
           )}
         </StyledMain>
