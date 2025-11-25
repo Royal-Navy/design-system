@@ -1,5 +1,5 @@
 import React, { forwardRef, useRef } from 'react'
-import { BasePlacement, Placement, VariationPlacement } from '@popperjs/core'
+import { Placement } from '@floating-ui/react'
 import { Transition } from 'react-transition-group'
 import mergeRefs from 'react-merge-refs'
 
@@ -13,6 +13,8 @@ import { StyledArrow } from './partials/StyledArrow'
 import { useFloatingElement } from '../../hooks/useFloatingElement'
 import { FLOATING_BOX_SCHEME } from './constants'
 import { useExternalId } from '../../hooks/useExternalId'
+
+type BasePlacement = 'top' | 'right' | 'bottom' | 'left'
 
 export interface FloatingBoxBaseProps
   extends PositionType,
@@ -81,11 +83,8 @@ export const FloatingBox = forwardRef<HTMLDivElement, FloatingBoxProps>(
       arrowElementRef,
       styles,
       attributes,
+      placement: calculatedPlacement,
     } = useFloatingElement(placement, undefined, targetElement)
-
-    const calculatedPlacement = attributes?.popper?.[
-      'data-popper-placement'
-    ] as BasePlacement | VariationPlacement | undefined
 
     const basePlacement = calculatedPlacement?.split('-', 1)?.[0] as
       | BasePlacement
