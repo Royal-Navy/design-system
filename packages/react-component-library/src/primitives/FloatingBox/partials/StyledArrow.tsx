@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
-import { BasePlacement } from '@popperjs/core'
+
+type BasePlacement = 'top' | 'right' | 'bottom' | 'left'
 
 interface StyledArrowProps {
   $placement?: BasePlacement
