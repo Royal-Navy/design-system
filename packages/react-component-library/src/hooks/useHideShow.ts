@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { useDocumentClick } from '.'
 
@@ -20,11 +20,20 @@ export function useHideShow(
   initialIsVisible = false
 ) {
   const [isVisible, setIsVisible] = useState(initialIsVisible)
+  
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const floatingBoxChildrenRef = useRef(null)
+  const isVisibleRef = useRef(isVisible)
+  const mouseEventsRef = useRef<HideShowMouseEvents>()
+
+  isVisibleRef.current = isVisible
+
+  useEffect(() => {
+    mouseEventsRef.current = undefined
+  }, [closeDelay])
 
   const hideElement = useCallback(() => {
-    if (!isVisible) {
+    if (!isVisibleRef.current) {
       return
     }
 
@@ -37,10 +46,10 @@ export function useHideShow(
       setIsVisible(false)
       timerRef.current = null
     }, closeDelay)
-  }, [closeDelay, isVisible])
+  }, [closeDelay])
 
-  function showElement() {
-    if (isVisible) {
+  const showElement = useCallback(() => {
+    if (isVisibleRef.current) {
       return
     }
 
@@ -49,23 +58,32 @@ export function useHideShow(
     }
 
     setIsVisible(true)
-  }
+  }, [])
 
   useDocumentClick(floatingBoxChildrenRef, hideElement, isClick)
 
-  function getMouseEvents() {
+  if (!mouseEventsRef.current) {
     if (isClick) {
-      return {
-        onClick: isVisible ? hideElement : showElement,
+      mouseEventsRef.current = {
+        onClick: () => {
+          if (isVisibleRef.current) {
+            hideElement()
+          } else {
+            showElement()
+          }
+        },
+      }
+    } else {
+      mouseEventsRef.current = {
+        onMouseEnter: showElement,
+        onMouseLeave: hideElement,
       }
     }
-
-    return { onMouseEnter: showElement, onMouseLeave: hideElement }
   }
 
   return {
     floatingBoxChildrenRef,
     isVisible,
-    mouseEvents: getMouseEvents(),
+    mouseEvents: mouseEventsRef.current,
   }
 }

@@ -51,3 +51,48 @@ export const Open = Template.bind({})
 Open.args = {
   isVisible: true,
 }
+
+export const Multi: StoryFn<typeof Popover> = (args) => (
+  <div>
+    <Popover {...args}>
+      <div
+        css={`
+          display: inline-block;
+          padding: 1rem;
+          background-color: #c9c9c9;
+          margin-bottom: 10px;
+        `}
+      >
+        Hover on me
+      </div>
+    </Popover>
+    <br />
+    <Popover {...args}>
+      <div
+        css={`
+          display: inline-block;
+          padding: 1rem;
+          background-color: #c9c9c9;
+          margin-bottom: 10px;
+        `}
+      >
+        Hover on me
+      </div>
+    </Popover>
+    <br />
+    <Popover {...args}>
+      <div
+        css={`
+          display: inline-block;
+          padding: 1rem;
+          background-color: #c9c9c9;
+          margin-bottom: 10px;
+        `}
+      >
+        Hover on me
+      </div>
+    </Popover>
+  </div>
+)
+Multi.storyName = 'Multiple Popovers'
+Multi.args = {}
