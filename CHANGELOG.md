@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.48.2](https://github.com/Royal-Navy/design-system/compare/4.48.1...4.48.2) (2025-11-26)
+
+### Bug Fixes
+
+- **Popover:** Fix popovers from staying open on fast mouse movements ([4ab2c2b](https://github.com/Royal-Navy/design-system/commit/4ab2c2bde3dd667e117ccb031fd5cd4a98edec9a))
+
 ## [4.48.1](https://github.com/Royal-Navy/design-system/compare/4.48.0...4.48.1) (2025-11-26)
 
 ### Bug Fixes
