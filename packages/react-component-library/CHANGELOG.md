@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.48.1](https://github.com/Royal-Navy/design-system/compare/4.48.0...4.48.1) (2025-11-26)
+
+### Bug Fixes
+
+- **Alert:** Remove margin on top of Dismiss button ([c5cfa6c](https://github.com/Royal-Navy/design-system/commit/c5cfa6c736f4351338b0873cc81613e761ac12bf))
+
 # [4.48.0](https://github.com/Royal-Navy/design-system/compare/4.47.2...4.48.0) (2025-11-21)
 
 ### Features
