@@ -14,6 +14,11 @@ import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useSelectMenu } from './hooks/useSelectMenu'
 import { SelectOptionProps } from './SelectOption'
 import { useDropdownDirection } from '../SelectBase/hooks/useDropdownDirection'
+import {
+  isRemovalAction,
+  isSelectionAction,
+  toggleItemInArray,
+} from './helpers/multiSelectHelpers'
 
 export interface SingleSelectProps extends SelectBaseProps<string | null> {
   isMulti?: false
@@ -87,20 +92,11 @@ export const Select = (props: SelectProps) => {
   const multipleSelection = useMultipleSelection({
     selectedItems: isMulti ? currentSelectedItems : [],
     onStateChange({ selectedItems: newSelectedItems, type }) {
-      switch (type) {
-        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
-        case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
-        case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
-        case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
-          if (newSelectedItems) {
-            if (!isControlled) {
-              setSelectedItems(newSelectedItems)
-            }
-            callMultiOnChange(newSelectedItems)
-          }
-          break
-        default:
-          break
+      if (isRemovalAction(type) && newSelectedItems) {
+        if (!isControlled) {
+          setSelectedItems(newSelectedItems)
+        }
+        callMultiOnChange(newSelectedItems)
       }
     },
   })
@@ -110,40 +106,27 @@ export const Select = (props: SelectProps) => {
     stateReducer(state, actionAndChanges) {
       const { changes, type } = actionAndChanges
 
-      switch (type) {
-        case useSelect.stateChangeTypes.MenuKeyDownEnter:
-        case useSelect.stateChangeTypes.MenuKeyDownSpaceButton:
-        case useSelect.stateChangeTypes.ItemClick:
-          return {
-            ...changes,
-            isOpen: true, // Keeps menu open after selection is made
-            highlightedIndex: state.highlightedIndex,
-          }
-        default:
-          return changes
+      if (isSelectionAction(type)) {
+        return {
+          ...changes,
+          isOpen: true, // Keeps menu open after selection is made
+          highlightedIndex: state.highlightedIndex,
+        }
       }
+
+      return changes
     },
     onStateChange({ type, selectedItem: newSelectedItem }) {
-      switch (type) {
-        case useSelect.stateChangeTypes.MenuKeyDownEnter:
-        case useSelect.stateChangeTypes.MenuKeyDownSpaceButton:
-        case useSelect.stateChangeTypes.ItemClick:
-          if (newSelectedItem) {
-            const index = currentSelectedItems.indexOf(newSelectedItem)
+      if (isSelectionAction(type) && newSelectedItem) {
+        const newItems = toggleItemInArray(
+          currentSelectedItems,
+          newSelectedItem
+        )
 
-            const newItems =
-              index === -1
-                ? [...currentSelectedItems, newSelectedItem]
-                : currentSelectedItems.filter((_, i) => i !== index)
-
-            if (!isControlled) {
-              setSelectedItems(newItems)
-            }
-            callMultiOnChange(newItems)
-          }
-          break
-        default:
-          break
+        if (!isControlled) {
+          setSelectedItems(newItems)
+        }
+        callMultiOnChange(newItems)
       }
     },
   }
