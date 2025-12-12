@@ -2,7 +2,7 @@
   "name": "royal-navy-design-system",
   "private": true,
   "engines": {
-    "node": "^18.20.1"
+    "node": "^20.18.0"
   },
   "packageManager": "pnpm@9.1.1",
   "devDependencies": {
