@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.49.0](https://github.com/Royal-Navy/design-system/compare/4.48.2...4.49.0) (2025-12-12)
+
+### Features
+
+- **MultiSelect:** Add multi select variant into the current select ([5b350b0](https://github.com/Royal-Navy/design-system/commit/5b350b02024b5d324272d428c1358119fdfb59e6))
+
 ## [4.48.2](https://github.com/Royal-Navy/design-system/compare/4.48.1...4.48.2) (2025-11-26)
 
 ### Bug Fixes
