@@ -9,6 +9,9 @@ jobs:
   release:
     name: 'Release & Publish'
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # Required for OIDC trusted publishing
+      contents: write  # Required for creating releases
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -32,6 +35,9 @@ jobs:
         with:
           node-version-file: .nvmrc
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Update npm for trusted publishing
+        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: pnpm install
@@ -70,8 +76,6 @@ jobs:
 
       - name: Publish NPM packages
         if: steps.initversion.outputs.version != steps.extractver.outputs.version
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
         run: |
           npm publish --tag latest ./packages/design-tokens
           npm publish --tag latest ./packages/eslint-config-react
