@@ -135,7 +135,9 @@ export const AutoPositioning: StoryFn<typeof Select> = (args) => (
   <StyledBottomRightWrapper>
     <Select {...args}>
       {OPTIONS.map((x) => (
-        <SelectOption value={x.value}>{x.text}</SelectOption>
+        <SelectOption key={x.value} value={x.value}>
+          {x.text}
+        </SelectOption>
       ))}
     </Select>
   </StyledBottomRightWrapper>
@@ -157,7 +159,9 @@ export const MultiSelect: StoryFn<typeof Select> = (args) => (
   <StyledWrapper $isDisabled={args.isDisabled}>
     <Select {...args} isMulti>
       {OPTIONS.map((x) => (
-        <SelectOption value={x.value}>{x.text}</SelectOption>
+        <SelectOption key={x.value} value={x.value}>
+          {x.text}
+        </SelectOption>
       ))}
     </Select>
   </StyledWrapper>
@@ -169,7 +173,7 @@ export const MultiSelectWithDisabledOptions: StoryFn<typeof Select> = (
   <StyledWrapper>
     <Select {...args} isMulti>
       {OPTIONS.map((x, i) => (
-        <SelectOption value={x.value} isDisabled={i % 2 === 0}>
+        <SelectOption key={x.value} value={x.value} isDisabled={i % 2 === 0}>
           {x.text}
         </SelectOption>
       ))}
@@ -195,7 +199,9 @@ export const MultiSelectValue: StoryFn<typeof Select> = (args) => {
         }}
       >
         {OPTIONS.map((x) => (
-          <SelectOption value={x.value}>{x.text}</SelectOption>
+          <SelectOption key={x.value} value={x.value}>
+            {x.text}
+          </SelectOption>
         ))}
       </Select>
     </StyledWrapper>

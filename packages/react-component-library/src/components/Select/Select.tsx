@@ -171,27 +171,23 @@ export const Select = (props: SelectProps) => {
     [isMulti, selectedItems, selectedItem]
   )
 
-  const defaultOptions = {
-    onFocus: onInputFocusHandler,
-    onMouseDown: (event: React.MouseEvent<HTMLInputElement>) => {
-      // This is crucial for correct focus and click behavior
-      // Without this, Downshift internal state gets mixed up
-      event.preventDefault()
-    },
-  }
-  const toggleButtonOptions = isMulti
-    ? multipleSelection.getDropdownProps(defaultOptions)
-    : defaultOptions
-
   return (
     <SelectLayout
       hasSelectedItem={hasSelectedItem}
       id={id}
       inputProps={{
-        ...getToggleButtonProps(toggleButtonOptions),
+        ...getToggleButtonProps({
+          onFocus: onInputFocusHandler,
+          onMouseDown: (event) => {
+            // This is crucial for correct focus and click behavior
+            // Without this, Downshift internal state gets mixed up
+            event.preventDefault()
+          },
+        }),
         ref: mergeRefs([inputRef, triggerRef]),
         'aria-expanded': undefined,
       }}
+      inputWrapperProps={multipleSelection.getDropdownProps()}
       isOpen={isOpen}
       menuProps={getMenuProps({
         onKeyDown: onMenuKeyDownHandler,
