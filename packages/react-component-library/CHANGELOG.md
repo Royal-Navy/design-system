@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.49.1](https://github.com/Royal-Navy/design-system/compare/4.49.0...4.49.1) (2025-12-13)
+
+### Bug Fixes
+
+- **Select:** Resolve errors cause by select isMulti feature ([440ef86](https://github.com/Royal-Navy/design-system/commit/440ef866ea7a1c058edbc8bffe17608ed97319cd))
+
 # [4.49.0](https://github.com/Royal-Navy/design-system/compare/4.48.2...4.49.0) (2025-12-12)
 
 ### Features
