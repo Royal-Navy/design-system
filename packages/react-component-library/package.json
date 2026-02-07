@@ -154,7 +154,7 @@
     "undici": "^6.21.2",
     "url-search-params-polyfill": "^8.1.1",
     "wait-on": "^7.0.1",
-    "webpack": "^5.94.0",
+    "webpack": "^5.104.1",
     "webpack-bundle-analyzer": "^4.2.0",
     "webpack-cli": "^5.0.1",
     "webpack-merge": "^5.2.0"
