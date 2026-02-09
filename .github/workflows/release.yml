@@ -2,16 +2,28 @@ name: Release
 
 on:
   schedule:
-    - cron: '0 4 * * 1-5'
+    - cron: "0 4 * * 1-5"
   workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   release:
-    name: 'Release & Publish'
+    name: "Release & Publish"
     runs-on: ubuntu-latest
     permissions:
-      id-token: write  # Required for OIDC trusted publishing
-      contents: write  # Required for creating releases
+      id-token: write # Required for OIDC trusted publishing
+      contents: write # Required for creating releases
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -34,7 +46,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
 
       - name: Update npm for trusted publishing
         run: npm install -g npm@latest
@@ -83,10 +95,22 @@ jobs:
           npm publish --tag latest ./packages/icon-library
           npm publish --tag latest ./packages/react-component-library
 
-      - name: Publish Storybook
-        if: steps.initversion.outputs.version != steps.extractver.outputs.version
-        run: |
-          curl -X POST -d {} ${{ secrets.STORYBOOK_TOKEN }}
+      # - name: Publish Storybook
+      #   if: steps.initversion.outputs.version != steps.extractver.outputs.version
+      #   run: |
+      #     curl -X POST -d {} ${{ secrets.STORYBOOK_TOKEN }}
+
+      - name: Build Storybook Static
+        run: pnpm storybook:static
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./packages/react-component-library/.static_storybook"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       - name: Send notification on failure
         if: failure()
