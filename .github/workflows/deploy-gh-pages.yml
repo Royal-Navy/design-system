@@ -31,6 +31,9 @@ jobs:
       - name: Build stories
         run: pnpm storybook:static
 
+      - name: Add CNAME file for custom domain
+        run: echo "storybook.design-system.navy.digital.mod.uk" > ./packages/react-component-library/.static_storybook/CNAME
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
