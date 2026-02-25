@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.50.0](https://github.com/Royal-Navy/design-system/compare/4.49.1...4.50.0) (2026-02-25)
+
+### Bug Fixes
+
+- **Docs:** Add CNAME file for Storybook custom domain ([22873b5](https://github.com/Royal-Navy/design-system/commit/22873b5732ad72f3f860f05baa3a93547f35c109))
+
+### Features
+
+- **Switch:** Add variants to the switch options ([5d7422e](https://github.com/Royal-Navy/design-system/commit/5d7422e1895b4a89f7e07c80d9e4c9b8b351ac97))
+
 ## [4.49.1](https://github.com/Royal-Navy/design-system/compare/4.49.0...4.49.1) (2025-12-13)
 
 ### Bug Fixes
