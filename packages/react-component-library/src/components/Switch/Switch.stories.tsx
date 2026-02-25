@@ -1,7 +1,7 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 
-import { Switch, SwitchOption } from '.'
+import { Switch, SwitchOption, SWITCH_OPTION_VARIANT } from '.'
 import { COMPONENT_SIZE } from '../Forms'
 
 export default {
@@ -59,3 +59,28 @@ Small.args = {
   name: 'switch-small',
   size: COMPONENT_SIZE.SMALL,
 }
+
+export const Variants: StoryFn = () => (
+  <Switch key="variants" name="switch-variants" value="2">
+    <SwitchOption
+      label="Primary"
+      value="1"
+      variant={SWITCH_OPTION_VARIANT.PRIMARY}
+    />
+    <SwitchOption
+      label="Secondary"
+      value="2"
+      variant={SWITCH_OPTION_VARIANT.SECONDARY}
+    />
+    <SwitchOption
+      label="Tertiary"
+      value="3"
+      variant={SWITCH_OPTION_VARIANT.TERTIARY}
+    />
+    <SwitchOption
+      label="Danger"
+      value="4"
+      variant={SWITCH_OPTION_VARIANT.DANGER}
+    />
+  </Switch>
+)

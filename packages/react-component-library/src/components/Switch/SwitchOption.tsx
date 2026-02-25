@@ -1,8 +1,12 @@
 import React, { useRef } from 'react'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { ValueOf } from '../../helpers'
+import { SWITCH_OPTION_VARIANT } from './constants'
 import { StyledSwitchOption } from './partials/StyledSwitchOption'
 import { SwitchInput } from './partials/SwitchInput'
+
+export type SwitchOptionVariantType = ValueOf<typeof SWITCH_OPTION_VARIANT>
 
 export interface SwitchOptionProps extends ComponentWithClass {
   /**
@@ -33,6 +37,10 @@ export interface SwitchOptionProps extends ComponentWithClass {
    */
   isActive?: boolean
   /**
+   * Type of component to display (style varies accordingly).
+   */
+  variant?: SwitchOptionVariantType
+  /**
    * Handler invoked when the option is selected by end user.
    * @private
    */
@@ -47,6 +55,7 @@ export const SwitchOption = ({
   id,
   isActive,
   onChange,
+  variant = SWITCH_OPTION_VARIANT.PRIMARY,
 }: SwitchOptionProps) => {
   const localRef = useRef<HTMLInputElement>(null)
 
@@ -64,6 +73,7 @@ export const SwitchOption = ({
       htmlFor={`${id}-${label}`}
       $isActive={isActive}
       $isDisabled={isDisabled}
+      $variant={variant}
       aria-current={isActive}
       onKeyDown={handleKeyDown}
       tabIndex={0}
