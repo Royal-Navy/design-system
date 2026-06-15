@@ -1,5 +1,6 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
+import { IconInbox } from '@royalnavy/icon-library'
 
 import { SectionDivider } from './index'
 
@@ -39,3 +40,12 @@ DescriptionTitle.args = {
     "She must have hidden the plans in the escape pod. Send a detachment down to retrieve them, and see to it personally, Commander. There'll be no one to stop us this time! Don't underestimate the Force.",
 }
 DescriptionTitle.storyName = 'Title & Description'
+
+export const WithIcon = Template.bind({})
+WithIcon.args = {
+  icon: <IconInbox size={24} />,
+  title: 'Section title',
+  children:
+    "She must have hidden the plans in the escape pod. Send a detachment down to retrieve them, and see to it personally, Commander. There'll be no one to stop us this time! Don't underestimate the Force.",
+}
+WithIcon.storyName = 'Icon, Title & Description'

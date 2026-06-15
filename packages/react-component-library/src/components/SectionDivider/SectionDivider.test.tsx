@@ -42,4 +42,37 @@ describe('SectionDivider', () => {
       expect(wrapper.queryByText('Example description')).toBeInTheDocument()
     })
   })
+
+  describe('with icon', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SectionDivider
+          icon={<svg data-testid="example-icon" />}
+          title="Example title"
+        >
+          Example description
+        </SectionDivider>
+      )
+    })
+
+    it('renders the icon', () => {
+      expect(wrapper.queryByTestId('example-icon')).toBeInTheDocument()
+    })
+
+    it('renders the title text', () => {
+      expect(wrapper.queryByText('Example title')).toBeInTheDocument()
+    })
+  })
+
+  describe('without icon', () => {
+    beforeEach(() => {
+      wrapper = render(<SectionDivider title="Example title" />)
+    })
+
+    it('does not render an icon', () => {
+      expect(
+        wrapper.queryByTestId('sectiondivider-icon')
+      ).not.toBeInTheDocument()
+    })
+  })
 })
