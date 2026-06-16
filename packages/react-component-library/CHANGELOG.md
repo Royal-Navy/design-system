@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.51.0](https://github.com/Royal-Navy/design-system/compare/4.50.0...4.51.0) (2026-06-16)
+
+### Features
+
+- **SectionDivider:** Add icon support to the left of the title ([8cd52ab](https://github.com/Royal-Navy/design-system/commit/8cd52abb70d5d579f379f770e547e9a1120760ee))
+
 # [4.50.0](https://github.com/Royal-Navy/design-system/compare/4.49.1...4.50.0) (2026-02-25)
 
 ### Features
