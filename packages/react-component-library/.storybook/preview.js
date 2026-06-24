@@ -1,11 +1,52 @@
 import { DocsPage } from '@storybook/addon-docs/blocks'
 import isChromatic from 'chromatic'
 import React from 'react'
+import { lightTheme, darkTheme, color } from '@royalnavy/design-tokens'
 import '@royalnavy/fonts'
 import 'iframe-resizer/js/iframeResizer.contentWindow'
 import 'url-search-params-polyfill'
 
 import { GlobalStyleProvider } from '../src/styled-components/GlobalStyle'
+
+const THEMES = {
+  light: lightTheme,
+  dark: darkTheme,
+}
+
+function getThemeFromContext(context) {
+  return THEMES[context.globals.theme] ?? lightTheme
+}
+
+const ThemedCanvas = ({ theme, children }) => (
+  <GlobalStyleProvider theme={theme}>
+    <div
+      style={{
+        background: color('neutral', 'white', theme),
+        color: color('neutral', '600', theme),
+        minHeight: '100vh',
+        padding: '1rem 0',
+      }}
+    >
+      {children}
+    </div>
+  </GlobalStyleProvider>
+)
+
+export const globalTypes = {
+  theme: {
+    name: 'Theme',
+    description: 'Design System token set',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'paintbrush',
+      items: [
+        { value: 'light', title: 'Light' },
+        { value: 'dark', title: 'Dark' },
+      ],
+      dynamicTitle: true,
+    },
+  },
+}
 
 export const parameters = {
   jsx: {
@@ -54,14 +95,15 @@ export const parameters = {
 
 export const decorators = [
   // https://github.com/storybookjs/storybook/issues/15223#issuecomment-1092837912
-  (Story) => {
+  (Story, context) => {
+    const theme = getThemeFromContext(context)
     const queryParams = new URLSearchParams(window.location.search)
 
     if (queryParams.get('viewMode') === 'docs') {
       return Story()
     }
 
-    return <GlobalStyleProvider>{Story()}</GlobalStyleProvider>
+    return <ThemedCanvas theme={theme}>{Story()}</ThemedCanvas>
   },
 ]
 

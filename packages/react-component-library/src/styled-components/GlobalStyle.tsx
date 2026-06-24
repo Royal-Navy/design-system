@@ -1,7 +1,13 @@
 import React, { createContext, useMemo } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
-import { lightTheme, color, fontSize } from '@royalnavy/design-tokens'
+import {
+  lightTheme,
+  color,
+  fontSize,
+  getColorVariables,
+  Theme,
+} from '@royalnavy/design-tokens'
 
 export interface GlobalStyleContextDefaults {
   theme?: Record<string, unknown>
@@ -11,6 +17,23 @@ export interface GlobalStyleProviderProps {
   children?: React.ReactNode
   theme?: Record<string, unknown>
 }
+
+/**
+ * Expose the active theme's colour tokens as CSS custom properties on the
+ * root, so every `color(...)` reference (which resolves to a `var(--color-*)`)
+ * reacts to the theme — including content rendered through portals that sits
+ * outside the provider's DOM subtree.
+ */
+const ThemeVariables = createGlobalStyle<{
+  $variables: Record<string, string>
+}>`
+  :root {
+    ${({ $variables }) =>
+      Object.entries($variables)
+        .map(([name, value]) => `${name}: ${value};`)
+        .join('\n')}
+  }
+`
 
 /**
  * Globally setting `border-box`
@@ -50,6 +73,7 @@ const Fonts = createGlobalStyle`
   html {
     font-family: "lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: ${fontSize('m')};
+    color: ${color('neutral', '600')};
   }
 
   h1,
@@ -113,10 +137,16 @@ export const GlobalStyleProvider = ({
     [theme]
   )
 
+  const colorVariables = useMemo(
+    () => getColorVariables(theme as Theme),
+    [theme]
+  )
+
   return (
     <GlobalStyleContext.Provider value={contextValue}>
       <Normalize />
       <BoxSizing />
+      <ThemeVariables $variables={colorVariables} />
       <Hyperlinks />
       <Fonts />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
