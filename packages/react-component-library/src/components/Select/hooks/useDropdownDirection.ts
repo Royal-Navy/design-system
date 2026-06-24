@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { PopupPosition } from '../../SelectBase/SelectBaseProps'
 
-export function useDropdownDirection(dropdownHeight = 230) {
+export function useDropdownDirection(dropdownHeight = 230, isOpen = false) {
   const triggerRef = useRef<HTMLElement>(null)
   const [popupPosition, setPopupPosition] = useState<PopupPosition>('below')
 
@@ -25,14 +25,20 @@ export function useDropdownDirection(dropdownHeight = 230) {
   useEffect(() => {
     checkDirection()
 
-    window.addEventListener('scroll', checkDirection)
+    window.addEventListener('scroll', checkDirection, true)
     window.addEventListener('resize', checkDirection)
 
     return () => {
-      window.removeEventListener('scroll', checkDirection)
+      window.removeEventListener('scroll', checkDirection, true)
       window.removeEventListener('resize', checkDirection)
     }
   }, [checkDirection])
+
+  useEffect(() => {
+    if (isOpen) {
+      checkDirection()
+    }
+  }, [isOpen, checkDirection])
 
   return { triggerRef, popupPosition, checkDirection }
 }

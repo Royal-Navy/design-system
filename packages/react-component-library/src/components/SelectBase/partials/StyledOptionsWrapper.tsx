@@ -68,9 +68,10 @@ function getBoxShadow(position: PopupPosition = 'below') {
       bottom: -${TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.FORMS]};
       top: 0;
       box-shadow: 0 0 0 3px ${color('action', '500')},
-      0 0 0 6px ${color('action', '100')}, 0 2px 22px rgba(0, 0, 0, 0.2);
+        0 0 0 6px ${color('action', '100')}, 0 2px 22px rgba(0, 0, 0, 0.2);
       pointer-events: none;
       border-radius: ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]};
+    }
   `
 }
 
@@ -78,11 +79,12 @@ export const StyledOptionsWrapper = styled.div<StyledOptionsWrapperProps>`
   display: ${({ $isVisible }) => ($isVisible ? 'block' : 'none')};
   z-index: ${zIndex('dropdown', 1)};
   position: absolute;
+  overflow: visible;
   width: 100%;
 
   margin-bottom: 5px;
   border-radius: 0 0 ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]}
-  ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]};
+    ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]};
 
   ${({ $position }) =>
     $position === 'above' &&
@@ -91,7 +93,8 @@ export const StyledOptionsWrapper = styled.div<StyledOptionsWrapperProps>`
       top: auto;
       margin-bottom: 0;
       margin-top: 5px;
-      border-radius: ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]} ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]} 0 0;
+      border-radius: ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]}
+        ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]} 0 0;
     `}
   background: ${color('neutral', 'white')};
   ${({ $position }) => getTopBorder($position)}

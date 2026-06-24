@@ -1,4 +1,4 @@
-import { spacing } from '@royalnavy/design-tokens'
+import { spacing, zIndex } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 export const StyledFooter = styled.div<{ $isFullWidth: boolean }>`
@@ -10,6 +10,9 @@ export const StyledFooter = styled.div<{ $isFullWidth: boolean }>`
   ${({ $isFullWidth }) =>
     $isFullWidth
       ? css`
+          position: relative;
+          z-index: ${zIndex('dropdown', 1)};
+
           & > *:nth-child(1) {
             flex: 0 0 auto;
             margin-right: auto;

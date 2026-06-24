@@ -372,7 +372,7 @@ describe('Select', () => {
         }))
 
         wrapper = render(
-          <Select label="default props">
+          <Select label="default props" initialIsOpen>
             <SelectOption value="one">One</SelectOption>
             <SelectOption value="two">Two</SelectOption>
             <SelectOption value="three">Three</SelectOption>
@@ -399,6 +399,17 @@ describe('Select', () => {
         expect(optionsWrapper).toHaveStyleRule('top', '0', {
           modifier: '::before',
         })
+        expect(optionsWrapper).toHaveStyleRule(
+          'box-shadow',
+          expect.stringContaining('3px'),
+          {
+            modifier: '::before',
+          }
+        )
+        expect(wrapper.getByTestId('select-outer-wrapper')).toHaveStyleRule(
+          'border-radius',
+          '0 0 12px 12px'
+        )
       })
     })
   })
