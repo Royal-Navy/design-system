@@ -1,4 +1,4 @@
-import { color, fontSize } from '@royalnavy/design-tokens'
+import { color, fontSize, colorValue } from '@royalnavy/design-tokens'
 
 import { BUTTON_VARIANT } from '../constants'
 import { COMPONENT_SIZE } from '../../Forms'
@@ -38,12 +38,12 @@ export const STYLES_MAP: { [key: string]: ButtonStyles } = {
   [BUTTON_VARIANT.PRIMARY]: {
     default: {
       backgroundColor: color('action', '600'),
-      color: color('neutral', 'white'),
+      color: colorValue('neutral', 'white'),
       boxShadow: `0 0 0 1px ${color('action', '600')}`,
       textDecoration: 'none',
     },
     hover: {
-      backgroundColor: color('action', '700'),
+      backgroundColor: colorValue('action', '700'),
       boxShadow: `0 0 0 2px ${color('action', '900')}`,
     },
     focus: {
@@ -51,7 +51,7 @@ export const STYLES_MAP: { [key: string]: ButtonStyles } = {
       boxShadow: `0 0 0 3px ${color('action', '900')}`,
     },
     active: {
-      backgroundColor: color('action', '900'),
+      backgroundColor: colorValue('action', '900'),
       boxShadow: `0 0 0 3px ${color('action', '900')}`,
     },
     disabled: defaultDisabledStyle,
@@ -80,7 +80,7 @@ export const STYLES_MAP: { [key: string]: ButtonStyles } = {
   [BUTTON_VARIANT.TERTIARY]: {
     default: {
       backgroundColor: color('neutral', 'white'),
-      color: color('action', '600'),
+      color: color('action', '700'),
       boxShadow: `0 0 0 1px ${color('action', '600')}`,
       textDecoration: 'none',
     },
@@ -102,7 +102,7 @@ export const STYLES_MAP: { [key: string]: ButtonStyles } = {
   },
   [BUTTON_VARIANT.DANGER]: {
     default: {
-      color: color('neutral', 'white'),
+      color: colorValue('neutral', 'white'),
       backgroundColor: color('danger', '700'),
       textDecoration: 'none',
       boxShadow: `0 0 0 1px ${color('danger', '700')}`,
@@ -116,7 +116,7 @@ export const STYLES_MAP: { [key: string]: ButtonStyles } = {
       boxShadow: `0 0 0 3px ${color('danger', '900')}`,
     },
     active: {
-      backgroundColor: color('danger', '900'),
+      backgroundColor: colorValue('danger', '900'),
       boxShadow: `0 0 0 3px ${color('danger', '900')}`,
     },
 
@@ -125,7 +125,7 @@ export const STYLES_MAP: { [key: string]: ButtonStyles } = {
   [BUTTON_VARIANT.NO_CONTAINER]: {
     default: {
       backgroundColor: 'transparent',
-      color: color('action', '600'),
+      color: color('action', '700'),
       textDecoration: 'none',
       boxShadow: '0',
     },

@@ -2,11 +2,11 @@
   "color": {
     "neutral": {
       "black": {
-        "value": "#f8fafc",
+        "value": "#f6f8fa",
         "description": "Foreground (inverted in dark mode)"
       },
       "white": {
-        "value": "#1c2d39",
+        "value": "#1f3140",
         "description": "Raised surfaces, cards, panels (inverted in dark mode)"
       },
       "000": {
@@ -14,58 +14,58 @@
         "description": "Page background, Disabled button"
       },
       "100": {
-        "value": "#16242f",
+        "value": "#243542",
         "description": "Borders and dividers, Inactive tab"
       },
       "200": {
-        "value": "#2a3f4d",
+        "value": "#3a4f5e",
         "description": "Input borders, Disabled button border, Toggle off disabled"
       },
       "300": {
-        "value": "#3e5667",
+        "value": "#6a8093",
         "description": "Breadcrumb divider, Toggle off"
       },
       "400": {
-        "value": "#8da0ad",
+        "value": "#b7c5d0",
         "description": "Body text, Input labels, Disabled button label"
       },
       "500": {
-        "value": "#a7b6c1",
+        "value": "#cbd6dd",
         "description": "Sidebar user menu background"
       },
       "600": {
-        "value": "#cdd8e0",
+        "value": "#e2e9ee",
         "description": "Headings, Input text"
       },
       "700": {
-        "value": "#dde5ea",
+        "value": "#edf1f4",
         "description": "Sidebar"
       },
       "800": {
-        "value": "#eef2f5"
+        "value": "#f4f7f8"
       },
       "900": {
-        "value": "#f8fafc"
+        "value": "#f9fbfc"
       }
     },
     "action": {
       "000": {
-        "value": "#102536",
+        "value": "#0e2233",
         "description": "Checked/selected radio box background"
       },
       "100": {
-        "value": "#133048",
+        "value": "#16395a",
         "description": "Secondary button, Hovered primary button border, Phase banner"
       },
       "200": {
-        "value": "#b7dff7",
+        "value": "#235d8c",
         "description": "Hovered secondary and tertiary button, Toggle on disabled"
       },
       "300": {
-        "value": "#85c6f2"
+        "value": "#3f86c9"
       },
       "400": {
-        "value": "#58aae9"
+        "value": "#6fb2ec"
       },
       "500": {
         "value": "#3a8fdd",
@@ -76,15 +76,15 @@
         "description": "Primary button, Secondary and tertiary button border"
       },
       "700": {
-        "value": "#2661a7",
+        "value": "#7cbcef",
         "description": "Input interactions"
       },
       "800": {
-        "value": "#274776",
+        "value": "#9fcdf3",
         "description": "Primary button border, Hovered primary button"
       },
       "900": {
-        "value": "#b7dff7",
+        "value": "#bfe0fa",
         "description": "Secondary and tertiary button label"
       }
     },

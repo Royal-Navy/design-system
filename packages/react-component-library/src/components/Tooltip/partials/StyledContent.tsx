@@ -1,5 +1,5 @@
 import styled, { css, CSSProp } from 'styled-components'
-import { color, spacing, zIndex } from '@royalnavy/design-tokens'
+import { spacing, zIndex, colorValue } from '@royalnavy/design-tokens'
 
 import { TooltipPositionType } from '../Tooltip'
 
@@ -7,7 +7,7 @@ const TOOLTIP_BORDER_THICK = 1
 const TOOLTIP_INNER = 4
 const TOOLTIP_OUTER = TOOLTIP_INNER - 4
 const TOOLTIP_OFFSET = TOOLTIP_OUTER + TOOLTIP_BORDER_THICK
-const TOOLTIP_DARK_BG = color('neutral', '700')
+const TOOLTIP_DARK_BG = colorValue('neutral', '700')
 const TOOLTIP_DARK_BORDER = TOOLTIP_DARK_BG
 
 interface StyledContentProps {
@@ -91,7 +91,7 @@ function getPositionStyles(position: TooltipPositionType): CSSProp {
 export const StyledContent = styled.div<StyledContentProps>`
   z-index: ${zIndex('modal', 1)};
   background: ${TOOLTIP_DARK_BG};
-  color: ${color('neutral', 'white')};
+  color: ${colorValue('neutral', 'white')};
   border: ${TOOLTIP_DARK_BORDER} solid ${TOOLTIP_BORDER_THICK}px;
   border-radius: 5px;
   padding: ${spacing('6')} ${spacing('8')};

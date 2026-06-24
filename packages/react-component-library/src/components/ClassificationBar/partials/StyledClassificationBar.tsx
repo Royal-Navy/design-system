@@ -1,4 +1,4 @@
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { color, fontSize, spacing, colorValue } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 const getColorStyles = (isSecret?: boolean, inSidebar?: boolean) => {
@@ -11,7 +11,7 @@ const getColorStyles = (isSecret?: boolean, inSidebar?: boolean) => {
 
   if (inSidebar) {
     return css`
-      background-color: ${color('neutral', '400')};
+      background-color: ${colorValue('neutral', '400')};
       color: ${color('neutral', '000')};
     `
   }

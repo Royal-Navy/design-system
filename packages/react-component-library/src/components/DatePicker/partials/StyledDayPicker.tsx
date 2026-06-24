@@ -1,5 +1,5 @@
 import { DayPicker } from 'react-day-picker'
-import { color, spacing, fontSize } from '@royalnavy/design-tokens'
+import { color, spacing, fontSize, colorValue } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
 import { BUTTON_VARIANT, getButtonStyles } from '../../Button'
@@ -149,7 +149,7 @@ export const StyledDayPicker = styled(DayPicker)`
 
     &.rdp-day_start,
     &.rdp-day_end {
-      color: ${color('neutral', 'white')};
+      color: ${colorValue('neutral', 'white')};
       background-color: ${color('action', '700')};
     }
 

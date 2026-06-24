@@ -16,7 +16,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
 
   > svg {
-    color: ${color('neutral', 'white')};
+    color: ${colorValue('neutral', 'white')};
   }
 
   &:focus {
