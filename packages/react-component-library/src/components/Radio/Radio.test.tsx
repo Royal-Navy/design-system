@@ -1,12 +1,7 @@
 import React, { useState } from 'react'
 
 import 'jest-styled-components'
-import {
-  ColorNeutral200,
-  ColorAction000,
-  ColorNeutralWhite,
-  TypographyBase,
-} from '@royalnavy/design-tokens'
+import { color, TypographyBase } from '@royalnavy/design-tokens'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -54,7 +49,7 @@ describe('Radio', () => {
     it('should render a container', () => {
       expect(radio.getByTestId('radio')).toHaveStyleRule(
         'border',
-        `1px solid ${ColorNeutral200}`
+        `1px solid ${color('neutral', '200')}`
       )
       expect(radio.getByTestId('radio')).toHaveStyleRule(
         'border-radius',
@@ -63,7 +58,7 @@ describe('Radio', () => {
 
       expect(radio.getByTestId('radio')).toHaveStyleRule(
         'background',
-        ColorNeutralWhite
+        color('neutral', 'white')
       )
     })
 
@@ -104,7 +99,7 @@ describe('Radio', () => {
         it('styles the container as active', () => {
           expect(radio.getByTestId('radio')).toHaveStyleRule(
             'background',
-            ColorAction000
+            color('action', '000')
           )
         })
       })
@@ -245,7 +240,7 @@ describe('Radio', () => {
     it('should not render a container', () => {
       expect(radio.getByTestId('radio')).not.toHaveStyleRule(
         'border',
-        `1px solid ${ColorNeutral200}`
+        `1px solid ${color('neutral', '200')}`
       )
       expect(radio.getByTestId('radio')).not.toHaveStyleRule(
         'border-radius',
