@@ -76,6 +76,15 @@ const Fonts = createGlobalStyle`
     color: ${color('neutral', '600')};
   }
 
+  /* Native <button> defaults its colour to ButtonText (black) and its
+     background to buttonface (light grey). Neutralise both so unstyled
+     icon-buttons stay legible in both themes; styled buttons (e.g. the
+     Button component) set their own colour and background and are unaffected. */
+  button {
+    color: inherit;
+    background-color: transparent;
+  }
+
   h1,
   .rn-h1 {
     margin: 0;
