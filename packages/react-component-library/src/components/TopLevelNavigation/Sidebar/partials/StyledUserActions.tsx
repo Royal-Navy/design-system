@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { colorValue, spacing } from '@royalnavy/design-tokens'
 
 import { SheetButton } from '../../Sheet/SheetButton'
 
@@ -7,8 +7,8 @@ const actionIconStyles = css`
   display: block;
   width: 1.65rem;
   height: 1.65rem;
-  color: ${color('neutral', 'white')};
-  background-color: ${color('neutral', '400')};
+  color: ${colorValue('neutral', 'white')};
+  background-color: ${colorValue('neutral', '400')};
   border-radius: 2px;
   padding: ${spacing('2')};
 `
