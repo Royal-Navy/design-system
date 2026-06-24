@@ -8,7 +8,7 @@ interface StyledErrorProps {
 export const StyledError = styled.span<StyledErrorProps>`
   display: inline-block;
   font-size: ${fontSize('s')};
-  color: ${color('danger', '800')};
+  color: ${color('danger', '900')};
   margin: 0 0 6px 12px;
 
   ${({ $isReserved }) =>
