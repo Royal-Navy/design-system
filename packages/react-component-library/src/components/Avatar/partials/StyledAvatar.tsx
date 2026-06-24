@@ -27,7 +27,7 @@ export const StyledAvatar = styled.span<StyledAvatarProps>`
   ${({ $dark }) =>
     $dark &&
     css`
-      background: ${colorValue('neutral', '400')};
-      color: ${colorValue('neutral', 'white')};
+      background: ${color('neutral', '400')};
+      color: ${color('neutral', 'white')};
     `}
 `
