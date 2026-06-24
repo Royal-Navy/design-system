@@ -140,7 +140,7 @@ export const StyledDayPicker = styled(DayPicker)`
     cursor: pointer;
 
     &.rdp-day_today {
-      color: ${color('warning', '800')};
+      color: ${color('warning', '900')};
     }
 
     &.rdp-day_selected {

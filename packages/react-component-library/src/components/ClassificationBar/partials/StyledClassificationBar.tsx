@@ -5,14 +5,14 @@ const getColorStyles = (isSecret?: boolean, inSidebar?: boolean) => {
   if (isSecret) {
     return css`
       background-color: ${color('danger', '600')};
-      color: ${color('neutral', '000')};
+      color: ${colorValue('neutral', '000')};
     `
   }
 
   if (inSidebar) {
     return css`
       background-color: ${colorValue('neutral', '400')};
-      color: ${color('neutral', '000')};
+      color: ${colorValue('neutral', '000')};
     `
   }
 
