@@ -2,51 +2,64 @@
   "color": {
     "neutral": {
       "black": {
-        "value": "#0a141b"
+        "value": "#f8fafc",
+        "description": "Foreground (inverted in dark mode)"
       },
       "white": {
-        "value": "#ffffff"
+        "value": "#1c2d39",
+        "description": "Raised surfaces, cards, panels (inverted in dark mode)"
       },
       "000": {
-        "value": "#f8fafc"
+        "value": "#0a141b",
+        "description": "Page background, Disabled button"
       },
       "100": {
-        "value": "#000000"
+        "value": "#16242f",
+        "description": "Borders and dividers, Inactive tab"
       },
       "200": {
-        "value": "#b8c7d2"
+        "value": "#2a3f4d",
+        "description": "Input borders, Disabled button border, Toggle off disabled"
       },
       "300": {
-        "value": "#748999"
+        "value": "#3e5667",
+        "description": "Breadcrumb divider, Toggle off"
       },
       "400": {
-        "value": "#3e5667"
+        "value": "#8da0ad",
+        "description": "Body text, Input labels, Disabled button label"
       },
       "500": {
-        "value": "#233745"
+        "value": "#a7b6c1",
+        "description": "Sidebar user menu background"
       },
       "600": {
-        "value": "#1c2d39"
+        "value": "#cdd8e0",
+        "description": "Headings, Input text"
       },
       "700": {
-        "value": "#12202b"
+        "value": "#dde5ea",
+        "description": "Sidebar"
       },
       "800": {
-        "value": "#0c1720"
+        "value": "#eef2f5"
       },
       "900": {
-        "value": "#0a141b"
+        "value": "#f8fafc"
       }
     },
     "action": {
       "000": {
-        "value": "#ecf8ff"
+        "value": "#102536",
+        "description": "Checked/selected radio box background"
       },
       "100": {
-        "value": "#ddf4ff"
+        "value": "#133048",
+        "description": "Secondary button, Hovered primary button border, Phase banner"
       },
       "200": {
-        "value": "#b7dff7"
+        "value": "#b7dff7",
+        "description": "Hovered secondary and tertiary button, Toggle on disabled"
       },
       "300": {
         "value": "#85c6f2"
@@ -55,27 +68,32 @@
         "value": "#58aae9"
       },
       "500": {
-        "value": "#3a8fdd"
+        "value": "#3a8fdd",
+        "description": "Info alert elements, Focus state, Checked/selected radio, Toggle on"
       },
       "600": {
-        "value": "#2a77c7"
+        "value": "#2a77c7",
+        "description": "Primary button, Secondary and tertiary button border"
       },
       "700": {
-        "value": "#2661a7"
+        "value": "#2661a7",
+        "description": "Input interactions"
       },
       "800": {
-        "value": "#274776"
+        "value": "#274776",
+        "description": "Primary button border, Hovered primary button"
       },
       "900": {
-        "value": "#253b5b"
+        "value": "#b7dff7",
+        "description": "Secondary and tertiary button label"
       }
     },
     "success": {
       "000": {
-        "value": "#f4ffef"
+        "value": "#102516"
       },
       "100": {
-        "value": "#e5ffd9"
+        "value": "#15331f"
       },
       "200": {
         "value": "#c6f3b5"
@@ -87,7 +105,8 @@
         "value": "#8fd57f"
       },
       "500": {
-        "value": "#76c767"
+        "value": "#76c767",
+        "description": "Success icon"
       },
       "600": {
         "value": "#60b255"
@@ -99,15 +118,16 @@
         "value": "#3b6f33"
       },
       "900": {
-        "value": "#3b612c"
+        "value": "#abe39b",
+        "description": "Success text"
       }
     },
     "warning": {
       "000": {
-        "value": "#ffffee"
+        "value": "#2a2208"
       },
       "100": {
-        "value": "#fffddc"
+        "value": "#33290a"
       },
       "200": {
         "value": "#fefbb8"
@@ -119,7 +139,8 @@
         "value": "#f5db54"
       },
       "500": {
-        "value": "#e8c242"
+        "value": "#e8c242",
+        "description": "Warning icon"
       },
       "600": {
         "value": "#cf9328"
@@ -131,15 +152,17 @@
         "value": "#8c4f17"
       },
       "900": {
-        "value": "#693a12"
+        "value": "#faed7e",
+        "description": "Warning text"
       }
     },
     "danger": {
       "000": {
-        "value": "#fff3f4"
+        "value": "#2a1011"
       },
       "100": {
-        "value": "#feeaec"
+        "value": "#331417",
+        "description": "Hovered danger button border"
       },
       "200": {
         "value": "#fed1d1"
@@ -151,27 +174,31 @@
         "value": "#fc7c75"
       },
       "500": {
-        "value": "#f45249"
+        "value": "#f45249",
+        "description": "Danger icon"
       },
       "600": {
         "value": "#ec4138"
       },
       "700": {
-        "value": "#d53229"
+        "value": "#d53229",
+        "description": "Danger button"
       },
       "800": {
-        "value": "#B22820"
+        "value": "#B22820",
+        "description": "Hovered danger button, Input error border"
       },
       "900": {
-        "value": "#841c1b"
+        "value": "#fea9a9",
+        "description": "Danger text"
       }
     },
     "supa": {
       "000": {
-        "value": "#e8f2ff"
+        "value": "#14182e"
       },
       "100": {
-        "value": "#deebff"
+        "value": "#181d3a"
       },
       "200": {
         "value": "#bbd5fe"
@@ -195,15 +222,15 @@
         "value": "#3b3985"
       },
       "900": {
-        "value": "#343160"
+        "value": "#99b7f9"
       }
     },
     "supb": {
       "000": {
-        "value": "#f9f3ff"
+        "value": "#1c142e"
       },
       "100": {
-        "value": "#f2e9ff"
+        "value": "#22193a"
       },
       "200": {
         "value": "#e5d3fd"
@@ -227,15 +254,15 @@
         "value": "#4b358f"
       },
       "900": {
-        "value": "#3b2d6e"
+        "value": "#d0b5f9"
       }
     },
     "supc": {
       "000": {
-        "value": "#fff3ff"
+        "value": "#2a142b"
       },
       "100": {
-        "value": "#fee9ff"
+        "value": "#331937"
       },
       "200": {
         "value": "#fcd3fd"
@@ -259,47 +286,47 @@
         "value": "#8c358f"
       },
       "900": {
-        "value": "#6c2d6e"
+        "value": "#f7b5f9"
       }
     },
     "supd": {
       "000": {
-        "value": "#fff3ff"
+        "value": "#2e141d"
       },
       "100": {
-        "value": "#fee9ff"
+        "value": "#3a1926"
       },
       "200": {
-        "value": "#fcd3fd"
+        "value": "#ffcce5"
       },
       "300": {
-        "value": "#f7b5f9"
+        "value": "#ffa2b5"
       },
       "400": {
-        "value": "#ee89f1"
+        "value": "#f77f97"
       },
       "500": {
-        "value": "#e46fe8"
+        "value": "#f35d7b"
       },
       "600": {
-        "value": "#cc4fd0"
+        "value": "#d84b67"
       },
       "700": {
-        "value": "#b43fb8"
+        "value": "#c43854"
       },
       "800": {
-        "value": "#8c358f"
+        "value": "#972b41"
       },
       "900": {
-        "value": "#6c2d6e"
+        "value": "#ffa2b5"
       }
     },
     "supe": {
       "000": {
-        "value": "#fff8f3"
+        "value": "#2e1c10"
       },
       "100": {
-        "value": "#fef2ea"
+        "value": "#3a2415"
       },
       "200": {
         "value": "#fee2d1"
@@ -323,15 +350,15 @@
         "value": "#9d4712"
       },
       "900": {
-        "value": "#853a0c"
+        "value": "#fecaa9"
       }
     },
     "supf": {
       "000": {
-        "value": "#eefff2"
+        "value": "#0e2016"
       },
       "100": {
-        "value": "#dfffe9"
+        "value": "#13301f"
       },
       "200": {
         "value": "#bff4cf"
@@ -355,7 +382,7 @@
         "value": "#245c40"
       },
       "900": {
-        "value": "#1f4a35"
+        "value": "#8fe2ab"
       }
     }
   }
