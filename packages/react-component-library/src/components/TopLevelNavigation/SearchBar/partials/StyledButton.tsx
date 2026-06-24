@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { color, colorValue, spacing } from '@royalnavy/design-tokens'
 import { rgba } from 'polished'
 
 export const StyledButton = styled.button`
@@ -20,7 +20,7 @@ export const StyledButton = styled.button`
   }
 
   &:focus {
-    box-shadow: 0 0 0 0.2rem ${rgba(color('action', '700'), 0.5)};
+    box-shadow: 0 0 0 0.2rem ${rgba(colorValue('action', '700'), 0.5)};
     outline: 0;
   }
 `

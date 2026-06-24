@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { colorValue } from '@royalnavy/design-tokens'
 import { transparentize } from 'polished'
 
 import { RANGE_SLIDER_HANDLE_COLOR } from '../constants'
@@ -20,7 +20,7 @@ export const StyledHandle = styled.div`
 
   &:focus {
     box-shadow: 1px 1px 2px 0px rgba(000, 000, 000, 0.25),
-      0px 0px 0px 5px ${transparentize(0.5, color('action', '200'))};
+      0px 0px 0px 5px ${transparentize(0.5, colorValue('action', '200'))};
     outline: none;
   }
 `
