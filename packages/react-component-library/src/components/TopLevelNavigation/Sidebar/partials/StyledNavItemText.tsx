@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { color, fontSize } from '@royalnavy/design-tokens'
+import { fontSize, colorValue } from '@royalnavy/design-tokens'
 
 import {
   getTransitionOpacity,
@@ -13,7 +13,7 @@ interface StyledTextProps extends TransitionProps {
 
 export const StyledNavItemText = styled.div<StyledTextProps>`
   display: inline-block;
-  color: ${color('neutral', '100')};
+  color: ${colorValue('neutral', '100')};
   font-size: ${fontSize('m')};
   opacity: ${({ $transitionStatus }) =>
     getTransitionOpacity($transitionStatus)};
@@ -21,7 +21,7 @@ export const StyledNavItemText = styled.div<StyledTextProps>`
   padding: 0.25rem 0.5rem;
 
   ${StyledNavItem}:hover & {
-    color: ${color('neutral', 'white')};
+    color: ${colorValue('neutral', 'white')};
   }
 
   ${({ $isOpen }) =>

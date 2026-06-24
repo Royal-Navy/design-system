@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color, spacing, zIndex } from '@royalnavy/design-tokens'
+import { spacing, zIndex, colorValue } from '@royalnavy/design-tokens'
 
 import { StyledInput } from '../../../TextInput/partials/StyledInput'
 import { StyledOuterWrapper } from '../../../TextInput/partials/StyledOuterWrapper'
@@ -9,7 +9,7 @@ export const StyledForm = styled.form`
   z-index: ${zIndex('overlay', 1)};
   display: flex;
   align-items: center;
-  background-color: ${color('neutral', '400')};
+  background-color: ${colorValue('neutral', '400')};
   height: 59px;
 
   ${StyledTextInput} {
@@ -27,12 +27,12 @@ export const StyledForm = styled.form`
 
   ${StyledInput} {
     padding: ${spacing('8')};
-    color: ${color('neutral', 'white')};
+    color: ${colorValue('neutral', 'white')};
     background-color: transparent;
     border: 0;
 
     &::placeholder {
-      color: ${color('neutral', 'white')};
+      color: ${colorValue('neutral', 'white')};
     }
   }
 `
