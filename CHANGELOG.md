@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.51.1](https://github.com/Royal-Navy/design-system/compare/4.51.0...4.51.1) (2026-06-24)
+
+### Bug Fixes
+
+- **Select:** Fix focus ring when dropdown opens above ([85d0ca4](https://github.com/Royal-Navy/design-system/commit/85d0ca44f23afbd6b94323dda00ee9bf1bc36378))
+
 # [4.51.0](https://github.com/Royal-Navy/design-system/compare/4.50.0...4.51.0) (2026-06-16)
 
 ### Features
