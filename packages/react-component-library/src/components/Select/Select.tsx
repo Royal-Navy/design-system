@@ -46,7 +46,6 @@ export const Select = (props: SelectProps) => {
 
   const id = useExternalId('select', externalId)
   const inputRef = useRef<HTMLInputElement>(null)
-  const { triggerRef, popupPosition } = useDropdownDirection()
 
   const filteredItems = React.Children.toArray(children).filter(
     React.isValidElement<SelectOptionProps>
@@ -144,6 +143,8 @@ export const Select = (props: SelectProps) => {
     items,
     ...(isMulti ? isMultiHookOptions : isSingleHookOptions),
   })
+
+  const { triggerRef, popupPosition } = useDropdownDirection(230, isOpen)
 
   const { onInputFocusHandler } = useMenuVisibility(isOpen, openMenu)
   const { onMenuKeyDownHandler } = useSelectMenu(inputRef)

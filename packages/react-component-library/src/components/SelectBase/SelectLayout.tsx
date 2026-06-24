@@ -91,6 +91,7 @@ export const SelectLayout = ({
             $hasFocus={isOpen}
             $isDisabled={isDisabled}
             $isInvalid={isInvalid}
+            $popupPosition={popupPosition}
             data-testid="select-outer-wrapper"
           >
             <StyledInputWrapper
