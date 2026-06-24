@@ -1,7 +1,9 @@
 import styled from 'styled-components'
-import { color, fontSize } from '@royalnavy/design-tokens'
+import { colorValue, fontSize } from '@royalnavy/design-tokens'
 
 export const StyledMessage = styled.div`
   font-size: ${fontSize('base')};
-  color: ${color('neutral', '100')};
+  // The tooltip bubble is always dark in both themes, so its message text
+  // stays a fixed light value rather than flipping with the theme.
+  color: ${colorValue('neutral', '100')};
 `
