@@ -25,6 +25,7 @@ const {
   fontSize,
   shadow,
   zIndex,
+  colorValue,
 } = selectors
 
 let wrapper: RenderResult
@@ -211,13 +212,29 @@ describe('color', () => {
       color: ${color('neutral', '100')};
     `
 
-    it('should set styles correctly', () => {
+    it('resolves to a themeable CSS variable with the light value as fallback', () => {
       wrapper = render(<StyledComponent data-testid="test-element" />)
 
       expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
         'color',
-        '#e2e9ee'
+        'var(--color-neutral-100, #e2e9ee)'
       )
+    })
+  })
+})
+
+describe('colorValue', () => {
+  describe('when the group or shade is invalid', () => {
+    it('throws a friendly error', () => {
+      expect(() => colorValue('invalid' as ColorGroup, '400')).toThrow(
+        'Invalid color token'
+      )
+    })
+  })
+
+  describe('when the group and shade are valid', () => {
+    it('returns the concrete light value with no theme', () => {
+      expect(colorValue('neutral', '100')).toBe('#e2e9ee')
     })
   })
 })
