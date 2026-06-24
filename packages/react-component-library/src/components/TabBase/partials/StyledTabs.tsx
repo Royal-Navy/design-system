@@ -1,4 +1,5 @@
 import { styled, css } from 'styled-components'
+import { color } from '@royalnavy/design-tokens'
 
 import { TAB_VARIANT } from '../constants'
 import { TabVariantType } from '../types'
@@ -14,6 +15,7 @@ export const StyledTabs = styled.ol<StyledTabsProps>`
   list-style-type: none;
   padding: 0;
   margin: 0;
+  background-color: ${color('neutral', '000')};
 
   ${({ $variant }) =>
     $variant === TAB_VARIANT.UNDERLINE &&
