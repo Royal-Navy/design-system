@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { color, fontSize } from '@royalnavy/design-tokens'
+import { colorByMode, fontSize, Theme } from '@royalnavy/design-tokens'
 
 export const StyledError = styled.span`
   display: inline-block;
   font-size: ${fontSize('s')};
-  color: ${color('danger', '900')};
+  color: ${({ theme }) => colorByMode('danger', '800', '900', theme as Theme)};
   margin: 0 0 6px 12px;
 `

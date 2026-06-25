@@ -80,7 +80,7 @@ export const STYLES_MAP: { [key: string]: ButtonStyles } = {
   [BUTTON_VARIANT.TERTIARY]: {
     default: {
       backgroundColor: color('neutral', 'white'),
-      color: color('action', '700'),
+      color: color('action', '600'),
       boxShadow: `0 0 0 1px ${color('action', '600')}`,
       textDecoration: 'none',
     },
@@ -125,7 +125,7 @@ export const STYLES_MAP: { [key: string]: ButtonStyles } = {
   [BUTTON_VARIANT.NO_CONTAINER]: {
     default: {
       backgroundColor: 'transparent',
-      color: color('action', '700'),
+      color: color('action', '600'),
       textDecoration: 'none',
       boxShadow: '0',
     },

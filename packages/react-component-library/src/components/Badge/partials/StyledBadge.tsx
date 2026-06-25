@@ -4,6 +4,8 @@ import {
   shadow,
   spacing,
   colorValue,
+  colorByMode,
+  Theme,
 } from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
@@ -106,7 +108,8 @@ const StyledBadgeColorVariantMap = {
   [BADGE_COLOR.SUCCESS]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
       background-color: ${color('success', '100')};
-      color: ${color('success', '900')};
+      color: ${({ theme }) =>
+        colorByMode('success', '800', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
@@ -118,7 +121,8 @@ const StyledBadgeColorVariantMap = {
   [BADGE_COLOR.WARNING]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
       background-color: ${color('warning', '000')};
-      color: ${color('warning', '900')};
+      color: ${({ theme }) =>
+        colorByMode('warning', '800', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
@@ -130,7 +134,8 @@ const StyledBadgeColorVariantMap = {
   [BADGE_COLOR.DANGER]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
       background-color: ${color('danger', '100')};
-      color: ${color('danger', '900')};
+      color: ${({ theme }) =>
+        colorByMode('danger', '800', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
@@ -142,7 +147,8 @@ const StyledBadgeColorVariantMap = {
   [BADGE_COLOR.SUPA]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
       background-color: ${color('supa', '000')};
-      color: ${color('supa', '900')};
+      color: ${({ theme }) =>
+        colorByMode('supa', '600', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
@@ -154,7 +160,8 @@ const StyledBadgeColorVariantMap = {
   [BADGE_COLOR.SUPB]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
       background-color: ${color('supb', '100')};
-      color: ${color('supb', '900')};
+      color: ${({ theme }) =>
+        colorByMode('supb', '600', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
@@ -166,7 +173,8 @@ const StyledBadgeColorVariantMap = {
   [BADGE_COLOR.SUPC]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
       background-color: ${color('supc', '100')};
-      color: ${color('supc', '900')};
+      color: ${({ theme }) =>
+        colorByMode('supc', '800', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
@@ -178,7 +186,8 @@ const StyledBadgeColorVariantMap = {
   [BADGE_COLOR.SUPD]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
       background-color: ${color('supd', '100')};
-      color: ${color('supd', '900')};
+      color: ${({ theme }) =>
+        colorByMode('supd', '800', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
@@ -190,7 +199,8 @@ const StyledBadgeColorVariantMap = {
   [BADGE_COLOR.SUPE]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
       background-color: ${color('supe', '200')};
-      color: ${color('supe', '900')};
+      color: ${({ theme }) =>
+        colorByMode('supe', '800', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
@@ -202,7 +212,8 @@ const StyledBadgeColorVariantMap = {
   [BADGE_COLOR.SUPF]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
       background-color: ${color('supf', '200')};
-      color: ${color('supf', '900')};
+      color: ${({ theme }) =>
+        colorByMode('supf', '800', '900', theme as Theme)};
       text-shadow: ${shadow('1')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
