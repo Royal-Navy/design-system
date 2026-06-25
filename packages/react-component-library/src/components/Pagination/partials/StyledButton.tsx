@@ -12,7 +12,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   transition: all ${animation('default')};
 
   background-color: ${color('neutral', '000')};
-  color: ${({ $isDisabled }) => color('neutral', $isDisabled ? '200' : '400')};
+  color: ${({ $isDisabled }) => color('neutral', $isDisabled ? '300' : '600')};
   border: 1px solid transparent;
   border-radius: 4px;
   height: 33px;
