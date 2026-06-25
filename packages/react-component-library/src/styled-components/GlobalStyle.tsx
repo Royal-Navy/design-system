@@ -4,6 +4,7 @@ import { Normalize } from 'styled-normalize'
 import {
   lightTheme,
   color,
+  colorByMode,
   fontSize,
   getColorVariables,
   Theme,
@@ -57,7 +58,8 @@ const BoxSizing = createGlobalStyle`
  */
 const Hyperlinks = createGlobalStyle`
   a {
-    color: ${color('action', '500')};
+    color: ${({ theme }) =>
+      colorByMode('action', '500', '400', theme as Theme)};
     text-decoration: none;
   }
 
