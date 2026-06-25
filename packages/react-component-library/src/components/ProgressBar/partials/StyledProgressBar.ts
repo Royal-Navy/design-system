@@ -7,7 +7,7 @@ export interface StyledProgressBarProps {
 }
 
 export const StyledProgressBar = styled.div<StyledProgressBarProps>`
-  background-color: ${color('neutral', '100')};
+  background-color: ${color('neutral', '200')};
   overflow: hidden;
   border-radius: 4px;
   height: ${({ $height }) => spacing($height)};
