@@ -153,6 +153,24 @@ export function getColor(
 }
 
 /**
+ * Resolve a colour token, choosing a different shade per theme mode. Use this
+ * to tune a colour for dark mode without changing the light appearance: the
+ * light shade is used in light mode and the dark shade in dark mode. Pass the
+ * styled-component's theme, e.g.
+ * `({ theme }) => colorByMode('neutral', '000', '100', theme as Theme)`.
+ */
+export function getColorByMode(
+  group: ColorGroup,
+  lightWeight: ColorShade,
+  darkWeight: ColorShade,
+  theme?: Theme
+): string {
+  const weight = theme?.mode === 'dark' ? darkWeight : lightWeight
+
+  return getColor(group, weight, theme)
+}
+
+/**
  * Build the `--color-*` custom property declarations for a theme, for
  * injection by `GlobalStyleProvider`.
  */

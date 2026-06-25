@@ -69,20 +69,29 @@ const Hyperlinks = createGlobalStyle`
 /**
  * Generate base font size
  */
+/**
+ * Dark-mode-only resets. Light mode keeps the original native defaults so it
+ * renders exactly as before; these only apply when the dark theme is active.
+ *  - Give unstyled text an explicit light colour (native default is black).
+ *  - Neutralise the native <button> colour (ButtonText) and background
+ *    (buttonface) so currentColor icons inside unstyled icon-buttons stay
+ *    legible. Styled buttons set their own colour/background and are unaffected.
+ */
+const DarkModeResets = createGlobalStyle`
+  html {
+    color: ${color('neutral', '600')};
+  }
+
+  button {
+    color: inherit;
+    background-color: transparent;
+  }
+`
+
 const Fonts = createGlobalStyle`
   html {
     font-family: "lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: ${fontSize('m')};
-    color: ${color('neutral', '600')};
-  }
-
-  /* Native <button> defaults its colour to ButtonText (black) and its
-     background to buttonface (light grey). Neutralise both so unstyled
-     icon-buttons stay legible in both themes; styled buttons (e.g. the
-     Button component) set their own colour and background and are unaffected. */
-  button {
-    color: inherit;
-    background-color: transparent;
   }
 
   h1,
@@ -151,11 +160,14 @@ export const GlobalStyleProvider = ({
     [theme]
   )
 
+  const isDark = (theme as Theme)?.mode === 'dark'
+
   return (
     <GlobalStyleContext.Provider value={contextValue}>
       <Normalize />
       <BoxSizing />
       <ThemeVariables $variables={colorVariables} />
+      {isDark && <DarkModeResets />}
       <Hyperlinks />
       <Fonts />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>

@@ -1,5 +1,12 @@
 import { DayPicker } from 'react-day-picker'
-import { color, spacing, fontSize, colorValue } from '@royalnavy/design-tokens'
+import {
+  color,
+  spacing,
+  fontSize,
+  colorValue,
+  colorByMode,
+  Theme,
+} from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
 import { BUTTON_VARIANT, getButtonStyles } from '../../Button'
@@ -140,7 +147,8 @@ export const StyledDayPicker = styled(DayPicker)`
     cursor: pointer;
 
     &.rdp-day_today {
-      color: ${color('warning', '900')};
+      color: ${({ theme }) =>
+        colorByMode('warning', '800', '900', theme as Theme)};
     }
 
     &.rdp-day_selected {

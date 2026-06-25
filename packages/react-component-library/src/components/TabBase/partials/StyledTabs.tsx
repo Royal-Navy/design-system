@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { color, Theme } from '@royalnavy/design-tokens'
 
 export const StyledTabs = styled.ol`
   display: flex;
@@ -7,5 +7,8 @@ export const StyledTabs = styled.ol`
   list-style-type: none;
   padding: 0;
   margin: 0;
-  background-color: ${color('neutral', '000')};
+  background-color: ${({ theme }) =>
+    (theme as Theme)?.mode === 'dark'
+      ? color('neutral', '000', theme as Theme)
+      : 'transparent'};
 `
