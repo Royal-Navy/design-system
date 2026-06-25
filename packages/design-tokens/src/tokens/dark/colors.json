@@ -18,7 +18,7 @@
         "description": "Borders and dividers, Inactive tab"
       },
       "200": {
-        "value": "#3a4f5e",
+        "value": "#4c6376",
         "description": "Input borders, Disabled button border, Toggle off disabled"
       },
       "300": {

@@ -1,5 +1,11 @@
 import styled, { css, CSSProp } from 'styled-components'
-import { spacing, zIndex, colorValue } from '@royalnavy/design-tokens'
+import {
+  spacing,
+  zIndex,
+  color,
+  colorValue,
+  Theme,
+} from '@royalnavy/design-tokens'
 
 import { TooltipPositionType } from '../Tooltip'
 
@@ -7,7 +13,17 @@ const TOOLTIP_BORDER_THICK = 1
 const TOOLTIP_INNER = 4
 const TOOLTIP_OUTER = TOOLTIP_INNER - 4
 const TOOLTIP_OFFSET = TOOLTIP_OUTER + TOOLTIP_BORDER_THICK
-const TOOLTIP_DARK_BG = colorValue('neutral', '700')
+// The tooltip is a dark bubble in both themes. In light mode it stays
+// near-black; in dark mode it lifts to an elevated slate so it reads clearly
+// above the dark page and surfaces.
+function tooltipDarkBg(theme?: Theme): string {
+  return theme?.mode === 'dark'
+    ? color('neutral', '200', theme)
+    : colorValue('neutral', '700')
+}
+
+const TOOLTIP_DARK_BG = ({ theme }: { theme?: unknown }) =>
+  tooltipDarkBg(theme as Theme)
 const TOOLTIP_DARK_BORDER = TOOLTIP_DARK_BG
 
 interface StyledContentProps {
