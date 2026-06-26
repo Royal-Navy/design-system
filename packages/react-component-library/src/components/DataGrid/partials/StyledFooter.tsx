@@ -11,7 +11,10 @@ export const StyledFooter = styled.div<{ $isFullWidth: boolean }>`
     $isFullWidth
       ? css`
           position: relative;
-          z-index: ${zIndex('dropdown', 1)};
+          // Lift the footer's upward-opening "rows per page" dropdown above the
+          // sticky table header (header tier), while staying below floating
+          // overlays such as the DatePicker FloatingBox (dropdown + 1).
+          z-index: ${zIndex('dropdown', 0)};
 
           & > *:nth-child(1) {
             flex: 0 0 auto;
