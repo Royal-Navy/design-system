@@ -60,7 +60,7 @@ importers:
         specifier: ^7.24.7
         version: 7.24.7(@babel/core@7.25.2)
       '@royalnavy/eslint-config-react':
-        specifier: ^4.51.1
+        specifier: ^4.51.2
         version: link:../eslint-config-react
       '@testing-library/jest-dom':
         specifier: ^6.5.0
@@ -195,7 +195,7 @@ importers:
         specifier: ^7.24.7
         version: 7.24.7(@babel/core@7.25.2)
       '@royalnavy/eslint-config-react':
-        specifier: ^4.51.1
+        specifier: ^4.51.2
         version: link:../eslint-config-react
       '@svgr/cli':
         specifier: ^8.1.0
@@ -243,13 +243,13 @@ importers:
         specifier: ^2.9.2
         version: 2.11.8
       '@royalnavy/design-tokens':
-        specifier: ^4.51.1
+        specifier: ^4.51.2
         version: link:../design-tokens
       '@royalnavy/fonts':
-        specifier: ^4.51.1
+        specifier: ^4.51.2
         version: link:../fonts
       '@royalnavy/icon-library':
-        specifier: ^4.51.1
+        specifier: ^4.51.2
         version: link:../icon-library
       '@tanstack/react-table':
         specifier: ^8.21.3
@@ -358,7 +358,7 @@ importers:
         specifier: ^1.47.2
         version: 1.47.2
       '@royalnavy/eslint-config-react':
-        specifier: ^4.51.1
+        specifier: ^4.51.2
         version: link:../eslint-config-react
       '@storybook/addon-a11y':
         specifier: ^8.3.4
@@ -5998,6 +5998,7 @@ packages:
         integrity: sha512-Rvi5pH+LvgsqGwZPZ3Cq/tz4ty7mjijhr3qR4m9IBXNbxGGYgTVVO+duXzz9aArmHxFtwZ+LRkrNIMDQzgoY4A==,
       }
     engines: { node: '>=14' }
+    deprecated: Deprecated and no longer maintained. Please use conventional-changelog instead.
 
   conventional-changelog-preset-loader@3.0.0:
     resolution:
@@ -7922,7 +7923,7 @@ packages:
         integrity: sha512-VnctFhw+xfj8Va1xtfEqCUD2XDrbAPSJx+hSrE5K7fGdjZruW7XV+QOrN7LF/RJyvspRiD2I0asWsxFp0ya26A==,
       }
     engines: { node: '>=10' }
-    deprecated: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
+    deprecated: Deprecated and no longer maintained. Use @conventional-changelog/git-client instead.
     hasBin: true
 
   git-raw-commits@3.0.0:
@@ -7931,7 +7932,7 @@ packages:
         integrity: sha512-b5OHmZ3vAgGrDn/X0kS+9qCfNKWe4K/jFnhwzVWWg0/k5eLa3060tZShrRg8Dja5kPc+YjS0Gc6y7cRr44Lpjw==,
       }
     engines: { node: '>=14' }
-    deprecated: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
+    deprecated: Deprecated and no longer maintained. Use @conventional-changelog/git-client instead.
     hasBin: true
 
   git-remote-origin-url@2.0.0:
@@ -7947,7 +7948,7 @@ packages:
         integrity: sha512-hIvOeZwRbQ+7YEUmCkHqo8FOLQZCEn18yevLHADlFPZY02KJGsu5FZt9YW/lybfK2uhWFI7Qg/07LekJiTv7iA==,
       }
     engines: { node: '>=14' }
-    deprecated: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
+    deprecated: Deprecated and no longer maintained. Use @conventional-changelog/git-client instead.
     hasBin: true
 
   git-up@7.0.0:

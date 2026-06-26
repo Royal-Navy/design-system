@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.51.2](https://github.com/Royal-Navy/design-system/compare/4.51.1...4.51.2) (2026-06-26)
+
+### Bug Fixes
+
+- **DataGrid:** Keep footer below floating overlays in z-index stack ([6c4f69e](https://github.com/Royal-Navy/design-system/commit/6c4f69e6a73568c4ec196a151945e9814fcfca60))
+
 ## [4.51.1](https://github.com/Royal-Navy/design-system/compare/4.51.0...4.51.1) (2026-06-24)
 
 ### Bug Fixes

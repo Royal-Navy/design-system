@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.51.2](https://github.com/Royal-Navy/design-system/compare/4.51.1...4.51.2) (2026-06-26)
+
+**Note:** Version bump only for package @royalnavy/icon-library
+
 ## [4.51.1](https://github.com/Royal-Navy/design-system/compare/4.51.0...4.51.1) (2026-06-24)
 
 **Note:** Version bump only for package @royalnavy/icon-library
