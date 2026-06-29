@@ -1,139 +1,122 @@
 # Royal Navy Design System
 
 ![Build & Test Master](https://github.com/Royal-Navy/design-system/actions/workflows/build_and_test.yml/badge.svg)
-[![GitHub release](https://img.shields.io/github/release/royal-navy/design-system.svg)](https://github.com/Royal-Navy/design-system/releases) [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/design-system/blob/master/LICENSE) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) 
+[![GitHub release](https://img.shields.io/github/release/royal-navy/design-system.svg)](https://github.com/Royal-Navy/design-system/releases)
+[![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/Royal-Navy/design-system/blob/master/LICENSE)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=royal-navy_design-system&metric=coverage)](https://sonarcloud.io/summary/new_code?id=royal-navy_design-system)
-[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](http://storybook.design-system.navy.digital.mod.uk)
+[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://storybook.design-system.navy.digital.mod.uk)
 
 Build web applications that meet the Royal Navy service standards.
 
-Visit the [Roadmap board](https://github.com/Royal-Navy/design-system/projects/7) to view the high-level objectives for the Royal Navy Design System. To check on issues currently being completed, view our [Tactical board](https://github.com/Royal-Navy/design-system/projects/6) instead.
+Browse the components, usage guidelines and code snippets in [Storybook](https://storybook.design-system.navy.digital.mod.uk/).
 
-## Releases & versioning
+## Packages
 
-All packages are published to the [NPM registry](https://www.npmjs.com/search?q=%40royalnavy) and we adhere to [semantic versioning](https://semver.org/).
+This is a [pnpm](https://pnpm.io/) + [Lerna](https://lerna.js.org/) monorepo. All packages are published to the [npm registry](https://www.npmjs.com/search?q=%40royalnavy) under the `@royalnavy` scope and follow [semantic versioning](https://semver.org/).
 
-## Supported technologies
+| Package                                                                  | Description                                                                                                        |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| [`@royalnavy/react-component-library`](packages/react-component-library) | React component library — the primary consumable package.                                                          |
+| [`@royalnavy/design-tokens`](packages/design-tokens)                     | Design tokens (colour, spacing, typography, breakpoints) consumed by the components and available to applications. |
+| [`@royalnavy/icon-library`](packages/icon-library)                       | SVG icon set as React components.                                                                                  |
+| [`@royalnavy/fonts`](packages/fonts)                                     | Web fonts and the CSS to load them.                                                                                |
+| [`@royalnavy/eslint-config-react`](packages/eslint-config-react)         | Shared ESLint configuration used across the repo (not published for app use).                                      |
 
-The following view layer libraries are currently supported:
+## Installation
 
-- React
+Install the component library alongside its peer dependencies:
 
-## Component usage guidelines
+```sh
+# with pnpm
+pnpm add @royalnavy/react-component-library @royalnavy/fonts styled-components
 
-Please refer to [Storybook](http://storybook.design-system.navy.digital.mod.uk/) to see interactive examples, code snippets and details on how best to consume each of the components.
-
-## Installation & quick start
-
-### Installation
-
-To install and save to your project's package.json dependencies, run:
-
-```
-# with npm
-npm install @royalnavy/fonts @royalnavy/react-component-library styled-components
-
-# ...or with pnpm
-pnpm add @royalnavy/fonts @royalnavy/react-component-library styled-components
+# ...or with npm
+npm install @royalnavy/react-component-library @royalnavy/fonts styled-components
 ```
 
->[!NOTE]
->[`styled-components`](https://styled-components.com/) is a required [peer dependency](https://nodejs.org/en/blog/npm/peer-dependencies/) and is installed with the above command.
+**Note:** [`styled-components`](https://styled-components.com/) (v6+) is a required [peer dependency](https://nodejs.org/en/blog/npm/peer-dependencies/). The components are built for React 18.
 
-### Quick start
+## Quick start
 
-Here's a quick example application to get you started:
+Wrap your application in `GlobalStyleProvider` and import the fonts once at the root:
 
-```javascript
+```jsx
 import React from 'react'
-import { createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client'
 import '@royalnavy/fonts'
 import { GlobalStyleProvider, Button } from '@royalnavy/react-component-library'
-
-const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
 
 function App() {
   return (
     <GlobalStyleProvider>
-      <Button variant="primary">
-        Hello, World!
-      </Button>
+      <Button variant="primary">Hello, World!</Button>
     </GlobalStyleProvider>
   )
 }
 
-root.render(<App />)
+createRoot(document.getElementById('root')).render(<App />)
 ```
 
-## Monorepo & package management
+See [Storybook](https://storybook.design-system.navy.digital.mod.uk/) for the full component catalogue and props documentation.
 
-> Splitting up large codebases into separate independently versioned packages is extremely useful for code sharing. However, making changes across many repositories is messy and difficult to track, and testing across repositories gets complicated really fast.
->
-> To solve these (and many other) problems, some projects will organize their codebases into multi-package repositories (sometimes called monorepos).
+## Developing locally
 
-Each package folder has it's own npm package.json and can act like a stand alone project. Pnpm workspaces detects dependencies that are held within the monorepo and creates a link between them, so you can work on a react component and see instant updates in Storybook.
+You'll need [Git](https://help.github.com/articles/set-up-git/) and [Node.js](https://nodejs.org/) installed. This repo uses [pnpm](https://pnpm.io/) as its package manager (see the `packageManager` field in `package.json`) and pins a Node.js version in [`.nvmrc`](./.nvmrc).
 
-Manage dependencies for packages like normal, but remember to use `pnpm add` instead of `npm install`.
+External contributors should [fork the repository](https://help.github.com/articles/fork-a-repo/) first.
 
-## Run locally
-
-You'll need [Git](https://help.github.com/articles/set-up-git/) and [Node.js](https://nodejs.org/en/) installed to get this project running.
-
->[!NOTE]
->You will need the [active LTS (Long-term support)](https://github.com/nodejs/Release#release-schedule) Node.js version for this project (as specified in [.nvmrc](./.nvmrc)).
-
-### Fork repository (optional)
-
-If you're an external contributor make sure to [fork this project first](https://help.github.com/articles/fork-a-repo/).
-
-### Clone repository
-
-```
-git clone git@github.com:Royal-Navy/design-system.git # or clone your own fork
-
+```sh
+# 1. Clone (or clone your fork)
+git clone git@github.com:Royal-Navy/design-system.git
 cd design-system
+
+# 2. Use the pinned Node.js version (optional, requires nvm)
+nvm install
+
+# 3. Enable pnpm via Corepack (ships with Node.js)
+corepack enable
+
+# 4. Install dependencies for every package
+pnpm install
+
+# 5. Run Storybook for the component library on http://localhost:6006
+pnpm --filter @royalnavy/react-component-library storybook
 ```
 
-### Using nvm (optional)
-
-If you work across multiple Node.js projects there's a good chance they require different Node.js and npm versions.
-
-To enable this we use [nvm (Node Version Manager)](https://github.com/creationix/nvm) to switch between versions easily.
-
-1. [Install nvm](https://github.com/creationix/nvm#installation)
-2. Run `nvm install` in the project directory (this will use [.nvmrc](./.nvmrc))
+pnpm workspaces link the packages together, so a change to `@royalnavy/design-tokens` (for example) is reflected live in Storybook. Add dependencies to a package with `pnpm add <pkg> --filter <package-name>`.
 
 ## Scripts
 
-The top level project contains scripts that are then executed for all packages:
+Run from the repository root; each delegates to the relevant packages via Lerna:
 
-- `lint` checks syntax and simple errors in javascript files
-- `test` runs Jest tests in all the packages
-- `build` runs the build script in all packages
+| Script                  | Description                              |
+| ----------------------- | ---------------------------------------- |
+| `pnpm build`            | Build all packages.                      |
+| `pnpm lint`             | Lint all packages.                       |
+| `pnpm test`             | Run the Jest unit tests in all packages. |
+| `pnpm storybook:static` | Build the static Storybook site.         |
 
-## Git hooks
+Package-specific scripts (such as `storybook`, `test:e2e` and `test:a11y`) live in each package's `package.json` and can be run with `pnpm --filter <package-name> <script>`.
 
-Git commit hooks trigger linting of all staged files when a change is committed.
+## Conventions
 
-## Prettier
-
-We have configured a set of Prettier options to enforce consistent code formatting.
+- **Commits** follow the [Conventional Commits](https://www.conventionalcommits.org/) specification and are validated on commit and in CI.
+- **Git hooks** ([Husky](https://typicode.github.io/husky/)) lint and format staged files before each commit.
+- **Formatting** is enforced with [Prettier](https://prettier.io/).
 
 ## Browser support
 
-The Royal Navy Design System currently supports all major evergreen browsers.
-
-## Licensing
-
-The Royal-Navy/design-system is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE).
+The Royal Navy Design System supports all major evergreen browsers.
 
 ## Contributing
 
-Read the [Contributing Guidelines](docs/CONTRIBUTING.md).
+Read the [Contributing Guidelines](docs/CONTRIBUTING.md) before opening a pull request.
+
+## Licensing
+
+Royal-Navy/design-system is licensed under the [Apache License 2.0](https://github.com/Royal-Navy/design-system/blob/master/LICENSE).
 
 ## Thanks
 
-<a href="https://www.chromaticqa.com/"><img src="https://cdn-images-1.medium.com/v2/size:147:36:false:true/extend:true:nowe:74:18/bg:ffffff/1*oHHjTjInDOBxIuYHDY2gFA.png" width="120"/></a>
-
-We use [Chromatic](https://www.chromaticqa.com/) for visual regression testing.
+We use [Chromatic](https://www.chromatic.com/) for visual regression testing of Storybook.
