@@ -223,7 +223,10 @@ jobs:
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.ref }}
+          # Check out the immutable head SHA rather than the branch name so the
+          # job survives the PR branch being deleted mid-run (e.g. merge races)
+          # and fork PRs. Matches CHROMATIC_SHA below.
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Set up environment
         uses: ./.github/actions/prepare-environment
