@@ -75,3 +75,4 @@ const fontLoader = async () => ({
 })
 
 export const loaders = isChromatic() && document.fonts ? [fontLoader] : []
+export const tags = ['autodocs']

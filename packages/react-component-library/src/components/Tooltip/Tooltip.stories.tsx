@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React from 'react'
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react-webpack5'
 
 import { Tooltip, TOOLTIP_POSITION } from '.'
 

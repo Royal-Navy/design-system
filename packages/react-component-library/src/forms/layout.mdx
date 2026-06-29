@@ -1,14 +1,16 @@
-import { Meta, Source } from '@storybook/blocks'
+import { Meta, Source } from '@storybook/addon-docs/blocks'
 
 <Meta title="Forms/Layout" />
 
 # Form layout
 
 ## 5. Long forms
+
 While you should always aim to minimise the amount of input required by the user, there may be times when you have to work with long forms.
 
-###### 5.0 You *must* always consider the context of use before deciding which techniques to use for managing long forms.
-###### 5.1 You *should* test a working version of the form with your users, where possible.
+###### 5.0 You _must_ always consider the context of use before deciding which techniques to use for managing long forms.
+
+###### 5.1 You _should_ test a working version of the form with your users, where possible.
 
 There are various techniques to make such forms more manageable, but you should always test your approach with your users,
 because a lot depends on the context of use.
@@ -18,6 +20,7 @@ for highly complex data forms in a Defence environment it may be necessary to fr
 previously entered values, which would be very disruptive with a paginated form.
 
 ## Splitting up long forms
+
 Consider using one or more of the following techniques to make a long form more manageable:
 
 - Group related inputs together
@@ -26,6 +29,7 @@ Consider using one or more of the following techniques to make a long form more 
 - Paginate (split up the form over multiple steps or pages)
 
 ## Single vs. multi-column forms
+
 Multi-column form layouts are often appropriate in complex Defence settings. Single column forms, however, are simpler to design and generally recommended for shorter forms.
 
 To decide which approach is more appropriate, you should consider the following:
@@ -42,7 +46,7 @@ To decide which approach is more appropriate, you should consider the following:
 
 ## 6. Laying out forms over multiple columns
 
-###### 6.0 You *must* ensure your form tab order works correctly and follows your intended form layout.
+###### 6.0 You _must_ ensure your form tab order works correctly and follows your intended form layout.
 
 In practice, this means making sure that:
 
@@ -58,17 +62,18 @@ While your form layout will influence the field order, it should not dictate how
 
 When using multi-column layouts, consider the following guidelines:
 
-<img src='/layout_1.svg' alt='do maintain a consistent form flow' />
+<img src="/layout_1.svg" alt="do maintain a consistent form flow" />
 
-<img src='/layout_2.svg' alt='do maintain a consistent form flow' />
+<img src="/layout_2.svg" alt="do maintain a consistent form flow" />
 
 ## Sample form templates
 
 ### Multi-column layout
 
-<img src="/sample_multi_column.svg" alt="multi column layout form"/>
+<img src="/sample_multi_column.svg" alt="multi column layout form" />
 
 #### Design Notes
+
 - Mixing numbers and columns is ok, provided that there is a clear way of filling the form in (left-to-right, top-to-bottom in this instance).
 - Toggle for advanced options, keeping the form as simple as possible, with only the most frequently used inputs visible initially (Progressive Disclosure).
 - Additional form actions (such as "Add another item") using tertiary buttons
@@ -79,9 +84,10 @@ When using multi-column layouts, consider the following guidelines:
 
 ### Single narrow column layout
 
-<img src='/sample_narrow_column.svg' alt='single narrow column layout' />
+<img src="/sample_narrow_column.svg" alt="single narrow column layout" />
 
 #### Design notes
+
 - Stacked buttons
 - All buttons full-width, regardless of the length of their label
 - Primary button first
@@ -91,6 +97,7 @@ When using multi-column layouts, consider the following guidelines:
 <img src="/sample_dialog.svg" alt="dialog" />
 
 #### Design notes
+
 - Buttons right-aligned
 - Special button top and bottom margins for Modal
 
@@ -99,15 +106,20 @@ When using multi-column layouts, consider the following guidelines:
 <img src="/sample_multi_step.svg" alt="multistep form" />
 
 #### Design notes
+
 - Buttons right-aligned
 - Primary button first on the right
 - Icon-right button variant used to denote this is a multistep form
 
 ### Two column layout with Fieldsets
 
-<img src="/sample_two_column_with_fieldsets.svg" alt="two column layout with fieldsets"/>
+<img
+  src="/sample_two_column_with_fieldsets.svg"
+  alt="two column layout with fieldsets"
+/>
 
 #### Design notes
+
 - Logical grouping and labelling supported by Section dividers and Fieldsets
 - Buttons left-aligned
 - Primary button first on the left
@@ -115,13 +127,15 @@ When using multi-column layouts, consider the following guidelines:
 
 ### Destructive action confirmation pattern
 
-<img src="/sample_destructive_action.svg" alt="Destructive action confirmation pattern" />
+<img
+  src="/sample_destructive_action.svg"
+  alt="Destructive action confirmation pattern"
+/>
 
 #### Design Notes
+
 - Uses a Dialog component
 - Dialog appears centred on the user's window, disabling the parent application UI behind it
 - The parent application UI remains in its current state whilst the confirmation dialog is visible
 - If the user chooses to not proceed with a destructive action (e.g. "Keep event"), the confirmation Dialog disappears and the user is back to the same application state they were in before clicking on the destructive link
 - Users must interact with the dialog window before they return to the parent application
-
-

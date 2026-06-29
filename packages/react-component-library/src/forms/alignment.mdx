@@ -1,8 +1,9 @@
-import { Meta, Source } from '@storybook/blocks'
+import { Meta, Source } from '@storybook/addon-docs/blocks'
 
 <Meta title="Forms/Alignment and spacing" />
 
 # Form alignment and spacing
+
 Humans instinctively tend to look for patterns, structure and order. When we meet a friend, we don’t recognise their
 hair, eyes and nose - we recognise their face.
 
@@ -15,13 +16,16 @@ quickly identify groupings and the most efficient way of filling in a form.
 
 ## 7. Alignment
 
-###### 7.0 All form columns, section dividers, fields and labels *must* be left aligned.
+###### 7.0 All form columns, section dividers, fields and labels _must_ be left aligned.
+
 > This is because (in Western cultures) it is easier for users to scan a form vertically and navigate through it with a mouse when everything is left aligned.
 
-###### 7.1 Input field widths *must* reflect the expected input length.
-> For example, when asking for an address, the input field width for the first line of the address should be wider than the postcode input  field, reflecting the difference in the expected input length.
+###### 7.1 Input field widths _must_ reflect the expected input length.
+
+> For example, when asking for an address, the input field width for the first line of the address should be wider than the postcode input field, reflecting the difference in the expected input length.
 
 ###### 7.2 You must not use more than four different widths for form components.
+
 > While input field widths must reflect the expected input length, too many distinct widths result in visual ‘noise’ and have the opposite effect than intended. To maintain visual balance use components that correspond to 100%, 75%, 50% or 25% of your form width, with the necessary spacing between them as described in the next section.
 
 <img src="/alignment_do.svg" alt="form alignment" />
@@ -29,8 +33,11 @@ quickly identify groupings and the most efficient way of filling in a form.
 <img src="/alignment_dont.svg" alt="form alignment what not to do" />
 
 ## 8. Spacing
-###### 8.0 You *must* ensure all form components are spaced using the margins specified.
-###### 8.1 The margin between your form and its container or nearest neighbour *must not* be smaller than 20 pixels.
+
+###### 8.0 You _must_ ensure all form components are spaced using the margins specified.
+
+###### 8.1 The margin between your form and its container or nearest neighbour _must not_ be smaller than 20 pixels.
+
 > Where possible, you should aim for a margin of at least 32 pixels. Different contexts may require different margins. In exceptional cases (eg. a small number of fields within a complex interface), you may use a small margin, but no smaller than 20 pixels. Forms may appear as dedicated pages or within a Dialog, a Drawer or a Modal.
 
 <img src="/spacing_1.svg" alt="spacing example" />
@@ -50,4 +57,3 @@ However, form inputs should not ‘jump around’ as the focus moves between the
 This also applies to horizontal margins.
 
 <img src="/borders_margins_note.svg" alt="borders and margins example" />
-

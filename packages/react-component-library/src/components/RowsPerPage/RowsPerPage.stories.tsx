@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react-webpack5'
 import styled from 'styled-components'
 
 import { RowsPerPage } from './RowsPerPage'
@@ -13,11 +13,15 @@ export default {
 } as Meta<typeof RowsPerPage>
 
 const Wrapper = styled.div`
-    min-height: 18rem;
+  min-height: 18rem;
 `
 
 export const Default: StoryFn<typeof RowsPerPage> = () => {
-  return <Wrapper><RowsPerPage /></Wrapper>
+  return (
+    <Wrapper>
+      <RowsPerPage />
+    </Wrapper>
+  )
 }
 
 export const WithItemRange: StoryFn<typeof RowsPerPage> = () => {

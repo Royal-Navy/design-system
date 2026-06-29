@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 
 import { TOAST_APPEARANCE, Toast, ToastProps, showToast, dismissToast } from '.'
 import { Button } from '../Button'

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react-webpack5'
 import { color } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 

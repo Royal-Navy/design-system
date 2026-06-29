@@ -1,6 +1,6 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 
 import { TextInput } from '../../components/TextInput'
 import { TextArea } from '../../components/TextArea'

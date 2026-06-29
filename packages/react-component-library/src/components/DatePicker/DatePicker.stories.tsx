@@ -1,11 +1,5 @@
-import { Meta, StoryFn } from '@storybook/react'
-import {
-  addDays,
-  endOfMonth,
-  parseISO,
-  startOfMonth,
-  subDays,
-} from 'date-fns'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
+import { addDays, endOfMonth, parseISO, startOfMonth, subDays } from 'date-fns'
 import React from 'react'
 import styled from 'styled-components'
 

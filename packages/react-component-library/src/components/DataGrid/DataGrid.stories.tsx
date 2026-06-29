@@ -2,8 +2,8 @@ import { faker } from '@faker-js/faker'
 import React, { useCallback, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { spacing } from '@royalnavy/design-tokens'
-import { fn } from '@storybook/test'
-import { Meta, StoryFn } from '@storybook/react'
+import { fn } from 'storybook/test'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 import type {
   ColumnDef,
   SortingState,

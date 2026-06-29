@@ -1,5 +1,5 @@
 import React from 'react'
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react-webpack5'
 
 import { IconSearch, IconSettings } from '@royalnavy/icon-library'
 import { TextInput } from '.'
