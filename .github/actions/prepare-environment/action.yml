@@ -8,19 +8,18 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: pnpm/action-setup@v3
+    - uses: pnpm/action-setup@v6
       with:
-        version: 9.1.1
         run_install: false
         standalone: true
 
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v5
       with:
         node-version-file: .nvmrc
         cache: pnpm
 
     - name: Cache Node modules
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: '**/node_modules'
         key: node-modules-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -32,7 +31,7 @@ runs:
 
     - name: Download icon-library and design-tokens
       if: inputs.unpack-prebuilt-libraries
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: dist
 
