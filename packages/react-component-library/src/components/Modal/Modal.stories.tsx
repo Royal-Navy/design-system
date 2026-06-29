@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { StoryFn, Meta } from '@storybook/react-webpack5'
+import { fn } from 'storybook/test'
 import styled from 'styled-components'
 import { spacing } from '@royalnavy/design-tokens'
 import noop from 'lodash/noop'
@@ -21,11 +22,14 @@ export default {
   component: Modal,
   title: 'Components/Modal',
   parameters: {
-    actions: { argTypesRegex: '^on.*' },
     layout: 'fullscreen',
     jsx: {
       showFunctions: true,
     },
+  },
+  args: {
+    onOpen: fn(),
+    onClose: fn(),
   },
 } as Meta<typeof Modal>
 
