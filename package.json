@@ -5,6 +5,11 @@
     "node": "^24.0.0"
   },
   "packageManager": "pnpm@9.1.1",
+  "pnpm": {
+    "overrides": {
+      "@swc/core": "^1.15.0"
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",

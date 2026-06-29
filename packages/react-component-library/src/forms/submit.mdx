@@ -1,4 +1,4 @@
-import { Meta, Source } from '@storybook/blocks'
+import { Meta, Source } from '@storybook/addon-docs/blocks'
 
 <Meta title="Forms/Validation" />
 
@@ -12,30 +12,36 @@ This is why we ask that you adhere to these Standards, regardless of how straigh
 forms are - consistency is key, and this applies to form validation as much as any other aspect of form design.
 
 ## 9. Optional vs mandatory fields
-###### 9.0 You *should* mark all optional fields with “(optional)” appended to their label. Eg. “Notes (optional)”.
 
-###### 9.1 You *should not* mark mandatory fields. All fields are mandatory, unless marked as optional.
+###### 9.0 You _should_ mark all optional fields with “(optional)” appended to their label. Eg. “Notes (optional)”.
+
+###### 9.1 You _should not_ mark mandatory fields. All fields are mandatory, unless marked as optional.
 
 ## 10. Submitting a form
 
 ###### 10.0 You must not disable form submission buttons, except to prevent duplicate submissions as per 10.1. Disabling a form submission button does not clearly communicate the system status; not all users will understand that the button is disabled because of a form validation error.
 
 ###### 10.1. Where duplicate form submissions would result in data quality or other issues, you must set the primary form button to its Loading state immediately after a user submits a form.
+
 > However, please note Standard 11.4, on re-enabling the button if form submission fails.
 
 ###### 10.2 If your system takes on average more than 5 seconds to process a form submission and display the result, you must set the primary form button to its Wait state immediately after a user submits the form.
+
 > However, please note Standard 11.4, on re-enabling the button if form submission fails.
 
 ## 11. Form validation, error prevention and error messaging
+
 Since 1994, Jakob Nielsen's [general principles for interaction design](https://www.nngroup.com/articles/ten-usability-heuristics/) have become popular rules of thumb for
 good human-computer interaction design.
 
 Our Standards for Form validation, error prevention and error messaging are based on Nielsen’s principles
-  * #1. Visibility of system status
-  * #5. Error prevention and
-  * #9. Help users recognise, diagnose, and recover from errors.
+
+- #1. Visibility of system status
+- #5. Error prevention and
+- #9. Help users recognise, diagnose, and recover from errors.
 
 ###### 11.0 The status of the system must always be clear, through appropriate feedback within a reasonable amount of time.
+
 Whenever users interact with a system, they need to know whether the interaction was successful.
 Did the system actually register a button press? Is it still working on it? Was the data saved?
 Should they press the button again?
@@ -53,6 +59,7 @@ show a ‘toaster’ confirmation message, a ‘spinner’ for a couple of secon
 refresh, if it helps your users be confident that the form was submitted and the data updated correctly.
 
 ###### 11.1 You should prevent user errors by offering suggestions, utilising constraints, and being appropriately flexible.
+
 Both expert users familiar with the process at hand and novice users still learning are prone to making mistakes,
 especially under pressure. When users move between systems - and especially systems that use different
 conventions - the chances of making a mistake increase.
@@ -73,27 +80,37 @@ your form with your users in order to validate your assumptions.
 
 <table>
   <thead>
-  <tr>
-    <th>Don't write vague error messages</th>
-    <th>Do write helpful error messages</th>
-  </tr>
+    <tr>
+      <th>Don't write vague error messages</th>
+      <th>Do write helpful error messages</th>
+    </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Fields highlighted in red have errors.</td>
-    <td>There are 2 errors in this form:<br/>
-      First name is required<br />
-      Telephone number should not contain letters</td>
-  </tr>
-  <tr>
-    <td>Error 503 while processing form.</td>
-    <td>Service temporarily unavailable (server error 503). Your form was not sent.
-      <br />Please try again in a minute.</td>
-  </tr>
-  <tr>
-    <td>Incorrect ID.</td>
-    <td>Valid ID numbers start with the letter K, followed by a 9-digit number.</td>
-  </tr>
+    <tr>
+      <td>Fields highlighted in red have errors.</td>
+      <td>
+        There are 2 errors in this form:
+        <br />
+        First name is required
+        <br />
+        Telephone number should not contain letters
+      </td>
+    </tr>
+    <tr>
+      <td>Error 503 while processing form.</td>
+      <td>
+        Service temporarily unavailable (server error 503). Your form was not
+        sent.
+        <br />
+        Please try again in a minute.
+      </td>
+    </tr>
+    <tr>
+      <td>Incorrect ID.</td>
+      <td>
+        Valid ID numbers start with the letter K, followed by a 9-digit number.
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -111,9 +128,11 @@ your form with your users in order to validate your assumptions.
 > For example, if a date is entered as 35/12/2021 or a username is already taken, show the inline error immediately after focus moves away from the respective form input. Validation must not be real-time (i.e. while the user is still typing their input), as this is likely to become distracting and annoying by constantly reporting errors before a user has finished typing their input.
 
 ###### 11.6.1 When offering immediate inline field validation, you must not alter the list of errors at the top of the form.
+
 > If the list is not already visible, do not show it. If the list is visible because of an earlier failed submission, do not alter it. Doing so would cause the page to jump around considerably. The list at the top of the form should only be altered as a result of a form submission (see 11.7).
 
 ###### 11.7 If a form fails validation after submission, in addition to the inline errors, you must show a list of all errors at the top of the form, and move focus to that area; this includes scrolling the screen as appropriate, so that the list of errors is visible near the top of the screen
+
 > Moving the focus to the list of errors should also ensure that screen readers will announce the error messages and begin at the start of the form, helping users with accessibility requirements understand what has happened. See Design for more information.
 
 ###### 11.8 You should avoid ‘Reset’ Buttons that erase unsaved form data.
@@ -125,6 +144,7 @@ your form with your users in order to validate your assumptions.
 ###### 11.9 You should avoid imposing character limits if you can. You should consider where the information entered will be stored and how it will be displayed.
 
 ### Design
+
 If a user tries to submit a form which fails validation:
 
 - All fields that fail validation must be set to their error state
@@ -134,15 +154,20 @@ If a user tries to submit a form which fails validation:
 
 ### Auto-scroll animation
 
-<Source dark code={`easeInOutCubic, 250ms;
-# https://easings.net/#easeInOutCubic`}/>
+<Source
+  dark
+  code={`easeInOutCubic, 250ms;
+# https://easings.net/#easeInOutCubic`}
+/>
 
 #### Autoscroll Example Form
+
 <img src="/auto_scroll_example.svg" alt="auto scroll example" />
 
 #### Validation Example Form
+
 <img src="/validation_example_2.svg" alt="validation example form 2" />
 
 #### Validation example layout
-<img src="/validation_example_3.svg" alt="validation example layout" />
 
+<img src="/validation_example_3.svg" alt="validation example layout" />

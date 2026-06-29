@@ -5,7 +5,7 @@ import {
   IconBrightnessAuto,
   IconRemove,
 } from '@royalnavy/icon-library'
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react-webpack5'
 import styled from 'styled-components'
 
 import { Autocomplete, AutocompleteOption } from './index'

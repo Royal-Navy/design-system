@@ -1,5 +1,5 @@
 import React from 'react'
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react-webpack5'
 
 import { Switch, SwitchOption, SWITCH_OPTION_VARIANT } from '.'
 import { COMPONENT_SIZE } from '../Forms'

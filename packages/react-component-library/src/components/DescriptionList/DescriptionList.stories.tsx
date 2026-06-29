@@ -1,5 +1,5 @@
 import React from 'react'
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react-webpack5'
 
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DescriptionList, DescriptionListItem } from './index'

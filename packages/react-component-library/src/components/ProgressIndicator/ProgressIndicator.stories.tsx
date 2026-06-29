@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react-webpack5'
 
 import { StyledProgressIndicator } from './partials/StyledProgressIndicator'
 import { ProgressIndicator } from './index'

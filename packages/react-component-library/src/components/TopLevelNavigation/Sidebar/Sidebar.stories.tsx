@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 
 import { spacing } from '@royalnavy/design-tokens'
 

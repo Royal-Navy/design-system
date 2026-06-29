@@ -1,4 +1,4 @@
-import { Meta, Source } from '@storybook/blocks'
+import { Meta, Source } from '@storybook/addon-docs/blocks'
 
 import { DesignSystemPalette } from './DesignSystemPalette'
 
@@ -13,14 +13,13 @@ to distinguish.
 ## Base palettes
 
 ### Neutral
+
 > For general application use, structure, data and information where we don't want to infer meaning via specific colour usage.
 
-<DesignSystemPalette
-  group="neutral"
-  subtitle=""
-/>
+<DesignSystemPalette group="neutral" subtitle="" />
 
 ### Action
+
 > To show an item is interactive.
 
 <DesignSystemPalette
@@ -29,6 +28,7 @@ to distinguish.
 />
 
 ### Success
+
 > For positive action such as adding, or feedback. eg: "Data saved"
 
 <DesignSystemPalette
@@ -37,6 +37,7 @@ to distinguish.
 />
 
 ### Warning
+
 > To indicate an action or message that may produce undesirable results but not critical. eg: "Another user is editing this page"
 
 <DesignSystemPalette
@@ -45,6 +46,7 @@ to distinguish.
 />
 
 ### Danger
+
 > For destructive actions such as deletion, or for a critical or blocking warning. eg: "Unable to reach server"
 
 <DesignSystemPalette
@@ -52,37 +54,41 @@ to distinguish.
   subtitle="Use the Danger palette for destructive actions."
 />
 
-
 ## Supplementary palettes
 
 Use supplementary colours to support the main colour palettes only. They can be used for
 categorisation and data visualisation, but they don’t have any state associated with them.
 
 ### supa
+
 <DesignSystemPalette group="supa" />
 
 ### supb
+
 <DesignSystemPalette group="supb" />
 
 ### supc
+
 <DesignSystemPalette group="supc" />
 
 ### supd
+
 <DesignSystemPalette group="supd" />
 
 ### supe
+
 <DesignSystemPalette group="supe" />
 
 ### supf
-<DesignSystemPalette group="supf" />
----
+
+## <DesignSystemPalette group="supf" />
 
 ## Usage
+
 <Source dark code={`import { color } from '@royalnavy/design-tokens'
 
 <div style={{ backgroundColor: color('action', '400') }}>
-  Hello colo(u)rful World!
+  Hello, World!
 </div>
 
 `} />
-

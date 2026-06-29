@@ -14,8 +14,6 @@ module.exports = {
       },
     },
     getAbsolutePath('@storybook/addon-links'),
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-interactions'),
     getAbsolutePath('@storybook/addon-a11y'),
     '@storybook/addon-webpack5-compiler-babel',
   ],
@@ -49,21 +47,19 @@ module.exports = {
   },
 
   stories: ['../src/**/*.stories.tsx', '../src/**/*.mdx'],
+
   staticDirs: [
     '../src/forms/images',
     '../src/tokens/images',
     '../src/intro/static',
   ],
+
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
 
     options: {
       strictMode: false,
     },
-  },
-
-  docs: {
-    autodocs: true,
   },
 
   typescript: {

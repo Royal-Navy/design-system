@@ -2,7 +2,7 @@
 import { isBefore, isValid, parseISO } from 'date-fns'
 import React, { useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form/dist/index.ie11'
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react-webpack5'
 import styled from 'styled-components'
 
 import { TextInput } from '../../components/TextInput'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react-webpack5'
 
 import { ClassificationBar } from './ClassificationBar'
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'

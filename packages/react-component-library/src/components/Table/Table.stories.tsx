@@ -1,5 +1,5 @@
 import React from 'react'
-import { StoryFn, Meta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react-webpack5'
 
 import { Badge, BADGE_COLOR_VARIANT, BADGE_COLOR } from '../Badge'
 import { Table, TableColumn } from '.'

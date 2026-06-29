@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { StoryFn as Story, Meta } from '@storybook/react'
+import { StoryFn as Story, Meta } from '@storybook/react-webpack5'
 
 import { ScrollableTabSetProps, TabSetItem, TabSet, TabSetProps } from '.'
 import { Select, SelectOption } from '../Select'

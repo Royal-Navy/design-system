@@ -1,4 +1,4 @@
-import { DocsPage } from '@storybook/addon-docs'
+import { DocsPage } from '@storybook/addon-docs/blocks'
 import isChromatic from 'chromatic'
 import React from 'react'
 import '@royalnavy/fonts'
@@ -75,3 +75,4 @@ const fontLoader = async () => ({
 })
 
 export const loaders = isChromatic() && document.fonts ? [fontLoader] : []
+export const tags = ['autodocs']
