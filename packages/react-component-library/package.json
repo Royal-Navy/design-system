@@ -50,7 +50,7 @@
     "test:e2e:install": "playwright install --with-deps",
     "test:e2e:show-report": "playwright show-report e2e-output/html",
     "test:e2e:trace": "playwright test --trace retain-on-failure",
-    "types": "tsc",
+    "types": "tsc -p tsconfig.build.json",
     "playwright:install": "playwright install --with-deps chromium",
     "ci:server:storybook": "http-server .static_storybook --port 6006 --silent",
     "ci:test:a11y": "concurrently -k -s first -n 'SB,TEST' -c 'magenta,blue' 'pnpm run ci:server:storybook' 'wait-on tcp:6006 && pnpm run test:a11y'"
