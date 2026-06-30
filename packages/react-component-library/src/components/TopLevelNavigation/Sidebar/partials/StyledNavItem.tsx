@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { color, spacing, colorValue } from '@royalnavy/design-tokens'
 
 interface StyledNavItemProps {
   $isActive?: boolean
@@ -28,7 +28,7 @@ export const StyledNavItem = styled.div<StyledNavItemProps>`
     `}
 
   &:hover {
-    background-color: ${color('neutral', '400')};
+    background-color: ${colorValue('neutral', '400')};
 
     > * {
       text-decoration: none;

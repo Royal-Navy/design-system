@@ -1,4 +1,10 @@
-import { color, spacing, type Spacing } from '@royalnavy/design-tokens'
+import {
+  color,
+  colorByMode,
+  spacing,
+  Theme,
+  type Spacing,
+} from '@royalnavy/design-tokens'
 import styled, { css } from 'styled-components'
 
 export interface StyledProgressBarProps {
@@ -7,7 +13,8 @@ export interface StyledProgressBarProps {
 }
 
 export const StyledProgressBar = styled.div<StyledProgressBarProps>`
-  background-color: ${color('neutral', '100')};
+  background-color: ${({ theme }) =>
+    colorByMode('neutral', '100', '200', theme as Theme)};
   overflow: hidden;
   border-radius: 4px;
   height: ${({ $height }) => spacing($height)};

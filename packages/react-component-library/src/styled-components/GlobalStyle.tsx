@@ -1,7 +1,14 @@
 import React, { createContext, useMemo } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
-import { lightTheme, color, fontSize } from '@royalnavy/design-tokens'
+import {
+  lightTheme,
+  color,
+  colorByMode,
+  fontSize,
+  getColorVariables,
+  Theme,
+} from '@royalnavy/design-tokens'
 
 export interface GlobalStyleContextDefaults {
   theme?: Record<string, unknown>
@@ -11,6 +18,23 @@ export interface GlobalStyleProviderProps {
   children?: React.ReactNode
   theme?: Record<string, unknown>
 }
+
+/**
+ * Expose the active theme's colour tokens as CSS custom properties on the
+ * root, so every `color(...)` reference (which resolves to a `var(--color-*)`)
+ * reacts to the theme — including content rendered through portals that sits
+ * outside the provider's DOM subtree.
+ */
+const ThemeVariables = createGlobalStyle<{
+  $variables: Record<string, string>
+}>`
+  :root {
+    ${({ $variables }) =>
+      Object.entries($variables)
+        .map(([name, value]) => `${name}: ${value};`)
+        .join('\n')}
+  }
+`
 
 /**
  * Globally setting `border-box`
@@ -34,7 +58,8 @@ const BoxSizing = createGlobalStyle`
  */
 const Hyperlinks = createGlobalStyle`
   a {
-    color: ${color('action', '500')};
+    color: ${({ theme }) =>
+      colorByMode('action', '500', '400', theme as Theme)};
     text-decoration: none;
   }
 
@@ -46,6 +71,25 @@ const Hyperlinks = createGlobalStyle`
 /**
  * Generate base font size
  */
+/**
+ * Dark-mode-only resets. Light mode keeps the original native defaults so it
+ * renders exactly as before; these only apply when the dark theme is active.
+ *  - Give unstyled text an explicit light colour (native default is black).
+ *  - Neutralise the native <button> colour (ButtonText) and background
+ *    (buttonface) so currentColor icons inside unstyled icon-buttons stay
+ *    legible. Styled buttons set their own colour/background and are unaffected.
+ */
+const DarkModeResets = createGlobalStyle`
+  html {
+    color: ${color('neutral', '600')};
+  }
+
+  button {
+    color: inherit;
+    background-color: transparent;
+  }
+`
+
 const Fonts = createGlobalStyle`
   html {
     font-family: "lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -113,10 +157,19 @@ export const GlobalStyleProvider = ({
     [theme]
   )
 
+  const colorVariables = useMemo(
+    () => getColorVariables(theme as Theme),
+    [theme]
+  )
+
+  const isDark = (theme as Theme)?.mode === 'dark'
+
   return (
     <GlobalStyleContext.Provider value={contextValue}>
       <Normalize />
       <BoxSizing />
+      <ThemeVariables $variables={colorVariables} />
+      {isDark && <DarkModeResets />}
       <Hyperlinks />
       <Fonts />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>

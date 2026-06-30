@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render, RenderResult, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { color, ColorDanger800 } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 import {
   IconAgriculture,
   IconAnchor,
@@ -470,9 +470,7 @@ describe('Select', () => {
     it('displays in an error state', () => {
       expect(wrapper.getByTestId('select-outer-wrapper')).toHaveStyleRule(
         'box-shadow',
-        `0 0 0 ${
-          BORDER_WIDTH[COMPONENT_SIZE.FORMS]
-        } ${ColorDanger800.toUpperCase()}`
+        `0 0 0 ${BORDER_WIDTH[COMPONENT_SIZE.FORMS]} ${color('danger', '800')}`
       )
     })
   })

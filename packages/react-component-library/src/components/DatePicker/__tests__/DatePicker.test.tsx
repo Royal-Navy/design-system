@@ -1,6 +1,6 @@
 import { format, isValid } from 'date-fns'
 import React, { useState } from 'react'
-import { ColorDanger800, ColorWarning800 } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 import {
   act,
   fireEvent,
@@ -17,9 +17,10 @@ import { DATE_VALIDITY } from '../constants'
 
 const NOW = '2019-12-05T11:00:00.000Z'
 
-const ERROR_BOX_SHADOW = `0 0 0 ${
-  BORDER_WIDTH[COMPONENT_SIZE.FORMS]
-} ${ColorDanger800.toUpperCase()}`
+const ERROR_BOX_SHADOW = `0 0 0 ${BORDER_WIDTH[COMPONENT_SIZE.FORMS]} ${color(
+  'danger',
+  '800'
+)}`
 
 const PREVIOUS_MONTH_BUTTON_LABEL = 'Go to previous month'
 
@@ -162,11 +163,11 @@ describe('DatePicker', () => {
         })
       })
 
-      it('colours the current date', () => {
+      it('marks the current date as today', () => {
         return waitFor(() => {
-          expect(wrapper.getByRole('gridcell', { name: '5' })).toHaveStyle({
-            color: ColorWarning800,
-          })
+          expect(wrapper.getByRole('gridcell', { name: '5' })).toHaveClass(
+            'rdp-day_today'
+          )
         })
       })
 
