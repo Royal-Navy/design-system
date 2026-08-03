@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.52.0](https://github.com/Royal-Navy/design-system/compare/4.51.3...4.52.0) (2026-08-03)
+
+### Features
+
+- **NavigationCard:** Add navigation card built on CardFrame ([325142d](https://github.com/Royal-Navy/design-system/commit/325142d8301e32aed7297295b612ed3b044aa246))
+- **NavigationCard:** Reserve icon space and document overlay caveats ([47fe6f6](https://github.com/Royal-Navy/design-system/commit/47fe6f61c8db027d97330200e187eabaf61ac0c1))
+
 ## [4.51.3](https://github.com/Royal-Navy/design-system/compare/4.51.2...4.51.3) (2026-06-30)
 
 **Note:** Version bump only for package @royalnavy/react-component-library
