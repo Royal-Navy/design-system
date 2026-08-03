@@ -85,3 +85,32 @@ Colours.parameters = {
     description: { story: 'A NavigationCard in each supported colour.' },
   },
 }
+
+export const MixedIcons: StoryFn<typeof NavigationCard> = () => (
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
+      gap: '24px',
+    }}
+  >
+    <NavigationCard
+      icon={<IconFileDownload />}
+      link={<a href="#">Received files</a>}
+      description="Browse and download all received files."
+    />
+    <NavigationCard
+      link={<a href="#">Inbound transfers</a>}
+      description="Monitor files currently being received."
+    />
+  </div>
+)
+
+MixedIcons.parameters = {
+  docs: {
+    description: {
+      story:
+        'Cards with and without an icon stay aligned and equal-height: the icon panel space is reserved even when no icon is supplied.',
+    },
+  },
+}

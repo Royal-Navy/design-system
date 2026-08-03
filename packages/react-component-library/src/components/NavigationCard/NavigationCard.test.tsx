@@ -38,13 +38,20 @@ describe('NavigationCard', () => {
       />
     )
 
-    expect(screen.getByTestId('navigation-card-icon')).toBeInTheDocument()
+    const panel = screen.getByTestId('navigation-card-icon')
+
+    expect(panel).toBeInTheDocument()
+    expect(panel.querySelector('svg')).toBeInTheDocument()
   })
 
-  it('omits the icon panel when no icon is provided', () => {
+  it('reserves an empty, transparent icon panel when no icon is provided', () => {
     render(<NavigationCard link={<a href="/library">File library</a>} />)
 
-    expect(screen.queryByTestId('navigation-card-icon')).not.toBeInTheDocument()
+    const panel = screen.getByTestId('navigation-card-icon')
+
+    expect(panel).toBeInTheDocument()
+    expect(panel.querySelector('svg')).not.toBeInTheDocument()
+    expect(panel).toHaveStyleRule('background-color', 'transparent')
   })
 
   it('renders a chevron affordance', () => {

@@ -22,10 +22,16 @@ export interface NavigationCardProps
   link: React.ReactElement
   /**
    * Optional icon rendered in the coloured panel to the left of the content.
+   * The panel space is reserved even when no icon is supplied, so a grid can
+   * mix cards with and without icons and keep them aligned and equal-height.
    */
   icon?: React.ReactNode
   /**
    * Optional supporting text displayed beneath the title.
+   *
+   * Note: the whole card is a single clickable overlay, so this text is not
+   * selectable. Avoid placing copyable data here (e.g. filenames, counts) —
+   * use it for descriptive prose only.
    */
   description?: React.ReactNode
   /**
@@ -42,15 +48,14 @@ export const NavigationCard: React.FC<NavigationCardProps> = ({
   ...rest
 }) => (
   <StyledNavigationCard data-testid="navigation-card" $color={color} {...rest}>
-    {icon && (
-      <StyledIconPanel
-        data-testid="navigation-card-icon"
-        $color={color}
-        aria-hidden
-      >
-        {icon}
-      </StyledIconPanel>
-    )}
+    <StyledIconPanel
+      data-testid="navigation-card-icon"
+      $color={color}
+      $empty={!icon}
+      aria-hidden
+    >
+      {icon}
+    </StyledIconPanel>
     <StyledContent>
       <StyledTitle $color={color}>{link}</StyledTitle>
       {description && <StyledDescription>{description}</StyledDescription>}
