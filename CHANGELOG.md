@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.52.1](https://github.com/Royal-Navy/design-system/compare/4.52.0...4.52.1) (2026-08-03)
+
+### Bug Fixes
+
+- **Build:** Emit type declarations under dist/types/src ([154acd7](https://github.com/Royal-Navy/design-system/commit/154acd7223224910cf3956ab55189c9c60107203))
+
 # [4.52.0](https://github.com/Royal-Navy/design-system/compare/4.51.3...4.52.0) (2026-08-03)
 
 ### Features
