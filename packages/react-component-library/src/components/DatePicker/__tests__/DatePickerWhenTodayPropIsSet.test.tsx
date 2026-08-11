@@ -1,5 +1,4 @@
 import React from 'react'
-import { ColorWarning800 } from '@royalnavy/design-tokens'
 import { act, render, RenderResult } from '@testing-library/react'
 
 import { DatePicker, DatePickerOnChangeData } from '../index'
@@ -26,15 +25,15 @@ describe('when today prop is set', () => {
     onChange.mockReset()
   })
 
-  it('colours the override date', () => {
-    expect(wrapper.getByRole('gridcell', { name: '15' })).toHaveStyle({
-      color: ColorWarning800,
-    })
+  it('marks the override date as today', () => {
+    expect(wrapper.getByRole('gridcell', { name: '15' })).toHaveClass(
+      'rdp-day_today'
+    )
   })
 
-  it('does not colour the actual current date', () => {
-    expect(wrapper.getByRole('gridcell', { name: '5' })).not.toHaveStyle({
-      color: ColorWarning800,
-    })
+  it('does not mark the actual current date as today', () => {
+    expect(wrapper.getByRole('gridcell', { name: '5' })).not.toHaveClass(
+      'rdp-day_today'
+    )
   })
 })

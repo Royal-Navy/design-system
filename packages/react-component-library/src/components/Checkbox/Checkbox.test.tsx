@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import 'jest-styled-components'
-import { ColorNeutral200 } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -106,7 +106,7 @@ describe('Checkbox', () => {
     it('should render a container', () => {
       expect(checkbox.getByTestId('checkbox')).toHaveStyleRule(
         'border',
-        `1px solid ${ColorNeutral200}`
+        `1px solid ${color('neutral', '200')}`
       )
       expect(checkbox.getByTestId('checkbox')).toHaveStyleRule(
         'border-radius',
@@ -292,7 +292,7 @@ describe('Checkbox', () => {
     it('should not render a container', () => {
       expect(checkbox.getByTestId('checkbox')).not.toHaveStyleRule(
         'border',
-        `1px solid ${ColorNeutral200}`
+        `1px solid ${color('neutral', '200')}`
       )
       expect(checkbox.getByTestId('checkbox')).not.toHaveStyleRule(
         'border-radius',
