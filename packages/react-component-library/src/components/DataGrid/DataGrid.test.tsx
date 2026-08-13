@@ -14,6 +14,7 @@ import { userEvent, PointerEventsCheckLevel } from '@testing-library/user-event'
 import { color } from '@royalnavy/design-tokens'
 
 import { DataGrid } from './DataGrid'
+import { DATA_GRID_EMPTY_STATE_TEST_ID } from './Body'
 import { Button } from '../Button'
 import { DEFAULT_ROWS_PER_PAGE } from '../RowsPerPage'
 
@@ -1949,6 +1950,89 @@ describe('DataGrid', () => {
       expect(screen.getByText('26')).toBeInTheDocument()
       expect(screen.getByText('50')).toBeInTheDocument()
       expect(screen.getByText('134')).toBeInTheDocument()
+    })
+  })
+
+  describe('with an empty state', () => {
+    it('shows the empty state message when there is no data', () => {
+      render(
+        <DataGrid
+          data={[]}
+          columns={columns}
+          emptyStateMessage="No results found"
+        />
+      )
+
+      const emptyState = screen.getByTestId(DATA_GRID_EMPTY_STATE_TEST_ID)
+      expect(emptyState).toHaveTextContent('No results found')
+      expect(emptyState).toHaveAttribute('role', 'status')
+    })
+
+    it('keeps the column headers visible when there is no data', () => {
+      render(
+        <DataGrid
+          data={[]}
+          columns={columns}
+          emptyStateMessage="No results found"
+        />
+      )
+
+      expect(
+        within(screen.getAllByRole('row')[0]).getByText('First')
+      ).toBeInTheDocument()
+      expect(
+        within(screen.getAllByRole('row')[0]).getByText('Second')
+      ).toBeInTheDocument()
+    })
+
+    it('renders the empty state icon when provided', () => {
+      render(
+        <DataGrid
+          data={[]}
+          columns={columns}
+          emptyStateMessage="No results found"
+          emptyStateIcon={<svg data-testid="empty-state-icon" />}
+        />
+      )
+
+      expect(screen.getByTestId('empty-state-icon')).toBeInTheDocument()
+    })
+
+    it('does not show the empty state when there is data', () => {
+      render(
+        <DataGrid
+          data={data}
+          columns={columns}
+          emptyStateMessage="No results found"
+        />
+      )
+
+      expect(
+        screen.queryByTestId(DATA_GRID_EMPTY_STATE_TEST_ID)
+      ).not.toBeInTheDocument()
+    })
+
+    it('does not show the empty state while loading', () => {
+      render(
+        <DataGrid
+          data={[]}
+          columns={columns}
+          emptyStateMessage="No results found"
+          isLoading
+        />
+      )
+
+      expect(
+        screen.queryByTestId(DATA_GRID_EMPTY_STATE_TEST_ID)
+      ).not.toBeInTheDocument()
+    })
+
+    it('does not show an empty state when no message is provided', () => {
+      render(<DataGrid data={[]} columns={columns} />)
+
+      expect(
+        screen.queryByTestId(DATA_GRID_EMPTY_STATE_TEST_ID)
+      ).not.toBeInTheDocument()
     })
   })
 })

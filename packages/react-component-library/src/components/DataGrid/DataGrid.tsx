@@ -155,6 +155,15 @@ export interface DataGridBaseProps<T extends object>
    * Defaults to true.
    */
   autoResetPageIndex?: boolean
+  /**
+   * Message shown in place of the rows when there is no data to display.
+   * The header and footer remain visible. Suppressed while `isLoading` is true.
+   */
+  emptyStateMessage?: string
+  /**
+   * Icon shown above the empty state message.
+   */
+  emptyStateIcon?: React.ReactNode
 }
 
 export interface DataGridPropsWithExternalSorting<T extends object>
@@ -311,6 +320,8 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     showRowsPerPageItemRange,
     totalCount,
     autoResetPageIndex,
+    emptyStateMessage,
+    emptyStateIcon,
     ...rest
   } = props
 
@@ -553,6 +564,9 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
           hasSubRows={hasSubRows}
           layout={layout}
           totalColumns={totalColumns}
+          emptyStateMessage={emptyStateMessage}
+          emptyStateIcon={emptyStateIcon}
+          isLoading={isLoading}
         />
         {isLoading && (
           <StyledLoadingOverlay>
