@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { type Table as TanstackTable } from '@tanstack/react-table'
 
 import { Header } from './Header'
-import { Body } from './Body'
+import { Body, shouldShowEmptyState } from './Body'
 import { StyledTable, StyledCaption } from './partials'
 import { TABLE_DEFAULT_LAYOUT, type TableLayout } from './constants'
 
@@ -49,6 +49,18 @@ interface TableProps<T extends object> {
    * Whether to render the table rows with tighter spacing.
    */
   compact?: boolean
+  /**
+   * Message shown in place of the rows when there is no data to display.
+   */
+  emptyStateMessage?: string
+  /**
+   * Icon shown above the empty state message.
+   */
+  emptyStateIcon?: React.ReactNode
+  /**
+   * Whether the grid is loading, in which case the empty state is suppressed.
+   */
+  isLoading?: boolean
 }
 
 export const Table = <T extends object>({
@@ -62,6 +74,9 @@ export const Table = <T extends object>({
   totalColumns,
   layout = TABLE_DEFAULT_LAYOUT,
   compact,
+  emptyStateMessage,
+  emptyStateIcon,
+  isLoading,
 }: TableProps<T>) => {
   const hasGroupedHeaders = useMemo(() => {
     return table.getHeaderGroups().reduce((acc, group) => {
@@ -74,6 +89,7 @@ export const Table = <T extends object>({
       $hasRowSelection={!!enableRowSelection && !hideCheckboxes}
       $isFullWidth={isFullWidth}
       $hasSubRows={hasSubRows}
+      $hasEmptyState={shouldShowEmptyState(table, emptyStateMessage, isLoading)}
       role="grid"
     >
       {caption && <StyledCaption>{caption}</StyledCaption>}
@@ -88,6 +104,9 @@ export const Table = <T extends object>({
         hasHover={hasHover}
         totalColumns={totalColumns}
         compact={compact}
+        emptyStateMessage={emptyStateMessage}
+        emptyStateIcon={emptyStateIcon}
+        isLoading={isLoading}
       />
     </StyledTable>
   )

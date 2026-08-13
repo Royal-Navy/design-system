@@ -14,6 +14,7 @@ import { userEvent, PointerEventsCheckLevel } from '@testing-library/user-event'
 import { color, spacing } from '@royalnavy/design-tokens'
 
 import { DataGrid } from './DataGrid'
+import { DATA_GRID_EMPTY_STATE_TEST_ID } from './Body'
 import { Button } from '../Button'
 import { DEFAULT_ROWS_PER_PAGE } from '../RowsPerPage'
 
@@ -1978,6 +1979,132 @@ describe('DataGrid', () => {
       expect(screen.getByText('26')).toBeInTheDocument()
       expect(screen.getByText('50')).toBeInTheDocument()
       expect(screen.getByText('134')).toBeInTheDocument()
+    })
+  })
+
+  describe('with an empty state', () => {
+    it('shows the empty state message when there is no data', () => {
+      render(
+        <DataGrid
+          data={[]}
+          columns={columns}
+          emptyStateMessage="No results found"
+        />
+      )
+
+      const emptyState = screen.getByTestId(DATA_GRID_EMPTY_STATE_TEST_ID)
+      expect(emptyState).toHaveTextContent('No results found')
+      expect(emptyState).toHaveAttribute('role', 'status')
+    })
+
+    it('keeps the column headers visible when there is no data', () => {
+      render(
+        <DataGrid
+          data={[]}
+          columns={columns}
+          emptyStateMessage="No results found"
+        />
+      )
+
+      expect(
+        within(screen.getAllByRole('row')[0]).getByText('First')
+      ).toBeInTheDocument()
+      expect(
+        within(screen.getAllByRole('row')[0]).getByText('Second')
+      ).toBeInTheDocument()
+    })
+
+    it('renders the empty state icon when provided', () => {
+      render(
+        <DataGrid
+          data={[]}
+          columns={columns}
+          emptyStateMessage="No results found"
+          emptyStateIcon={<svg data-testid="empty-state-icon" />}
+        />
+      )
+
+      expect(screen.getByTestId('empty-state-icon')).toBeInTheDocument()
+    })
+
+    it('does not show the empty state when there is data', () => {
+      render(
+        <DataGrid
+          data={data}
+          columns={columns}
+          emptyStateMessage="No results found"
+        />
+      )
+
+      expect(
+        screen.queryByTestId(DATA_GRID_EMPTY_STATE_TEST_ID)
+      ).not.toBeInTheDocument()
+    })
+
+    it('does not show the empty state while loading', () => {
+      render(
+        <DataGrid
+          data={[]}
+          columns={columns}
+          emptyStateMessage="No results found"
+          isLoading
+        />
+      )
+
+      expect(
+        screen.queryByTestId(DATA_GRID_EMPTY_STATE_TEST_ID)
+      ).not.toBeInTheDocument()
+    })
+
+    it('does not show an empty state when no message is provided', () => {
+      render(<DataGrid data={[]} columns={columns} />)
+
+      expect(
+        screen.queryByTestId(DATA_GRID_EMPTY_STATE_TEST_ID)
+      ).not.toBeInTheDocument()
+    })
+
+    it('lets the table fill the height a consumer gives it', () => {
+      render(
+        <DataGrid
+          data={[]}
+          columns={columns}
+          emptyStateMessage="No results found"
+        />
+      )
+
+      expect(screen.getByRole('grid')).toHaveStyleRule('height', '100%')
+    })
+
+    it('leaves the table height alone when there is data', () => {
+      render(
+        <DataGrid
+          data={data}
+          columns={columns}
+          emptyStateMessage="No results found"
+        />
+      )
+
+      expect(screen.getByRole('grid')).not.toHaveStyleRule('height', '100%')
+    })
+
+    it('keeps the message and gives up the icon when space runs short', () => {
+      render(
+        <DataGrid
+          data={[]}
+          columns={columns}
+          emptyStateMessage="No results found"
+          emptyStateIcon={<svg data-testid="empty-state-icon" />}
+        />
+      )
+
+      const icon = screen.getByTestId('empty-state-icon').parentElement
+      expect(icon).toHaveStyleRule('flex-shrink', '1')
+      expect(icon).toHaveStyleRule('min-height', '0')
+
+      expect(
+        screen.getByText('No results found')
+      ).toHaveStyleRule('flex-shrink', '0')
     })
   })
 })

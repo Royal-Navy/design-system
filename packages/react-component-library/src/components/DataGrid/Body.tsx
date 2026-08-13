@@ -5,7 +5,25 @@ import {
   type Row as TanstackRow,
 } from '@tanstack/react-table'
 
-import { StyledBody, StyledRow, StyledCell } from './partials'
+import {
+  StyledBody,
+  StyledRow,
+  StyledCell,
+  StyledEmptyState,
+  StyledEmptyStateCell,
+  StyledEmptyStateIcon,
+  StyledEmptyStateTitle,
+} from './partials'
+
+export const DATA_GRID_EMPTY_STATE_TEST_ID = 'data-grid-empty-state'
+
+export function shouldShowEmptyState<T extends object>(
+  table: TanstackTable<T>,
+  emptyStateMessage?: string,
+  isLoading?: boolean
+): emptyStateMessage is string {
+  return !isLoading && !table.getRowModel().rows.length && !!emptyStateMessage
+}
 
 interface RowProps<T extends object> {
   /**
@@ -55,7 +73,40 @@ interface BodyProps<T extends object> {
    * Whether to render the rows with tighter spacing.
    */
   compact?: boolean
+  /**
+   * Message shown in place of the rows when there is no data to display.
+   */
+  emptyStateMessage?: string
+  /**
+   * Icon shown above the empty state message.
+   */
+  emptyStateIcon?: React.ReactNode
+  /**
+   * Whether the grid is loading, in which case the empty state is suppressed.
+   */
+  isLoading?: boolean
 }
+
+const EmptyState = ({
+  totalColumns,
+  emptyStateMessage,
+  emptyStateIcon,
+}: {
+  totalColumns: number
+  emptyStateMessage: string
+  emptyStateIcon?: React.ReactNode
+}) => (
+  <StyledRow $fullSpanColumn>
+    <StyledEmptyStateCell colSpan={totalColumns}>
+      <StyledEmptyState data-testid={DATA_GRID_EMPTY_STATE_TEST_ID} role="status">
+        {emptyStateIcon && (
+          <StyledEmptyStateIcon>{emptyStateIcon}</StyledEmptyStateIcon>
+        )}
+        <StyledEmptyStateTitle>{emptyStateMessage}</StyledEmptyStateTitle>
+      </StyledEmptyState>
+    </StyledEmptyStateCell>
+  </StyledRow>
+)
 
 function isLastInBranch<T>(row: TanstackRow<T>, allRows: TanstackRow<T>[]) {
   if (row.depth === 0) {
@@ -145,21 +196,35 @@ export const Body = <T extends object>({
   hasHover,
   totalColumns,
   compact,
+  emptyStateMessage,
+  emptyStateIcon,
+  isLoading,
 }: BodyProps<T>) => {
+  const rows = table.getRowModel().rows
+  const showEmptyState = shouldShowEmptyState(table, emptyStateMessage, isLoading)
+
   return (
     <StyledBody>
-      {table.getRowModel().rows.map((row) => (
-        <React.Fragment key={row.id}>
-          <Row
-            row={row}
-            table={table}
-            enableRowSelection={enableRowSelection}
-            hasHover={hasHover}
-            totalColumns={totalColumns}
-            compact={compact}
-          />
-        </React.Fragment>
-      ))}
+      {showEmptyState ? (
+        <EmptyState
+          totalColumns={totalColumns}
+          emptyStateMessage={emptyStateMessage}
+          emptyStateIcon={emptyStateIcon}
+        />
+      ) : (
+        rows.map((row) => (
+          <React.Fragment key={row.id}>
+            <Row
+              row={row}
+              table={table}
+              enableRowSelection={enableRowSelection}
+              hasHover={hasHover}
+              totalColumns={totalColumns}
+              compact={compact}
+            />
+          </React.Fragment>
+        ))
+      )}
     </StyledBody>
   )
 }
