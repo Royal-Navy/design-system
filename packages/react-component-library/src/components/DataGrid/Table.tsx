@@ -45,6 +45,18 @@ interface TableProps<T extends object> {
    * scroll - The table will fit to the container height and scroll rows if needed.
    */
   layout?: TableLayout
+  /**
+   * Message shown in place of the rows when there is no data to display.
+   */
+  emptyStateMessage?: string
+  /**
+   * Icon shown above the empty state message.
+   */
+  emptyStateIcon?: React.ReactNode
+  /**
+   * Whether the grid is loading, in which case the empty state is suppressed.
+   */
+  isLoading?: boolean
 }
 
 export const Table = <T extends object>({
@@ -57,6 +69,9 @@ export const Table = <T extends object>({
   hasSubRows,
   totalColumns,
   layout = TABLE_DEFAULT_LAYOUT,
+  emptyStateMessage,
+  emptyStateIcon,
+  isLoading,
 }: TableProps<T>) => {
   const hasGroupedHeaders = useMemo(() => {
     return table.getHeaderGroups().reduce((acc, group) => {
@@ -82,6 +97,9 @@ export const Table = <T extends object>({
         enableRowSelection={enableRowSelection}
         hasHover={hasHover}
         totalColumns={totalColumns}
+        emptyStateMessage={emptyStateMessage}
+        emptyStateIcon={emptyStateIcon}
+        isLoading={isLoading}
       />
     </StyledTable>
   )

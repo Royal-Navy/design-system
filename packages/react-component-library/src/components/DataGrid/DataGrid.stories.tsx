@@ -10,6 +10,8 @@ import type {
   PaginationState,
 } from '@tanstack/react-table'
 
+import { IconFolderOpen } from '@royalnavy/icon-library'
+
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DataGrid, TABLE_COLUMN_ALIGNMENT } from '.'
 import { Badge } from '../Badge'
@@ -778,6 +780,35 @@ Loading.parameters = {
     description: {
       story:
         'The `isLoading` prop displays a loading overlay with a progress indicator. This is useful when loading data from a server.',
+    },
+  },
+}
+
+export const EmptyState: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
+}
+
+EmptyState.args = {
+  columns,
+  data: [],
+  isFullWidth: true,
+  emptyStateMessage: 'No results found',
+  emptyStateIcon: <IconFolderOpen aria-hidden />,
+  onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
+}
+
+EmptyState.parameters = {
+  ...disableEmptyTableHeaderRule,
+  docs: {
+    description: {
+      story:
+        'When `data` is empty and the grid is not loading, `emptyStateMessage` is shown inside the table body while the header and footer stay in place. `emptyStateIcon` optionally renders an icon above the message.',
     },
   },
 }
