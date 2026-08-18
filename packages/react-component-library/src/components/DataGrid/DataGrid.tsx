@@ -155,6 +155,10 @@ export interface DataGridBaseProps<T extends object>
    * Defaults to true.
    */
   autoResetPageIndex?: boolean
+  /**
+   * Whether to render the grid rows with tighter spacing.
+   */
+  compact?: boolean
 }
 
 export interface DataGridPropsWithExternalSorting<T extends object>
@@ -311,6 +315,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     showRowsPerPageItemRange,
     totalCount,
     autoResetPageIndex,
+    compact,
     ...rest
   } = props
 
@@ -553,6 +558,7 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
           hasSubRows={hasSubRows}
           layout={layout}
           totalColumns={totalColumns}
+          compact={compact}
         />
         {isLoading && (
           <StyledLoadingOverlay>

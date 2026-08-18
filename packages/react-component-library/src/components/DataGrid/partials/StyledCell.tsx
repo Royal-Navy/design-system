@@ -5,10 +5,15 @@ interface StyledCellProps {
   $alignment?: 'left' | 'right' | 'center'
   $width?: number
   $hasBorder?: boolean
+  $compact?: boolean
 }
 
 export const StyledCell = styled.td<StyledCellProps>`
-  padding: ${spacing('9')} ${spacing('4')} ${spacing('9')} ${spacing('8')};
+  padding: ${({ $compact }) => {
+    const vertical = $compact ? spacing('6') : spacing('9')
+
+    return `${vertical} ${spacing('4')} ${vertical} ${spacing('8')}`
+  }};
   width: ${({ $width }) => ($width ? `${$width}px` : 'auto')};
   font-size: ${fontSize('s')};
   color: ${color('neutral', '400')};

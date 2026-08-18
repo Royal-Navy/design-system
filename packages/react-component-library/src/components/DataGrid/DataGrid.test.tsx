@@ -11,7 +11,7 @@ import type {
   PaginationState,
 } from '@tanstack/react-table'
 import { userEvent, PointerEventsCheckLevel } from '@testing-library/user-event'
-import { color } from '@royalnavy/design-tokens'
+import { color, spacing } from '@royalnavy/design-tokens'
 
 import { DataGrid } from './DataGrid'
 import { Button } from '../Button'
@@ -1849,6 +1849,35 @@ describe('DataGrid', () => {
       expect(within(container).getByTestId('styled-tablehead')).toHaveStyleRule(
         'position',
         'sticky'
+      )
+    })
+  })
+
+  describe('compact', () => {
+    it('uses the default spacing when compact is not set', () => {
+      render(<DataGrid data={data} columns={columns} />)
+
+      expect(screen.getAllByRole('cell')[0]).toHaveStyleRule(
+        'padding',
+        `${spacing('9')} ${spacing('4')} ${spacing('9')} ${spacing('8')}`
+      )
+    })
+
+    it('tightens the row spacing when compact is set', () => {
+      render(<DataGrid data={data} columns={columns} compact />)
+
+      expect(screen.getAllByRole('cell')[0]).toHaveStyleRule(
+        'padding',
+        `${spacing('6')} ${spacing('4')} ${spacing('6')} ${spacing('8')}`
+      )
+    })
+
+    it('does not change the header spacing when compact is set', () => {
+      render(<DataGrid data={data} columns={columns} compact />)
+
+      expect(screen.getAllByRole('columnheader')[0]).toHaveStyleRule(
+        'padding',
+        `${spacing('9')} ${spacing('4')} ${spacing('9')} ${spacing('8')}`
       )
     })
   })

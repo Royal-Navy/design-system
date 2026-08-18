@@ -28,6 +28,10 @@ interface RowProps<T extends object> {
    * Total number of columns to display.
    */
   totalColumns: number
+  /**
+   * Whether to render the rows with tighter spacing.
+   */
+  compact?: boolean
 }
 
 interface BodyProps<T extends object> {
@@ -47,6 +51,10 @@ interface BodyProps<T extends object> {
    * Total number of columns to display.
    */
   totalColumns: number
+  /**
+   * Whether to render the rows with tighter spacing.
+   */
+  compact?: boolean
 }
 
 function isLastInBranch<T>(row: TanstackRow<T>, allRows: TanstackRow<T>[]) {
@@ -67,6 +75,7 @@ const Row = <T extends object>({
   enableRowSelection,
   hasHover,
   totalColumns,
+  compact,
 }: RowProps<T>) => {
   const normalCells = row
     .getVisibleCells()
@@ -91,6 +100,7 @@ const Row = <T extends object>({
             key={cell.id}
             as="td"
             $alignment={cell.column.columnDef.meta?.align}
+            $compact={compact}
             colSpan={1}
             $width={
               cell.column.getSize() === 150 ? undefined : cell.column.getSize()
@@ -118,6 +128,7 @@ const Row = <T extends object>({
             as="td"
             colSpan={totalColumns}
             $alignment={cell.column.columnDef.meta?.align}
+            $compact={compact}
             $hasBorder={index === fullSpanCells.length - 1}
           >
             {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -133,6 +144,7 @@ export const Body = <T extends object>({
   enableRowSelection,
   hasHover,
   totalColumns,
+  compact,
 }: BodyProps<T>) => {
   return (
     <StyledBody>
@@ -144,6 +156,7 @@ export const Body = <T extends object>({
             enableRowSelection={enableRowSelection}
             hasHover={hasHover}
             totalColumns={totalColumns}
+            compact={compact}
           />
         </React.Fragment>
       ))}
