@@ -166,6 +166,9 @@ export default {
     autoResetPageIndex: {
       control: 'boolean',
     },
+    compact: {
+      control: 'boolean',
+    },
   },
 } as Meta<typeof DataGrid>
 
@@ -184,6 +187,19 @@ Default.args = {
   onSelectedRowsChange: fn(),
   onExpandedChange: fn(),
   onColumnFiltersChange: fn(),
+}
+
+export const Compact: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
+}
+
+Compact.args = {
+  ...Default.args,
+  compact: true,
 }
 
 export const ScrollingContent: StoryFn<typeof DataGrid> = (props) => {

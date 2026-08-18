@@ -45,6 +45,10 @@ interface TableProps<T extends object> {
    * scroll - The table will fit to the container height and scroll rows if needed.
    */
   layout?: TableLayout
+  /**
+   * Whether to render the table rows with tighter spacing.
+   */
+  compact?: boolean
 }
 
 export const Table = <T extends object>({
@@ -57,6 +61,7 @@ export const Table = <T extends object>({
   hasSubRows,
   totalColumns,
   layout = TABLE_DEFAULT_LAYOUT,
+  compact,
 }: TableProps<T>) => {
   const hasGroupedHeaders = useMemo(() => {
     return table.getHeaderGroups().reduce((acc, group) => {
@@ -82,6 +87,7 @@ export const Table = <T extends object>({
         enableRowSelection={enableRowSelection}
         hasHover={hasHover}
         totalColumns={totalColumns}
+        compact={compact}
       />
     </StyledTable>
   )
