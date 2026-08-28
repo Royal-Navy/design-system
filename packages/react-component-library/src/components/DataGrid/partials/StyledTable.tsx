@@ -5,12 +5,22 @@ interface StyledTableProps {
   $hasRowSelection?: boolean
   $isFullWidth?: boolean
   $hasSubRows?: boolean
+  $hasEmptyState?: boolean
 }
 
 export const StyledTable = styled.table<StyledTableProps>`
   table-layout: fixed;
   width: ${({ $isFullWidth }) => ($isFullWidth ? '100%' : 'auto')};
   border-spacing: 0;
+
+  /* Only when empty: with no rows to size it the table would collapse to the
+     header, leaving the empty state in a thin band. Resolves to auto unless a
+     consumer has given the grid a height, so it is inert otherwise. */
+  ${({ $hasEmptyState }) =>
+    $hasEmptyState &&
+    css`
+      height: 100%;
+    `}
 
   ${({ $hasRowSelection }) =>
     $hasRowSelection &&

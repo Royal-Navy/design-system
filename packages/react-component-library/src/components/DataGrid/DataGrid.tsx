@@ -144,6 +144,8 @@ export interface DataGridBaseProps<T extends object>
    * How the grid should lay out the rows.
    * autoHeight (default) - The grid will resize to fit all visible rows.
    * scroll - The grid will fit to the container height and scroll rows if needed.
+   * Requires an ancestor with a definite height, otherwise the grid falls back
+   * to the height of its content.
    */
   layout?: TableLayout
   /**
@@ -159,6 +161,15 @@ export interface DataGridBaseProps<T extends object>
    * Whether to render the grid rows with tighter spacing.
    */
   compact?: boolean
+  /**
+   * Message shown in place of the rows when there is no data to display.
+   * The header and footer remain visible. Suppressed while `isLoading` is true.
+   */
+  emptyStateMessage?: string
+  /**
+   * Icon shown above the empty state message.
+   */
+  emptyStateIcon?: React.ReactNode
 }
 
 export interface DataGridPropsWithExternalSorting<T extends object>
@@ -316,6 +327,8 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     totalCount,
     autoResetPageIndex,
     compact,
+    emptyStateMessage,
+    emptyStateIcon,
     ...rest
   } = props
 
@@ -559,6 +572,9 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
           layout={layout}
           totalColumns={totalColumns}
           compact={compact}
+          emptyStateMessage={emptyStateMessage}
+          emptyStateIcon={emptyStateIcon}
+          isLoading={isLoading}
         />
         {isLoading && (
           <StyledLoadingOverlay>
