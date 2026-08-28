@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.54.0](https://github.com/Royal-Navy/design-system/compare/4.53.0...4.54.0) (2026-08-28)
+
+### Features
+
+- **DataGrid:** add emptyStateMessage and emptyStateIcon props ([09e7d72](https://github.com/Royal-Navy/design-system/commit/09e7d72b9827e86e65000407d9c5bf4ac59dbff0))
+
 # [4.53.0](https://github.com/Royal-Navy/design-system/compare/4.52.1...4.53.0) (2026-08-18)
 
 ### Features
