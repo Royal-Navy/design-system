@@ -78,7 +78,7 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
-    "@faker-js/faker": "^8.4.1",
+    "@faker-js/faker": "^10.5.0",
     "@happy-dom/jest-environment": "^14.10.1",
     "@playwright/test": "^1.47.2",
     "@royalnavy/eslint-config-react": "^4.54.0",
