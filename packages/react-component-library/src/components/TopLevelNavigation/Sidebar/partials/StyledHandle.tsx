@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color, zIndex } from '@royalnavy/design-tokens'
+import { color, zIndex, colorValue } from '@royalnavy/design-tokens'
 
 import {
   getTransitionOpacity,
@@ -29,6 +29,6 @@ export const StyledHandle = styled.button<TransitionProps>`
   }
 
   > svg {
-    color: ${color('neutral', 'white')};
+    color: ${colorValue('neutral', 'white')};
   }
 `
