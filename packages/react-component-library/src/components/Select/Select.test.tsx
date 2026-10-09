@@ -14,6 +14,7 @@ import { COMPONENT_SIZE } from '../Forms'
 import { Select } from '.'
 import { SelectOption } from './SelectOption'
 import { TEXT_INPUT_INPUT_HEIGHT } from '../TextInput/partials/StyledInput'
+import logger from '../../utils/logger'
 
 describe('Select', () => {
   let onChangeSpy: (value: string | null) => void
@@ -612,6 +613,79 @@ describe('Select', () => {
         const backgroundColor = color('supf', '200')
         expect(customBadge).toHaveStyleRule('background-color', backgroundColor)
       })
+    })
+  })
+
+  describe('when an option has `badges`', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Select id="select-id" label="Label">
+          <SelectOption
+            badges={[
+              1,
+              { label: 'New', color: 'success', colorVariant: 'faded' },
+              'last',
+            ]}
+            value="one"
+          >
+            One
+          </SelectOption>
+          <SelectOption badges={[]} value="two">
+            Two
+          </SelectOption>
+        </Select>
+      )
+
+      return userEvent.click(wrapper.getByTestId('select-input'))
+    })
+
+    it('displays the badges in array order', () => {
+      const badges = wrapper.queryAllByTestId('select-badge')
+      expect(badges).toHaveLength(3)
+      expect(badges[0]).toHaveTextContent('1')
+      expect(badges[1]).toHaveTextContent('New')
+      expect(badges[2]).toHaveTextContent('last')
+    })
+
+    it('applies per-badge props', () => {
+      const badge = wrapper.queryAllByTestId('select-badge')[1]
+      expect(badge).toHaveStyleRule('background-color', color('success', '100'))
+    })
+  })
+
+  describe.each([
+    ['badge', { badge: 1 }],
+    ['badgeProps', { badgeProps: { color: 'success' as const } }],
+  ])('when `badges` is used with `%s`', (_, deprecatedProps) => {
+    let loggerWarnSpy: jest.SpyInstance
+
+    beforeEach(() => {
+      loggerWarnSpy = jest.spyOn(logger, 'warn').mockImplementation()
+
+      wrapper = render(
+        <Select id="select-id" label="Label">
+          <SelectOption badges={[2]} value="one" {...deprecatedProps}>
+            One
+          </SelectOption>
+        </Select>
+      )
+
+      return userEvent.click(wrapper.getByTestId('select-input'))
+    })
+    afterEach(() => {
+      loggerWarnSpy.mockRestore()
+    })
+
+    it('renders only `badges`', () => {
+      const badges = wrapper.queryAllByTestId('select-badge')
+      expect(badges).toHaveLength(1)
+      expect(badges[0]).toHaveTextContent('2')
+    })
+
+    it('warns that the deprecated props are ignored', () => {
+      expect(loggerWarnSpy).toHaveBeenCalledWith(
+        'SelectBaseOption: deprecated `badge` and `badgeProps` are ignored when `badges` is set'
+      )
     })
   })
 

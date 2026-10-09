@@ -422,6 +422,27 @@ describe('Autocomplete', () => {
     })
   })
 
+  describe('when an option has `badges`', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Autocomplete id="autocomplete-id" label="Label">
+          <AutocompleteOption badges={[1, { label: 'New' }]} value="one">
+            One
+          </AutocompleteOption>
+        </Autocomplete>
+      )
+
+      return userEvent.click(wrapper.getByTestId('select-input'))
+    })
+
+    it('displays the badges in array order', () => {
+      const badges = wrapper.queryAllByTestId('select-badge')
+      expect(badges).toHaveLength(2)
+      expect(badges[0]).toHaveTextContent('1')
+      expect(badges[1]).toHaveTextContent('New')
+    })
+  })
+
   describe('when the `isInvalid` prop is set', () => {
     beforeEach(() => {
       onBlurSpy = jest.fn()

@@ -51,6 +51,16 @@ const TemplateWithIconsAndBadges: StoryFn<typeof Autocomplete> = (args) => (
       <AutocompleteOption badge={100} icon={<IconAnchor />} value="one">
         One
       </AutocompleteOption>
+      <AutocompleteOption
+        badges={[
+          { label: 12, colorVariant: 'faded' },
+          { label: 'New', color: 'success', colorVariant: 'solid' },
+        ]}
+        icon={<IconAnchor />}
+        value="multiple badges"
+      >
+        Multiple badges
+      </AutocompleteOption>
       <AutocompleteOption badge={110} icon={<IconRemove />} value="two">
         Two
       </AutocompleteOption>
