@@ -7,12 +7,25 @@ import { StyledOptionText } from './partials/StyledOptionText'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
 import { StyledCheckbox } from './partials/StyledCheckbox'
+import logger from '../../utils/logger'
 
 type CustomBadgeProps = Omit<BadgeProps, 'children'>
 
+export type SelectBaseOptionBadge =
+  | string
+  | number
+  | ({ label: string | number } & CustomBadgeProps)
+
 export interface SelectBaseOptionProps extends ComponentWithClass {
+  /**
+   * @deprecated Use `badges` instead.
+   */
   badge?: string | number
+  /**
+   * @deprecated Use `badges` instead.
+   */
   badgeProps?: CustomBadgeProps
+  badges?: SelectBaseOptionBadge[]
   icon?: React.ReactNode
   isHighlighted?: boolean
   value: string
@@ -26,6 +39,34 @@ export interface SelectBaseOptionAsStringProps extends SelectBaseOptionProps {
   children: string
 }
 
+function resolveBadges({
+  badge,
+  badgeProps,
+  badges,
+}: Pick<SelectBaseOptionProps, 'badge' | 'badgeProps' | 'badges'>): {
+  label: string | number
+  props: CustomBadgeProps
+}[] {
+  if (badges) {
+    if (badge !== undefined || badgeProps !== undefined) {
+      logger.warn(
+        'SelectBaseOption: deprecated `badge` and `badgeProps` are ignored when `badges` is set'
+      )
+    }
+
+    return badges.map((item) => {
+      if (typeof item === 'object') {
+        const { label, ...props } = item
+        return { label, props }
+      }
+
+      return { label: item, props: {} }
+    })
+  }
+
+  return badge ? [{ label: badge, props: badgeProps ?? {} }] : []
+}
+
 export const SelectBaseOption = React.forwardRef<
   HTMLLIElement,
   SelectBaseOptionProps
@@ -34,6 +75,7 @@ export const SelectBaseOption = React.forwardRef<
     {
       badge,
       badgeProps,
+      badges,
       icon,
       children,
       isHighlighted,
@@ -45,6 +87,8 @@ export const SelectBaseOption = React.forwardRef<
     },
     ref
   ) => {
+    const resolvedBadges = resolveBadges({ badge, badgeProps, badges })
+
     return (
       <StyledOption
         $isHighlighted={isHighlighted}
@@ -62,16 +106,18 @@ export const SelectBaseOption = React.forwardRef<
         )}
         {icon}
         <StyledOptionText title={title}>{children}</StyledOptionText>
-        {badge && (
+        {resolvedBadges.map(({ label, props }, index) => (
           <StyledOptionBadge
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
             data-testid="select-badge"
             size={BADGE_SIZE.XSMALL}
             variant={BADGE_VARIANT.PILL}
-            {...badgeProps}
+            {...props}
           >
-            {badge}
+            {label}
           </StyledOptionBadge>
-        )}
+        ))}
       </StyledOption>
     )
   }
