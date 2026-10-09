@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.55.0](https://github.com/Royal-Navy/design-system/compare/4.54.0...4.55.0) (2026-10-09)
+
+### Features
+
+- **SelectBase:** Add support for multiple badges in the select base ([40b2fe6](https://github.com/Royal-Navy/design-system/commit/40b2fe67b44c376fc9929ac3bb7787121215a949))
+
 # [4.54.0](https://github.com/Royal-Navy/design-system/compare/4.53.0...4.54.0) (2026-08-28)
 
 ### Features
