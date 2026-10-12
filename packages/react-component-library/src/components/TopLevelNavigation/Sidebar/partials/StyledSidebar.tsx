@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color, zIndex } from '@royalnavy/design-tokens'
+import { zIndex, colorValue } from '@royalnavy/design-tokens'
 
 import { StyledContent } from '../../../../primitives/FloatingBox/partials/StyledContent'
 
@@ -31,8 +31,8 @@ export const StyledSidebar = styled.aside<StyledSidebarProps>`
   height: 100%;
   left: 0;
   top: 0;
-  background-color: ${color('neutral', '700')};
-  color: ${color('neutral', 'white')};
+  background-color: ${colorValue('neutral', '700')};
+  color: ${colorValue('neutral', 'white')};
 
   transition: ${({ $isOpen }) =>
     $isOpen

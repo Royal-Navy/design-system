@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { spacing, colorValue } from '@royalnavy/design-tokens'
 
 import { SheetButton } from '../../Sheet/SheetButton'
 
@@ -17,15 +17,15 @@ export const StyledSubNavSheetButton = styled(SheetButton)`
   overflow: hidden;
 
   &:hover {
-    background-color: ${color('neutral', '400')};
+    background-color: ${colorValue('neutral', '400')};
     cursor: pointer;
 
     svg {
-      color: ${color('neutral', 'white')};
+      color: ${colorValue('neutral', 'white')};
     }
   }
 
   svg {
-    color: ${color('neutral', '100')};
+    color: ${colorValue('neutral', '100')};
   }
 `

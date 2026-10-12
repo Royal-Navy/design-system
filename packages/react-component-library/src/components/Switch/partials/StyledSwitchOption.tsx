@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { color, colorValue, spacing } from '@royalnavy/design-tokens'
 
 import { SWITCH_OPTION_VARIANT } from '../constants'
 import { SwitchOptionVariantType } from '../SwitchOption'
@@ -21,7 +21,7 @@ type VariantActiveStyle = {
 const VARIANT_ACTIVE_STYLES: Record<string, VariantActiveStyle> = {
   [SWITCH_OPTION_VARIANT.PRIMARY]: {
     backgroundColor: color('action', '600'),
-    color: color('neutral', 'white'),
+    color: colorValue('neutral', 'white'),
     borderColor: color('action', '600'),
     focusBorderColor: color('action', '500'),
     focusBoxShadow: `0 0 0 2px ${color('action', '500')}, 0 0 0 5px ${color(
@@ -51,7 +51,7 @@ const VARIANT_ACTIVE_STYLES: Record<string, VariantActiveStyle> = {
   },
   [SWITCH_OPTION_VARIANT.DANGER]: {
     backgroundColor: color('danger', '700'),
-    color: color('neutral', 'white'),
+    color: colorValue('neutral', 'white'),
     borderColor: color('danger', '700'),
     focusBorderColor: color('danger', '700'),
     focusBoxShadow: `0 0 0 2px ${color('danger', '700')}, 0 0 0 5px ${color(

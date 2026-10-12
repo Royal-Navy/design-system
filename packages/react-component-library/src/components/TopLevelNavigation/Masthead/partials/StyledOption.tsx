@@ -1,4 +1,5 @@
-import { color } from '@royalnavy/design-tokens'
+import { color, colorValue } from '@royalnavy/design-tokens'
+import { rgba } from 'polished'
 import styled from 'styled-components'
 
 import { MAIN_HEIGHT } from './constants'
@@ -22,7 +23,7 @@ export const StyledOption = styled.button<StyledOptionProps>`
   cursor: pointer;
 
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba(${color('action', '700')}, 0.5);
+    box-shadow: 0 0 0 0.2rem ${rgba(colorValue('action', '700'), 0.5)};
   }
 
   > svg {

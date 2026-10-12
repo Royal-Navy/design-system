@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { color, mq, spacing } from '@royalnavy/design-tokens'
+import { color, mq, spacing, colorValue } from '@royalnavy/design-tokens'
 
 import { FloatingBoxSchemeType } from '../types'
 import { FLOATING_BOX_SCHEME } from '../constants'
@@ -26,9 +26,9 @@ const schemeStyleMap = {
   `,
 
   [FLOATING_BOX_SCHEME.DARK]: css`
-    background: ${color('neutral', '700')};
-    border: ${color('neutral', '700')} solid ${spacing('px')};
-    color: ${color('neutral', 'white')};
+    background: ${colorValue('neutral', '700')};
+    border: ${colorValue('neutral', '700')} solid ${spacing('px')};
+    color: ${colorValue('neutral', 'white')};
 
     ${StyledArrow} {
       &::before {
@@ -36,7 +36,7 @@ const schemeStyleMap = {
       }
 
       &::after {
-        border-color: ${color('neutral', '700')} transparent;
+        border-color: ${colorValue('neutral', '700')} transparent;
       }
     }
   `,

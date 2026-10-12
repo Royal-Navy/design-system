@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { color, fontSize, spacing, colorValue } from '@royalnavy/design-tokens'
 
 import { Button } from '../../Button'
 
@@ -105,11 +105,11 @@ export const StyledCalendarTiles = styled.button<{
     $isSelected &&
     css`
       background-color: ${color('action', '700')};
-      color: ${color('neutral', 'white')};
+      color: ${colorValue('neutral', 'white')};
 
       &:hover {
         background-color: ${color('action', '700')};
-        color: ${color('neutral', 'white')};
+        color: ${colorValue('neutral', 'white')};
       }
     `}
 `
