@@ -18,7 +18,7 @@ export const BORDER_WIDTH = {
   [COMPONENT_SIZE.FORMS]: '3px',
 }
 
-const SECONDARY_BORDER_WIDTH = {
+export const SECONDARY_BORDER_WIDTH = {
   [COMPONENT_SIZE.SMALL]: '4px',
   [COMPONENT_SIZE.FORMS]: '6px',
 }

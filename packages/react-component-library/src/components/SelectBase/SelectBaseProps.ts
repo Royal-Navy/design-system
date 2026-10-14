@@ -1,4 +1,5 @@
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { ComponentSizeType } from '../Forms'
 
 import { SelectChildrenType } from './types'
 
@@ -42,6 +43,10 @@ export interface SelectBaseProps<T = string | null> extends ComponentWithClass {
    * Optional handler invoked when the selected value changes.
    */
   onChange?: OnChangeType<T>
+  /**
+   * Size of the component.
+   */
+  size?: ComponentSizeType
   /**
    * The selected value when the component is controlled.
    */

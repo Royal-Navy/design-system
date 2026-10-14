@@ -2,7 +2,11 @@ import styled, { css } from 'styled-components'
 import { color, zIndex } from '@royalnavy/design-tokens'
 
 import { BORDER_RADIUS } from '../../../styled-components'
-import { COMPONENT_SIZE } from '../../Forms'
+import {
+  BORDER_WIDTH,
+  SECONDARY_BORDER_WIDTH,
+} from '../../../styled-components/partials/StyledOuterWrapper'
+import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
 import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInput/partials/StyledInput'
 
 type PopupPosition = 'above' | 'below'
@@ -10,6 +14,7 @@ type PopupPosition = 'above' | 'below'
 interface StyledOptionsWrapperProps {
   $isVisible: boolean
   $position?: PopupPosition
+  $size?: ComponentSizeType
 }
 
 function getTopBorder(position: PopupPosition = 'below') {
@@ -39,7 +44,14 @@ function getTopBorder(position: PopupPosition = 'below') {
   `
 }
 
-function getBoxShadow(position: PopupPosition = 'below') {
+function getBoxShadow(
+  position: PopupPosition = 'below',
+  size: ComponentSizeType = COMPONENT_SIZE.FORMS
+) {
+  const boxShadow = `0 0 0 ${BORDER_WIDTH[size]} ${color('action', '500')},
+    0 0 0 ${SECONDARY_BORDER_WIDTH[size]} ${color('action', '100')},
+    0 2px 22px rgba(0, 0, 0, 0.2)`
+
   if (position === 'below') {
     return css`
       &::after {
@@ -48,12 +60,11 @@ function getBoxShadow(position: PopupPosition = 'below') {
         position: absolute;
         left: 0;
         right: 0;
-        top: -${TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.FORMS]};
+        top: -${TEXT_INPUT_INPUT_HEIGHT[size]};
         bottom: 0;
-        box-shadow: 0 0 0 3px ${color('action', '500')},
-          0 0 0 6px ${color('action', '100')}, 0 2px 22px rgba(0, 0, 0, 0.2);
+        box-shadow: ${boxShadow};
         pointer-events: none;
-        border-radius: ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]};
+        border-radius: ${BORDER_RADIUS[size]};
       }
     `
   }
@@ -65,12 +76,11 @@ function getBoxShadow(position: PopupPosition = 'below') {
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -${TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.FORMS]};
+      bottom: -${TEXT_INPUT_INPUT_HEIGHT[size]};
       top: 0;
-      box-shadow: 0 0 0 3px ${color('action', '500')},
-        0 0 0 6px ${color('action', '100')}, 0 2px 22px rgba(0, 0, 0, 0.2);
+      box-shadow: ${boxShadow};
       pointer-events: none;
-      border-radius: ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]};
+      border-radius: ${BORDER_RADIUS[size]};
     }
   `
 }
@@ -83,20 +93,19 @@ export const StyledOptionsWrapper = styled.div<StyledOptionsWrapperProps>`
   width: 100%;
 
   margin-bottom: 5px;
-  border-radius: 0 0 ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]}
-    ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]};
+  border-radius: ${({ $size = COMPONENT_SIZE.FORMS }) =>
+    `0 0 ${BORDER_RADIUS[$size]} ${BORDER_RADIUS[$size]}`};
 
-  ${({ $position }) =>
+  ${({ $position, $size = COMPONENT_SIZE.FORMS }) =>
     $position === 'above' &&
     css`
       bottom: 100%;
       top: auto;
       margin-bottom: 0;
       margin-top: 5px;
-      border-radius: ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]}
-        ${BORDER_RADIUS[COMPONENT_SIZE.FORMS]} 0 0;
+      border-radius: ${BORDER_RADIUS[$size]} ${BORDER_RADIUS[$size]} 0 0;
     `}
   background: ${color('neutral', 'white')};
   ${({ $position }) => getTopBorder($position)}
-  ${({ $position }) => getBoxShadow($position)}
+  ${({ $position, $size }) => getBoxShadow($position, $size)}
 `

@@ -9,6 +9,7 @@ import { StoryFn, Meta } from '@storybook/react-webpack5'
 import styled from 'styled-components'
 
 import { Autocomplete, AutocompleteOption } from './index'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   component: Autocomplete,
@@ -79,6 +80,11 @@ const TemplateWithIconsAndBadges: StoryFn<typeof Autocomplete> = (args) => (
 )
 
 export const Default = Template.bind({})
+
+export const Small = Template.bind({})
+Small.args = {
+  size: COMPONENT_SIZE.SMALL,
+}
 
 export const Disabled = Template.bind({})
 Disabled.args = {
