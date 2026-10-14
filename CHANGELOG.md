@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.56.0](https://github.com/Royal-Navy/design-system/compare/4.55.1...4.56.0) (2026-10-14)
+
+### Bug Fixes
+
+- **CI:** Resolve issue with chromatic build always targeting master ([23772ea](https://github.com/Royal-Navy/design-system/commit/23772ea007a0c113b06655a23a3221ba301dd185))
+
+### Features
+
+- **Sidebar:** Add extra link support in the Sidebar component ([7c767b0](https://github.com/Royal-Navy/design-system/commit/7c767b040f845ee25f6c239cdd8228f69b9d6108))
+
 ## [4.55.1](https://github.com/Royal-Navy/design-system/compare/4.55.0...4.55.1) (2026-10-12)
 
 **Note:** Version bump only for package royal-navy-design-system
