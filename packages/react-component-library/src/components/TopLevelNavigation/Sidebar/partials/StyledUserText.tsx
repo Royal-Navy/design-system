@@ -37,13 +37,4 @@ export const StyledUserText = styled.div<TransitionProps>`
       font-size: ${fontSize('s')};
     }
   }
-
-  svg {
-    width: 1.65rem;
-    height: 1.65rem;
-    color: ${color('neutral', 'white')};
-    background-color: ${color('neutral', '400')};
-    border-radius: 2px;
-    padding: ${spacing('2')};
-  }
 `

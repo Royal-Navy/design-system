@@ -235,6 +235,35 @@ export const WithUserMenu: StoryFn<typeof Sidebar> = (props) => {
 
 WithUserMenu.storyName = 'User menu'
 
+export const WithUserMenuAdditionalLinks: StoryFn<typeof Sidebar> = (props) => {
+  const userWithLinks = (
+    <SidebarUser
+      initials="HN"
+      name="Horatio Nelson"
+      userLink={<Link href="#">Profile</Link>}
+      exitLink={<Link href="#">Logout</Link>}
+      extraLinks={[
+        { icon: <IconSettings />, link: <Link href="#">Settings</Link> },
+        { icon: <IconFeedback />, link: <Link href="#">Feedback</Link> },
+        { icon: <IconMessage />, link: <Link href="#">Messages</Link> },
+      ]}
+    />
+  )
+
+  return (
+    <StyledContainer>
+      <SidebarWrapper>
+        <StyledSidebar {...props} user={userWithLinks}>
+          <SimpleSidebarNav />
+        </StyledSidebar>
+        <ExampleContent />
+      </SidebarWrapper>
+    </StyledContainer>
+  )
+}
+
+WithUserMenuAdditionalLinks.storyName = 'User menu with additional links'
+
 const WithNotificationsTemplate: StoryFn<typeof Sidebar> = (props) => {
   const notifications = (
     <Notifications link={<Link href="#" />}>

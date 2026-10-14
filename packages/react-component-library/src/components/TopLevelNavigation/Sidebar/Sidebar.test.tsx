@@ -6,7 +6,13 @@ import {
   RenderResult,
   waitFor,
 } from '@testing-library/react'
-import { IconGrain, IconHome } from '@royalnavy/icon-library'
+import {
+  IconFeedback,
+  IconGrain,
+  IconHelp,
+  IconHome,
+  IconSettings,
+} from '@royalnavy/icon-library'
 
 import {
   Sidebar,
@@ -27,6 +33,31 @@ const userWithLinks = (
     name="Horatio Nelson"
     userLink={<Link href="/user-profile">Profile</Link>}
     exitLink={<Link href="/logout">Logout</Link>}
+  />
+)
+
+const userWithAdditionalLinks = (
+  <SidebarUser
+    initials="HN"
+    name="Horatio Nelson"
+    userLink={<Link href="/user-profile">Profile</Link>}
+    exitLink={<Link href="/logout">Logout</Link>}
+    extraLinks={[
+      { icon: <IconSettings />, link: <Link href="/settings">Settings</Link> },
+    ]}
+  />
+)
+
+const userWithOverflowLinks = (
+  <SidebarUser
+    initials="HN"
+    name="Horatio Nelson"
+    exitLink={<Link href="/logout">Logout</Link>}
+    extraLinks={[
+      { icon: <IconSettings />, link: <Link href="/settings">Settings</Link> },
+      { icon: <IconFeedback />, link: <Link href="/feedback">Feedback</Link> },
+      { icon: <IconHelp />, link: <Link href="/help">Help</Link> },
+    ]}
   />
 )
 
@@ -350,6 +381,144 @@ describe('Sidebar', () => {
 
       it('should render the exit link', () => {
         expect(wrapper.queryByTestId('sidebar-exit-link')).toBeInTheDocument()
+      })
+    })
+  })
+
+  describe('when composed with a user menu and additional links', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper>
+          <Sidebar user={userWithAdditionalLinks}>
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+            </SidebarNav>
+          </Sidebar>
+        </SidebarWrapper>
+      )
+    })
+
+    describe('and the sidebar is collapsed and the avatar is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByText('HN').click()
+      })
+
+      it('should show the additional links alongside the user and exit links', () => {
+        expect(wrapper.getByText('Profile')).toBeInTheDocument()
+        expect(wrapper.getByText('Settings').closest('a')).toHaveAttribute(
+          'href',
+          '/settings'
+        )
+        expect(wrapper.getByText('Logout')).toBeInTheDocument()
+      })
+    })
+
+    describe('and the sidebar is expanded', () => {
+      beforeEach(() => {
+        fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+        wrapper.getByTestId('sidebar-handle').click()
+      })
+
+      it('should render the additional links as icons next to the exit link', () => {
+        const link = wrapper.getByTestId('sidebar-user-additional-link')
+
+        expect(link).toHaveAttribute('href', '/settings')
+        expect(link).toHaveAttribute('aria-label', 'Settings')
+        expect(link.querySelector('svg')).toBeInTheDocument()
+        expect(wrapper.getByTestId('sidebar-exit-link')).toBeInTheDocument()
+      })
+    })
+  })
+
+  describe('when an additional link has its own `aria-label` and non-string children', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper>
+          <Sidebar
+            user={
+              <SidebarUser
+                initials="HN"
+                name="Horatio Nelson"
+                extraLinks={[
+                  {
+                    icon: <IconSettings />,
+                    link: (
+                      <Link href="/settings" aria-label="Account settings">
+                        <span>Settings</span>
+                      </Link>
+                    ),
+                  },
+                ]}
+              />
+            }
+          >
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+            </SidebarNav>
+          </Sidebar>
+        </SidebarWrapper>
+      )
+      fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+      wrapper.getByTestId('sidebar-handle').click()
+    })
+
+    it('should keep the link `aria-label` on the inline icon link', () => {
+      expect(
+        wrapper.getByTestId('sidebar-user-additional-link')
+      ).toHaveAttribute('aria-label', 'Account settings')
+    })
+  })
+
+  describe('when composed with more additional links than fit inline', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <SidebarWrapper>
+          <Sidebar user={userWithOverflowLinks}>
+            <SidebarNav>
+              <SidebarNavItem
+                icon={<IconHome />}
+                link={<Link href="/dashboard">Dashboard</Link>}
+              />
+            </SidebarNav>
+          </Sidebar>
+        </SidebarWrapper>
+      )
+      fireEvent.mouseEnter(wrapper.getAllByTestId('sidebar-nav-item')[0])
+      wrapper.getByTestId('sidebar-handle').click()
+    })
+
+    it('should render only the first link inline', () => {
+      const inlineLinks = wrapper.getAllByTestId('sidebar-user-additional-link')
+
+      expect(inlineLinks).toHaveLength(1)
+      expect(inlineLinks[0]).toHaveAttribute('href', '/settings')
+    })
+
+    it('should not show the overflowed links', () => {
+      expect(wrapper.queryByText('Feedback')).not.toBeInTheDocument()
+      expect(wrapper.queryByText('Help')).not.toBeInTheDocument()
+    })
+
+    describe('and the more button is clicked', () => {
+      beforeEach(() => {
+        wrapper.getByTestId('sidebar-user-more-button').click()
+      })
+
+      it('should show the overflowed links', () => {
+        expect(wrapper.getByText('Feedback').closest('a')).toHaveAttribute(
+          'href',
+          '/feedback'
+        )
+        expect(wrapper.getByText('Help').closest('a')).toHaveAttribute(
+          'href',
+          '/help'
+        )
       })
     })
   })
