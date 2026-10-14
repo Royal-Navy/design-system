@@ -9,6 +9,11 @@ export { StyledUser } from './StyledUser'
 export { StyledSheetList } from './StyledSheetList'
 export { StyledSubNavSheetButton } from './StyledSubNavSheetButton'
 export { StyledUserText } from './StyledUserText'
+export {
+  StyledUserAction,
+  StyledUserActions,
+  StyledUserMoreButton,
+} from './StyledUserActions'
 
 export { StyledHandle } from './StyledHandle'
 

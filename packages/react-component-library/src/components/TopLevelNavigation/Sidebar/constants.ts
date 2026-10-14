@@ -1,1 +1,2 @@
 export const TRANSITION_TIMEOUT = 250
+export const MAX_INLINE_USER_LINKS = 2
