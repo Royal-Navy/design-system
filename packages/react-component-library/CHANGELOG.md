@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.56.1](https://github.com/Royal-Navy/design-system/compare/4.56.0...4.56.1) (2026-10-15)
+
+### Bug Fixes
+
+- **Sidebar:** Key link items directly instead of via Children.toArray ([3d85e6a](https://github.com/Royal-Navy/design-system/commit/3d85e6ae788c3c6e4a02e7638250fd6808a12b03))
+
 # [4.56.0](https://github.com/Royal-Navy/design-system/compare/4.55.1...4.56.0) (2026-10-14)
 
 ### Features
