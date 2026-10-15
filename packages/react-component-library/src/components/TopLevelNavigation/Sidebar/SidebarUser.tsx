@@ -62,9 +62,10 @@ const StyledSheet = styled(Sheet)`
 `
 
 const renderUserLinkItems = (links: SidebarUserItemProps[]) =>
-  React.Children.toArray(
-    links.map(({ icon, link }) => <SidebarUserItem icon={icon} link={link} />)
-  )
+  links.map(({ icon, link }, index) => (
+    // eslint-disable-next-line react/no-array-index-key
+    <SidebarUserItem key={index} icon={icon} link={link} />
+  ))
 
 const SidebarUserLinks = ({ links }: { links: SidebarUserItemProps[] }) => {
   const hasOverflow = links.length > MAX_INLINE_USER_LINKS
@@ -77,25 +78,24 @@ const SidebarUserLinks = ({ links }: { links: SidebarUserItemProps[] }) => {
 
   return (
     <>
-      {React.Children.toArray(
-        inlineLinks.map(({ icon, link }) => {
-          const { children, 'aria-label': ariaLabel } = (
-            link as React.ReactElement
-          ).props
+      {inlineLinks.map(({ icon, link }, index) => {
+        const { children, 'aria-label': ariaLabel } = (
+          link as React.ReactElement
+        ).props
 
-          return (
-            <StyledUserAction>
-              {React.cloneElement(link as React.ReactElement, {
-                children: icon,
-                'aria-label':
-                  ariaLabel ??
-                  (typeof children === 'string' ? children : undefined),
-                'data-testid': 'sidebar-user-additional-link',
-              })}
-            </StyledUserAction>
-          )
-        })
-      )}
+        return (
+          // eslint-disable-next-line react/no-array-index-key
+          <StyledUserAction key={index}>
+            {React.cloneElement(link as React.ReactElement, {
+              children: icon,
+              'aria-label':
+                ariaLabel ??
+                (typeof children === 'string' ? children : undefined),
+              'data-testid': 'sidebar-user-additional-link',
+            })}
+          </StyledUserAction>
+        )
+      })}
       {hasOverflow && (
         <Sheet
           aria-label="More user links"
