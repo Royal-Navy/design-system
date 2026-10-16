@@ -5,6 +5,7 @@ import mergeRefs from 'react-merge-refs'
 import { ArrowButton } from '../Select/ArrowButton'
 import { ClearButton } from '../InlineButtons/ClearButton'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { COMPONENT_SIZE, ComponentSizeType } from '../Forms'
 import { SelectChildWithStringType } from './types'
 import { StyledInput } from './partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
@@ -40,6 +41,7 @@ export interface SelectLayoutProps extends ComponentWithClass {
     | ReturnType<SelectReturnValueType['getMenuProps']>
   onChange?: (value: string | null) => void
   onClearButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+  size?: ComponentSizeType
   toggleButtonProps:
     | ReturnType<ComboboxReturnValueType['getToggleButtonProps']>
     | ReturnType<SelectReturnValueType['getToggleButtonProps']>
@@ -67,6 +69,7 @@ export const SelectLayout = ({
   label,
   menuProps,
   onClearButtonClick,
+  size = COMPONENT_SIZE.FORMS,
   toggleButtonProps,
   tooltipText,
   value,
@@ -92,6 +95,7 @@ export const SelectLayout = ({
             $isDisabled={isDisabled}
             $isInvalid={isInvalid}
             $popupPosition={popupPosition}
+            $size={size}
             data-testid="select-outer-wrapper"
           >
             <StyledInputWrapper
@@ -102,6 +106,7 @@ export const SelectLayout = ({
               <StyledLabel
                 $hasContent={hasSelectedItem}
                 $hasFocus={hasLabelFocus}
+                $size={size}
                 htmlFor={id}
                 id={labelId}
                 data-testid="select-label"
@@ -111,6 +116,7 @@ export const SelectLayout = ({
               <StyledInput
                 ref={mergeRefs([setFloatingBoxTarget, ref])}
                 $hasLabel
+                $size={size}
                 data-testid="select-input"
                 disabled={isDisabled}
                 value={value}
@@ -131,12 +137,14 @@ export const SelectLayout = ({
                 <ClearButton
                   isDisabled={isDisabled}
                   onClick={onClearButtonClick}
+                  size={size}
                 />
               )}
               <ArrowButton
                 hasHover={hasHover}
                 isDisabled={isDisabled}
                 isOpen={isOpen}
+                size={size}
                 {...toggleButtonProps}
               />
             </StyledInlineButtonsNoBorder>
@@ -146,9 +154,11 @@ export const SelectLayout = ({
           data-testid="select-options-wrapper"
           $isVisible={isOpen}
           $position={popupPosition}
+          $size={size}
         >
           <StyledOptions
             {...menuProps}
+            $size={size}
             aria-labelledby={labelId}
             data-testid="select-options"
             tabIndex={0}

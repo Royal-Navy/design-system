@@ -10,6 +10,7 @@ import styled from 'styled-components'
 
 import { Select } from './index'
 import { SelectOption } from './SelectOption'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   component: Select,
@@ -103,6 +104,12 @@ const TemplateWithIconsAndBadges: StoryFn<typeof Select> = (args) => (
 )
 
 export const Default = Template.bind({})
+
+export const Small = Template.bind({})
+Small.args = {
+  isMulti: false,
+  size: COMPONENT_SIZE.SMALL,
+}
 
 export const Disabled = Template.bind({})
 Disabled.args = {
