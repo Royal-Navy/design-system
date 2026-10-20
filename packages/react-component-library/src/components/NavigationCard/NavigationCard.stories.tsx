@@ -1,3 +1,4 @@
+import { color } from '@royalnavy/design-tokens'
 import {
   IconFileDownload,
   IconFileUpload,
@@ -83,6 +84,42 @@ export const Colours: StoryFn<typeof NavigationCard> = () => (
 Colours.parameters = {
   docs: {
     description: { story: 'A NavigationCard in each supported colour.' },
+  },
+}
+
+export const CustomColour: StoryFn<typeof NavigationCard> = () => (
+  <NavigationCard
+    color="#7b2cbf"
+    icon={<IconFileDownload />}
+    link={<a href="#">Received files</a>}
+    description="Browse and download all received files."
+  />
+)
+
+CustomColour.parameters = {
+  docs: {
+    description: {
+      story:
+        'Any CSS colour value can be supplied; the lighter tints are derived from it.',
+    },
+  },
+}
+
+export const TokenColour: StoryFn<typeof NavigationCard> = () => (
+  <NavigationCard
+    color={color('supa', '500')}
+    icon={<IconFileDownload />}
+    link={<a href="#">Received files</a>}
+    description="Browse and download all received files."
+  />
+)
+
+TokenColour.parameters = {
+  docs: {
+    description: {
+      story:
+        'A colour token value from the `color` helper in `@royalnavy/design-tokens` can also be supplied.',
+    },
   },
 }
 

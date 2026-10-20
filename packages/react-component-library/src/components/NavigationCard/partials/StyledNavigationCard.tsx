@@ -1,12 +1,12 @@
-import { color, shadow, spacing } from '@royalnavy/design-tokens'
+import { shadow, spacing } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
 import { CardFrame } from '../../CardFrame'
-import { NavigationCardColorType } from '../types'
+import { getShade } from '../helpers'
 import { StyledChevron } from './StyledChevron'
 
 interface StyledNavigationCardProps {
-  $color: NavigationCardColorType
+  $color: string
 }
 
 export const StyledNavigationCard = styled(
@@ -22,7 +22,7 @@ export const StyledNavigationCard = styled(
 
   &:hover,
   &:focus-within {
-    border-color: ${({ $color }) => color($color, '600')};
+    border-color: ${({ $color }) => getShade($color, '600')};
     box-shadow: ${shadow('2')};
   }
 

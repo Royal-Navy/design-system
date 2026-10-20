@@ -1,10 +1,10 @@
 import { color, fontSize } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
-import { NavigationCardColorType } from '../types'
+import { getShade } from '../helpers'
 
 interface StyledTitleProps {
-  $color: NavigationCardColorType
+  $color: string
 }
 
 /**
@@ -35,7 +35,7 @@ export const StyledTitle = styled.span<StyledTitleProps>`
     }
 
     &:focus-visible::after {
-      box-shadow: 0 0 0 3px ${({ $color }) => color($color, '200')};
+      box-shadow: 0 0 0 3px ${({ $color }) => getShade($color, '200')};
     }
   }
 `

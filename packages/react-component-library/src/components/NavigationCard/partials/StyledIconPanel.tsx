@@ -1,10 +1,9 @@
-import { color } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
-import { NavigationCardColorType } from '../types'
+import { getShade } from '../helpers'
 
 interface StyledIconPanelProps {
-  $color: NavigationCardColorType
+  $color: string
   $empty: boolean
 }
 
@@ -21,9 +20,9 @@ export const StyledIconPanel = styled.span<StyledIconPanelProps>`
   width: 96px;
   height: 96px;
   border-radius: 8px;
-  color: ${({ $color }) => color($color, '600')};
+  color: ${({ $color }) => getShade($color, '600')};
   background-color: ${({ $empty, $color }) =>
-    $empty ? 'transparent' : color($color, '100')};
+    $empty ? 'transparent' : getShade($color, '100')};
 
   svg {
     width: 44px;
