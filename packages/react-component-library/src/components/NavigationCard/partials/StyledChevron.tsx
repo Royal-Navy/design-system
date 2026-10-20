@@ -1,17 +1,17 @@
-import { color, spacing } from '@royalnavy/design-tokens'
+import { spacing } from '@royalnavy/design-tokens'
 import styled from 'styled-components'
 
-import { NavigationCardColorType } from '../types'
+import { getShade } from '../helpers'
 
 interface StyledChevronProps {
-  $color: NavigationCardColorType
+  $color: string
 }
 
 export const StyledChevron = styled.span<StyledChevronProps>`
   display: inline-flex;
   flex-shrink: 0;
   margin-left: ${spacing('4')};
-  color: ${({ $color }) => color($color, '600')};
+  color: ${({ $color }) => getShade($color, '600')};
   transition: transform 150ms ease;
 
   svg {

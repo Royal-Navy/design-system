@@ -36,8 +36,10 @@ export interface NavigationCardProps
   description?: React.ReactNode
   /**
    * Colour applied to the icon panel, chevron and hover/focus states.
+   * Either a palette colour or any CSS colour value (e.g. `#7b2cbf`), from
+   * which lighter tints are derived.
    */
-  color?: NavigationCardColorType
+  color?: NavigationCardColorType | (string & NonNullable<unknown>)
 }
 
 export const NavigationCard: React.FC<NavigationCardProps> = ({
