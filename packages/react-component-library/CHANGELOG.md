@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.57.0](https://github.com/Royal-Navy/design-system/compare/4.56.1...4.57.0) (2026-10-21)
+
+### Features
+
+- **NavigationCard:** Allow for custom color values to be set ([98eec2c](https://github.com/Royal-Navy/design-system/commit/98eec2c97333ef3c2680391a4d57ae2162148209))
+
 ## [4.56.1](https://github.com/Royal-Navy/design-system/compare/4.56.0...4.56.1) (2026-10-15)
 
 ### Bug Fixes
