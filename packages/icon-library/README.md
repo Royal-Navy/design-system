@@ -4,7 +4,7 @@ A collection of SVG icons for use in Royal Navy web application development.
 
 ## Browse Icons & Silhouettes
 
-The icon library uses the [Google Material icon set](https://material.io/resources/icons/) as a baseline.
+The icon library uses the [Google Material Icons and Material Symbols](https://fonts.google.com/icons) as a baseline. Material Symbols are included in their filled variant.
 
 It has been extended and supplemented with domain specific icons and [silhouettes](https://github.com/Royal-Navy/design-system/tree/master/packages/icon-library/src/assets/silhouettes).
 
