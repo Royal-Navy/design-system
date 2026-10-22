@@ -36,6 +36,7 @@ export const Autocomplete = ({
   isInvalid = false,
   onBlur,
   onChange,
+  size,
   value,
   ...rest
 }: AutocompleteProps) => {
@@ -168,6 +169,7 @@ export const Autocomplete = ({
         },
         ref: buttonRef,
       })}
+      size={size}
       tooltipText={selectedItemText}
       {...rest}
     >
@@ -186,7 +188,7 @@ export const Autocomplete = ({
           })
         })}
       {inputValue && !filteredItems.length && (
-        <NoResults>{inputValue}</NoResults>
+        <NoResults size={size}>{inputValue}</NoResults>
       )}
     </SelectLayout>
   )

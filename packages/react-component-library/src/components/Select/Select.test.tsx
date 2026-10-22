@@ -2,6 +2,7 @@ import React from 'react'
 
 import { render, RenderResult, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { css } from 'styled-components'
 import { color, ColorDanger800 } from '@royalnavy/design-tokens'
 import {
   IconAgriculture,
@@ -13,6 +14,7 @@ import { BORDER_WIDTH } from '../../styled-components'
 import { COMPONENT_SIZE } from '../Forms'
 import { Select } from '.'
 import { SelectOption } from './SelectOption'
+import { StyledOption } from '../SelectBase/partials/StyledOption'
 import { TEXT_INPUT_INPUT_HEIGHT } from '../TextInput/partials/StyledInput'
 import logger from '../../utils/logger'
 
@@ -474,6 +476,36 @@ describe('Select', () => {
         `0 0 0 ${
           BORDER_WIDTH[COMPONENT_SIZE.FORMS]
         } ${ColorDanger800.toUpperCase()}`
+      )
+    })
+  })
+
+  describe('when `size` is small', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Select initialIsOpen label="Label" size={COMPONENT_SIZE.SMALL}>
+          <SelectOption value="one">One</SelectOption>
+          <SelectOption value="two">Two</SelectOption>
+        </Select>
+      )
+    })
+
+    it('renders the input at the small height', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveStyleRule(
+        'height',
+        TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.SMALL]
+      )
+    })
+
+    it('renders the options at the small height', () => {
+      expect(wrapper.getByTestId('select-options')).toHaveStyleRule(
+        'height',
+        TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.SMALL],
+        {
+          modifier: css`
+            ${StyledOption}
+          `,
+        }
       )
     })
   })
