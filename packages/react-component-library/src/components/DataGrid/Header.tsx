@@ -13,6 +13,7 @@ import {
 import { TABLE_DEFAULT_LAYOUT, type TableLayout } from './constants'
 import { StyledHead, StyledRow, StyledCol, StyledColButton } from './partials'
 import { FilterPopover } from './FilterPopover'
+import { getColumnWidth } from './getColumnWidth'
 
 interface HeaderProps<T extends object> {
   /**
@@ -99,11 +100,7 @@ export const Header = <T extends object>({
                 )}
                 $isHeaderGroup={hasGroupedHeaders && header.depth === 0}
                 $alignment={header.column.columnDef.meta?.align}
-                $width={
-                  header.column.getSize() === 150
-                    ? undefined
-                    : header.column.getSize()
-                }
+                $width={getColumnWidth(header.column)}
                 colSpan={header.colSpan}
               >
                 <div>

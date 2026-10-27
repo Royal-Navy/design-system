@@ -447,6 +447,8 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     manualSorting,
     autoResetPageIndex,
     ...rest,
+    // Stops tanstack's default size of 150 leaking into columnDef, see getColumnWidth
+    defaultColumn: { size: undefined, ...rest.defaultColumn },
     // Prefer consumer-provided getRowId if present in props; fall back to default
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore - getRowId is part of TableOptions and allowed via props extension

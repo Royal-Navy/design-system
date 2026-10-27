@@ -760,6 +760,41 @@ describe('DataGrid', () => {
       expect(columnHeaders[1]).toHaveStyleRule('width', '200px')
       expect(columnHeaders[2]).toHaveStyleRule('width', '300px')
     })
+
+    it('should render a column with an explicit size of 150px', () => {
+      render(
+        <DataGrid
+          data={data}
+          columns={[
+            { ...columnsWithWidths[0], size: 150 },
+            {
+              accessorKey: 'second',
+              header: 'Second',
+              cell: (info) => info.getValue(),
+            },
+          ]}
+        />
+      )
+
+      const columnHeaders = screen.getAllByRole('columnheader')
+
+      expect(columnHeaders[0]).toHaveStyleRule('width', '150px')
+      expect(columnHeaders[1]).toHaveStyleRule('width', 'auto')
+    })
+
+    it('should not set a width on the select column', () => {
+      render(
+        <DataGrid data={data} columns={columnsWithWidths} enableRowSelection />
+      )
+
+      const [selectHeader] = screen.getAllByRole('columnheader')
+      const [selectCell] = within(screen.getAllByRole('row')[1]).getAllByRole(
+        'cell'
+      )
+
+      expect(selectHeader).toHaveStyleRule('width', 'auto')
+      expect(selectCell).toHaveStyleRule('width', 'auto')
+    })
   })
 
   describe('with fullSpanColumn', () => {
