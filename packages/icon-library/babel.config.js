@@ -14,6 +14,7 @@ module.exports = {
         '@babel/preset-react',
         '@babel/typescript',
       ],
+      plugins: ['../../scripts/babel/fullySpecifiedImports'],
     },
     cjs: {
       presets: [
