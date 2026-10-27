@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.59.0](https://github.com/Royal-Navy/design-system/compare/4.58.0...4.59.0) (2026-10-27)
+
+### Bug Fixes
+
+- **DataGrid:** Allow columns to be set to a fixed 150px width ([9ba97a0](https://github.com/Royal-Navy/design-system/commit/9ba97a00dc4a920b4610eb82688439e9d68dc9d7))
+
 # [4.58.0](https://github.com/Royal-Navy/design-system/compare/4.57.0...4.58.0) (2026-10-22)
 
 **Note:** Version bump only for package @royalnavy/react-component-library

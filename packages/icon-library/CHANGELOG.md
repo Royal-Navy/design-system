@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.59.0](https://github.com/Royal-Navy/design-system/compare/4.58.0...4.59.0) (2026-10-27)
+
+### Features
+
+- **IconLibrary:** Add unfilled variants of Material Symbols icons ([1c42bcd](https://github.com/Royal-Navy/design-system/commit/1c42bcdc303d25e4b0337b7977688304f7530bef))
+
 # [4.58.0](https://github.com/Royal-Navy/design-system/compare/4.57.0...4.58.0) (2026-10-22)
 
 ### Features
