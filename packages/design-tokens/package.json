@@ -10,7 +10,16 @@
   "files": [
     "dist"
   ],
+  "module": "dist/es/index.js",
   "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./*": "./*"
+  },
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -18,8 +27,9 @@
     "directory": "packages/design-tokens"
   },
   "scripts": {
-    "build": "run-s build:dict build:cjs types",
+    "build": "run-s build:dict build:es build:cjs types",
     "build:dict": "node ./build-dictionary.js",
+    "build:es": "webpack --config=webpack/es.js && echo '{\"type\":\"module\"}' > dist/es/package.json",
     "build:cjs": "webpack --config=webpack/prod.js",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --allowJs false --outDir dist/types",
     "prepack": "pnpm run build",
