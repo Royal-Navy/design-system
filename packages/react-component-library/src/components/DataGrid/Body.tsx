@@ -14,6 +14,7 @@ import {
   StyledEmptyStateIcon,
   StyledEmptyStateTitle,
 } from './partials'
+import { getColumnWidth } from './getColumnWidth'
 
 export const DATA_GRID_EMPTY_STATE_TEST_ID = 'data-grid-empty-state'
 
@@ -153,9 +154,7 @@ const Row = <T extends object>({
             $alignment={cell.column.columnDef.meta?.align}
             $compact={compact}
             colSpan={1}
-            $width={
-              cell.column.getSize() === 150 ? undefined : cell.column.getSize()
-            }
+            $width={getColumnWidth(cell.column)}
             $hasBorder={!fullSpanCells.length}
             onClick={
               !!enableRowSelection && hasHover
