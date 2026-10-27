@@ -4,7 +4,7 @@ A collection of SVG icons for use in Royal Navy web application development.
 
 ## Browse Icons & Silhouettes
 
-The icon library uses the [Google Material Icons and Material Symbols](https://fonts.google.com/icons) as a baseline. Material Symbols are included in their filled variant.
+The icon library uses the [Google Material Icons and Material Symbols](https://fonts.google.com/icons) as a baseline. Material Symbols are included in their filled variant. Where a Material Symbol has a distinct unfilled form, it is also available with an `Unfilled` suffix (e.g. `IconHomeUnfilled`).
 
 It has been extended and supplemented with domain specific icons and [silhouettes](https://github.com/Royal-Navy/design-system/tree/master/packages/icon-library/src/assets/silhouettes).
 
@@ -23,10 +23,11 @@ pnpm add @royalnavy/icon-library
 ## Usage
 
 ```javascript
-import { IconHome } from '@royalnavy/icon-library'
+import { IconHome, IconHomeUnfilled } from '@royalnavy/icon-library'
 import { SilhouetteAircraftCarrier } from '@royalnavy/icon-library'
 
 // <IconHome size={16} />
+// <IconHomeUnfilled size={16} />
 // <SilhouetteAircraftCarrier size={128} />
 ```
 
@@ -36,7 +37,7 @@ The `size` prop sets the `width` and `height` attribute values of the wrapped SV
 
 ## Contributing
 
-Add an SVG icon to `src/assets/**/` and run `pnpm run build` to generate the consumable artefacts.
+Add an SVG icon to `src/assets/**/` (unfilled variants of Material Symbols go in `src/assets/icons-unfilled/**/`) and run `pnpm run build` to generate the consumable artefacts.
 
 The [contributing guide](https://github.com/Royal-Navy/design-system/blob/master/docs/contributing.md) resource presents information about our development process.
 
