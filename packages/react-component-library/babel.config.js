@@ -39,6 +39,7 @@ module.exports = (api) => {
         plugins: [
           'babel-plugin-styled-components',
           'babel-plugin-jsx-remove-data-test-id',
+          '../../scripts/babel/directIconImports',
           ...(isCliBuild ? ['../../scripts/babel/fullySpecifiedImports'] : []),
         ],
       },
