@@ -5,6 +5,23 @@ function getAbsolutePath(value) {
   return dirname(require.resolve(join(value, 'package.json')))
 }
 
+function isBabelRule(rule) {
+  return rule.use?.some?.(({ loader }) => loader?.includes('babel-loader'))
+}
+
+// Workspace packages resolve outside node_modules, and their prebuilt
+// bundles break babel-plugin-styled-components
+function excludeWorkspaceBuilds(rule) {
+  if (!isBabelRule(rule) || !Array.isArray(rule.exclude)) {
+    return rule
+  }
+
+  return {
+    ...rule,
+    exclude: [...rule.exclude, /[\\/]packages[\\/][^\\/]+[\\/]dist[\\/]/],
+  }
+}
+
 module.exports = {
   addons: [
     {
@@ -30,7 +47,7 @@ module.exports = {
       module: {
         ...config.module,
         rules: [
-          ...config.module.rules,
+          ...config.module.rules.map(excludeWorkspaceBuilds),
           {
             test: /\.m?js$/,
             include: /node_modules\/downshift\//,
