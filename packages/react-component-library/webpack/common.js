@@ -25,7 +25,9 @@ module.exports = {
       {
         test: /\.(js|jsx|ts|tsx)$/,
         use: ['babel-loader', 'source-map-loader'],
-        exclude: /node_modules/,
+        // Workspace packages resolve outside node_modules, and their prebuilt
+        // bundles break babel-plugin-styled-components
+        include: resolve(__dirname, '../src'),
       },
       // Transpile Downshift for IE11 compatibility
       {
