@@ -14,9 +14,24 @@
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "exports": {
-    "types": "./dist/types/index.d.ts",
-    "import": "./dist/es/index.js",
-    "require": "./dist/cjs/index.js"
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./dist/es/icons/*.js": {
+      "types": "./dist/types/icons/*.d.ts",
+      "default": "./dist/es/icons/*.js"
+    },
+    "./dist/es/icons-unfilled/*.js": {
+      "types": "./dist/types/icons-unfilled/*.d.ts",
+      "default": "./dist/es/icons-unfilled/*.js"
+    },
+    "./dist/es/silhouettes/*.js": {
+      "types": "./dist/types/silhouettes/*.d.ts",
+      "default": "./dist/es/silhouettes/*.js"
+    },
+    "./package.json": "./package.json"
   },
   "repository": {
     "type": "git",
