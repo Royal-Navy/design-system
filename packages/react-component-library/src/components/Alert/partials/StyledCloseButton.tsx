@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { fontSize, spacing, mq } from '@royalnavy/design-tokens'
 
 import {

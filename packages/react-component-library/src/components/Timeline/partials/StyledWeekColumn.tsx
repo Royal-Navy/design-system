@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { TIMELINE_ALT_BG_COLOR, TIMELINE_BG_COLOR } from '../constants'
 

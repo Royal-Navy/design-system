@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const StyledVisuallyHiddenText = styled.span`
   clip: rect(0 0 0 0);

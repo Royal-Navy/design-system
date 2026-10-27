@@ -1,4 +1,5 @@
-import { isFinite, isNil } from 'lodash'
+import isFinite from 'lodash/isFinite'
+import isNil from 'lodash/isNil'
 
 const OPTIONAL_NEGATIVE_REGEX = /^-?\d*(\.\d*)?$/
 const NON_NEGATIVE_REGEX = /^\d*(\.\d*)?$/

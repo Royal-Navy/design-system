@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { color, spacing, zIndex } from '@royalnavy/design-tokens'
 
 import { TIMELINE_BORDER_COLOR } from '../constants'

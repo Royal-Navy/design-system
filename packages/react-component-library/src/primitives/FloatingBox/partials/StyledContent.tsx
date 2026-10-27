@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { color, mq, spacing } from '@royalnavy/design-tokens'
 
 import { FloatingBoxSchemeType } from '../types'

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { spacing } from '@royalnavy/design-tokens'
 
 import { Badge } from '../../Badge'

@@ -1,5 +1,5 @@
 import { color } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 export interface StyledTabSetProps {
   $isScrollable?: boolean

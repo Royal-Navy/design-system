@@ -1,6 +1,6 @@
 import { DayPicker } from 'react-day-picker'
 import { color, spacing, fontSize } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { BUTTON_VARIANT, getButtonStyles } from '../../Button'
 import { COMPONENT_SIZE } from '../../Forms'

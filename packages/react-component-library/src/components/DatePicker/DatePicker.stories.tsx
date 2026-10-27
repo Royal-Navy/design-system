@@ -1,7 +1,7 @@
 import { Meta, StoryFn } from '@storybook/react-webpack5'
 import { addDays, endOfMonth, parseISO, startOfMonth, subDays } from 'date-fns'
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DatePicker } from '.'

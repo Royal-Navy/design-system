@@ -1,8 +1,8 @@
 import React, { useRef, useCallback, useMemo } from 'react'
 import { useSelect, useMultipleSelection, UseSelectProps } from 'downshift'
-import { isNil } from 'lodash'
-import mergeRefs from 'react-merge-refs'
+import isNil from 'lodash/isNil'
 
+import { mergeRefs } from '../../helpers'
 import {
   getSelectedItem,
   itemToString,

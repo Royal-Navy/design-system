@@ -1,6 +1,6 @@
 import React, { memo, useRef } from 'react'
-import mergeRefs from 'react-merge-refs'
 
+import { mergeRefs } from '../../helpers'
 import { Input } from './Input'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'

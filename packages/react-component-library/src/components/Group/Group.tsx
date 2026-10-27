@@ -1,6 +1,6 @@
 import React, { type JSX, Children } from 'react'
 import type * as CSS from 'csstype'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { type Spacing, spacing } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { color, spacing } from '@royalnavy/design-tokens'
 
 import { SheetButton, SheetButtonProps } from '../../Sheet/SheetButton'

@@ -5,7 +5,7 @@ import {
   addYears,
   differenceInDays,
 } from 'date-fns'
-import { find } from 'lodash'
+import find from 'lodash/find'
 
 import { BlockSizeType } from '../TimelineHours'
 import { TimelineOptions, TimelineScaleOption } from './types'

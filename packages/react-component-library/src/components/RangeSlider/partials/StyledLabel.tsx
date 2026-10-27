@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { color, fontSize } from '@royalnavy/design-tokens'
 
 interface StyledLabelProps {

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { animation, color, fontSize } from '@royalnavy/design-tokens'
 
 import { ComponentSizeType } from '../../components/Forms'

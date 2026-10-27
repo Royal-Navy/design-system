@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { Logo } from '../components/TopLevelNavigation/Masthead/Logo'
 
 export const StyledLogo = styled(Logo)`

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { find } from 'lodash'
+import find from 'lodash/find'
 
 /**
  * Handle document click

@@ -1,5 +1,5 @@
 import React from 'react'
-import { isNil } from 'lodash'
+import isNil from 'lodash/isNil'
 
 import { ComponentSizeType } from '../Forms'
 import { StyledInput } from '../TextInput/partials/StyledInput'

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { animation, color, spacing } from '@royalnavy/design-tokens'
 
 export const StyledBreadcrumbsItem = styled.li`

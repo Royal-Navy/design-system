@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { color } from '@royalnavy/design-tokens'
 
 import { StyledNavItem } from './StyledNavItem'

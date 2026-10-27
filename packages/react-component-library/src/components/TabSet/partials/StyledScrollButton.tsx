@@ -1,5 +1,5 @@
 import { color } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { ACTIVE_TAB_HEIGHT } from '../../TabBase/partials/StyledTab'
 
 export const StyledScrollButton = styled.button`

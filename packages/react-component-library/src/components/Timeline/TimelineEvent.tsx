@@ -1,6 +1,6 @@
 import React from 'react'
 import { format } from 'date-fns'
-import { isString } from 'lodash'
+import isString from 'lodash/isString'
 
 import { ACCESSIBLE_DATE_FORMAT } from './constants'
 import { ComponentWithClass } from '../../common/ComponentWithClass'

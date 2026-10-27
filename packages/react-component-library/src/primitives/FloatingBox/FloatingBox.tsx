@@ -1,8 +1,8 @@
 import React, { forwardRef, useRef } from 'react'
 import { BasePlacement, Placement, VariationPlacement } from '@popperjs/core'
 import { Transition } from 'react-transition-group'
-import mergeRefs from 'react-merge-refs'
 
+import { mergeRefs } from '../../helpers'
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { FloatingBoxContent } from './FloatingBoxContent'
 import { FloatingBoxSchemeType } from './types'

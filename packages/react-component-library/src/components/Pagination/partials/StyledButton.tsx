@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { animation, color, spacing } from '@royalnavy/design-tokens'
 
 interface StyledButtonProps {

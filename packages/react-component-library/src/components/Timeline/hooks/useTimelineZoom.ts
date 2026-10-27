@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { isNil } from 'lodash'
+import isNil from 'lodash/isNil'
 
 import { TIMELINE_ACTIONS } from '../context/types'
 import { TimelineContext } from '../context'

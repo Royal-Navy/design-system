@@ -1,5 +1,5 @@
 import { spacing, zIndex } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 export const StyledFooter = styled.div<{ $isFullWidth: boolean }>`
   display: flex;

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { StyledTabSetProps } from './StyledTabSet'
 
 export const StyledHeader = styled.header<StyledTabSetProps>`

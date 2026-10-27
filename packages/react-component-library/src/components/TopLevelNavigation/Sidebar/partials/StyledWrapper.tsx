@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { SIDEBAR_CLOSED_WIDTH } from './StyledSidebar'
 

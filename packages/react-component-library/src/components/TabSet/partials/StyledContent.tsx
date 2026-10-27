@@ -1,5 +1,5 @@
 import { spacing } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 interface StyledContentProps {
   $isActive: boolean

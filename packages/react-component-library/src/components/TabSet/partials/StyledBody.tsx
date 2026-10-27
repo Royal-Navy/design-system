@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { zIndex } from '@royalnavy/design-tokens'
 
 import { StyledTabSetProps } from './StyledTabSet'

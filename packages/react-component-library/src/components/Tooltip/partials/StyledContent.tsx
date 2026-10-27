@@ -1,4 +1,4 @@
-import styled, { css, CSSProp } from 'styled-components'
+import { styled, css, CSSProp } from 'styled-components'
 import { color, spacing, zIndex } from '@royalnavy/design-tokens'
 
 import { TooltipPositionType } from '../Tooltip'

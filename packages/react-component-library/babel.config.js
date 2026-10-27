@@ -35,6 +35,7 @@ module.exports = {
       plugins: [
         'babel-plugin-styled-components',
         'babel-plugin-jsx-remove-data-test-id',
+        '../../scripts/babel/fullySpecifiedImports',
       ],
     },
     cjs: {

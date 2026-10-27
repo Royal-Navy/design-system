@@ -1,5 +1,5 @@
 import { color, fontSize, mq } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const StyledDescription = styled.div`
   font-size: ${fontSize('m')};

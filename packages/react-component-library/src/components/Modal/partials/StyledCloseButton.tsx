@@ -1,5 +1,5 @@
 import { color } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const StyledCloseButton = styled.button`
   display: inline-flex;

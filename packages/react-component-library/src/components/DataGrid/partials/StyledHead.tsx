@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { color, zIndex } from '@royalnavy/design-tokens'
 
 import { StyledLayoutProps } from './types'

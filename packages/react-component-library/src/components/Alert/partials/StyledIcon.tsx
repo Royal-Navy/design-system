@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { spacing, mq } from '@royalnavy/design-tokens'
 
 import { AlertVariantType } from '../Alert'

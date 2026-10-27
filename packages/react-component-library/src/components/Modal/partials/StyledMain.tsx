@@ -1,5 +1,5 @@
 import { color, mq } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const StyledMain = styled.article`
   border: 1px solid ${color('neutral', '200')};

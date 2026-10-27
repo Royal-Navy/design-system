@@ -6,7 +6,7 @@ import {
   IconBrightnessAuto,
   IconRemove,
 } from '@royalnavy/icon-library'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { Select } from './index'
 import { SelectOption } from './SelectOption'

@@ -1,6 +1,7 @@
 import React, { KeyboardEventHandler, useCallback } from 'react'
 import { Decimal } from 'decimal.js'
-import { cloneDeep, set } from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
+import set from 'lodash/set'
 
 const KEY_ARROW_UP = 'ArrowUp'
 const KEY_ARROW_DOWN = 'ArrowDown'

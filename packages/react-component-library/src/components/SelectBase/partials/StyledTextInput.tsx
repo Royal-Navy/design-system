@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { StyledTextInput as StyledTextInputBase } from '../../TextInput/partials/StyledTextInput'
 

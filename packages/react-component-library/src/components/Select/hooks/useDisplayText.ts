@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback, RefObject } from 'react'
-import { isNil } from 'lodash'
+import isNil from 'lodash/isNil'
 
 const FULL_TEXT_BUFFER = 60
 

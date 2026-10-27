@@ -1,6 +1,6 @@
 import React from 'react'
 import { components, PlaceholderProps } from 'react-select'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { spacing } from '@royalnavy/design-tokens'
 
 import { DropdownOption } from './DropdownOption'

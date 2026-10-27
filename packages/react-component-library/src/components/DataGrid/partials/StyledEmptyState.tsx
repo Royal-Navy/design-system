@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledEmptyStateCell = styled.td`
