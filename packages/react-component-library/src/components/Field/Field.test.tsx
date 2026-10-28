@@ -53,4 +53,60 @@ describe('Field', () => {
       )
     })
   })
+
+  describe('with `reserveErrorSpace`', () => {
+    it('holds a line for the error while there is none', () => {
+      wrapper = render(
+        <Field reserveErrorSpace>
+          <TextInput label="Example text input" name="example" />
+        </Field>
+      )
+
+      const placeholder = wrapper.getByTestId('field-error-placeholder')
+
+      expect(placeholder).toHaveAttribute('aria-hidden', 'true')
+      expect(placeholder).toHaveStyleRule('min-height', '1rem')
+      expect(placeholder).toHaveStyleRule('display', 'block')
+    })
+
+    it('gives the line to the error once one is raised', () => {
+      wrapper = render(
+        <Field reserveErrorSpace errors={[{ error: 'Required' }]}>
+          <TextInput label="Example text input" name="example" />
+        </Field>
+      )
+
+      expect(
+        wrapper.queryByTestId('field-error-placeholder')
+      ).not.toBeInTheDocument()
+      expect(wrapper.getByTestId('field-error-message')).toHaveStyleRule(
+        'min-height',
+        '1rem'
+      )
+    })
+
+    it('keeps the line for an error without a message', () => {
+      wrapper = render(
+        <Field reserveErrorSpace errors={[{ error: true }]}>
+          <TextInput label="Example text input" name="example" />
+        </Field>
+      )
+
+      expect(wrapper.getByTestId('field-error-placeholder')).toBeInTheDocument()
+    })
+  })
+
+  describe('without `reserveErrorSpace`', () => {
+    it('does not hold a line for the error', () => {
+      wrapper = render(
+        <Field>
+          <TextInput label="Example text input" name="example" />
+        </Field>
+      )
+
+      expect(
+        wrapper.queryByTestId('field-error-placeholder')
+      ).not.toBeInTheDocument()
+    })
+  })
 })

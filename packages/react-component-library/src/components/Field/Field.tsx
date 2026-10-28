@@ -13,6 +13,11 @@ export type ErrorType = {
 export interface FieldProps extends ComponentWithClass {
   hintText?: string
   errors?: ErrorType[]
+  /**
+   * Keep a line for the error message when there is none, so raising an
+   * error does not move the content around the field.
+   */
+  reserveErrorSpace?: boolean
 }
 
 export function ariaAttributes(
@@ -33,10 +38,15 @@ export const Field = ({
   errors = [],
   hintText,
   className,
+  reserveErrorSpace = false,
 }: FieldProps) => {
   const isInvalid: boolean = useMemo(() => {
     return errors.some(({ error }) => error)
   }, [errors])
+
+  const hasErrorMessage = errors.some(
+    ({ error }) => error && typeof error === 'string'
+  )
 
   const fieldId: string = useExternalId('field')
 
@@ -48,6 +58,7 @@ export const Field = ({
             error &&
             typeof error === 'string' && (
               <StyledError
+                $isReserved={reserveErrorSpace}
                 id={`${fieldId}-errormessage`}
                 key={error}
                 data-testid="field-error-message"
@@ -58,6 +69,13 @@ export const Field = ({
             )
           )
         })}
+      {reserveErrorSpace && !hasErrorMessage && (
+        <StyledError
+          $isReserved
+          aria-hidden
+          data-testid="field-error-placeholder"
+        />
+      )}
       {React.Children.map(children, (child) => {
         if (!React.isValidElement(child)) {
           return null
