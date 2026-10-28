@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.60.0](https://github.com/Royal-Navy/design-system/compare/4.59.0...4.60.0) (2026-10-28)
+
+### Bug Fixes
+
+- **ReactComponentLibrary:** Emit ES modules that load in Node ([c5abfc6](https://github.com/Royal-Navy/design-system/commit/c5abfc6c7340008a3f404f443413466a0c16a3dc))
+- **ReactComponentLibrary:** Only compile own source in the CJS build ([f3f41be](https://github.com/Royal-Navy/design-system/commit/f3f41bed1190cb2a40c84ad2e99a274160c44590))
+- **ReactComponentLibrary:** Only rewrite imports in the CLI ES build ([56eaeaa](https://github.com/Royal-Navy/design-system/commit/56eaeaa76960939a1e066ffdb448b1987a96378d))
+- **ReactComponentLibrary:** Stop Storybook compiling workspace builds ([bcbaae4](https://github.com/Royal-Navy/design-system/commit/bcbaae436004028bdf9a941ad5a78781181daed1))
+
+### Performance Improvements
+
+- **ReactComponentLibrary:** Import icons from their own modules ([770a13b](https://github.com/Royal-Navy/design-system/commit/770a13b91e3f33ba5f15257df421ee742406f4e0))
+
 # [4.59.0](https://github.com/Royal-Navy/design-system/compare/4.58.0...4.59.0) (2026-10-27)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.60.0](https://github.com/Royal-Navy/design-system/compare/4.59.0...4.60.0) (2026-10-28)
+
+### Features
+
+- **DesignTokens:** Add an ES module build ([6cec4e2](https://github.com/Royal-Navy/design-system/commit/6cec4e2e5ef5d77d6f2109c614c8a455f2dbf82d))
+
 # [4.59.0](https://github.com/Royal-Navy/design-system/compare/4.58.0...4.59.0) (2026-10-27)
 
 **Note:** Version bump only for package @royalnavy/design-tokens

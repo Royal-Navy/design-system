@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.60.0](https://github.com/Royal-Navy/design-system/compare/4.59.0...4.60.0) (2026-10-28)
+
+### Bug Fixes
+
+- **IconLibrary:** Emit fully specified ES modules ([a67b608](https://github.com/Royal-Navy/design-system/commit/a67b60852fb0db6cd3351e20b76485f5dc7e8cee))
+
+### Features
+
+- **IconLibrary:** Export individual icon modules ([86c8e0b](https://github.com/Royal-Navy/design-system/commit/86c8e0ba911fe6adb6d84b82be22f2a7cd07f5e7))
+
 # [4.59.0](https://github.com/Royal-Navy/design-system/compare/4.58.0...4.59.0) (2026-10-27)
 
 ### Features
