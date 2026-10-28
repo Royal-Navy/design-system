@@ -1,8 +1,8 @@
 import React from 'react'
-import Select from 'react-select'
+import ReactSelect from 'react-select'
 import { ValueType } from 'react-select/src/types'
 import { color, spacing } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { DropdownIndicator } from './DropdownIndicator'
 import { DropdownLabel } from './DropdownLabel'
@@ -31,6 +31,11 @@ export interface DropdownProps {
    */
   labelIcon?: React.ReactNode
 }
+
+// react-select v4 only ships CommonJS to Node, where the default import is the whole module
+const Select: typeof ReactSelect =
+  (ReactSelect as unknown as { default?: typeof ReactSelect }).default ??
+  ReactSelect
 
 const StyledSelect = styled(Select)`
   .rn-dropdown__control {

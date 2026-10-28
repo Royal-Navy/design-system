@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { StoryFn, Meta } from '@storybook/react-webpack5'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { RowsPerPage } from './RowsPerPage'
 

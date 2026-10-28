@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { ACTIVE_TAB_BORDER } from '../../../TabBase/partials/StyledTab'
 
 export const StyledOptions = styled.div<{ $withInlineNav?: boolean }>`

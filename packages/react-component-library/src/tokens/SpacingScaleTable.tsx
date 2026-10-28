@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { spacing, fontSize, color } from '@royalnavy/design-tokens'
 
 const StyledSwatch = styled.span<{ $backgroundColor: string }>`

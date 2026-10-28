@@ -7,7 +7,7 @@ import {
   Theme,
   TypographySize,
 } from '@royalnavy/design-tokens'
-import { get } from 'lodash'
+import get from 'lodash/get'
 
 export function getColors(group: ColorGroup, theme?: Theme): ColorShade[] {
   const tokens = getTheme(theme).colorsTokens

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { color, shadow } from '@royalnavy/design-tokens'
 
 import { StyledLabel } from './StyledLabel'

@@ -1,5 +1,5 @@
 import { color } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const StyledMastHead = styled.div`
   width: 100%;

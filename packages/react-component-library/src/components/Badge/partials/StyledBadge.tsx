@@ -1,5 +1,5 @@
 import { color, fontSize, shadow, spacing } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 import {
   BADGE_COLOR,

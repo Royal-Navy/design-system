@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { color, spacing, zIndex } from '@royalnavy/design-tokens'
 
 import { StyledInput } from '../../../TextInput/partials/StyledInput'

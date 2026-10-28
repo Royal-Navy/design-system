@@ -1,6 +1,6 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react-webpack5'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { PhaseBanner } from '.'
 

@@ -1,5 +1,5 @@
 import { color } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { FloatingBox } from '../../../primitives/FloatingBox'
 import { StyledArrow } from '../../../primitives/FloatingBox/partials/StyledArrow'

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 import { Meta, StoryFn } from '@storybook/react-webpack5'
 import { textAlignments, Text } from './Text'

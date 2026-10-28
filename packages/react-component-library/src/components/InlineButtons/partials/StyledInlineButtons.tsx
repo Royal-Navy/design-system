@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { color } from '@royalnavy/design-tokens'
 
 import { StyledIconWrapper } from './StyledIconWrapper'

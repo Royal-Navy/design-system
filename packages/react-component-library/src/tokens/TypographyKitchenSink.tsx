@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { color } from '@royalnavy/design-tokens'
 import { Text } from '../components/Text'
 import { Group } from '../components/Group'

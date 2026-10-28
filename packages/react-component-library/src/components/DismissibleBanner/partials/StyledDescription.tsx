@@ -1,5 +1,5 @@
 import { color, fontSize } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const StyledDescription = styled.p`
   color: ${color('neutral', '400')};

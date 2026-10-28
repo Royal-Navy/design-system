@@ -1,4 +1,4 @@
-import { get } from 'lodash'
+import get from 'lodash/get'
 import { ChangeEvent, useMemo, useState } from 'react'
 
 const EMPTY_STRING = ''

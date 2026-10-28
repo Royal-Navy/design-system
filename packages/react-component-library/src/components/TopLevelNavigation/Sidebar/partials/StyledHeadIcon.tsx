@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { color, spacing } from '@royalnavy/design-tokens'
 
 import { StyledHeadTitle } from './StyledHeadTitle'

@@ -1,5 +1,5 @@
 import { color, fontSize, zIndex } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 import { StyledTabSetProps } from '../../TabSet/partials/StyledTabSet'
 

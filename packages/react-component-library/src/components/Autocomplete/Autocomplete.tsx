@@ -1,4 +1,4 @@
-import { isNil } from 'lodash'
+import isNil from 'lodash/isNil'
 import React, { useCallback } from 'react'
 import { useCombobox } from 'downshift'
 

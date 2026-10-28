@@ -1,5 +1,5 @@
 import { color, fontSize, spacing } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 import { CheckboxRootProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
 

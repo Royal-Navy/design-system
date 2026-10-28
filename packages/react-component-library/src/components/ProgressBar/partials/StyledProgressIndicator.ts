@@ -1,5 +1,5 @@
 import { animation, color, spacing } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { StyledProgressBarProps } from './StyledProgressBar'
 
 export const StyledProgressIndicator = styled.div<StyledProgressBarProps>`

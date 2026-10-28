@@ -2,7 +2,7 @@ import React from 'react'
 import { StoryFn, Meta } from '@storybook/react-webpack5'
 import { action } from 'storybook/actions'
 import { IconLayers, IconAnchor } from '@royalnavy/icon-library'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { Dropdown } from './Dropdown'
 

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { spacing } from '@royalnavy/design-tokens'
 
 export const StyledHeader = styled.div`

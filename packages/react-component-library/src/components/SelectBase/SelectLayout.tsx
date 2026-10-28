@@ -1,7 +1,7 @@
 import { UseSelectReturnValue, UseComboboxReturnValue } from 'downshift'
 import React, { useState } from 'react'
-import mergeRefs from 'react-merge-refs'
 
+import { mergeRefs } from '../../helpers'
 import { ArrowButton } from '../Select/ArrowButton'
 import { ClearButton } from '../InlineButtons/ClearButton'
 import { ComponentWithClass } from '../../common/ComponentWithClass'

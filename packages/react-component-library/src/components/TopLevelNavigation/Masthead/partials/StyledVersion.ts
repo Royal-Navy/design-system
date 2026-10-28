@@ -1,5 +1,5 @@
 import { spacing } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { Badge, BADGE_COLOR_VARIANT, BADGE_VARIANT } from '../../../Badge'
 

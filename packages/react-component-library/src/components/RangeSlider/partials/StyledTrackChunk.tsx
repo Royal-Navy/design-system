@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { setLightness } from 'polished'
 
 import { ThresholdColor } from '../useThresholdColor'

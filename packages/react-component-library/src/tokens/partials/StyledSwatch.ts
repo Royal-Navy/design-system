@@ -1,5 +1,5 @@
 import { spacing } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 type SwatchProps = {
   $backgroundColor?: string

@@ -1,5 +1,5 @@
 import { shadow, spacing } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { CardFrame } from '../../CardFrame'
 import { getShade } from '../helpers'

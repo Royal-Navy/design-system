@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { spacing } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../../common/ComponentWithClass'

@@ -3,7 +3,8 @@ import {
   eachMonthOfInterval,
   eachWeekOfInterval,
 } from 'date-fns'
-import { clamp, padStart } from 'lodash'
+import clamp from 'lodash/clamp'
+import padStart from 'lodash/padStart'
 
 import {
   TIMELINE_ACTIONS,

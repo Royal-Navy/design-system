@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { color, zIndex } from '@royalnavy/design-tokens'
 
 import { StyledContent } from '../../../../primitives/FloatingBox/partials/StyledContent'

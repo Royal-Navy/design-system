@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledProgressIndicator = styled.div`

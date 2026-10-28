@@ -1,5 +1,5 @@
 import { position } from 'polished'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { color } from '@royalnavy/design-tokens'
 
 import { StyledCheckbox } from './StyledCheckbox'

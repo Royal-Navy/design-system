@@ -5,7 +5,7 @@ import {
   useEffect,
   useRef,
 } from 'react'
-import { debounce } from 'lodash'
+import debounce from 'lodash/debounce'
 
 import { TimelineContext } from '../context'
 import { TIMELINE_ACTIONS } from '../context/types'

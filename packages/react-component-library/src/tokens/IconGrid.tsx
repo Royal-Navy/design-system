@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as Icons from '@royalnavy/icon-library'
 import { SVGIconProps } from '@royalnavy/icon-library'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { Stack, Text } from '..'
 

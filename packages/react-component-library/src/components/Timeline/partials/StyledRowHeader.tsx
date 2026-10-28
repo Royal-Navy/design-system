@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { color, fontSize, spacing, zIndex } from '@royalnavy/design-tokens'
 
 import { StyledSubComponentProps } from './StyledSubComponent'

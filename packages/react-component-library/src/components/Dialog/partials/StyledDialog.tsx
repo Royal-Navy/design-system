@@ -1,5 +1,5 @@
 import { mq } from '@royalnavy/design-tokens'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { Modal } from '../../Modal'
 import { StyledMain } from '../../Modal/partials/StyledMain'

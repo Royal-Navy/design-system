@@ -1,5 +1,5 @@
 import { color, mq, spacing } from '@royalnavy/design-tokens'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 import { StyledButton } from './StyledButton'
 

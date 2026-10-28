@@ -64,6 +64,21 @@ function withKey(
   return null
 }
 
+function mergeRefs<T>(
+  refs: Array<React.MutableRefObject<T> | React.LegacyRef<T> | undefined>
+): React.RefCallback<T> {
+  return (value) => {
+    refs.forEach((ref) => {
+      if (typeof ref === 'function') {
+        ref(value)
+      } else if (ref != null) {
+        const mutableRef = ref as React.MutableRefObject<T | null>
+        mutableRef.current = value
+      }
+    })
+  }
+}
+
 function sleep(ms: number): Promise<undefined> {
   return new Promise((resolve) => {
     setTimeout(resolve, ms)
@@ -75,6 +90,7 @@ export {
   getKey,
   hasClass,
   isIE11,
+  mergeRefs,
   warnIfOverwriting,
   withKey,
   sleep,

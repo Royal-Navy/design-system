@@ -2,7 +2,7 @@ import React from 'react'
 
 import { shadow, spacing } from '@royalnavy/design-tokens'
 
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import {
   StyledDescription,
@@ -40,7 +40,7 @@ export const ElevationTable = () => {
 }
 
 export const UsageText = `
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { shadow } from '@royalnavy/design-tokens'
 

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { color, spacing, zIndex } from '@royalnavy/design-tokens'
 
 export const StyledNoData = styled.div`

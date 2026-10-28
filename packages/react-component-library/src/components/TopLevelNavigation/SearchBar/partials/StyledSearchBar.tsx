@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { zIndex } from '@royalnavy/design-tokens'
 
 interface StyledSearchBarProps {

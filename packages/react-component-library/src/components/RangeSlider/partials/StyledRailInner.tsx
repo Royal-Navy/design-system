@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { RANGE_SLIDER_BG_COLOR } from '../constants'
 

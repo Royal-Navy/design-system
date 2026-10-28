@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { fontSize } from '@royalnavy/design-tokens'
 
 import { ALERT_DESCRIPTION_COLOR } from '../constants'

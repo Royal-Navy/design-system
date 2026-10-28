@@ -1,6 +1,6 @@
 import React from 'react'
 import { StoryFn, Meta } from '@storybook/react-webpack5'
-import styled, { CSSProp } from 'styled-components'
+import { styled, CSSProp } from 'styled-components'
 import { format } from 'date-fns'
 import {
   ColorDanger500,

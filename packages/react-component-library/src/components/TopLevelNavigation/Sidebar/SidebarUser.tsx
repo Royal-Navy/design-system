@@ -5,7 +5,7 @@ import {
   IconMoreHoriz,
   IconPerson,
 } from '@royalnavy/icon-library'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { Transition } from 'react-transition-group'
 
 import { SidebarContext } from './context'

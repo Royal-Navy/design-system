@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { Slider, SliderProps } from 'react-compound-slider'
 
 export const StyledSlider = styled<React.ComponentType<SliderProps>>(Slider)`

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { StoryFn as Story, Meta } from '@storybook/react-webpack5'
 

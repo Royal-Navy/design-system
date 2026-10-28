@@ -14,9 +14,24 @@
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "exports": {
-    "types": "./dist/types/index.d.ts",
-    "import": "./dist/es/index.js",
-    "require": "./dist/cjs/index.js"
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./dist/es/icons/*.js": {
+      "types": "./dist/types/icons/*.d.ts",
+      "default": "./dist/es/icons/*.js"
+    },
+    "./dist/es/icons-unfilled/*.js": {
+      "types": "./dist/types/icons-unfilled/*.d.ts",
+      "default": "./dist/es/icons-unfilled/*.js"
+    },
+    "./dist/es/silhouettes/*.js": {
+      "types": "./dist/types/silhouettes/*.d.ts",
+      "default": "./dist/es/silhouettes/*.js"
+    },
+    "./package.json": "./package.json"
   },
   "repository": {
     "type": "git",
@@ -25,7 +40,7 @@
   },
   "scripts": {
     "build": "run-s svgr-icons svgr-icons-unfilled svgr-silhouettes exports build:es build:cjs types",
-    "build:es": "BABEL_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\"",
+    "build:es": "BABEL_ENV=es babel src --out-dir \"dist/es\" --extensions \".ts,.tsx\" && echo '{\"type\":\"module\"}' > dist/es/package.json",
     "build:cjs": "BABEL_ENV=cjs webpack --config=webpack/prod.js",
     "svgr-icons": "rm -rf src/icons; svgr -d src/icons -- src/assets/icons/**/; rm src/icons/index.ts",
     "svgr-icons-unfilled": "rm -rf src/icons-unfilled; svgr -d src/icons-unfilled -- src/assets/icons-unfilled/**/; rm src/icons-unfilled/index.ts",
