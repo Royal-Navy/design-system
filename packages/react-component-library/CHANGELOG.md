@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.61.0](https://github.com/Royal-Navy/design-system/compare/4.60.0...4.61.0) (2026-10-29)
+
+### Features
+
+- **Field:** Add an option to reserve space for the error message ([b18f68a](https://github.com/Royal-Navy/design-system/commit/b18f68a0e8e917e2d5fafb51c9c68bf83b4378e2))
+
 # [4.60.0](https://github.com/Royal-Navy/design-system/compare/4.59.0...4.60.0) (2026-10-28)
 
 ### Bug Fixes
