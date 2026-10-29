@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.61.1](https://github.com/Royal-Navy/design-system/compare/4.61.0...4.61.1) (2026-10-29)
+
+### Bug Fixes
+
+- **Field:** Let the reserved error line stand in for the field margin ([7c3b7bf](https://github.com/Royal-Navy/design-system/commit/7c3b7bfab5ad753b2613f4cbd5f1ea0f0dbc282e))
+
 # [4.61.0](https://github.com/Royal-Navy/design-system/compare/4.60.0...4.61.0) (2026-10-29)
 
 ### Features
