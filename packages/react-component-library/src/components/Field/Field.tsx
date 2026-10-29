@@ -15,7 +15,8 @@ export interface FieldProps extends ComponentWithClass {
   errors?: ErrorType[]
   /**
    * Keep a line for the error message when there is none, so raising an
-   * error does not move the content around the field.
+   * error does not move the content around the field. The line stands in
+   * for most of the field's top margin, and the bottom margin is dropped.
    */
   reserveErrorSpace?: boolean
 }
@@ -51,7 +52,10 @@ export const Field = ({
   const fieldId: string = useExternalId('field')
 
   return (
-    <StyledField className={className}>
+    <StyledField
+      className={className}
+      $hasReservedErrorSpace={reserveErrorSpace}
+    >
       {isInvalid &&
         errors.map(({ error }) => {
           return (

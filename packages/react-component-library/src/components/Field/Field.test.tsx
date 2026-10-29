@@ -69,6 +69,19 @@ describe('Field', () => {
       expect(placeholder).toHaveStyleRule('display', 'block')
     })
 
+    it('lets the line stand in for the margin', () => {
+      wrapper = render(
+        <Field reserveErrorSpace>
+          <TextInput label="Example text input" name="example" />
+        </Field>
+      )
+
+      expect(wrapper.container.firstChild).toHaveStyleRule(
+        'margin',
+        '0.25rem 0 0'
+      )
+    })
+
     it('gives the line to the error once one is raised', () => {
       wrapper = render(
         <Field reserveErrorSpace errors={[{ error: 'Required' }]}>
@@ -107,6 +120,19 @@ describe('Field', () => {
       expect(
         wrapper.queryByTestId('field-error-placeholder')
       ).not.toBeInTheDocument()
+    })
+
+    it('keeps the default margin', () => {
+      wrapper = render(
+        <Field>
+          <TextInput label="Example text input" name="example" />
+        </Field>
+      )
+
+      expect(wrapper.container.firstChild).toHaveStyleRule(
+        'margin',
+        '1.25rem 0'
+      )
     })
   })
 })
