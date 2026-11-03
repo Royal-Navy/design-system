@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { Select, SelectOption } from '../Select'
+import { SelectOption } from '../Select'
 import { StyledShowingText } from './partials/StyledShowingSelect'
+import { StyledSelect } from './partials/StyledSelect'
 import { StyledWrapper } from './partials/StyledWrapper'
 
 export interface RowsPerPageProps {
@@ -57,7 +58,7 @@ const RowsPerPageSelect = ({
   ...props
 }: RowsPerPageProps) => {
   return (
-    <Select
+    <StyledSelect
       hideClearButton
       initialValue={initialValue}
       label="Rows per page"
@@ -69,7 +70,7 @@ const RowsPerPageSelect = ({
           {option}
         </SelectOption>
       ))}
-    </Select>
+    </StyledSelect>
   )
 }
 
