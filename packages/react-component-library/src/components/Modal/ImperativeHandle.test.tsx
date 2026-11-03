@@ -11,7 +11,7 @@ import userEvent from '@testing-library/user-event'
 import { Modal, ModalImperativeHandle } from '.'
 
 describe('Modal Imperative Handle', () => {
-  const ModalWrapper = () => {
+  const ModalWrapper = ({ onClose }: { onClose?: () => void }) => {
     const modalRef = useRef<ModalImperativeHandle>(null)
 
     return (
@@ -28,7 +28,7 @@ describe('Modal Imperative Handle', () => {
         >
           Close Modal
         </button>
-        <Modal ref={modalRef} title="Test Modal">
+        <Modal ref={modalRef} title="Test Modal" onClose={onClose}>
           <p>Modal content</p>
         </Modal>
       </>
@@ -60,5 +60,27 @@ describe('Modal Imperative Handle', () => {
     await user.click(closeButton)
     expect(screen.queryByTestId('modal-main')).not.toBeVisible()
     expect(modalRef.open).toBe(false)
+  })
+
+  describe('when the modal is closed', () => {
+    const onClose = jest.fn()
+
+    beforeEach(async () => {
+      onClose.mockClear()
+      render(<ModalWrapper onClose={onClose} />)
+      await userEvent.click(screen.getByTestId('open-button'))
+    })
+
+    it('invokes onClose once when closed via the imperative handle', async () => {
+      await userEvent.click(screen.getByTestId('close-button'))
+
+      expect(onClose).toHaveBeenCalledTimes(1)
+    })
+
+    it('invokes onClose once when the header close button is clicked', async () => {
+      await userEvent.click(screen.getByTestId('modal-close'))
+
+      expect(onClose).toHaveBeenCalledTimes(1)
+    })
   })
 })
