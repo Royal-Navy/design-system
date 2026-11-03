@@ -7,6 +7,7 @@ import userEvent from '@testing-library/user-event'
 import { COMPONENT_SIZE } from '../Forms'
 import { BORDER_WIDTH } from '../../styled-components'
 import { Autocomplete, AutocompleteOption } from '.'
+import { TEXT_INPUT_INPUT_HEIGHT } from '../TextInput/partials/StyledInput'
 
 const ERROR_BOX_SHADOW = `0 0 0 ${
   BORDER_WIDTH[COMPONENT_SIZE.FORMS]
@@ -381,6 +382,43 @@ describe('Autocomplete', () => {
         'id',
         initialId
       )
+    })
+  })
+
+  describe('when `size` is small', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Autocomplete initialIsOpen label="Label" size={COMPONENT_SIZE.SMALL}>
+          <AutocompleteOption value="one">One</AutocompleteOption>
+          <AutocompleteOption value="two">Two</AutocompleteOption>
+        </Autocomplete>
+      )
+    })
+
+    it('renders the input at the small height', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveStyleRule(
+        'height',
+        TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.SMALL]
+      )
+    })
+
+    it('renders the options at the small height', () => {
+      expect(wrapper.getAllByTestId('select-option')[0]).toHaveStyle({
+        height: TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.SMALL],
+      })
+    })
+
+    describe('and text with no matches is entered', () => {
+      beforeEach(async () => {
+        await userEvent.type(wrapper.getByTestId('select-input'), 'xyz')
+      })
+
+      it('renders the no results message at the small height', () => {
+        expect(wrapper.getByTestId('autocomplete-no-results')).toHaveStyleRule(
+          'height',
+          TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.SMALL]
+        )
+      })
     })
   })
 

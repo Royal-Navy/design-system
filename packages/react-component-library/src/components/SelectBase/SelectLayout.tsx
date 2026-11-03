@@ -20,6 +20,7 @@ import { useStatefulRef } from '../../hooks/useStatefulRef'
 import { StyledFloatingBox } from './partials/StyledFloatingBox'
 import { PopupPosition } from './SelectBaseProps'
 import { StyledInlineButtonsNoBorder } from '../InlineButtons/partials/StyledInlineButtons'
+import { COMPONENT_SIZE, ComponentSizeType } from '../Forms'
 
 type ComboboxReturnValueType = UseComboboxReturnValue<SelectChildWithStringType>
 type SelectReturnValueType = UseSelectReturnValue<SelectChildWithStringType>
@@ -46,6 +47,7 @@ export interface SelectLayoutProps extends ComponentWithClass {
   tooltipText: string
   value?: string
   popupPosition?: PopupPosition
+  size?: ComponentSizeType
 }
 
 const isEllipsisActive = (el: HTMLInputElement | null): boolean => {
@@ -71,6 +73,7 @@ export const SelectLayout = ({
   tooltipText,
   value,
   popupPosition = 'below',
+  size = COMPONENT_SIZE.FORMS,
   ...rest
 }: SelectLayoutProps) => {
   const [hasHover, setHasHover] = useState<boolean>(false)
@@ -92,6 +95,7 @@ export const SelectLayout = ({
             $isDisabled={isDisabled}
             $isInvalid={isInvalid}
             $popupPosition={popupPosition}
+            $size={size}
             data-testid="select-outer-wrapper"
           >
             <StyledInputWrapper
@@ -102,6 +106,7 @@ export const SelectLayout = ({
               <StyledLabel
                 $hasContent={hasSelectedItem}
                 $hasFocus={hasLabelFocus}
+                $size={size}
                 htmlFor={id}
                 id={labelId}
                 data-testid="select-label"
@@ -111,6 +116,7 @@ export const SelectLayout = ({
               <StyledInput
                 ref={mergeRefs([setFloatingBoxTarget, ref])}
                 $hasLabel
+                $size={size}
                 data-testid="select-input"
                 disabled={isDisabled}
                 value={value}
@@ -131,12 +137,14 @@ export const SelectLayout = ({
                 <ClearButton
                   isDisabled={isDisabled}
                   onClick={onClearButtonClick}
+                  size={size}
                 />
               )}
               <ArrowButton
                 hasHover={hasHover}
                 isDisabled={isDisabled}
                 isOpen={isOpen}
+                size={size}
                 {...toggleButtonProps}
               />
             </StyledInlineButtonsNoBorder>
@@ -146,9 +154,11 @@ export const SelectLayout = ({
           data-testid="select-options-wrapper"
           $isVisible={isOpen}
           $position={popupPosition}
+          $size={size}
         >
           <StyledOptions
             {...menuProps}
+            $size={size}
             aria-labelledby={labelId}
             data-testid="select-options"
             tabIndex={0}

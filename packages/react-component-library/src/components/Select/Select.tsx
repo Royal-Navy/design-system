@@ -21,6 +21,7 @@ import {
 } from './helpers/multiSelectHelpers'
 import { useMultiSelect } from './hooks/useMultiSelect'
 import { useDisplayText } from './hooks/useDisplayText'
+import { COMPONENT_SIZE } from '../Forms'
 
 export interface SingleSelectProps extends SelectBaseProps {
   isMulti?: false
@@ -41,6 +42,7 @@ export const Select = (props: SelectProps) => {
     onChange,
     value,
     isMulti = false,
+    size = COMPONENT_SIZE.FORMS,
     ...rest
   } = props
 
@@ -198,6 +200,7 @@ export const Select = (props: SelectProps) => {
       tooltipText={displayText}
       value={displayText}
       popupPosition={popupPosition}
+      size={size}
       {...{
         readOnly: true,
         ...rest,

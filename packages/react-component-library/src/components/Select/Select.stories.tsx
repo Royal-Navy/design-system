@@ -10,6 +10,7 @@ import { styled } from 'styled-components'
 
 import { Select } from './index'
 import { SelectOption } from './SelectOption'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   component: Select,
@@ -24,6 +25,12 @@ export default {
     },
     options: {
       enableShortcuts: false,
+    },
+  },
+  argTypes: {
+    size: {
+      control: 'select',
+      options: Object.values(COMPONENT_SIZE),
     },
   },
   args: {
@@ -131,6 +138,11 @@ Value.args = {
 }
 
 export const IconsAndBadges = TemplateWithIconsAndBadges.bind({})
+
+export const Small = Template.bind({})
+Small.args = {
+  size: COMPONENT_SIZE.SMALL,
+}
 
 const StyledBottomRightWrapper = styled.div`
   height: 100vh;
