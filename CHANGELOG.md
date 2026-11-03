@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.61.3](https://github.com/Royal-Navy/design-system/compare/4.61.2...4.61.3) (2026-11-03)
+
+### Bug Fixes
+
+- **RowsPerPage:** Size the select to its label ([c699b97](https://github.com/Royal-Navy/design-system/commit/c699b973e5013f226b2395352aee7b5d0fa56051))
+
 ## [4.61.2](https://github.com/Royal-Navy/design-system/compare/4.61.1...4.61.2) (2026-11-03)
 
 **Note:** Version bump only for package royal-navy-design-system
