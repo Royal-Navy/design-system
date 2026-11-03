@@ -105,8 +105,9 @@ test.describe('Form examples, pre-populated', () => {
           await page.keyboard.press('Enter')
           await page.locator(selectors.input.autocomplete).selectText()
           await page.type(selectors.input.autocomplete, 'fo')
-          await page.keyboard.press('ArrowDown')
-          await page.keyboard.press('Enter')
+          await page
+            .locator(selectors.input.autocompleteOption, { hasText: 'Four' })
+            .click()
           await page.click(selectors.input.rangeSliderRail, {
             position: { x: 800, y: 5 },
           })

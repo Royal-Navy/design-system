@@ -102,6 +102,9 @@ test.describe('Autocomplete', () => {
       test('sets the value to the highlighted item when pressing tab', async ({
         page,
       }) => {
+        await expect(
+          page.locator(selectors.option, { hasText: 'Three' })
+        ).toHaveAttribute('aria-selected', 'true')
         await page.keyboard.press('Tab')
         await expect(page.locator(selectors.input)).toHaveValue('Three')
       })
