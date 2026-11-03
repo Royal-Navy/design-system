@@ -14,6 +14,8 @@ export default {
     select: '[data-testid="select"]:has-text("Example select") input',
     autocomplete:
       '[data-testid="select"]:has-text("Example autocomplete") input',
+    autocompleteOption:
+      '[data-testid="select"]:has-text("Example autocomplete") [data-testid="select-option"]',
     rangeSlider: '[data-testid="rangeslider"]',
     rangeSliderRail: '[data-testid="rangeslider-rail"]',
   },
