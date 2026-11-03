@@ -9,8 +9,8 @@ type PopupPosition = 'above' | 'below'
 
 interface StyledOptionsWrapperProps {
   $isVisible: boolean
-  $position?: PopupPosition
-  $size?: ComponentSizeType
+  $position: PopupPosition
+  $size: ComponentSizeType
 }
 
 const SECONDARY_BORDER_WIDTH = {
@@ -45,10 +45,7 @@ function getTopBorder(position: PopupPosition = 'below') {
   `
 }
 
-function getBoxShadow(
-  position: PopupPosition = 'below',
-  size: ComponentSizeType = COMPONENT_SIZE.FORMS
-) {
+function getBoxShadow(position: PopupPosition, size: ComponentSizeType) {
   const boxShadow = css`
     box-shadow: 0 0 0 ${BORDER_WIDTH[size]} ${color('action', '500')},
       0 0 0 ${SECONDARY_BORDER_WIDTH[size]} ${color('action', '100')},
@@ -97,7 +94,7 @@ export const StyledOptionsWrapper = styled.div<StyledOptionsWrapperProps>`
 
   margin-bottom: 5px;
 
-  ${({ $position, $size = COMPONENT_SIZE.FORMS }) =>
+  ${({ $position, $size }) =>
     $position === 'above'
       ? css`
           bottom: 100%;

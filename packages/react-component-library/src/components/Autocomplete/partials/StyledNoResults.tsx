@@ -10,18 +10,16 @@ const NO_RESULTS_FONT_SIZE = {
 }
 
 interface StyledNoResultsProps {
-  $size?: ComponentSizeType
+  $size: ComponentSizeType
 }
 
 export const StyledNoResults = styled.span<StyledNoResultsProps>`
-  height: ${({ $size = COMPONENT_SIZE.FORMS }) =>
-    TEXT_INPUT_INPUT_HEIGHT[$size]};
+  height: ${({ $size }) => TEXT_INPUT_INPUT_HEIGHT[$size]};
   padding: 0 11px;
   display: flex;
   align-items: center;
   color: ${color('neutral', '400')};
-  font-size: ${({ $size = COMPONENT_SIZE.FORMS }) =>
-    NO_RESULTS_FONT_SIZE[$size]};
+  font-size: ${({ $size }) => NO_RESULTS_FONT_SIZE[$size]};
 
   &,
   * {

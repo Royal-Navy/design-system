@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconExpandLess, IconExpandMore } from '@royalnavy/icon-library'
 
-import { COMPONENT_SIZE, ComponentSizeType } from '../Forms'
+import { ComponentSizeType } from '../Forms'
 import { InlineButton } from '../InlineButtons/InlineButton'
 
 const ICON_VIEW_BOX = '4 4 16 16'
@@ -11,35 +11,30 @@ interface InlineButtonProps {
   isDisabled: boolean
   isOpen: boolean
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
-  size?: ComponentSizeType
+  size: ComponentSizeType
 }
 
 export const ArrowButton = React.forwardRef<
   HTMLButtonElement,
   InlineButtonProps
->(
-  (
-    { hasHover, isDisabled, isOpen, size = COMPONENT_SIZE.FORMS, ...rest },
-    ref
-  ) => {
-    return (
-      <InlineButton
-        hasHover={hasHover}
-        isDisabled={isDisabled}
-        aria-label={`${isOpen ? 'Hide' : 'Show'} options`}
-        data-testid="select-arrow-button"
-        ref={ref}
-        size={size}
-        {...rest}
-      >
-        {isOpen ? (
-          <IconExpandLess size={18} viewBox={ICON_VIEW_BOX} />
-        ) : (
-          <IconExpandMore size={18} viewBox={ICON_VIEW_BOX} />
-        )}
-      </InlineButton>
-    )
-  }
-)
+>(({ hasHover, isDisabled, isOpen, size, ...rest }, ref) => {
+  return (
+    <InlineButton
+      hasHover={hasHover}
+      isDisabled={isDisabled}
+      aria-label={`${isOpen ? 'Hide' : 'Show'} options`}
+      data-testid="select-arrow-button"
+      ref={ref}
+      size={size}
+      {...rest}
+    >
+      {isOpen ? (
+        <IconExpandLess size={18} viewBox={ICON_VIEW_BOX} />
+      ) : (
+        <IconExpandMore size={18} viewBox={ICON_VIEW_BOX} />
+      )}
+    </InlineButton>
+  )
+})
 
 ArrowButton.displayName = 'ArrowButton'

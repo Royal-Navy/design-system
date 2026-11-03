@@ -20,7 +20,7 @@ import { useStatefulRef } from '../../hooks/useStatefulRef'
 import { StyledFloatingBox } from './partials/StyledFloatingBox'
 import { PopupPosition } from './SelectBaseProps'
 import { StyledInlineButtonsNoBorder } from '../InlineButtons/partials/StyledInlineButtons'
-import { COMPONENT_SIZE, ComponentSizeType } from '../Forms'
+import { ComponentSizeType } from '../Forms'
 
 type ComboboxReturnValueType = UseComboboxReturnValue<SelectChildWithStringType>
 type SelectReturnValueType = UseSelectReturnValue<SelectChildWithStringType>
@@ -47,7 +47,7 @@ export interface SelectLayoutProps extends ComponentWithClass {
   tooltipText: string
   value?: string
   popupPosition?: PopupPosition
-  size?: ComponentSizeType
+  size: ComponentSizeType
 }
 
 const isEllipsisActive = (el: HTMLInputElement | null): boolean => {
@@ -73,7 +73,7 @@ export const SelectLayout = ({
   tooltipText,
   value,
   popupPosition = 'below',
-  size = COMPONENT_SIZE.FORMS,
+  size,
   ...rest
 }: SelectLayoutProps) => {
   const [hasHover, setHasHover] = useState<boolean>(false)

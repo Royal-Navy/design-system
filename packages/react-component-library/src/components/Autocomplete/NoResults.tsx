@@ -5,7 +5,7 @@ import { StyledNoResults } from './partials/StyledNoResults'
 
 export interface NoResultsProps {
   children: string
-  size?: ComponentSizeType
+  size: ComponentSizeType
 }
 
 export const NoResults = ({ children, size }: NoResultsProps) => (
