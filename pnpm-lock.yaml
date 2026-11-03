@@ -317,7 +317,7 @@ importers:
     devDependencies:
       '@axe-core/playwright':
         specifier: ^4.10.0
-        version: 4.10.0(playwright-core@1.47.2)
+        version: 4.10.0(playwright-core@1.64.1)
       '@babel/cli':
         specifier: ^7.25.6
         version: 7.25.6(@babel/core@7.25.2)
@@ -355,8 +355,8 @@ importers:
         specifier: ^14.10.1
         version: 14.10.2
       '@playwright/test':
-        specifier: ^1.47.2
-        version: 1.47.2
+        specifier: ^1.64.1
+        version: 1.64.1
       '@royalnavy/eslint-config-react':
         specifier: ^4.61.1
         version: link:../eslint-config-react
@@ -434,7 +434,7 @@ importers:
         version: 7.0.1(react@18.3.1)
       axe-playwright:
         specifier: ^2.0.3
-        version: 2.0.3(playwright@1.47.2)
+        version: 2.0.3(playwright@1.64.1)
       babel-jest:
         specifier: ^29.0.3
         version: 29.7.0(@babel/core@7.25.2)
@@ -3585,12 +3585,12 @@ packages:
       }
     engines: { node: ^14.18.0 || >=16.0.0 }
 
-  '@playwright/test@1.47.2':
+  '@playwright/test@1.64.1':
     resolution:
       {
-        integrity: sha512-jTXRsoSPONAs8Za9QEQdyjFn+0ZQFjCiIztAIF6bi1HqhBzG9Ma7g1WotyiGqFSBRZjIEqMdT8RUlbk1QVhzCQ==,
+        integrity: sha512-IaYGml/nSOiZWROfPtuIL7neuu9qDOZ3TNvNljUIrhDMxiGTgPjzj/g9p9RxpS2tSepPDRY+UwAaEeiKtUvIAg==,
       }
-    engines: { node: '>=18' }
+    engines: { node: '>=20' }
     hasBin: true
 
   '@polka/url@1.0.0-next.25':
@@ -11973,20 +11973,20 @@ packages:
       }
     engines: { node: '>=14.16' }
 
-  playwright-core@1.47.2:
+  playwright-core@1.64.1:
     resolution:
       {
-        integrity: sha512-3JvMfF+9LJfe16l7AbSmU555PaTl2tPyQsVInqm3id16pdDfvZ8TTZ/pyzmkbDrZTQefyzU7AIHlZqQnxpqHVQ==,
+        integrity: sha512-BC4s8y6SEVA6Q1rSxZTto8hI1KUI3xXlHGZgvGqP4IqPdI/a6FX9H29IDNz7vKo9l21b6LfYosScPL6M3xxyDQ==,
       }
-    engines: { node: '>=18' }
+    engines: { node: '>=20' }
     hasBin: true
 
-  playwright@1.47.2:
+  playwright@1.64.1:
     resolution:
       {
-        integrity: sha512-nx1cLMmQWqmA3UsnjaaokyoUpdVaaDhJhMoxX2qj3McpjnsqFHs516QAKYhqHAgOP+oCFTEOCOAaD1RgD/RQfA==,
+        integrity: sha512-HCrVhHr5QQuwYoswEUGTb7gGp522yflbv/ST8nF4sFWGuLjQCt17Q/EubpGGSNKYn1tsTCPZxqHhHCfVURu7UA==,
       }
-    engines: { node: '>=18' }
+    engines: { node: '>=20' }
     hasBin: true
 
   polished@4.3.1:
@@ -14804,10 +14804,10 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@axe-core/playwright@4.10.0(playwright-core@1.47.2)':
+  '@axe-core/playwright@4.10.0(playwright-core@1.64.1)':
     dependencies:
       axe-core: 4.10.0
-      playwright-core: 1.47.2
+      playwright-core: 1.64.1
 
   '@babel/cli@7.25.6(@babel/core@7.25.2)':
     dependencies:
@@ -17295,9 +17295,9 @@ snapshots:
 
   '@pkgr/core@0.3.6': {}
 
-  '@playwright/test@1.47.2':
+  '@playwright/test@1.64.1':
     dependencies:
-      playwright: 1.47.2
+      playwright: 1.64.1
 
   '@polka/url@1.0.0-next.25': {}
 
@@ -17585,8 +17585,8 @@ snapshots:
       jest-serializer-html: 7.1.0
       jest-watch-typeahead: 3.0.1(jest@30.4.2(@types/node@20.12.12)(babel-plugin-macros@3.1.0)(esbuild-register@3.5.0(esbuild@0.20.2))(ts-node@10.9.2(@swc/core@1.15.43)(@types/node@20.12.12)(typescript@5.4.5)))
       nyc: 15.1.0
-      playwright: 1.47.2
-      playwright-core: 1.47.2
+      playwright: 1.64.1
+      playwright-core: 1.64.1
       rimraf: 3.0.2
       storybook: 10.4.6(@testing-library/dom@10.4.0)(@types/react@18.3.12)(prettier@2.8.8)(react@18.3.1)
       uuid: 8.3.2
@@ -18777,14 +18777,14 @@ snapshots:
       axe-core: 4.10.0
       mustache: 4.2.0
 
-  axe-playwright@2.0.3(playwright@1.47.2):
+  axe-playwright@2.0.3(playwright@1.64.1):
     dependencies:
       '@types/junit-report-builder': 3.0.2
       axe-core: 4.10.0
       axe-html-reporter: 2.2.11(axe-core@4.10.0)
       junit-report-builder: 5.1.1
       picocolors: 1.1.0
-      playwright: 1.47.2
+      playwright: 1.64.1
 
   axios@1.6.8:
     dependencies:
@@ -23498,13 +23498,11 @@ snapshots:
     dependencies:
       find-up: 6.3.0
 
-  playwright-core@1.47.2: {}
+  playwright-core@1.64.1: {}
 
-  playwright@1.47.2:
+  playwright@1.64.1:
     dependencies:
-      playwright-core: 1.47.2
-    optionalDependencies:
-      fsevents: 2.3.2
+      playwright-core: 1.64.1
 
   polished@4.3.1:
     dependencies:
