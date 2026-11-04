@@ -143,7 +143,6 @@ export const Modal = React.forwardRef<ModalImperativeHandle, ModalProps>(
       },
       close: () => {
         dialogRef?.current?.close?.()
-        onClose?.()
       },
       get isOpen() {
         return dialogRef.current?.open ?? false
@@ -163,16 +162,14 @@ export const Modal = React.forwardRef<ModalImperativeHandle, ModalProps>(
         aria-describedby={descriptionId}
         {...rest}
         open={!!isOpen}
+        onClose={() => onClose?.()}
       >
         <StyledMain data-testid="modal-main">
           {title && (
             <Header
               titleId={titleId}
               title={title}
-              onClose={(_) => {
-                dialogRef?.current?.close?.()
-                onClose?.()
-              }}
+              onClose={(_) => dialogRef?.current?.close?.()}
             />
           )}
           <section id={descriptionId} data-testid="modal-body">

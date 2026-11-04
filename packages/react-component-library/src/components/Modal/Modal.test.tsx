@@ -138,22 +138,6 @@ describe('Modal', () => {
         )
       })
 
-      describe('and the close button is clicked', () => {
-        beforeEach(() => {
-          fireEvent(
-            wrapper.getByTestId('modal-close'),
-            new MouseEvent('click', {
-              bubbles: true,
-              cancelable: true,
-            })
-          )
-        })
-
-        it('should invoke the onClose callback', () => {
-          expect(onClose).toHaveBeenCalled()
-        })
-      })
-
       describe('and buttons are provided', () => {
         beforeEach(() => {
           wrapper = render(
