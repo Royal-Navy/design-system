@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.63.0](https://github.com/Royal-Navy/design-system/compare/4.62.0...4.63.0) (2026-11-04)
+
+### Features
+
+- **DataGrid:** Add standard pagination variant using TablePagination ([9a5b46a](https://github.com/Royal-Navy/design-system/commit/9a5b46a80ae157917201c55de4d36991ef3bdda4))
+
 # [4.62.0](https://github.com/Royal-Navy/design-system/compare/4.61.4...4.62.0) (2026-11-04)
 
 ### Features
