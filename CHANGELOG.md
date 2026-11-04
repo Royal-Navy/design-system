@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.62.0](https://github.com/Royal-Navy/design-system/compare/4.61.4...4.62.0) (2026-11-04)
+
+### Features
+
+- **Checkbox:** Add a small size to Checkbox ([d6175cd](https://github.com/Royal-Navy/design-system/commit/d6175cdaa0c15d6fe0ae945fa981b577e492180c))
+- **DatePicker:** Add a small size to DatePicker ([887a0df](https://github.com/Royal-Navy/design-system/commit/887a0dfcfd2728b6c1d211b0749d7d6204d090ab))
+- **Radio:** Add a small size to Radio ([4ca2b61](https://github.com/Royal-Navy/design-system/commit/4ca2b615b4418db405052ae4e319c7c2da0936a1))
+- **Select:** Add a small size to Select and Autocomplete ([248fd5d](https://github.com/Royal-Navy/design-system/commit/248fd5d3faa669121131069b7c8b13176e06bdf2))
+- **TextArea:** Add a small size to TextArea ([32dfc38](https://github.com/Royal-Navy/design-system/commit/32dfc381980bba7919098433bbfe47d6ffdee240))
+- **TextInput:** Add a small size to TextInput ([284924a](https://github.com/Royal-Navy/design-system/commit/284924ae6671dda45844b3dab58c64ec4359e7e0))
+
 ## [4.61.4](https://github.com/Royal-Navy/design-system/compare/4.61.3...4.61.4) (2026-11-04)
 
 ### Bug Fixes
