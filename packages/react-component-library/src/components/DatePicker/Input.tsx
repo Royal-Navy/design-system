@@ -9,7 +9,10 @@ import { hasClass } from '../../helpers'
 import { InlineButton } from '../InlineButtons/InlineButton'
 import { isDateValid } from './utils'
 import { StyledDatePickerInput } from './partials/StyledDatePickerInput'
-import { StyledInlineButtons, StyledInlineButtonsNoBorder } from '../InlineButtons/partials/StyledInlineButtons'
+import {
+  StyledInlineButtons,
+  StyledInlineButtonsNoBorder,
+} from '../InlineButtons/partials/StyledInlineButtons'
 import { StyledInput } from '../TextInput/partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledLabel } from '../TextInput/partials/StyledLabel'
@@ -20,6 +23,7 @@ import { useFocus } from '../../hooks/useFocus'
 import { useInput } from './useInput'
 import { useProcessDayClick } from './useProcessDayClick'
 import { ClearButton } from '../InlineButtons/ClearButton'
+import { ComponentSizeType } from '../Forms'
 
 export interface InputProps
   extends Pick<
@@ -35,12 +39,16 @@ export interface InputProps
       | 'onChange'
       | 'hideClearButton'
     >,
-    Omit<React.ComponentPropsWithoutRef<'input'>, 'onChange' | 'onBlur'> {
+    Omit<
+      React.ComponentPropsWithoutRef<'input'>,
+      'onChange' | 'onBlur' | 'size'
+    > {
   buttonRef: React.RefObject<HTMLButtonElement>
   className?: string
   floatingBoxId: string
   inputRef: React.RefObject<HTMLInputElement>
   setFloatingBoxTarget: React.Dispatch<React.SetStateAction<Element | null>>
+  size: ComponentSizeType
   titleId: string
 }
 
@@ -60,6 +68,7 @@ export const Input = memo(
     onBlur,
     onChange,
     setFloatingBoxTarget,
+    size,
     titleId,
     hideClearButton,
     ...rest
@@ -176,12 +185,14 @@ export const Input = memo(
           $hasFocus={hasFocus && !isRange}
           $isInvalid={effectiveHasError}
           $isDisabled={isDisabled}
+          $size={size}
         >
           <StyledInputWrapper $isRange={isRange}>
             <StyledLabel
               id={titleId}
               $hasFocus={hasFocus && !isRange}
               $hasContent={hasContent}
+              $size={size}
               htmlFor={id}
               data-testid="datepicker-label"
             >
@@ -191,6 +202,7 @@ export const Input = memo(
             <StyledInput
               ref={inputRef}
               $hasLabel={Boolean(label)}
+              $size={size}
               aria-invalid={effectiveHasError}
               aria-label="Choose date"
               data-testid="datepicker-input"
@@ -214,6 +226,7 @@ export const Input = memo(
                 isDisabled={isDisabled}
                 data-testid="datepicker-clear-button"
                 onClick={handleOnClear}
+                size={size}
               />
             </StyledInlineButtonsNoBorder>
           )}
@@ -226,6 +239,7 @@ export const Input = memo(
               isDisabled={isDisabled}
               onClick={handleShowHideClick}
               ref={buttonRef}
+              size={size}
             >
               <IconEvent size={18} />
             </InlineButton>

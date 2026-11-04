@@ -9,6 +9,7 @@ import { StoryFn, Meta } from '@storybook/react-webpack5'
 import { styled } from 'styled-components'
 
 import { Autocomplete, AutocompleteOption } from './index'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   component: Autocomplete,
@@ -22,6 +23,10 @@ export default {
   argTypes: {
     hideClearButton: {
       control: 'boolean',
+    },
+    size: {
+      control: 'select',
+      options: Object.values(COMPONENT_SIZE),
     },
   },
 } as Meta<typeof Autocomplete>
@@ -107,3 +112,8 @@ Value.args = {
 }
 
 export const IconsAndBadges = TemplateWithIconsAndBadges.bind({})
+
+export const Small = Template.bind({})
+Small.args = {
+  size: COMPONENT_SIZE.SMALL,
+}

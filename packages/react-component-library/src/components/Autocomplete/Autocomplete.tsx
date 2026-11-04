@@ -15,6 +15,7 @@ import { useAutocomplete } from './hooks/useAutocomplete'
 import { useMenuVisibility } from '../SelectBase/hooks/useMenuVisibility'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useToggleButton } from './hooks/useToggleButton'
+import { COMPONENT_SIZE } from '../Forms'
 
 export interface AutocompleteProps extends SelectBaseProps {
   /**
@@ -36,6 +37,7 @@ export const Autocomplete = ({
   isInvalid = false,
   onBlur,
   onChange,
+  size = COMPONENT_SIZE.FORMS,
   value,
   ...rest
 }: AutocompleteProps) => {
@@ -168,6 +170,7 @@ export const Autocomplete = ({
         },
         ref: buttonRef,
       })}
+      size={size}
       tooltipText={selectedItemText}
       {...rest}
     >
@@ -186,7 +189,7 @@ export const Autocomplete = ({
           })
         })}
       {inputValue && !filteredItems.length && (
-        <NoResults>{inputValue}</NoResults>
+        <NoResults size={size}>{inputValue}</NoResults>
       )}
     </SelectLayout>
   )

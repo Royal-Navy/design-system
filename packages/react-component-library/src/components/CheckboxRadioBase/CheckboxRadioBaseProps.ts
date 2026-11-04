@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { InputValidationProps } from '../../common/InputValidationProps'
+import { ComponentSizeType } from '../Forms'
 import { CheckboxRadioVariantType } from './types'
 
 export interface CheckboxRootProps extends React.HTMLAttributes<HTMLElement> {
@@ -10,6 +11,7 @@ export interface CheckboxRootProps extends React.HTMLAttributes<HTMLElement> {
   $isDisabled?: boolean
   $isInvalid?: boolean
   $isChecked?: boolean
+  $size: ComponentSizeType
   className?: string
 }
 
@@ -21,6 +23,7 @@ export interface CheckmarkProps {
 export interface CheckmarkWrapperProps {
   $hasContainer?: boolean
   $hasLabel?: boolean
+  $size: ComponentSizeType
   children: ReactNode
 }
 
@@ -63,6 +66,10 @@ export interface CheckboxRadioBaseProps
    * Optional handler to be invoked when the blur event is emitted.
    */
   onBlur?: React.FocusEventHandler<HTMLInputElement>
+  /**
+   * Size of the component.
+   */
+  size?: ComponentSizeType
   /**
    * Optional HTML `value` attribute associated with the component.
    */

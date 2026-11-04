@@ -4,6 +4,7 @@ import { color } from '@royalnavy/design-tokens'
 
 import { Checkbox, IndeterminateCheckbox, CheckboxProps } from '.'
 import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   argTypes: {
@@ -16,6 +17,10 @@ export default {
     },
     isDisabled: {
       control: 'boolean',
+    },
+    size: {
+      control: 'select',
+      options: Object.values(COMPONENT_SIZE),
     },
     description: {
       control: 'select',
@@ -101,6 +106,14 @@ Invalid.args = {
   label: 'Invalid checkbox',
   name: 'invalid',
   isInvalid: true,
+}
+
+export const Small = Template.bind({})
+Small.args = {
+  id: undefined,
+  label: 'Small checkbox',
+  name: 'small',
+  size: COMPONENT_SIZE.SMALL,
 }
 
 export const NoContainer = MultipleItemsTemplate.bind({})

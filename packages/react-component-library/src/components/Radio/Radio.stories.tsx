@@ -4,6 +4,7 @@ import { StoryFn, Meta } from '@storybook/react-webpack5'
 import { color } from '@royalnavy/design-tokens'
 import { Radio, RadioProps } from '.'
 import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   argTypes: {
@@ -12,6 +13,10 @@ export default {
       options: Object.values(CHECKBOX_RADIO_VARIANT),
     },
     isInvalid: { control: 'boolean' },
+    size: {
+      control: 'select',
+      options: Object.values(COMPONENT_SIZE),
+    },
     description: {
       control: 'select',
       options: ['None', 'Plain text', 'Rich text'],
@@ -98,6 +103,14 @@ Invalid.args = {
   label: 'Invalid radio',
   name: 'invalid',
   isInvalid: true,
+}
+
+export const Small = Template.bind({})
+Small.args = {
+  id: undefined,
+  label: 'Small radio',
+  name: 'small',
+  size: COMPONENT_SIZE.SMALL,
 }
 
 export const NoContainer = MultipleItemsTemplate.bind({})

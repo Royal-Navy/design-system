@@ -1,10 +1,18 @@
 import { styled, css } from 'styled-components'
 import { color, spacing } from '@royalnavy/design-tokens'
 
+import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
+
 export type AdornmentPositionType = 'start' | 'end'
 
 interface StyledAdornmentProps {
   $position: AdornmentPositionType
+  $size: ComponentSizeType
+}
+
+const ADORNMENT_PADDING = {
+  [COMPONENT_SIZE.FORMS]: spacing('6'),
+  [COMPONENT_SIZE.SMALL]: `0 ${spacing('4')}`,
 }
 
 const positionStyles = {
@@ -23,7 +31,7 @@ export const StyledAdornment = styled.div<StyledAdornmentProps>`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding: ${spacing('6')};
+  padding: ${({ $size }) => ADORNMENT_PADDING[$size]};
   color: ${color('neutral', '400')};
 
   ${({ $position }) => positionStyles[$position]}

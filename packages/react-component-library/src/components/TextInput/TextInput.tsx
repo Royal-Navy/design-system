@@ -9,6 +9,7 @@ import { StyledInputWrapper } from './partials/StyledInputWrapper'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledTextInput } from './partials/StyledTextInput'
 import { useFocus } from '../../hooks/useFocus'
+import { COMPONENT_SIZE, ComponentSizeType } from '../Forms'
 
 type TextInputType =
   | 'color'
@@ -75,6 +76,10 @@ export interface TextInputProps
    */
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void
   /**
+   * Size of the component.
+   */
+  size?: ComponentSizeType
+  /**
    * Optional adornment to display to the left of the input value.
    */
   startAdornment?: React.ReactNode
@@ -96,6 +101,7 @@ const Component = React.forwardRef<HTMLInputElement, TextInputProps>(
       isDisabled,
       isInvalid,
       onBlur,
+      size = COMPONENT_SIZE.FORMS,
       startAdornment,
       ...rest
     },
@@ -115,9 +121,14 @@ const Component = React.forwardRef<HTMLInputElement, TextInputProps>(
           $hasFocus={hasFocus}
           $isDisabled={isDisabled}
           $isInvalid={isInvalid}
+          $size={size}
         >
           {startAdornment && (
-            <StyledAdornment $position="start" onClick={handleAdornmentClick}>
+            <StyledAdornment
+              $position="start"
+              $size={size}
+              onClick={handleAdornmentClick}
+            >
               {startAdornment}
             </StyledAdornment>
           )}
@@ -128,11 +139,16 @@ const Component = React.forwardRef<HTMLInputElement, TextInputProps>(
               isDisabled={isDisabled}
               onBlur={onLocalBlur}
               onFocus={onLocalFocus}
+              size={size}
               {...rest}
             />
           </StyledInputWrapper>
           {endAdornment && (
-            <StyledAdornment $position="end" onClick={handleAdornmentClick}>
+            <StyledAdornment
+              $position="end"
+              $size={size}
+              onClick={handleAdornmentClick}
+            >
               {endAdornment}
             </StyledAdornment>
           )}

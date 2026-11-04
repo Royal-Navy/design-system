@@ -5,6 +5,7 @@ import { styled } from 'styled-components'
 
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
 import { DatePicker } from '.'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   component: DatePicker,
@@ -15,6 +16,12 @@ export default {
       config: {
         rules: storyAccessibilityConfig['Date Picker'],
       },
+    },
+  },
+  argTypes: {
+    size: {
+      control: 'select',
+      options: Object.values(COMPONENT_SIZE),
     },
   },
 } as Meta<typeof DatePicker>
@@ -102,6 +109,11 @@ RangeWithInitialValue.args = {
   isRange: true,
   initialStartDate: parseISO('2021-12-05'),
   initialEndDate: parseISO('2021-12-15'),
+}
+
+export const Small = Template.bind({})
+Small.args = {
+  size: COMPONENT_SIZE.SMALL,
 }
 
 export const JumpToToday = Template.bind({})

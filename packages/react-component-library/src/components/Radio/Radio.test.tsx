@@ -5,6 +5,7 @@ import {
   ColorNeutral200,
   ColorAction000,
   ColorNeutralWhite,
+  TypographyBase,
 } from '@royalnavy/design-tokens'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
@@ -12,6 +13,8 @@ import userEvent from '@testing-library/user-event'
 import { Radio } from '.'
 import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
 import { FieldProps } from '../../common/FieldProps'
+import { COMPONENT_SIZE } from '../Forms'
+import { TEXT_INPUT_INPUT_HEIGHT } from '../TextInput/partials/StyledInput'
 
 describe('Radio', () => {
   let field: FieldProps
@@ -165,6 +168,35 @@ describe('Radio', () => {
       expect(radio.getByTestId('radio-input')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
+      )
+    })
+  })
+
+  describe('when `size` is small', () => {
+    beforeEach(() => {
+      radio = render(
+        <Radio label="Label" name={field.name} size={COMPONENT_SIZE.SMALL} />
+      )
+    })
+
+    it('renders the container at the small height', () => {
+      expect(radio.getByTestId('radio-label').parentElement).toHaveStyleRule(
+        'min-height',
+        TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.SMALL]
+      )
+    })
+
+    it('renders the container with the small border radius', () => {
+      expect(radio.getByTestId('radio')).toHaveStyleRule(
+        'border-radius',
+        '10px'
+      )
+    })
+
+    it('renders the label at the small font size', () => {
+      expect(radio.getByTestId('radio-label')).toHaveStyleRule(
+        'font-size',
+        TypographyBase
       )
     })
   })

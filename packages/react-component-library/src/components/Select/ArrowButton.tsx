@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconExpandLess, IconExpandMore } from '@royalnavy/icon-library'
 
-import { COMPONENT_SIZE } from '../Forms'
+import { ComponentSizeType } from '../Forms'
 import { InlineButton } from '../InlineButtons/InlineButton'
 
 const ICON_VIEW_BOX = '4 4 16 16'
@@ -11,12 +11,13 @@ interface InlineButtonProps {
   isDisabled: boolean
   isOpen: boolean
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+  size: ComponentSizeType
 }
 
 export const ArrowButton = React.forwardRef<
   HTMLButtonElement,
   InlineButtonProps
->(({ hasHover, isDisabled, isOpen, ...rest }, ref) => {
+>(({ hasHover, isDisabled, isOpen, size, ...rest }, ref) => {
   return (
     <InlineButton
       hasHover={hasHover}
@@ -24,7 +25,7 @@ export const ArrowButton = React.forwardRef<
       aria-label={`${isOpen ? 'Hide' : 'Show'} options`}
       data-testid="select-arrow-button"
       ref={ref}
-      size={COMPONENT_SIZE.FORMS}
+      size={size}
       {...rest}
     >
       {isOpen ? (

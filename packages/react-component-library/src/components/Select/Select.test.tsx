@@ -478,6 +478,40 @@ describe('Select', () => {
     })
   })
 
+  describe('when `size` is small', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <Select initialIsOpen label="Label" size={COMPONENT_SIZE.SMALL}>
+          <SelectOption value="one">One</SelectOption>
+          <SelectOption value="two">Two</SelectOption>
+        </Select>
+      )
+    })
+
+    it('renders the input at the small height', () => {
+      expect(wrapper.getByTestId('select-input')).toHaveStyleRule(
+        'height',
+        TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.SMALL]
+      )
+    })
+
+    it('renders the options at the small height', () => {
+      expect(wrapper.getAllByTestId('select-option')[0]).toHaveStyle({
+        height: TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.SMALL],
+      })
+    })
+
+    describe('and an option is selected', () => {
+      beforeEach(async () => {
+        await userEvent.click(wrapper.getByText('Two'))
+      })
+
+      it('hides the label', () => {
+        expect(wrapper.getByTestId('select-label')).not.toBeVisible()
+      })
+    })
+  })
+
   describe('when `value` is set to a valid value', () => {
     beforeEach(() => {
       wrapper = render(

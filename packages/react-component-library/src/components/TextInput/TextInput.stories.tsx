@@ -3,6 +3,7 @@ import { StoryFn, Meta } from '@storybook/react-webpack5'
 
 import { IconSearch, IconSettings } from '@royalnavy/icon-library'
 import { TextInput } from '.'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   argTypes: {
@@ -34,6 +35,10 @@ export default {
     },
     isInvalid: {
       control: 'boolean',
+    },
+    size: {
+      control: 'select',
+      options: Object.values(COMPONENT_SIZE),
     },
     type: {
       control: 'select',
@@ -131,3 +136,12 @@ export const WithLongLabel: StoryFn<typeof TextInput> = (props) => (
 )
 
 WithLongLabel.storyName = 'Long label'
+
+export const Small: StoryFn<typeof TextInput> = (props) => (
+  <TextInput
+    {...props}
+    label="Example label"
+    name="text-input-small"
+    size={COMPONENT_SIZE.SMALL}
+  />
+)
