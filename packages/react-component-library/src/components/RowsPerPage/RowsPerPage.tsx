@@ -74,6 +74,9 @@ const RowsPerPageSelect = ({
   )
 }
 
+/**
+ * @deprecated Use TablePagination instead.
+ */
 export const RowsPerPage = ({
   showItemRange = false,
   currentPage = 1,

@@ -14,6 +14,7 @@ import { userEvent, PointerEventsCheckLevel } from '@testing-library/user-event'
 import { color, spacing } from '@royalnavy/design-tokens'
 
 import { DataGrid } from './DataGrid'
+import { DATA_GRID_PAGINATION_VARIANT } from './constants'
 import { DATA_GRID_EMPTY_STATE_TEST_ID } from './Body'
 import { Button } from '../Button'
 import { DEFAULT_ROWS_PER_PAGE } from '../RowsPerPage'
@@ -2017,6 +2018,119 @@ describe('DataGrid', () => {
     })
   })
 
+  describe('with the standard pagination variant', () => {
+    const STANDARD = DATA_GRID_PAGINATION_VARIANT.STANDARD
+
+    it('shows the item range instead of the page number input', () => {
+      render(
+        <DataGrid
+          data={PAGINATED_DATA}
+          columns={columns}
+          paginationVariant={STANDARD}
+        />
+      )
+
+      expect(screen.getByText('1–50 of 1000')).toBeInTheDocument()
+      expect(
+        screen.queryByLabelText('Enter page number')
+      ).not.toBeInTheDocument()
+      expect(screen.queryByLabelText('First page')).not.toBeInTheDocument()
+    })
+
+    it('updates the item range when changing pages', async () => {
+      render(
+        <DataGrid
+          data={PAGINATED_DATA}
+          columns={columns}
+          paginationVariant={STANDARD}
+        />
+      )
+
+      await userEvent.click(screen.getByLabelText('Next page'))
+
+      expect(screen.getByText('51–100 of 1000')).toBeInTheDocument()
+      expect(screen.getByText('a51')).toBeInTheDocument()
+    })
+
+    it('spaces the footer contents apart when full width', () => {
+      render(
+        <DataGrid
+          data={PAGINATED_DATA}
+          columns={columns}
+          paginationVariant={STANDARD}
+          isFullWidth
+        />
+      )
+
+      const footer = screen.getByTestId('table-pagination').parentElement
+
+      expect(footer).toHaveStyleRule('position', 'relative')
+      expect(footer).toHaveStyleRule('justify-content', 'space-between')
+      expect(footer).toHaveStyleRule('gap', spacing('8'))
+    })
+
+    it('navigates with the first and last page buttons when enabled', async () => {
+      render(
+        <DataGrid
+          data={PAGINATED_DATA}
+          columns={columns}
+          paginationVariant={STANDARD}
+          showFirstLastButtons
+        />
+      )
+
+      await userEvent.click(screen.getByLabelText('Last page'))
+
+      expect(screen.getByText('951–1000 of 1000')).toBeInTheDocument()
+
+      await userEvent.click(screen.getByLabelText('First page'))
+
+      expect(screen.getByText('1–50 of 1000')).toBeInTheDocument()
+    })
+
+    it('resets to the first page when the rows per page is changed', async () => {
+      render(
+        <DataGrid
+          data={PAGINATED_DATA}
+          columns={columns}
+          paginationVariant={STANDARD}
+        />
+      )
+
+      await userEvent.click(screen.getByLabelText('Next page'))
+      await userEvent.click(screen.getByTestId('select-arrow-button'))
+      await userEvent.click(screen.getAllByRole('option')[1])
+
+      expect(screen.getByText('1–250 of 1000')).toBeInTheDocument()
+    })
+
+    it('calls onPaginationChange with manual pagination', async () => {
+      const onPaginationChange = jest.fn()
+
+      render(
+        <DataGrid
+          columns={columns}
+          data={PAGINATED_DATA.slice(25, 50)}
+          manualPagination
+          pagination={{ pageIndex: 1, pageSize: 25 }}
+          pageCount={6}
+          totalCount={134}
+          onPaginationChange={onPaginationChange}
+          paginationVariant={STANDARD}
+        />
+      )
+
+      expect(screen.getByText('26–50 of 134')).toBeInTheDocument()
+
+      await userEvent.click(screen.getByLabelText('Next page'))
+
+      expect(onPaginationChange).toHaveBeenCalledWith({
+        pageIndex: 2,
+        pageSize: 25,
+      })
+    })
+  })
+
   describe('with an empty state', () => {
     it('shows the empty state message when there is no data', () => {
       render(
@@ -2137,9 +2251,10 @@ describe('DataGrid', () => {
       expect(icon).toHaveStyleRule('flex-shrink', '1')
       expect(icon).toHaveStyleRule('min-height', '0')
 
-      expect(
-        screen.getByText('No results found')
-      ).toHaveStyleRule('flex-shrink', '0')
+      expect(screen.getByText('No results found')).toHaveStyleRule(
+        'flex-shrink',
+        '0'
+      )
     })
   })
 })
