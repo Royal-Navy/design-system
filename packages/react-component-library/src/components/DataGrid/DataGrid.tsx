@@ -24,6 +24,8 @@ import { type ComponentWithClass } from '../../common/ComponentWithClass'
 import { useDataGridState } from './useDataGridState'
 import { getColumns } from './getColumns'
 import {
+  DATA_GRID_PAGINATION_VARIANT,
+  type DataGridPaginationVariant,
   TABLE_DEFAULT_LAYOUT,
   TABLE_LAYOUT,
   type TableLayout,
@@ -149,9 +151,21 @@ export interface DataGridBaseProps<T extends object>
    */
   layout?: TableLayout
   /**
+   * Pagination style for the footer.
+   * legacy (default) - Page number input with first, previous, next and last buttons.
+   * standard - Rows per page, item range and previous and next buttons.
+   */
+  paginationVariant?: DataGridPaginationVariant
+  /**
    * Whether to show the "Showing X to Y of Z" text in the RowsPerPage component.
+   * Only applies to the legacy pagination variant.
    */
   showRowsPerPageItemRange?: boolean
+  /**
+   * Whether to show the first and last page buttons.
+   * Only applies to the standard pagination variant.
+   */
+  showFirstLastButtons?: boolean
   /**
    * Whether to reset the current page index when the data changes.
    * Defaults to true.
@@ -323,7 +337,9 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
     pageCount,
     pagination: externalPagination,
     sorting: externalSorting,
+    paginationVariant = DATA_GRID_PAGINATION_VARIANT.LEGACY,
     showRowsPerPageItemRange,
+    showFirstLastButtons,
     totalCount,
     autoResetPageIndex,
     compact,
@@ -594,6 +610,8 @@ export const DataGrid = <T extends object>(props: DataGridProps<T>) => {
         isFullWidth={isFullWidthOverride}
         footerLeftSlot={footerLeftSlot}
         showRowsPerPageItemRange={showRowsPerPageItemRange}
+        showFirstLastButtons={showFirstLastButtons}
+        paginationVariant={paginationVariant}
       />
     </StyledDataGrid>
   )

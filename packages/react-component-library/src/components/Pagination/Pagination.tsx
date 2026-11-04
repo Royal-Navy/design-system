@@ -43,6 +43,9 @@ export interface PaginationProps {
   total: number
 }
 
+/**
+ * @deprecated Use TablePagination instead.
+ */
 export const Pagination = ({
   initialPage = 1,
   name: externalName,

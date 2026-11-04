@@ -6,7 +6,7 @@ import { RowsPerPage } from './RowsPerPage'
 
 export default {
   component: RowsPerPage,
-  title: 'Components/RowsPerPage',
+  title: 'Deprecated/RowsPerPage',
   parameters: {
     actions: { argTypesRegex: '^on.*' },
   },

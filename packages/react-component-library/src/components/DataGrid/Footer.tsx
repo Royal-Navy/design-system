@@ -8,6 +8,11 @@ import {
 import { StyledFooter } from './partials'
 import { RowsPerPage } from '../RowsPerPage/RowsPerPage'
 import { OnChangeType as BaseSelectOnChangeType } from '../SelectBase'
+import { TablePagination } from '../TablePagination'
+import {
+  DATA_GRID_PAGINATION_VARIANT,
+  type DataGridPaginationVariant,
+} from './constants'
 
 interface FooterProps {
   /**
@@ -47,6 +52,14 @@ interface FooterProps {
    * Whether to show the "Showing X to Y of Z" text in the RowsPerPage component.
    */
   showRowsPerPageItemRange?: boolean
+  /**
+   * Whether to show the first and last page buttons in the standard pagination variant.
+   */
+  showFirstLastButtons?: boolean
+  /**
+   * Pagination style for the footer.
+   */
+  paginationVariant: DataGridPaginationVariant
 }
 
 export const Footer = ({
@@ -59,10 +72,32 @@ export const Footer = ({
   isFullWidth,
   footerLeftSlot,
   showRowsPerPageItemRange,
+  showFirstLastButtons,
+  paginationVariant,
 }: FooterProps) => {
   // For internal pagination, use dataLength directly
   // For manual pagination without totalCount, fallback to pageCount * pageSize
   const totalItems = dataLength ?? pageCount * pagination.pageSize
+
+  if (paginationVariant === DATA_GRID_PAGINATION_VARIANT.STANDARD) {
+    return (
+      <StyledFooter $isFullWidth={isFullWidth} $isStandard>
+        {footerLeftSlot || <div />}
+        <TablePagination
+          count={totalItems}
+          page={pagination.pageIndex}
+          rowsPerPage={pagination.pageSize}
+          showFirstLastButtons={showFirstLastButtons}
+          onPageChange={(event, page) =>
+            onPaginationChange(event, page + 1, pageCount)
+          }
+          onRowsPerPageChange={(rowsPerPage) =>
+            onRowsPerPageChange(rowsPerPage.toString())
+          }
+        />
+      </StyledFooter>
+    )
+  }
 
   return (
     <StyledFooter $isFullWidth={isFullWidth}>

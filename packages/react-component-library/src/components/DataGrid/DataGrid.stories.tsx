@@ -13,7 +13,11 @@ import type {
 import { IconFolderOpen } from '@royalnavy/icon-library'
 
 import { storyAccessibilityConfig } from '../../a11y/storyAccessibilityConfig'
-import { DataGrid, TABLE_COLUMN_ALIGNMENT } from '.'
+import {
+  DATA_GRID_PAGINATION_VARIANT,
+  DataGrid,
+  TABLE_COLUMN_ALIGNMENT,
+} from '.'
 import { Badge } from '../Badge'
 import { Button } from '../Button'
 import { DEFAULT_ROWS_PER_PAGE } from '../RowsPerPage/RowsPerPage'
@@ -170,6 +174,10 @@ export default {
     },
     compact: {
       control: 'boolean',
+    },
+    paginationVariant: {
+      control: 'select',
+      options: Object.values(DATA_GRID_PAGINATION_VARIANT),
     },
   },
 } as Meta<typeof DataGrid>
@@ -909,6 +917,35 @@ WithRowsPerPageItemRange.parameters = {
     description: {
       story:
         'The `showRowsPerPageItemRange` prop displays "Showing X to Y of Z" text next to the rows per page selector.',
+    },
+  },
+}
+
+export const StandardPagination: StoryFn<typeof DataGrid> = (props) => {
+  return (
+    <Wrapper>
+      <DataGrid {...props} />
+    </Wrapper>
+  )
+}
+
+StandardPagination.storyName = 'Standard pagination'
+StandardPagination.args = {
+  columns,
+  data,
+  isFullWidth: true,
+  paginationVariant: DATA_GRID_PAGINATION_VARIANT.STANDARD,
+  showFirstLastButtons: false,
+  onSelectedRowsChange: fn(),
+  onExpandedChange: fn(),
+  onColumnFiltersChange: fn(),
+}
+
+StandardPagination.parameters = {
+  docs: {
+    description: {
+      story:
+        'Setting `paginationVariant` to `standard` replaces the page number input with a rows per page select, the item range and previous and next buttons. Set `showFirstLastButtons` to also show first and last page buttons.',
     },
   },
 }
