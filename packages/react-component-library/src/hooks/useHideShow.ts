@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { useDocumentClick } from '.'
 
@@ -23,6 +23,7 @@ export function useHideShow(
 
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const floatingBoxChildrenRef = useRef(null)
+  const targetRef = useRef<HTMLDivElement>(null)
   const isVisibleRef = useRef(isVisible)
   const mouseEventsRef = useRef<HideShowMouseEvents>()
 
@@ -60,7 +61,9 @@ export function useHideShow(
     setIsVisible(true)
   }, [])
 
-  useDocumentClick(floatingBoxChildrenRef, hideElement, isClick)
+  const insideRefs = useMemo(() => [floatingBoxChildrenRef, targetRef], [])
+
+  useDocumentClick(insideRefs, hideElement, isClick)
 
   mouseEventsRef.current ??= isClick
     ? {
@@ -75,5 +78,6 @@ export function useHideShow(
     floatingBoxChildrenRef,
     isVisible,
     mouseEvents: mouseEventsRef.current,
+    targetRef,
   }
 }

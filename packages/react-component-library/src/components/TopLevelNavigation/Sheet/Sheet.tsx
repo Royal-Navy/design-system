@@ -29,11 +29,8 @@ export const Sheet = ({
   ...rest
 }: SheetProps) => {
   const id = useExternalId('sheet', externalId)
-  const { floatingBoxChildrenRef, isVisible, mouseEvents } = useHideShow(
-    true,
-    closeDelay,
-    initialIsOpen
-  )
+  const { floatingBoxChildrenRef, isVisible, mouseEvents, targetRef } =
+    useHideShow(true, closeDelay, initialIsOpen)
 
   const target = React.cloneElement(button as React.ReactElement, {
     ...button.props,
@@ -49,6 +46,7 @@ export const Sheet = ({
       renderTarget={target}
       scheme="dark"
       {...rest}
+      targetRef={targetRef}
     >
       <div ref={floatingBoxChildrenRef}>
         {React.cloneElement(children, {

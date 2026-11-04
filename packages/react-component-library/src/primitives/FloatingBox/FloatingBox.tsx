@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef } from 'react'
+import React, { forwardRef, useMemo, useRef } from 'react'
 import { BasePlacement, Placement, VariationPlacement } from '@popperjs/core'
 import { Transition } from 'react-transition-group'
 
@@ -36,6 +36,7 @@ export interface FloatingBoxWithExternalTargetProps
    * External element that the floating box should attach to.
    */
   targetElement?: Element | null
+  targetRef?: never
 }
 
 export interface FloatingBoxWithEmbeddedTargetProps
@@ -46,6 +47,10 @@ export interface FloatingBoxWithEmbeddedTargetProps
    */
   renderTarget?: React.ReactElement
   targetElement?: never
+  /**
+   * Ref to the element that wraps `renderTarget`.
+   */
+  targetRef?: React.Ref<HTMLDivElement>
 }
 
 export type FloatingBoxProps =
@@ -69,6 +74,7 @@ export const FloatingBox = forwardRef<HTMLDivElement, FloatingBoxProps>(
       isVisible,
       placement = 'auto',
       role = 'dialog',
+      targetRef,
       ...rest
     },
     ref
@@ -82,6 +88,11 @@ export const FloatingBox = forwardRef<HTMLDivElement, FloatingBoxProps>(
       styles,
       attributes,
     } = useFloatingElement(placement, undefined, targetElement)
+
+    const mergedTargetRef = useMemo(
+      () => mergeRefs([targetElementRef, targetRef]),
+      [targetElementRef, targetRef]
+    )
 
     const calculatedPlacement = attributes?.popper?.[
       'data-popper-placement'
@@ -106,7 +117,7 @@ export const FloatingBox = forwardRef<HTMLDivElement, FloatingBoxProps>(
       <>
         {renderTarget && (
           <StyledTarget
-            ref={targetElementRef}
+            ref={mergedTargetRef}
             data-testid="floating-box-styled-target"
           >
             {renderTarget}

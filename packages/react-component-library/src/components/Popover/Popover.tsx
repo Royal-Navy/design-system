@@ -15,7 +15,11 @@ import { useExternalId } from '../../hooks/useExternalId'
 export interface PopoverProps
   extends Omit<
     FloatingBoxProps,
-    'onMouseEnter' | 'onMouseLeave' | 'renderTarget' | 'targetElement'
+    | 'onMouseEnter'
+    | 'onMouseLeave'
+    | 'renderTarget'
+    | 'targetElement'
+    | 'targetRef'
   > {
   /**
    * JSX target element to attach the Popover to.
@@ -84,10 +88,8 @@ export const Popover = ({
   'aria-label': ariaLabel,
   ...rest
 }: PopoverProps) => {
-  const { floatingBoxChildrenRef, isVisible, mouseEvents } = useHideShow(
-    isClick,
-    closeDelay
-  )
+  const { floatingBoxChildrenRef, isVisible, mouseEvents, targetRef } =
+    useHideShow(isClick, closeDelay)
 
   const contentId = useExternalId('popover-content')
 
@@ -108,6 +110,7 @@ export const Popover = ({
       data-testid="popover"
       placement={placement}
       {...rest}
+      targetRef={targetRef}
     >
       <div data-testid="popover-content" ref={floatingBoxChildrenRef}>
         {content}

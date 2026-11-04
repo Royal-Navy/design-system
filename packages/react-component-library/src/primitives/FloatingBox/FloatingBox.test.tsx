@@ -128,3 +128,25 @@ it('sets the position of the floating box when the ref is null', async () => {
     })
   })
 })
+
+describe('FloatingBox with a `targetRef`', () => {
+  it('points the ref at the element wrapping `renderTarget`', () => {
+    const targetRef = React.createRef<HTMLDivElement>()
+
+    render(
+      <FloatingBox
+        renderTarget={<button type="button">Target</button>}
+        targetRef={targetRef}
+      >
+        <div>Content</div>
+      </FloatingBox>
+    )
+
+    expect(targetRef.current).toBe(
+      screen.getByTestId('floating-box-styled-target')
+    )
+    expect(targetRef.current).toContainElement(
+      screen.getByRole('button', { name: 'Target' })
+    )
+  })
+})
