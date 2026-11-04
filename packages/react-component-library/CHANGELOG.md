@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.61.4](https://github.com/Royal-Navy/design-system/compare/4.61.3...4.61.4) (2026-11-04)
+
+### Bug Fixes
+
+- **Modal:** Invoke onClose when closed with Escape ([d14dae5](https://github.com/Royal-Navy/design-system/commit/d14dae555324adf6f6e0ec1df902b86f6b084843))
+
 ## [4.61.3](https://github.com/Royal-Navy/design-system/compare/4.61.2...4.61.3) (2026-11-03)
 
 ### Bug Fixes
