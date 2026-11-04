@@ -14,6 +14,7 @@ import { BORDER_WIDTH } from '../../../styled-components'
 import { COMPONENT_SIZE } from '../../Forms'
 import { DatePicker, DatePickerOnChangeData } from '../index'
 import { DATE_VALIDITY } from '../constants'
+import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInput/partials/StyledInput'
 
 const NOW = '2019-12-05T11:00:00.000Z'
 
@@ -617,6 +618,33 @@ describe('DatePicker', () => {
           endDate: null,
           endDateValidity: null,
         })
+      })
+    })
+  })
+
+  describe('when `size` is small', () => {
+    beforeEach(() => {
+      wrapper = render(<DatePicker size={COMPONENT_SIZE.SMALL} />)
+    })
+
+    it('renders the input at the small height', () => {
+      expect(wrapper.getByTestId('datepicker-input')).toHaveStyleRule(
+        'height',
+        TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.SMALL]
+      )
+    })
+
+    it('displays the label', () => {
+      expect(wrapper.getByTestId('datepicker-label')).toBeVisible()
+    })
+
+    describe('and a date is typed', () => {
+      beforeEach(() => {
+        return user.type(wrapper.getByTestId('datepicker-input'), '01/02/2023')
+      })
+
+      it('hides the label', () => {
+        expect(wrapper.getByTestId('datepicker-label')).not.toBeVisible()
       })
     })
   })

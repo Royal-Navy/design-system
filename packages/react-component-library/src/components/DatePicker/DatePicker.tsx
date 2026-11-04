@@ -10,6 +10,7 @@ import { Input } from './Input'
 import { type ComponentWithClass } from '../../common/ComponentWithClass'
 import { type InputValidationProps } from '../../common/InputValidationProps'
 import { type ValueOf } from '../../helpers'
+import { COMPONENT_SIZE, type ComponentSizeType } from '../Forms'
 import { useExternalId } from '../../hooks/useExternalId'
 import { useStatefulRef } from '../../hooks/useStatefulRef'
 
@@ -74,6 +75,10 @@ export interface DatePickerProps
    * appropriate error message is displayed.
    */
   onChange?: (data: DatePickerOnChangeData) => void
+  /**
+   * Size of the component.
+   */
+  size?: ComponentSizeType
   /**
    * The selected date, or the start of the selected date range if `isRange`
    * is set.
@@ -155,6 +160,7 @@ export const DatePicker = ({
   onBlur,
   onChange,
   placement = 'bottom-start',
+  size = COMPONENT_SIZE.FORMS,
   startDate: externalStartDate,
   today = new Date(),
 
@@ -197,6 +203,7 @@ export const DatePicker = ({
         onBlur={onBlur}
         onChange={onChange}
         setFloatingBoxTarget={setFloatingBoxTarget}
+        size={size}
         titleId={titleId}
         hideClearButton={hideClearButton}
         {...rest}
