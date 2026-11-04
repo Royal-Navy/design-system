@@ -6,7 +6,7 @@ import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
 export const IndeterminateCheckbox = ({
   indeterminate,
   ...rest
-}: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) => {
+}: { indeterminate?: boolean } & Omit<HTMLProps<HTMLInputElement>, 'size'>) => {
   const ref = useRef<HTMLInputElement>(null!)
 
   useEffect(() => {

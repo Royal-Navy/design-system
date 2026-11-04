@@ -2,12 +2,17 @@ import { color, fontSize, spacing } from '@royalnavy/design-tokens'
 import { styled, css } from 'styled-components'
 
 import { CheckboxRootProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
+import {
+  CONTAINER_BORDER_RADIUS,
+  CONTAINER_PADDING_LEFT,
+  getContainerFocusStyles,
+} from '../../CheckboxRadioBase/constants'
 
 export const StyledCheckbox = styled.div<CheckboxRootProps>`
   display: inline-flex;
   position: relative;
-  padding: ${({ $hasContainer }) =>
-    $hasContainer ? `0 0 0 ${spacing('13')}` : `0 0 0 ${spacing('12')}`};
+  padding: ${({ $hasContainer, $size }) =>
+    `0 0 0 ${$hasContainer ? CONTAINER_PADDING_LEFT[$size] : spacing('12')}`};
   font-size: ${fontSize('base')};
   user-select: none;
   cursor: pointer;
@@ -30,19 +35,13 @@ export const StyledCheckbox = styled.div<CheckboxRootProps>`
       background-color: ${color('action', '000')};
     `}
 
-  ${({ $hasContainer }) =>
+  ${({ $hasContainer, $size }) =>
     $hasContainer &&
     css`
       border: 1px solid ${color('neutral', '200')};
-      border-radius: 15px;
+      border-radius: ${CONTAINER_BORDER_RADIUS[$size]};
 
-      &:focus-within,
-      &:active {
-        outline: none;
-        border-color: ${color('action', '500')};
-        box-shadow: 0 0 0 2px ${color('action', '500')},
-          0 0 0 5px ${color('action', '100')};
-      }
+      ${getContainerFocusStyles($size)}
     `}
 
   ${({ $hasLabel }) =>

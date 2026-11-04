@@ -94,7 +94,7 @@ export const StyledRadio = styled.div<CheckboxRootProps>`
 
   ${({ $hasContainer }) =>
     !$hasContainer &&
-    css`
+    css<CheckboxRootProps>`
       ${StyledInput}:focus ~ ${StyledCheckmark}::before {
         box-shadow: 0 0 0 ${RADIO_ACTIVE_BORDER_WIDTH}
           ${CheckmarkCheckedFillColor};

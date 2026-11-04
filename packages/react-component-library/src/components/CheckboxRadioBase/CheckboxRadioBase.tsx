@@ -9,6 +9,7 @@ import { StyledDescription } from './partials/StyledDescription'
 import { StyledLabel } from './partials/StyledLabel'
 import { StyledInput } from './partials/StyledInput'
 import { useExternalId } from '../../hooks/useExternalId'
+import { COMPONENT_SIZE } from '../Forms'
 
 export const CheckboxRadioBase = React.forwardRef<
   HTMLInputElement,
@@ -27,6 +28,7 @@ export const CheckboxRadioBase = React.forwardRef<
       name,
       onChange,
       onBlur,
+      size = COMPONENT_SIZE.FORMS,
       value,
       variant = CHECKBOX_RADIO_VARIANT.DEFAULT,
       type,
@@ -106,22 +108,25 @@ export const CheckboxRadioBase = React.forwardRef<
           $hasLabel={!!label}
           $isInvalid={isInvalid}
           $isChecked={isChecked}
+          $size={size}
           onClick={handleClick}
           onKeyUp={handleKeyUp}
           data-testid={type}
         >
-          <StyledInnerWrapper $hasContainer={hasContainer}>
+          <StyledInnerWrapper $hasContainer={hasContainer} $size={size}>
             <StyledLabel
               $hasContainer={hasContainer && !!label}
               $hasLabel={!!label}
               $hasDescription={!!description}
               $isDisabled={isDisabled}
+              $size={size}
               htmlFor={id}
               data-testid={`${type}-label`}
             >
               <CheckmarkWrapper
                 $hasContainer={hasContainer && !!label}
                 $hasLabel={!!label}
+                $size={size}
               >
                 <StyledInput
                   defaultChecked={defaultChecked}
@@ -144,7 +149,10 @@ export const CheckboxRadioBase = React.forwardRef<
               </CheckmarkWrapper>
               {label}
               {description && (
-                <StyledDescription data-testid={`${type}-description`}>
+                <StyledDescription
+                  $size={size}
+                  data-testid={`${type}-description`}
+                >
                   {description}
                 </StyledDescription>
               )}

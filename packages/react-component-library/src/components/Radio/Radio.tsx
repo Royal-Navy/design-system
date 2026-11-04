@@ -6,7 +6,10 @@ import { StyledRadio } from './partials/StyledRadio'
 import { StyledCheckmark } from './partials/StyledCheckmark'
 import { StyledCheckmarkWrapper } from './partials/StyledCheckmarkWrapper'
 
-export type RadioProps = Omit<CheckboxRadioBaseProps, 'type' | 'partials'>
+export type RadioProps = Omit<
+  CheckboxRadioBaseProps,
+  'type' | 'partials' | 'size'
+>
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   (props, ref) => {

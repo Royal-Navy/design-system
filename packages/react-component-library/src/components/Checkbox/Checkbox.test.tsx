@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 
 import 'jest-styled-components'
-import { ColorNeutral200 } from '@royalnavy/design-tokens'
+import { ColorNeutral200, TypographyBase } from '@royalnavy/design-tokens'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { Checkbox } from '.'
 import { CHECKBOX_RADIO_VARIANT } from '../CheckboxRadioBase'
 import { FieldProps } from '../../common/FieldProps'
+import { COMPONENT_SIZE } from '../Forms'
+import { TEXT_INPUT_INPUT_HEIGHT } from '../TextInput/partials/StyledInput'
 
 describe('Checkbox', () => {
   let field: FieldProps
@@ -244,6 +246,37 @@ describe('Checkbox', () => {
       expect(checkbox.queryByTestId('checkbox-input')).toHaveAttribute(
         'data-arbitrary',
         'arbitrary'
+      )
+    })
+  })
+
+  describe('when `size` is small', () => {
+    beforeEach(() => {
+      checkbox = render(
+        <Checkbox label="Label" name={field.name} size={COMPONENT_SIZE.SMALL} />
+      )
+    })
+
+    it('renders the container at the small height', () => {
+      expect(
+        checkbox.getByTestId('checkbox-label').parentElement
+      ).toHaveStyleRule(
+        'min-height',
+        TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.SMALL]
+      )
+    })
+
+    it('renders the container with the small border radius', () => {
+      expect(checkbox.getByTestId('checkbox')).toHaveStyleRule(
+        'border-radius',
+        '10px'
+      )
+    })
+
+    it('renders the label at the small font size', () => {
+      expect(checkbox.getByTestId('checkbox-label')).toHaveStyleRule(
+        'font-size',
+        TypographyBase
       )
     })
   })
