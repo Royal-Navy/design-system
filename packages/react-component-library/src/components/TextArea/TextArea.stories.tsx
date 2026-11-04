@@ -2,6 +2,7 @@ import React from 'react'
 import { StoryFn, Meta } from '@storybook/react-webpack5'
 
 import { TextArea } from '.'
+import { COMPONENT_SIZE } from '../Forms'
 
 export default {
   component: TextArea,
@@ -9,6 +10,10 @@ export default {
   argTypes: {
     isDisabled: { control: 'boolean' },
     isInvalid: { control: 'boolean' },
+    size: {
+      control: 'select',
+      options: Object.values(COMPONENT_SIZE),
+    },
   },
   parameters: {
     actions: { argTypesRegex: '^on.*' },
@@ -48,3 +53,7 @@ export const WithLongLabel: StoryFn<typeof TextArea> = (props) => (
 )
 
 WithLongLabel.storyName = 'Long label'
+
+export const Small: StoryFn<typeof TextArea> = (props) => (
+  <TextArea {...props} label="Example label" size={COMPONENT_SIZE.SMALL} />
+)

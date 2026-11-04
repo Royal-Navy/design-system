@@ -1,9 +1,11 @@
+import { TypographyBase, TypographyXs } from '@royalnavy/design-tokens'
 import React from 'react'
 
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { TextArea } from '.'
+import { COMPONENT_SIZE } from '../Forms'
 
 describe('TextArea', () => {
   let onBlurSpy: (event: React.FormEvent) => void
@@ -105,6 +107,41 @@ describe('TextArea', () => {
 
       it('should update the value', () => {
         expect(wrapper.getByTestId('textarea-input')).toHaveValue('')
+      })
+    })
+  })
+
+  describe('when `size` is small', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <TextArea label="label" name="name" size={COMPONENT_SIZE.SMALL} />
+      )
+    })
+
+    it('renders the input at the small font size', () => {
+      expect(wrapper.getByTestId('textarea-input')).toHaveStyleRule(
+        'font-size',
+        TypographyBase
+      )
+    })
+
+    it('renders the label at the small font size', () => {
+      expect(wrapper.getByTestId('textarea-label')).toHaveStyleRule(
+        'font-size',
+        TypographyBase
+      )
+    })
+
+    describe('and text is entered', () => {
+      beforeEach(async () => {
+        await userEvent.type(wrapper.getByTestId('textarea-input'), 'value')
+      })
+
+      it('shrinks the label', () => {
+        expect(wrapper.getByTestId('textarea-label')).toHaveStyleRule(
+          'font-size',
+          TypographyXs
+        )
       })
     })
   })

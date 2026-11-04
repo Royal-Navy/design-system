@@ -1,6 +1,7 @@
 import { styled, css } from 'styled-components'
 import { fontSize, spacing } from '@royalnavy/design-tokens'
 
+import { COMPONENT_SIZE } from '../../Forms'
 import {
   StyledLabel as StyledLabelBase,
   StyledLabelProps,
@@ -19,5 +20,19 @@ export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
     css`
       padding-top: 4px;
       font-size: ${fontSize('s')};
+    `}
+
+  ${({ $hasFocus, $hasContent, $size }) =>
+    $size === COMPONENT_SIZE.SMALL &&
+    css`
+      padding-left: 8px;
+      padding-top: 7px;
+      font-size: ${fontSize('base')};
+
+      ${($hasFocus || $hasContent) &&
+      css`
+        padding-top: 3px;
+        font-size: ${fontSize('xs')};
+      `}
     `}
 `
