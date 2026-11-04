@@ -5,6 +5,8 @@ import { render, RenderResult, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { TextInput } from '.'
+import { COMPONENT_SIZE } from '../Forms'
+import { TEXT_INPUT_INPUT_HEIGHT } from './partials/StyledInput'
 
 describe('TextInput', () => {
   let wrapper: RenderResult
@@ -207,6 +209,35 @@ describe('TextInput', () => {
             TypographyM
           )
         })
+      })
+    })
+  })
+
+  describe('when `size` is small', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <TextInput label="label" name="name" size={COMPONENT_SIZE.SMALL} />
+      )
+    })
+
+    it('renders the input at the small height', () => {
+      expect(wrapper.getByTestId('text-input-input')).toHaveStyleRule(
+        'height',
+        TEXT_INPUT_INPUT_HEIGHT[COMPONENT_SIZE.SMALL]
+      )
+    })
+
+    it('displays the label', () => {
+      expect(wrapper.getByTestId('text-input-label')).toBeVisible()
+    })
+
+    describe('and text is entered', () => {
+      beforeEach(async () => {
+        await userEvent.type(wrapper.getByTestId('text-input-input'), 'value')
+      })
+
+      it('hides the label', () => {
+        expect(wrapper.getByTestId('text-input-label')).not.toBeVisible()
       })
     })
   })

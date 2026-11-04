@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
+import { ComponentSizeType } from '../Forms'
 import { StyledInput } from './partials/StyledInput'
 import { StyledLabel } from './partials/StyledLabel'
 import { useExternalId } from '../../hooks/useExternalId'
@@ -17,13 +18,23 @@ export interface InputProps extends ComponentWithClass {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   onFocus: (event: React.FormEvent) => void
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void
+  size: ComponentSizeType
   type?: string
   value?: string
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { hasFocus, id: externalId, isDisabled, label, onChange, value, ...rest },
+    {
+      hasFocus,
+      id: externalId,
+      isDisabled,
+      label,
+      onChange,
+      size,
+      value,
+      ...rest
+    },
     ref
   ) => {
     const id = useExternalId('text-input', externalId)
@@ -34,6 +45,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <StyledLabel
           $hasContent={hasValue}
           $hasFocus={hasFocus}
+          $size={size}
           htmlFor={id}
           data-testid="text-input-label"
         >
@@ -41,6 +53,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         </StyledLabel>
         <StyledInput
           $hasLabel
+          $size={size}
           ref={ref}
           data-testid="text-input-input"
           disabled={isDisabled}
