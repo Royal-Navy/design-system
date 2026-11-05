@@ -244,3 +244,10 @@ export const MultiSelectWithReallyLongText = Template.bind({})
 MultiSelectWithReallyLongText.args = {
   isMulti: true,
 }
+
+export const MultiSelectMultipleSelectedText = Template.bind({})
+MultiSelectMultipleSelectedText.args = {
+  initialValue: ['one', 'two', 'long'],
+  isMulti: true,
+  multipleSelectedText: 'Multiple recipients',
+}

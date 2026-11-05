@@ -1081,4 +1081,61 @@ describe('Select', () => {
       })
     })
   })
+
+  describe('when isMulti and the selected options do not fit', () => {
+    let getContextSpy: jest.SpyInstance
+
+    const renderSelect = (multipleSelectedText?: string) =>
+      render(
+        <Select
+          id="select-id"
+          initialValue={['one', 'two']}
+          isMulti
+          label="Label"
+          multipleSelectedText={multipleSelectedText}
+        >
+          <SelectOption value="one">One</SelectOption>
+          <SelectOption value="two">Two</SelectOption>
+        </Select>
+      )
+
+    beforeEach(() => {
+      getContextSpy = jest
+        .spyOn(HTMLCanvasElement.prototype, 'getContext')
+        .mockReturnValue({
+          measureText: () => ({ width: 1000 }),
+        } as unknown as CanvasRenderingContext2D)
+    })
+
+    afterEach(() => {
+      getContextSpy.mockRestore()
+    })
+
+    it('displays "Multiple selected" by default', () => {
+      wrapper = renderSelect()
+
+      expect(wrapper.getByTestId('select-input')).toHaveValue(
+        'Multiple selected'
+      )
+    })
+
+    it.each(['', '  '])(
+      'displays "Multiple selected" when `multipleSelectedText` is "%s"',
+      (multipleSelectedText) => {
+        wrapper = renderSelect(multipleSelectedText)
+
+        expect(wrapper.getByTestId('select-input')).toHaveValue(
+          'Multiple selected'
+        )
+      }
+    )
+
+    it('displays `multipleSelectedText` when set', () => {
+      wrapper = renderSelect('Multiple recipients')
+
+      expect(wrapper.getByTestId('select-input')).toHaveValue(
+        'Multiple recipients'
+      )
+    })
+  })
 })

@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useCallback, RefObject } from 'react'
 import isNil from 'lodash/isNil'
 
 const FULL_TEXT_BUFFER = 60
+const DEFAULT_MULTIPLE_SELECTED_TEXT = 'Multiple selected'
 
 interface UseDisplayTextParams {
   isMulti: boolean
@@ -9,6 +10,7 @@ interface UseDisplayTextParams {
   selectedItems: string[]
   itemsMap: Record<string, React.ReactElement>
   inputRef: RefObject<HTMLInputElement>
+  multipleSelectedText?: string
 }
 
 export const useDisplayText = ({
@@ -17,6 +19,7 @@ export const useDisplayText = ({
   selectedItems,
   itemsMap,
   inputRef,
+  multipleSelectedText,
 }: UseDisplayTextParams): string => {
   const [useMultipleText, setUseMultipleText] = useState(false)
 
@@ -39,7 +42,11 @@ export const useDisplayText = ({
       return isNil(selectedItem) ? '' : itemsMap[selectedItem].props.children
     }
 
-    return useMultipleText ? 'Multiple selected' : getFullText(selectedItems)
+    if (useMultipleText) {
+      return multipleSelectedText?.trim() || DEFAULT_MULTIPLE_SELECTED_TEXT
+    }
+
+    return getFullText(selectedItems)
   }, [
     isMulti,
     selectedItem,
@@ -47,6 +54,7 @@ export const useDisplayText = ({
     useMultipleText,
     getFullText,
     selectedItems,
+    multipleSelectedText,
   ])
 
   useEffect(() => {

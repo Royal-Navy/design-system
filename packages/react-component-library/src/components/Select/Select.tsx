@@ -27,10 +27,15 @@ import { COMPONENT_SIZE } from '../Forms'
 
 export interface SingleSelectProps extends SelectBaseProps {
   isMulti?: false
+  multipleSelectedText?: never
 }
 
 export interface MultiSelectProps extends SelectBaseProps<string[]> {
   isMulti: true
+  /**
+   * Text to display when the selected options do not fit in the field.
+   */
+  multipleSelectedText?: string
 }
 
 export type SelectProps = SingleSelectProps | MultiSelectProps
@@ -44,6 +49,7 @@ export const Select = (props: SelectProps) => {
     onChange,
     value,
     isMulti = false,
+    multipleSelectedText,
     size = COMPONENT_SIZE.FORMS,
     ...rest
   } = props
@@ -169,6 +175,7 @@ export const Select = (props: SelectProps) => {
     selectedItems,
     itemsMap,
     inputRef,
+    multipleSelectedText,
   })
 
   const onlySelectedValue = isMulti ? selectedItems[0] : selectedItem
