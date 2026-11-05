@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.64.0](https://github.com/Royal-Navy/design-system/compare/4.63.1...4.64.0) (2026-11-05)
+
+### Features
+
+- **Popover:** Allow visibility to be controlled ([7ae5468](https://github.com/Royal-Navy/design-system/commit/7ae54689f168c10e68d8e394777a9574707a27f5))
+
 ## [4.63.1](https://github.com/Royal-Navy/design-system/compare/4.63.0...4.63.1) (2026-11-05)
 
 ### Bug Fixes
