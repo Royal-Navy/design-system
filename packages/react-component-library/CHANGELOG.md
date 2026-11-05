@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.63.1](https://github.com/Royal-Navy/design-system/compare/4.63.0...4.63.1) (2026-11-05)
+
+### Bug Fixes
+
+- **Popover:** Close when the target is clicked again ([47e5826](https://github.com/Royal-Navy/design-system/commit/47e58262825eb1926ab0caee60e60dfbc1a39408))
+- **Popover:** Keep the target mounted across re-renders ([a89ab8f](https://github.com/Royal-Navy/design-system/commit/a89ab8fce508fc0d762ed134e915c17af85fd7c0))
+- **Sheet:** Keep the button mounted across re-renders ([73ee953](https://github.com/Royal-Navy/design-system/commit/73ee953e9945b2721cd85fcba84b0e04fd1fe4cc))
+
 # [4.63.0](https://github.com/Royal-Navy/design-system/compare/4.62.0...4.63.0) (2026-11-04)
 
 ### Features
