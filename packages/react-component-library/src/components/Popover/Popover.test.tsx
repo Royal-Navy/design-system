@@ -198,6 +198,66 @@ describe('Popover', () => {
     })
   })
 
+  describe('when the `Popover` uses the click mouse event and the user clicks the target twice', () => {
+    it('is hidden after the second click', async () => {
+      const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
+
+      render(
+        <Popover closeDelay={0} content={<pre>{CONTENT_TEXT}</pre>} isClick>
+          <button type="button">Click on me</button>
+        </Popover>
+      )
+
+      await user.click(screen.getByRole('button', { name: 'Click on me' }))
+      expect(screen.getByText(CONTENT_TEXT)).toBeVisible()
+
+      await user.click(screen.getByRole('button', { name: 'Click on me' }))
+      await waitFor(() => {
+        expect(screen.queryByText(CONTENT_TEXT)).not.toBeInTheDocument()
+      })
+    })
+
+    it('still closes on an outside click when an ancestor stops mouse down', async () => {
+      const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
+
+      render(
+        <>
+          {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+          <div onMouseDown={(event) => event.stopPropagation()}>
+            <Popover closeDelay={0} content={<pre>{CONTENT_TEXT}</pre>} isClick>
+              <button type="button">Click on me</button>
+            </Popover>
+          </div>
+          <button type="button">Elsewhere</button>
+        </>
+      )
+
+      await user.click(screen.getByRole('button', { name: 'Click on me' }))
+      await user.click(screen.getByRole('button', { name: 'Elsewhere' }))
+
+      await waitFor(() => {
+        expect(screen.queryByText(CONTENT_TEXT)).not.toBeInTheDocument()
+      })
+    })
+
+    it("keeps the target's own mouse down handler", async () => {
+      const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
+      const onMouseDown = jest.fn()
+
+      render(
+        <Popover closeDelay={0} content={<pre>{CONTENT_TEXT}</pre>} isClick>
+          <button type="button" onMouseDown={onMouseDown}>
+            Click on me
+          </button>
+        </Popover>
+      )
+
+      await user.click(screen.getByRole('button', { name: 'Click on me' }))
+
+      expect(onMouseDown).toHaveBeenCalledTimes(1)
+    })
+  })
+
   describe('when using a custom `closeDelay`', () => {
     beforeEach(() => {
       wrapper = render(
