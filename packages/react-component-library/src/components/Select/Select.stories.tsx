@@ -139,6 +139,11 @@ Value.args = {
 
 export const IconsAndBadges = TemplateWithIconsAndBadges.bind({})
 
+export const SelectedWithBadges = TemplateWithIconsAndBadges.bind({})
+SelectedWithBadges.args = {
+  initialValue: 'multiple badges',
+}
+
 export const Small = Template.bind({})
 Small.args = {
   size: COMPONENT_SIZE.SMALL,

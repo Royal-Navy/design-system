@@ -5,7 +5,9 @@ import isNil from 'lodash/isNil'
 import { mergeRefs } from '../../helpers'
 import {
   getSelectedItem,
+  hasBadges,
   itemToString,
+  SelectBaseOptionBadges,
   SelectBaseProps,
   SelectLayout,
 } from '../SelectBase'
@@ -169,6 +171,12 @@ export const Select = (props: SelectProps) => {
     inputRef,
   })
 
+  const onlySelectedValue = isMulti ? selectedItems[0] : selectedItem
+  const onlySelectedOption =
+    isNil(onlySelectedValue) || (isMulti && selectedItems.length > 1)
+      ? undefined
+      : itemsMap[onlySelectedValue]
+
   const hasSelectedItem = useMemo(
     () => (isMulti ? selectedItems.length > 0 : !isNil(selectedItem)),
     [isMulti, selectedItems, selectedItem]
@@ -200,6 +208,17 @@ export const Select = (props: SelectProps) => {
       tooltipText={displayText}
       value={displayText}
       popupPosition={popupPosition}
+      selectedBadges={
+        onlySelectedOption && hasBadges(onlySelectedOption.props) ? (
+          <SelectBaseOptionBadges
+            badge={onlySelectedOption.props.badge}
+            badgeProps={onlySelectedOption.props.badgeProps}
+            badges={onlySelectedOption.props.badges}
+            hasTitles
+            testId="select-selected-badge"
+          />
+        ) : undefined
+      }
       size={size}
       {...{
         readOnly: true,

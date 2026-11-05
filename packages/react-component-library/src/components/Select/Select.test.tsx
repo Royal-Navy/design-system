@@ -1,6 +1,12 @@
 import React from 'react'
 
-import { render, RenderResult, screen, waitFor } from '@testing-library/react'
+import {
+  render,
+  RenderResult,
+  screen,
+  waitFor,
+  within,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { color, ColorDanger800 } from '@royalnavy/design-tokens'
 import {
@@ -895,6 +901,184 @@ describe('Select', () => {
       expect(checkboxes[0]).toBeChecked()
       expect(checkboxes[1]).toBeChecked()
       expect(checkboxes[2]).not.toBeChecked()
+    })
+  })
+
+  describe('when the selected option has badges', () => {
+    const renderSelect = (
+      props: { isDisabled?: boolean } & (
+        | { initialValue?: string }
+        | { initialValue: string[]; isMulti: true }
+      )
+    ) =>
+      render(
+        <Select id="select-id" label="Label" {...props}>
+          <SelectOption
+            badges={[
+              'Offline',
+              { label: 'New', color: 'success', colorVariant: 'faded' },
+            ]}
+            value="one"
+          >
+            One
+          </SelectOption>
+          <SelectOption badge={2} value="two">
+            Two
+          </SelectOption>
+          <SelectOption value="three">Three</SelectOption>
+        </Select>
+      )
+
+    const getSelectedBadges = () =>
+      within(wrapper.getByTestId('select-selected-badges')).getAllByTestId(
+        'select-selected-badge'
+      )
+
+    it('displays the badges in the field', () => {
+      wrapper = renderSelect({ initialValue: 'one' })
+
+      const badges = getSelectedBadges()
+      expect(badges).toHaveLength(2)
+      expect(badges[0]).toHaveTextContent('Offline')
+      expect(badges[1]).toHaveTextContent('New')
+      expect(badges[1]).toHaveStyleRule(
+        'background-color',
+        color('success', '100')
+      )
+    })
+
+    it('gives each badge in the field its full label as a title', () => {
+      wrapper = renderSelect({ initialValue: 'one' })
+
+      const badges = getSelectedBadges()
+      expect(badges[0]).toHaveAttribute('title', 'Offline')
+      expect(badges[1]).toHaveAttribute('title', 'New')
+    })
+
+    it('displays a deprecated `badge` in the field', () => {
+      wrapper = renderSelect({ initialValue: 'two' })
+
+      expect(getSelectedBadges()[0]).toHaveTextContent('2')
+    })
+
+    it('does not display badges when the selected option has none', () => {
+      wrapper = renderSelect({ initialValue: 'three' })
+
+      expect(
+        wrapper.queryByTestId('select-selected-badges')
+      ).not.toBeInTheDocument()
+    })
+
+    it('does not display badges when nothing is selected', () => {
+      wrapper = renderSelect({})
+
+      expect(
+        wrapper.queryByTestId('select-selected-badges')
+      ).not.toBeInTheDocument()
+    })
+
+    it('dims the badges when disabled', () => {
+      wrapper = renderSelect({ initialValue: 'one', isDisabled: true })
+
+      expect(wrapper.getByTestId('select-selected-badges')).toHaveStyleRule(
+        'opacity',
+        '0.5'
+      )
+    })
+
+    it('shows a pointer over the badges when enabled', () => {
+      wrapper = renderSelect({ initialValue: 'one' })
+
+      expect(wrapper.getByTestId('select-selected-badges')).toHaveStyleRule(
+        'cursor',
+        'pointer'
+      )
+    })
+
+    it('describes the input with the badges', () => {
+      wrapper = renderSelect({ initialValue: 'one' })
+
+      expect(wrapper.getByTestId('select-input')).toHaveAccessibleDescription(
+        'Offline New'
+      )
+    })
+
+    it('keeps an existing `aria-describedby`', () => {
+      wrapper = render(
+        <>
+          <span id="hint">Hint</span>
+          <Select
+            aria-describedby="hint"
+            id="select-id"
+            initialValue="one"
+            label="Label"
+          >
+            <SelectOption badges={['Offline']} value="one">
+              One
+            </SelectOption>
+          </Select>
+        </>
+      )
+
+      expect(wrapper.getByTestId('select-input')).toHaveAttribute(
+        'aria-describedby',
+        'hint select-id-selected-badges'
+      )
+    })
+
+    it('has no `aria-describedby` without badges', () => {
+      wrapper = renderSelect({ initialValue: 'three' })
+
+      expect(wrapper.getByTestId('select-input')).not.toHaveAttribute(
+        'aria-describedby'
+      )
+    })
+
+    describe('and the badges are clicked', () => {
+      beforeEach(() => {
+        wrapper = renderSelect({ initialValue: 'one' })
+
+        return userEvent.click(wrapper.getByTestId('select-selected-badges'))
+      })
+
+      it('opens the menu', () => {
+        expect(wrapper.getAllByTestId('select-option')).toHaveLength(3)
+      })
+
+      it('keeps the menu badges distinct from the field badges', () => {
+        expect(wrapper.getAllByTestId('select-badge')).toHaveLength(3)
+        expect(wrapper.getAllByTestId('select-selected-badge')).toHaveLength(2)
+      })
+    })
+
+    describe('and the selection is cleared', () => {
+      beforeEach(() => {
+        wrapper = renderSelect({ initialValue: 'one' })
+
+        return userEvent.click(wrapper.getByTestId('select-clear-button'))
+      })
+
+      it('removes the badges from the field', () => {
+        expect(
+          wrapper.queryByTestId('select-selected-badges')
+        ).not.toBeInTheDocument()
+      })
+    })
+
+    describe('and isMulti', () => {
+      it('displays the badges when one option is selected', () => {
+        wrapper = renderSelect({ isMulti: true, initialValue: ['one'] })
+
+        expect(getSelectedBadges()).toHaveLength(2)
+      })
+
+      it('does not display badges when several options are selected', () => {
+        wrapper = renderSelect({ isMulti: true, initialValue: ['one', 'two'] })
+
+        expect(
+          wrapper.queryByTestId('select-selected-badges')
+        ).not.toBeInTheDocument()
+      })
     })
   })
 })

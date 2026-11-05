@@ -67,6 +67,44 @@ function resolveBadges({
   return badge ? [{ label: badge, props: badgeProps ?? {} }] : []
 }
 
+export function hasBadges({
+  badge,
+  badges,
+}: Pick<SelectBaseOptionProps, 'badge' | 'badges'>): boolean {
+  return badges ? badges.length > 0 : Boolean(badge)
+}
+
+export const SelectBaseOptionBadges = ({
+  badge,
+  badgeProps,
+  badges,
+  hasTitles = false,
+  testId = 'select-badge',
+}: Pick<SelectBaseOptionProps, 'badge' | 'badgeProps' | 'badges'> & {
+  hasTitles?: boolean
+  testId?: string
+}) => (
+  <>
+    {resolveBadges({ badge, badgeProps, badges }).map(
+      ({ label, props }, index) => (
+        <StyledOptionBadge
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
+          data-testid={testId}
+          {...(hasTitles && { title: String(label) })}
+          size={BADGE_SIZE.XSMALL}
+          variant={BADGE_VARIANT.PILL}
+          {...props}
+        >
+          {label}
+        </StyledOptionBadge>
+      )
+    )}
+  </>
+)
+
+SelectBaseOptionBadges.displayName = 'SelectBaseOptionBadges'
+
 export const SelectBaseOption = React.forwardRef<
   HTMLLIElement,
   SelectBaseOptionProps
@@ -87,8 +125,6 @@ export const SelectBaseOption = React.forwardRef<
     },
     ref
   ) => {
-    const resolvedBadges = resolveBadges({ badge, badgeProps, badges })
-
     return (
       <StyledOption
         $isHighlighted={isHighlighted}
@@ -106,18 +142,11 @@ export const SelectBaseOption = React.forwardRef<
         )}
         {icon}
         <StyledOptionText title={title}>{children}</StyledOptionText>
-        {resolvedBadges.map(({ label, props }, index) => (
-          <StyledOptionBadge
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            data-testid="select-badge"
-            size={BADGE_SIZE.XSMALL}
-            variant={BADGE_VARIANT.PILL}
-            {...props}
-          >
-            {label}
-          </StyledOptionBadge>
-        ))}
+        <SelectBaseOptionBadges
+          badge={badge}
+          badgeProps={badgeProps}
+          badges={badges}
+        />
       </StyledOption>
     )
   }

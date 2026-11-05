@@ -8,11 +8,12 @@ import { ComponentWithClass } from '../../common/ComponentWithClass'
 import { SelectChildWithStringType } from './types'
 import { StyledInput } from './partials/StyledInput'
 import { StyledInputWrapper } from './partials/StyledInputWrapper'
-import { StyledLabel } from '../TextInput/partials/StyledLabel'
+import { StyledLabel } from './partials/StyledLabel'
 import { StyledOptions } from './partials/StyledOptions'
 import { StyledOptionsWrapper } from './partials/StyledOptionsWrapper'
 import { StyledOuterWrapper } from './partials/StyledOuterWrapper'
 import { StyledSelect } from './partials/StyledSelect'
+import { StyledSelectedBadges } from './partials/StyledSelectedBadges'
 import { StyledTextInput } from './partials/StyledTextInput'
 import { StyledTooltip } from './partials/StyledTooltip'
 import { useExternalId } from '../../hooks/useExternalId'
@@ -26,6 +27,7 @@ type ComboboxReturnValueType = UseComboboxReturnValue<SelectChildWithStringType>
 type SelectReturnValueType = UseSelectReturnValue<SelectChildWithStringType>
 
 export interface SelectLayoutProps extends ComponentWithClass {
+  'aria-describedby'?: string
   hasLabelFocus?: boolean
   hasSelectedItem: boolean
   id: string
@@ -47,6 +49,7 @@ export interface SelectLayoutProps extends ComponentWithClass {
   tooltipText: string
   value?: string
   popupPosition?: PopupPosition
+  selectedBadges?: React.ReactNode
   size: ComponentSizeType
 }
 
@@ -55,6 +58,7 @@ const isEllipsisActive = (el: HTMLInputElement | null): boolean => {
 }
 
 export const SelectLayout = ({
+  'aria-describedby': ariaDescribedBy,
   children,
   className,
   hasLabelFocus = false,
@@ -73,6 +77,7 @@ export const SelectLayout = ({
   tooltipText,
   value,
   popupPosition = 'below',
+  selectedBadges,
   size,
   ...rest
 }: SelectLayoutProps) => {
@@ -81,6 +86,23 @@ export const SelectLayout = ({
   const [floatingBoxTarget, setFloatingBoxTarget] =
     useStatefulRef<HTMLInputElement>()
   const { ref, ...inputPropsRest } = inputProps
+
+  const onMouseEnter = () => {
+    if (!isDisabled) {
+      setHasHover(true)
+    }
+  }
+  const onMouseLeave = () => setHasHover(false)
+
+  const selectedBadgesId = `${id}-selected-badges`
+  const describedBy =
+    [
+      ariaDescribedBy,
+      inputPropsRest['aria-describedby'],
+      selectedBadges ? selectedBadgesId : undefined,
+    ]
+      .filter(Boolean)
+      .join(' ') || undefined
 
   return (
     <>
@@ -99,6 +121,7 @@ export const SelectLayout = ({
             data-testid="select-outer-wrapper"
           >
             <StyledInputWrapper
+              $hasSelectedBadges={Boolean(selectedBadges)}
               data-testid="select-input-wrapper"
               aria-controls={id}
               {...inputWrapperProps}
@@ -120,18 +143,28 @@ export const SelectLayout = ({
                 data-testid="select-input"
                 disabled={isDisabled}
                 value={value}
-                onMouseEnter={() => {
-                  if (!isDisabled) {
-                    setHasHover(true)
-                  }
-                }}
-                onMouseLeave={() => setHasHover(false)}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
                 {...rest}
                 {...inputPropsRest}
+                aria-describedby={describedBy}
                 aria-labelledby={labelId}
                 id={id}
               />
             </StyledInputWrapper>
+            {selectedBadges && (
+              <StyledSelectedBadges
+                $isDisabled={isDisabled}
+                data-testid="select-selected-badges"
+                id={selectedBadgesId}
+                onClick={() => floatingBoxTarget?.click()}
+                onMouseDown={(event) => event.preventDefault()}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+              >
+                {selectedBadges}
+              </StyledSelectedBadges>
+            )}
             <StyledInlineButtonsNoBorder>
               {hasSelectedItem && !hideClearButton && (
                 <ClearButton
