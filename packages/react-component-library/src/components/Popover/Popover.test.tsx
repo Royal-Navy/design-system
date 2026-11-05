@@ -173,6 +173,31 @@ describe('Popover', () => {
     })
   })
 
+  describe('when the `Popover` re-renders', () => {
+    it('keeps the target element and its focus', async () => {
+      const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
+
+      const { rerender } = render(
+        <Popover closeDelay={0} content={<pre>First</pre>} isClick>
+          <button type="button">Target</button>
+        </Popover>
+      )
+      const target = screen.getByRole('button', { name: 'Target' })
+
+      await user.click(target)
+      expect(screen.getByRole('button', { name: 'Target' })).toBe(target)
+
+      rerender(
+        <Popover closeDelay={0} content={<pre>Second</pre>} isClick>
+          <button type="button">Target</button>
+        </Popover>
+      )
+
+      expect(screen.getByRole('button', { name: 'Target' })).toBe(target)
+      expect(target).toHaveFocus()
+    })
+  })
+
   describe('when using a custom `closeDelay`', () => {
     beforeEach(() => {
       wrapper = render(

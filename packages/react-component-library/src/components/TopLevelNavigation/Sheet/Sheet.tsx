@@ -35,20 +35,18 @@ export const Sheet = ({
     initialIsOpen
   )
 
-  const SheetTarget = () => {
-    return React.cloneElement(button as React.ReactElement, {
-      ...button.props,
-      ...mouseEvents,
-      'aria-expanded': isVisible,
-      'aria-owns': id,
-    })
-  }
+  const target = React.cloneElement(button as React.ReactElement, {
+    ...button.props,
+    ...mouseEvents,
+    'aria-expanded': isVisible,
+    'aria-owns': id,
+  })
 
   return (
     <FloatingBox
       isVisible={isVisible}
       placement={placement}
-      renderTarget={<SheetTarget />}
+      renderTarget={target}
       scheme="dark"
       {...rest}
     >

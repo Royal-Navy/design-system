@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { Placement } from '@popperjs/core'
 
 import {
@@ -91,18 +91,16 @@ export const Popover = ({
 
   const contentId = useExternalId('popover-content')
 
-  const PopoverTarget = useCallback(() => {
-    return React.Children.map(children, (item: React.ReactElement) =>
-      React.cloneElement(item, {
-        ...getMouseEvents(isClick, item, mouseEvents),
-      })
-    )[0]
-  }, [isClick, children, mouseEvents])
+  const target = React.Children.map(children, (item: React.ReactElement) =>
+    React.cloneElement(item, {
+      ...getMouseEvents(isClick, item, mouseEvents),
+    })
+  )[0]
 
   return (
     <FloatingBox
       isVisible={isVisible}
-      renderTarget={<PopoverTarget />}
+      renderTarget={target}
       scheme={scheme}
       aria-describedby={contentId}
       aria-label={ariaLabel || 'Popover'}
