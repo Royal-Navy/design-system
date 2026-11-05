@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { renderToStaticMarkup } from 'react-dom/server'
 import {
+  act,
   fireEvent,
   render,
   RenderResult,
@@ -13,6 +14,28 @@ import userEvent from '@testing-library/user-event'
 import { Popover } from '.'
 
 const HOVER_ON_ME = 'Hover on me!'
+
+function stepTimers(milliseconds: number) {
+  for (let elapsed = 0; elapsed < milliseconds; elapsed += 1) {
+    act(() => {
+      jest.advanceTimersByTime(1)
+    })
+  }
+}
+
+function stepUntil(isDone: () => boolean, limit = 5000) {
+  for (let elapsed = 1; elapsed <= limit; elapsed += 1) {
+    act(() => {
+      jest.advanceTimersByTime(1)
+    })
+
+    if (isDone()) {
+      return elapsed
+    }
+  }
+
+  return Infinity
+}
 const CONTENT_TEXT = 'This is some arbitrary JSX'
 
 jest.useFakeTimers()
@@ -258,6 +281,98 @@ describe('Popover', () => {
     })
   })
 
+  describe('when the `Popover` is controlled', () => {
+    it('shows and hides with `isVisible`', () => {
+      const { rerender } = render(
+        <Popover content={<pre>{CONTENT_TEXT}</pre>} isClick isVisible>
+          <button type="button">Click on me</button>
+        </Popover>
+      )
+
+      expect(screen.getByText(CONTENT_TEXT)).toBeVisible()
+
+      rerender(
+        <Popover content={<pre>{CONTENT_TEXT}</pre>} isClick isVisible={false}>
+          <button type="button">Click on me</button>
+        </Popover>
+      )
+
+      return waitFor(() => {
+        expect(screen.queryByText(CONTENT_TEXT)).not.toBeInTheDocument()
+      })
+    })
+
+    it('requests changes through `onVisibleChange` without changing itself', async () => {
+      const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
+      const onVisibleChange = jest.fn()
+
+      render(
+        <Popover
+          closeDelay={0}
+          content={<pre>{CONTENT_TEXT}</pre>}
+          isClick
+          isVisible={false}
+          onVisibleChange={onVisibleChange}
+        >
+          <button type="button">Click on me</button>
+        </Popover>
+      )
+
+      await user.click(screen.getByRole('button', { name: 'Click on me' }))
+
+      expect(onVisibleChange).toHaveBeenCalledWith(true)
+      expect(screen.queryByText(CONTENT_TEXT)).not.toBeInTheDocument()
+    })
+
+    it('requests to hide on an outside click', async () => {
+      const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
+      const onVisibleChange = jest.fn()
+
+      render(
+        <>
+          <Popover
+            closeDelay={0}
+            content={<pre>{CONTENT_TEXT}</pre>}
+            isClick
+            isVisible
+            onVisibleChange={onVisibleChange}
+          >
+            <button type="button">Click on me</button>
+          </Popover>
+          <button type="button">Elsewhere</button>
+        </>
+      )
+
+      await user.click(screen.getByRole('button', { name: 'Elsewhere' }))
+
+      expect(onVisibleChange).toHaveBeenCalledWith(false)
+      expect(screen.getByText(CONTENT_TEXT)).toBeVisible()
+    })
+  })
+
+  describe('when the `Popover` is not controlled and has `onVisibleChange`', () => {
+    it('calls it as the visibility changes', async () => {
+      const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
+      const onVisibleChange = jest.fn()
+
+      render(
+        <Popover
+          closeDelay={0}
+          content={<pre>{CONTENT_TEXT}</pre>}
+          isClick
+          onVisibleChange={onVisibleChange}
+        >
+          <button type="button">Click on me</button>
+        </Popover>
+      )
+
+      await user.click(screen.getByRole('button', { name: 'Click on me' }))
+      await user.click(screen.getByRole('button', { name: 'Click on me' }))
+
+      expect(onVisibleChange.mock.calls).toEqual([[true], [false]])
+    })
+  })
+
   describe('when using a custom `closeDelay`', () => {
     beforeEach(() => {
       wrapper = render(
@@ -357,6 +472,174 @@ describe('Popover', () => {
     it('appends `onMouseOver` and `onMouseLeave` callbacks', () => {
       expect(onMouseEnterSpy).toHaveBeenCalledTimes(1)
       expect(onMouseLeaveSpy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('when a controlled parent refuses a change', () => {
+    it('is asked again on the next click', async () => {
+      const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
+      const onVisibleChange = jest.fn()
+
+      render(
+        <Popover
+          closeDelay={0}
+          content={<pre>{CONTENT_TEXT}</pre>}
+          isClick
+          isVisible={false}
+          onVisibleChange={onVisibleChange}
+        >
+          <button type="button">Click on me</button>
+        </Popover>
+      )
+
+      await user.click(screen.getByRole('button', { name: 'Click on me' }))
+      await user.click(screen.getByRole('button', { name: 'Click on me' }))
+
+      expect(onVisibleChange.mock.calls).toEqual([[true], [true]])
+    })
+
+    it('is asked again on the next hover', () => {
+      const onVisibleChange = jest.fn()
+
+      render(
+        <Popover
+          closeDelay={0}
+          content={<pre>{CONTENT_TEXT}</pre>}
+          isVisible={false}
+          onVisibleChange={onVisibleChange}
+        >
+          <div>{HOVER_ON_ME}</div>
+        </Popover>
+      )
+
+      fireEvent.mouseEnter(screen.getByText(HOVER_ON_ME))
+      fireEvent.mouseLeave(screen.getByText(HOVER_ON_ME))
+      fireEvent.mouseEnter(screen.getByText(HOVER_ON_ME))
+
+      expect(onVisibleChange.mock.calls).toEqual([[true], [true]])
+    })
+  })
+
+  describe('when a close is pending', () => {
+    function renderHoverPopover(onVisibleChange: jest.Mock) {
+      return render(
+        <Popover
+          closeDelay={100}
+          content={<pre>{CONTENT_TEXT}</pre>}
+          onVisibleChange={onVisibleChange}
+        >
+          <div>{HOVER_ON_ME}</div>
+        </Popover>
+      )
+    }
+
+    it('cancels it when the user hovers back on the target', () => {
+      const onVisibleChange = jest.fn()
+      renderHoverPopover(onVisibleChange)
+
+      fireEvent.mouseEnter(screen.getByText(HOVER_ON_ME))
+      fireEvent.mouseLeave(screen.getByText(HOVER_ON_ME))
+      fireEvent.mouseEnter(screen.getByText(HOVER_ON_ME))
+      act(() => {
+        jest.advanceTimersByTime(100)
+      })
+
+      expect(onVisibleChange.mock.calls).toEqual([[true]])
+      expect(screen.getByText(CONTENT_TEXT)).toBeVisible()
+    })
+
+    it('keeps the first one rather than restarting it', () => {
+      const onVisibleChange = jest.fn()
+      renderHoverPopover(onVisibleChange)
+
+      fireEvent.mouseEnter(screen.getByText(HOVER_ON_ME))
+      fireEvent.mouseLeave(screen.getByText(HOVER_ON_ME))
+      stepTimers(50)
+      fireEvent.mouseLeave(screen.getByText(HOVER_ON_ME))
+
+      expect(stepUntil(() => onVisibleChange.mock.calls.length === 2)).toBe(50)
+      expect(onVisibleChange.mock.calls).toEqual([[true], [false]])
+    })
+
+    it('does not fire after unmounting', () => {
+      const onVisibleChange = jest.fn()
+      const { unmount } = renderHoverPopover(onVisibleChange)
+
+      fireEvent.mouseEnter(screen.getByText(HOVER_ON_ME))
+      fireEvent.mouseLeave(screen.getByText(HOVER_ON_ME))
+      unmount()
+      act(() => {
+        jest.advanceTimersByTime(100)
+      })
+
+      expect(onVisibleChange.mock.calls).toEqual([[true]])
+    })
+
+    it('does not close a Popover the parent has closed and reopened', () => {
+      const onVisibleChange = jest.fn()
+      const renderControlled = (isVisible: boolean) => (
+        <Popover
+          closeDelay={100}
+          content={<pre>{CONTENT_TEXT}</pre>}
+          isVisible={isVisible}
+          onVisibleChange={onVisibleChange}
+        >
+          <div>{HOVER_ON_ME}</div>
+        </Popover>
+      )
+      const { rerender } = render(renderControlled(true))
+
+      fireEvent.mouseLeave(screen.getByText(HOVER_ON_ME))
+      rerender(renderControlled(false))
+      rerender(renderControlled(true))
+      stepTimers(100)
+
+      expect(onVisibleChange).not.toHaveBeenCalled()
+      expect(screen.getByText(CONTENT_TEXT)).toBeVisible()
+    })
+
+    it('closes on time when a controlled parent applies each change', () => {
+      const onVisibleChange = jest.fn()
+      const Parent = () => {
+        const [isVisible, setIsVisible] = useState(false)
+
+        return (
+          <Popover
+            closeDelay={100}
+            content={<pre>{CONTENT_TEXT}</pre>}
+            isVisible={isVisible}
+            onVisibleChange={(nextIsVisible) => {
+              onVisibleChange(nextIsVisible)
+              setIsVisible(nextIsVisible)
+            }}
+          >
+            <div>{HOVER_ON_ME}</div>
+          </Popover>
+        )
+      }
+      render(<Parent />)
+
+      fireEvent.mouseEnter(screen.getByText(HOVER_ON_ME))
+      stepTimers(10)
+      fireEvent.mouseLeave(screen.getByText(HOVER_ON_ME))
+
+      expect(stepUntil(() => !screen.queryByText(CONTENT_TEXT))).toBe(101)
+      expect(onVisibleChange.mock.calls).toEqual([[true], [false]])
+    })
+
+    it('hides an uncontrolled click Popover when the first close is due', () => {
+      render(
+        <Popover closeDelay={1000} content={<pre>{CONTENT_TEXT}</pre>} isClick>
+          <button type="button">Click on me</button>
+        </Popover>
+      )
+
+      fireEvent.click(screen.getByRole('button', { name: 'Click on me' }))
+      fireEvent.mouseDown(document)
+      stepTimers(500)
+      fireEvent.mouseDown(document)
+
+      expect(stepUntil(() => !screen.queryByText(CONTENT_TEXT))).toBe(501)
     })
   })
 
