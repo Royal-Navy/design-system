@@ -38,6 +38,17 @@ export interface PopoverProps
    */
   isClick?: boolean
   /**
+   * Controls whether the Popover is visible. Leave undefined to let the
+   * Popover manage this itself.
+   */
+  isVisible?: boolean
+  /**
+   * Called when the Popover requests to be shown or hidden. When
+   * controlling the Popover, apply the change to `isVisible` in the same
+   * update, as with any controlled React input.
+   */
+  onVisibleChange?: (isVisible: boolean) => void
+  /**
    * Where to place the Popover relative to the target element.
    */
   placement?: Placement
@@ -83,13 +94,18 @@ export const Popover = ({
   closeDelay = POPOVER_CLOSE_DELAY,
   content,
   isClick = false,
+  isVisible: controlledIsVisible,
+  onVisibleChange,
   scheme = FLOATING_BOX_SCHEME.LIGHT,
   placement = FLOATING_BOX_PLACEMENT.RIGHT,
   'aria-label': ariaLabel,
   ...rest
 }: PopoverProps) => {
   const { floatingBoxChildrenRef, isVisible, mouseEvents, targetRef } =
-    useHideShow(isClick, closeDelay)
+    useHideShow(isClick, closeDelay, false, {
+      isVisible: controlledIsVisible,
+      onVisibleChange,
+    })
 
   const contentId = useExternalId('popover-content')
 

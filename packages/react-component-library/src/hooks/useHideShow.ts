@@ -14,27 +14,61 @@ export type HideShowMouseEvents =
       onMouseLeave?: never
     }
 
+export interface HideShowOptions {
+  isVisible?: boolean
+  onVisibleChange?: (isVisible: boolean) => void
+}
+
 export function useHideShow(
   isClick: boolean,
   closeDelay = 0,
-  initialIsVisible = false
+  initialIsVisible = false,
+  { isVisible: controlledIsVisible, onVisibleChange }: HideShowOptions = {}
 ) {
-  const [isVisible, setIsVisible] = useState(initialIsVisible)
+  const [uncontrolledIsVisible, setUncontrolledIsVisible] =
+    useState(initialIsVisible)
+  const isControlled = controlledIsVisible !== undefined
+  const isVisible = isControlled ? controlledIsVisible : uncontrolledIsVisible
 
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const floatingBoxChildrenRef = useRef(null)
+  const floatingBoxChildrenRef = useRef<HTMLDivElement>(null)
   const targetRef = useRef<HTMLDivElement>(null)
   const isVisibleRef = useRef(isVisible)
+  const isControlledRef = useRef(isControlled)
+  const onVisibleChangeRef = useRef(onVisibleChange)
   const mouseEventsRef = useRef<HideShowMouseEvents>()
 
   isVisibleRef.current = isVisible
+  isControlledRef.current = isControlled
+  onVisibleChangeRef.current = onVisibleChange
 
   useEffect(() => {
     mouseEventsRef.current = undefined
   }, [closeDelay])
 
+  const setIsVisible = useCallback((nextIsVisible: boolean) => {
+    if (!isControlledRef.current) {
+      setUncontrolledIsVisible(nextIsVisible)
+    }
+
+    onVisibleChangeRef.current?.(nextIsVisible)
+  }, [])
+
+  const clearTimer = useCallback(() => {
+    if (timerRef.current !== null) {
+      clearTimeout(timerRef.current)
+      timerRef.current = null
+    }
+  }, [])
+
+  useEffect(() => clearTimer, [clearTimer])
+
+  useEffect(() => {
+    clearTimer()
+  }, [clearTimer, controlledIsVisible])
+
   const hideElement = useCallback(() => {
-    if (!isVisibleRef.current) {
+    if (!isVisibleRef.current || timerRef.current !== null) {
       return
     }
 
@@ -44,22 +78,23 @@ export function useHideShow(
     }
 
     timerRef.current = setTimeout(() => {
-      setIsVisible(false)
       timerRef.current = null
+
+      if (isVisibleRef.current) {
+        setIsVisible(false)
+      }
     }, closeDelay)
-  }, [closeDelay])
+  }, [closeDelay, setIsVisible])
 
   const showElement = useCallback(() => {
+    clearTimer()
+
     if (isVisibleRef.current) {
       return
     }
 
-    if (timerRef.current !== null) {
-      clearTimeout(timerRef.current)
-    }
-
     setIsVisible(true)
-  }, [])
+  }, [clearTimer, setIsVisible])
 
   const insideRefs = useMemo(() => [floatingBoxChildrenRef, targetRef], [])
 

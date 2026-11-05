@@ -24,6 +24,9 @@ export default {
   args: {
     content: <StyledContent>This is some arbitrary JSX</StyledContent>,
   },
+  argTypes: {
+    isVisible: { control: false },
+  },
 } as Meta<typeof Popover>
 
 const Template: StoryFn<typeof Popover> = (args) => (
@@ -56,6 +59,9 @@ ClickToActivate.args = {
 export const Open = Template.bind({})
 Open.args = {
   isVisible: true,
+}
+Open.argTypes = {
+  isVisible: { control: 'boolean' },
 }
 
 export const Multi: StoryFn<typeof Popover> = (args) => (
@@ -250,6 +256,27 @@ with \`closeDelay\` set to \`0\` so it closes immediately. Content unmounts on
 close, so form state lives in the parent. In a flex container, set
 \`align-items: flex-start\` so the target does not stretch and misplace the
 Popover.`,
+    },
+  },
+}
+
+export const Controlled: StoryFn<typeof Popover> = (args) => {
+  const [isVisible, setIsVisible] = useState(false)
+
+  return (
+    <Popover {...args} isVisible={isVisible} onVisibleChange={setIsVisible}>
+      <Button variant={BUTTON_VARIANT.SECONDARY}>Details</Button>
+    </Popover>
+  )
+}
+Controlled.args = {
+  closeDelay: 0,
+  isClick: true,
+}
+Controlled.parameters = {
+  docs: {
+    description: {
+      story: `Pass \`isVisible\` and \`onVisibleChange\` to control the Popover.`,
     },
   },
 }
