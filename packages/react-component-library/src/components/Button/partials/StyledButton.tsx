@@ -24,7 +24,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
 
   ${({
     $hasTextAndIcon,
-    $iconPosition = BUTTON_ICON_POSITION.RIGHT,
+    $iconPosition,
     $isLoading,
     $showLoadingText,
     $variant,

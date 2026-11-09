@@ -150,4 +150,58 @@ describe('Button', () => {
       )
     })
   })
+  describe('when the button has text and an icon', () => {
+    it.each`
+      iconPosition | side
+      ${'left'}    | ${'padding-left'}
+      ${'right'}   | ${'padding-right'}
+    `(
+      'matches the $side to the icon gap when the icon is on the $iconPosition',
+      ({ iconPosition, side }) => {
+        render(
+          <Button icon={<IconBrightnessLow />} iconPosition={iconPosition}>
+            Click me
+          </Button>
+        )
+
+        expect(screen.getByTestId('button')).toHaveStyleRule(side, '0.625rem')
+      }
+    )
+
+    it('does not change the padding for the no container variant', () => {
+      render(
+        <Button
+          icon={<IconBrightnessLow />}
+          iconPosition="left"
+          variant="no-container"
+        >
+          Click me
+        </Button>
+      )
+
+      expect(screen.getByTestId('button')).not.toHaveStyleRule(
+        'padding-left',
+        expect.anything()
+      )
+    })
+  })
+
+  describe('when the loader is shown with text', () => {
+    it.each`
+      iconPosition | side
+      ${'left'}    | ${'padding-right'}
+      ${'right'}   | ${'padding-left'}
+    `(
+      'matches the $side to the loader gap when the icon is on the $iconPosition',
+      ({ iconPosition, side }) => {
+        render(
+          <Button iconPosition={iconPosition} isLoading showLoadingText>
+            Click me
+          </Button>
+        )
+
+        expect(screen.getByTestId('button')).toHaveStyleRule(side, '0.5rem')
+      }
+    )
+  })
 })
