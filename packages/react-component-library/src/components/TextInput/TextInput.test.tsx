@@ -213,6 +213,36 @@ describe('TextInput', () => {
     })
   })
 
+  describe('when the browser autofills an empty input', () => {
+    beforeEach(() => {
+      wrapper = render(<TextInput label="label" name="name" />)
+    })
+
+    it('floats the label', () => {
+      expect(wrapper.getByTestId('text-input-label')).toHaveStyleRule(
+        'font-size',
+        TypographyS,
+        { modifier: ':has(+ input:-webkit-autofill)' }
+      )
+    })
+  })
+
+  describe('when `size` is small and the browser autofills an empty input', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <TextInput label="label" name="name" size={COMPONENT_SIZE.SMALL} />
+      )
+    })
+
+    it('hides the label', () => {
+      expect(wrapper.getByTestId('text-input-label')).toHaveStyleRule(
+        'display',
+        'none',
+        { modifier: ':has(+ input:-webkit-autofill)' }
+      )
+    })
+  })
+
   describe('when `size` is small', () => {
     beforeEach(() => {
       wrapper = render(
