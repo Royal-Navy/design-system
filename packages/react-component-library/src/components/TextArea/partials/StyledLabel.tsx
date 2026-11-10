@@ -22,6 +22,12 @@ export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
       font-size: ${fontSize('s')};
     `}
 
+  // Browser autofill sets the value without firing a change event until the user interacts
+  &:has(+ textarea:-webkit-autofill) {
+    padding-top: 4px;
+    font-size: ${fontSize('s')};
+  }
+
   ${({ $hasFocus, $hasContent, $size }) =>
     $size === COMPONENT_SIZE.SMALL &&
     css`
@@ -34,5 +40,10 @@ export const StyledLabel = styled(StyledLabelBase)<StyledLabelProps>`
         padding-top: 3px;
         font-size: ${fontSize('xs')};
       `}
+
+      &:has(+ textarea:-webkit-autofill) {
+        padding-top: 3px;
+        font-size: ${fontSize('xs')};
+      }
     `}
 `
