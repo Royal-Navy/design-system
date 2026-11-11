@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.64.2](https://github.com/Royal-Navy/design-system/compare/4.64.1...4.64.2) (2026-11-11)
+
+### Bug Fixes
+
+- **TextInput:** Float the label when the browser autofills the input ([59d2a4f](https://github.com/Royal-Navy/design-system/commit/59d2a4fb0eaee20f9cbdc31f90bfe1364c3c1bc7))
+
 ## [4.64.1](https://github.com/Royal-Navy/design-system/compare/4.64.0...4.64.1) (2026-11-09)
 
 ### Bug Fixes
