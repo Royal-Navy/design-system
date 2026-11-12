@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.64.4](https://github.com/Royal-Navy/design-system/compare/4.64.3...4.64.4) (2026-11-12)
+
+### Bug Fixes
+
+- **Build:** Declare sideEffects in the ES build package.json ([52d958c](https://github.com/Royal-Navy/design-system/commit/52d958c88abfd6aeb897ce22b7f9df4d07de2470))
+
 ## [4.64.3](https://github.com/Royal-Navy/design-system/compare/4.64.2...4.64.3) (2026-11-12)
 
 **Note:** Version bump only for package @royalnavy/icon-library
