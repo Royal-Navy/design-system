@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.64.3](https://github.com/Royal-Navy/design-system/compare/4.64.2...4.64.3) (2026-11-12)
+
+### Bug Fixes
+
+- **ReactComponentLibrary:** Upgrade date-fns to 3 for clean ES imports ([919373e](https://github.com/Royal-Navy/design-system/commit/919373e0b0ce97e0b04d2786a8ba52da0a1d99fd)), closes [#4105](https://github.com/Royal-Navy/design-system/issues/4105)
+
 ## [4.64.2](https://github.com/Royal-Navy/design-system/compare/4.64.1...4.64.2) (2026-11-11)
 
 ### Bug Fixes
