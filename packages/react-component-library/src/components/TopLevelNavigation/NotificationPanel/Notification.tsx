@@ -1,7 +1,5 @@
 import React, { ReactElement } from 'react'
-import differenceInMinutes from 'date-fns/differenceInMinutes'
-import formatDistanceStrict from 'date-fns/formatDistanceStrict'
-import format from 'date-fns/format'
+import { differenceInMinutes, format, formatDistanceStrict } from 'date-fns'
 
 import { Avatar, AVATAR_VARIANT } from '../../Avatar'
 import { getInitials } from '../../../helpers'
