@@ -29,7 +29,7 @@
   "scripts": {
     "build": "run-s build:dict build:es build:cjs types",
     "build:dict": "node ./build-dictionary.js",
-    "build:es": "webpack --config=webpack/es.js && echo '{\"type\":\"module\"}' > dist/es/package.json",
+    "build:es": "webpack --config=webpack/es.js && echo '{\"type\":\"module\",\"sideEffects\":false}' > dist/es/package.json",
     "build:cjs": "webpack --config=webpack/prod.js",
     "types": "tsc --emitDeclarationOnly --declarationMap --declaration --noEmit false --allowJs false --outDir dist/types",
     "prepack": "pnpm run build",
