@@ -21,7 +21,7 @@ export const StyledTabNav = styled.nav<StyledTabNavProps>`
         display: block;
         position: absolute;
         left: 0;
-        top: 51px;
+        top: 39px;
         height: 1px;
         width: 100%;
         border-bottom: ${ACTIVE_TAB_BORDER};

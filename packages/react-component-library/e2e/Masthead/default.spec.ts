@@ -26,7 +26,7 @@ test.describe('Masthead', () => {
 
     await expect(navigationButtons.nth(0)).toHaveCSS(
       'border-top',
-      `6px solid ${hexToRgb(ColorAction500)}`
+      `4px solid ${hexToRgb(ColorAction500)}`
     )
 
     await expect(navigationButtons.nth(1)).toHaveCSS('border-top-style', 'none')

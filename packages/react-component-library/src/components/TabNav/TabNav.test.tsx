@@ -51,7 +51,7 @@ it('applies styles to indicate an active tab', () => {
 
   expect(activeTab).toHaveStyleRule(
     'border-top',
-    `6px solid ${color('action', '500')}`
+    `4px solid ${color('action', '500')}`
   )
 })
 
@@ -83,7 +83,7 @@ describe('when the variant is underline', () => {
   it('does not box the active tab', () => {
     expect(screen.getByText('Bar')).not.toHaveStyleRule(
       'border-top',
-      `6px solid ${color('action', '500')}`
+      `4px solid ${color('action', '500')}`
     )
   })
 })

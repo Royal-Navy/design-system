@@ -4,7 +4,7 @@ import { hexToRgb } from '../helpers'
 import { expect, test } from '../fixtures'
 import selectors from './selectors'
 
-const ACTIVE_TAB_BORDER_TOP = `6px solid ${hexToRgb(ColorAction500)}`
+const ACTIVE_TAB_BORDER_TOP = `4px solid ${hexToRgb(ColorAction500)}`
 
 test.describe('TabSet, default', () => {
   test.beforeEach(async ({ page }) => {

@@ -417,7 +417,7 @@ describe('TabSet', () => {
     it('should not box the active tab', () => {
       expect(
         wrapper.getAllByTestId('tab-set-tab-button')[0]
-      ).not.toHaveStyleRule('border-top', `6px solid ${color('action', '500')}`)
+      ).not.toHaveStyleRule('border-top', `4px solid ${color('action', '500')}`)
     })
 
     it('should rule under the tab list', () => {

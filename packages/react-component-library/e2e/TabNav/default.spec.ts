@@ -16,7 +16,7 @@ test.describe('TabNav, default', () => {
 
     await expect(tabItemButtons.nth(0)).toHaveCSS(
       'border-top',
-      `6px solid ${hexToRgb(ColorAction500)}`
+      `4px solid ${hexToRgb(ColorAction500)}`
     )
     await expect(tabItemButtons.nth(1)).toHaveCSS('border-top-style', 'none')
     await expect(tabItemButtons.nth(2)).toHaveCSS('border-top-style', 'none')

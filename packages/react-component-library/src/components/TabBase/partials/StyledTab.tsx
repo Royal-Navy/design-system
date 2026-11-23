@@ -11,7 +11,7 @@ export interface StyledTabProps extends StyledTabSetProps {
 }
 
 export const ACTIVE_TAB_BORDER = `1px solid ${color('neutral', '300')}`
-export const ACTIVE_TAB_HEIGHT = '52px'
+export const ACTIVE_TAB_HEIGHT = '40px'
 export const UNDERLINE_TAB_RULE = `inset 0 -1px 0 ${color('neutral', '200')}`
 export const UNDERLINE_TAB_ACTIVE_BORDER = `3px solid ${color('action', '700')}`
 
@@ -24,7 +24,7 @@ function getBoxedActiveStyles() {
     margin-top: 0;
     border-left: ${ACTIVE_TAB_BORDER};
     border-right: ${ACTIVE_TAB_BORDER};
-    border-top: ${`6px solid ${color('action', '500')}`};
+    border-top: ${`4px solid ${color('action', '500')}`};
     z-index: ${zIndex('header', 2)};
   `
 }
@@ -36,14 +36,14 @@ function getBoxedStyles($isActive?: boolean) {
 
     background-color: ${color('neutral', '100')};
 
-    height: 46px;
-    margin-top: 6px;
+    height: 36px;
+    margin-top: 4px;
 
     border: 1px solid transparent;
     border-top: none;
     border-bottom: none;
 
-    padding: 0 24px;
+    padding: 0 16px;
 
     * {
       color: ${color('neutral', '600')};
