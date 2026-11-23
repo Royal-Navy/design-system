@@ -3,7 +3,7 @@ import { Page } from '@playwright/test'
 import { expect, test } from '../fixtures'
 import selectors from './selectors'
 
-const INITIAL_VIEWPORT_WIDTH = 1400
+const INITIAL_VIEWPORT_WIDTH = 1178
 const VIEWPORT_HEIGHT = 200
 
 async function getTabWidth(page: Page) {

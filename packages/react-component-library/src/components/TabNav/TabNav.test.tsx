@@ -51,6 +51,39 @@ it('applies styles to indicate an active tab', () => {
 
   expect(activeTab).toHaveStyleRule(
     'border-top',
-    `6px solid ${color('action', '500')}`
+    `4px solid ${color('action', '500')}`
   )
+})
+
+describe('when the variant is underline', () => {
+  beforeEach(() => {
+    render(
+      <TabNav variant="underline">
+        <TabNavItem link={<Link href="/foo">Foo</Link>} />
+        <TabNavItem link={<Link href="/bar">Bar</Link>} isActive />
+      </TabNav>
+    )
+  })
+
+  it('underlines the active tab', () => {
+    expect(screen.getByText('Bar')).toHaveStyleRule(
+      'border-bottom',
+      `3px solid ${color('action', '700')}`
+    )
+    expect(screen.getByText('Bar')).toHaveStyleRule(
+      'color',
+      color('action', '700')
+    )
+    expect(screen.getByText('Foo')).toHaveStyleRule(
+      'border-bottom',
+      '3px solid transparent'
+    )
+  })
+
+  it('does not box the active tab', () => {
+    expect(screen.getByText('Bar')).not.toHaveStyleRule(
+      'border-top',
+      `4px solid ${color('action', '500')}`
+    )
+  })
 })

@@ -3,10 +3,13 @@ import { zIndex } from '@royalnavy/design-tokens'
 
 import { StyledTabSetProps } from './StyledTabSet'
 import { ACTIVE_TAB_BORDER } from '../../TabBase/partials/StyledTab'
+import { TAB_VARIANT } from '../../TabBase/constants'
+import { TabVariantType } from '../../TabBase/types'
 
 export interface StyledBodyProps extends StyledTabSetProps {
   $hasOverflow?: boolean
   $isFullHeight?: boolean
+  $variant?: TabVariantType
 }
 
 export const StyledBody = styled.div<StyledBodyProps>`
@@ -21,5 +24,11 @@ export const StyledBody = styled.div<StyledBodyProps>`
     css`
       display: flex;
       flex: 1;
+    `}
+
+  ${({ $variant }) =>
+    $variant === TAB_VARIANT.UNDERLINE &&
+    css`
+      border: 1px solid transparent;
     `}
 `

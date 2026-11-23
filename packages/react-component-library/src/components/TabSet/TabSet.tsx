@@ -10,6 +10,8 @@ import { StyledNavigation } from './partials/StyledNavigation'
 import { StyledScrollLeft } from './partials/StyledScrollLeft'
 import { StyledScrollRight } from './partials/StyledScrollRight'
 import { StyledTabs } from '../TabBase/partials/StyledTabs'
+import { TAB_VARIANT } from '../TabBase/constants'
+import { TabVariantType } from '../TabBase/types'
 import { StyledTabSet } from './partials/StyledTabSet'
 import { TabSetItem, TabContent, TabItem, TabSetItemProps } from '.'
 import { useScrollableTabSet } from './useScrollableTabSet'
@@ -44,6 +46,10 @@ export interface TabSetProps extends ComponentWithClass {
    * Toggles whether content can overflow the component. Defaults to false.
    */
   hasOverflow?: boolean
+  /**
+   * Visual style of the tabs. Defaults to boxed.
+   */
+  variant?: TabVariantType
 }
 
 export interface ScrollableTabSetProps extends ComponentWithClass {
@@ -71,6 +77,10 @@ export interface ScrollableTabSetProps extends ComponentWithClass {
    * Toggles whether content can overflow the component. Defaults to false.
    */
   hasOverflow?: never
+  /**
+   * Visual style of the tabs. Defaults to boxed.
+   */
+  variant?: TabVariantType
 }
 
 export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
@@ -81,6 +91,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
   isFullHeight,
   isScrollable,
   hasOverflow = false,
+  variant = TAB_VARIANT.BOXED,
   ...rest
 }) => {
   function getActiveIndex(tabs: React.ReactNode | React.ReactNode[]): number {
@@ -134,6 +145,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
       <StyledHeader $isScrollable={isScrollable}>
         {isScrollable && (
           <StyledScrollLeft
+            $variant={variant}
             aria-label={`Scroll ${SCROLL_DIRECTION.LEFT}`}
             onClick={scrollToNextTab((currentTabIndex) => currentTabIndex - 1)}
             data-testid={`scroll-${SCROLL_DIRECTION.LEFT}`}
@@ -146,7 +158,11 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
           ref={tabsRef}
           data-testid="tabs"
         >
-          <StyledTabs role="tablist" data-testid="tab-set-list">
+          <StyledTabs
+            $variant={variant}
+            role="tablist"
+            data-testid="tab-set-list"
+          >
             {Children.map(
               children,
               ({ props }: React.ReactElement, index: number) => (
@@ -159,6 +175,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
                   isActive={index === activeTab}
                   isFullWidth={isFullWidth}
                   isScrollable={isScrollable}
+                  variant={variant}
                   ref={(el) => {
                     itemsRef.current[index] = el
                     return itemsRef.current[index]
@@ -172,6 +189,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
         </StyledNavigation>
         {isScrollable && (
           <StyledScrollRight
+            $variant={variant}
             aria-label={`Scroll ${SCROLL_DIRECTION.RIGHT}`}
             onClick={scrollToNextTab((currentTabIndex) => currentTabIndex + 1)}
             data-testid={`scroll-${SCROLL_DIRECTION.RIGHT}`}
@@ -184,6 +202,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
         $isScrollable={isScrollable}
         $hasOverflow={hasOverflow}
         $isFullHeight={isFullHeight}
+        $variant={variant}
         data-testid="tabset-styledbody"
       >
         {Children.map(

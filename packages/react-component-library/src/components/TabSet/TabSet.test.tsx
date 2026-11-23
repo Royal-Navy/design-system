@@ -389,4 +389,49 @@ describe('TabSet', () => {
       )
     })
   })
+
+  describe('when the variant is underline', () => {
+    beforeEach(() => {
+      wrapper = render(
+        <TabSet variant="underline">
+          <TabSetItem title="Title 1">Content 1</TabSetItem>
+          <TabSetItem title="Title 2">Content 2</TabSetItem>
+        </TabSet>
+      )
+    })
+
+    it('should underline the active tab', () => {
+      const [activeTab, inactiveTab] =
+        wrapper.getAllByTestId('tab-set-tab-button')
+
+      expect(activeTab).toHaveStyleRule(
+        'border-bottom',
+        `3px solid ${color('action', '700')}`
+      )
+      expect(inactiveTab).toHaveStyleRule(
+        'border-bottom',
+        '3px solid transparent'
+      )
+    })
+
+    it('should not box the active tab', () => {
+      expect(
+        wrapper.getAllByTestId('tab-set-tab-button')[0]
+      ).not.toHaveStyleRule('border-top', `4px solid ${color('action', '500')}`)
+    })
+
+    it('should rule under the tab list', () => {
+      expect(wrapper.getByTestId('tab-set-list')).toHaveStyleRule(
+        'box-shadow',
+        `inset 0 -1px 0 ${color('neutral', '200')}`
+      )
+    })
+
+    it('should not border the body', () => {
+      expect(wrapper.getByTestId('tabset-styledbody')).toHaveStyleRule(
+        'border',
+        '1px solid transparent'
+      )
+    })
+  })
 })

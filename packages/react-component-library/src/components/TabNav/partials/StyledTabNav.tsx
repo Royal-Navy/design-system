@@ -1,21 +1,31 @@
-import { styled } from 'styled-components'
+import { styled, css } from 'styled-components'
 import { zIndex } from '@royalnavy/design-tokens'
 
 import { ACTIVE_TAB_BORDER } from '../../TabBase/partials/StyledTab'
+import { TAB_VARIANT } from '../../TabBase/constants'
+import { TabVariantType } from '../../TabBase/types'
 
-export const StyledTabNav = styled.nav`
-  padding: 0 16px;
+interface StyledTabNavProps {
+  $variant?: TabVariantType
+}
+
+export const StyledTabNav = styled.nav<StyledTabNavProps>`
   position: relative;
+  padding: 0 16px;
 
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 51px;
-    height: 1px;
-    width: 100%;
-    border-bottom: ${ACTIVE_TAB_BORDER};
-    z-index: ${zIndex('header', 1)};
-  }
+  ${({ $variant }) =>
+    $variant === TAB_VARIANT.BOXED &&
+    css`
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 39px;
+        height: 1px;
+        width: 100%;
+        border-bottom: ${ACTIVE_TAB_BORDER};
+        z-index: ${zIndex('header', 1)};
+      }
+    `}
 `
