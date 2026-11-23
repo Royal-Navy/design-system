@@ -3,7 +3,13 @@ import { styled } from 'styled-components'
 
 import { StoryFn as Story, Meta } from '@storybook/react-webpack5'
 
-import { ScrollableTabSetProps, TabSetItem, TabSet, TabSetProps } from '.'
+import {
+  ScrollableTabSetProps,
+  TAB_VARIANT,
+  TabSetItem,
+  TabSet,
+  TabSetProps,
+} from '.'
 import { Select, SelectOption } from '../Select'
 import { Stack } from '../Stack'
 import { Text } from '../Text'
@@ -12,12 +18,21 @@ export default {
   component: TabSet,
   subcomponents: { TabSetItem },
   title: 'Components/Tab Set',
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: Object.values(TAB_VARIANT),
+    },
+  },
+  args: {
+    variant: TAB_VARIANT.BOXED,
+  },
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     docs: {
       description: {
         component:
-          'Use this component to switch between visible areas within the confines of a page.',
+          'Use this component to switch between visible areas within the confines of a page. Prefer the underline variant for new work; the boxed variant will be retired in the next major version.',
       },
     },
     layout: 'fullscreen',

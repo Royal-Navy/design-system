@@ -3,6 +3,7 @@ import React, { forwardRef, MouseEvent, KeyboardEvent } from 'react'
 import { StyledHiddenBoldTextWidthFix } from './partials/StyledHiddenBoldTextWidthFix'
 import { StyledTabItem } from '../TabBase/partials/StyledTabItem'
 import { StyledTab } from '../TabBase/partials/StyledTab'
+import { TabVariantType } from '../TabBase/types'
 
 interface TabItemProps {
   tabId: string
@@ -12,6 +13,7 @@ interface TabItemProps {
   onKeyDown: (event: KeyboardEvent<HTMLButtonElement>) => void
   isFullWidth?: boolean
   isScrollable?: boolean
+  variant?: TabVariantType
 }
 
 export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
@@ -24,6 +26,7 @@ export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
       isScrollable,
       onClick,
       onKeyDown,
+      variant,
     },
     ref
   ) => {
@@ -43,6 +46,7 @@ export const TabItem = forwardRef<HTMLLIElement, TabItemProps>(
         <StyledTab
           $isActive={isActive}
           $isScrollable={isScrollable}
+          $variant={variant}
           id={`tab-button-${tabId}`}
           role="tab"
           aria-controls={`tab-content-${tabId}`}
