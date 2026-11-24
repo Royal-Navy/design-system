@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing, color } from '@royalnavy/design-tokens'
 
 import { Button } from '../../Button'
 
@@ -21,7 +21,7 @@ export const StyledNavigation = styled.div`
   flex-direction: row;
   justify-content: space-between;
   position: absolute;
-  background-color: ${color('neutral', 'white')};
+  background-color: ${themeColor('neutral', 'white')};
   width: 100%;
   height: 55px;
   border-radius: 15px;
@@ -35,7 +35,7 @@ export const StyledCalendarContainer = styled.div`
   align-items: flex-end;
   width: 100%;
   height: 100%;
-  background-color: ${color('neutral', 'white')};
+  background-color: ${themeColor('neutral', 'white')};
   border-radius: 15px;
   z-index: 2;
 `
@@ -43,7 +43,7 @@ export const StyledCalendarContainer = styled.div`
 export const StyledMonthsTitle = styled.div`
   flex: 1 1 auto;
   padding: 5px 0;
-  color: ${color('neutral', '400')};
+  color: ${themeColor('neutral', '400')};
   font-size: ${fontSize('base')};
   text-align: center;
 `
@@ -64,8 +64,8 @@ export const StyledCalendarTable = styled.div<{
   grid-gap: 1px;
   width: 100%;
   padding: ${spacing('4')} ${spacing('5')};
-  border: 1px solid ${color('neutral', '000')};
-  background-color: ${color('neutral', '000')};
+  border: 1px solid ${themeColor('neutral', '000')};
+  background-color: ${themeColor('neutral', '000')};
   border-radius: 15px;
 
   ${({ $isYears }) =>
@@ -83,32 +83,32 @@ export const StyledCalendarTiles = styled.button<{
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${color('neutral', '400')};
+  color: ${themeColor('neutral', '400')};
   font-size: ${fontSize('base')};
   text-align: center;
-  background-color: ${color('neutral', 'white')};
+  background-color: ${themeColor('neutral', 'white')};
   min-width: 80px;
 
   &:hover {
-    background-color: ${color('neutral', '100')};
-    color: ${color('neutral', '400')};
+    background-color: ${themeColor('neutral', '100')};
+    color: ${themeColor('neutral', '400')};
     cursor: pointer;
   }
 
   ${({ $isCurrent }) =>
     $isCurrent &&
     css`
-      color: ${color('warning', '800')};
+      color: ${themeColor('warning', '800')};
     `}
 
   ${({ $isSelected }) =>
     $isSelected &&
     css`
-      background-color: ${color('action', '700')};
+      background-color: ${themeColor('action', '700')};
       color: ${color('neutral', 'white')};
 
       &:hover {
-        background-color: ${color('action', '700')};
+        background-color: ${themeColor('action', '700')};
         color: ${color('neutral', 'white')};
       }
     `}

@@ -1,11 +1,78 @@
-import { DocsPage } from '@storybook/addon-docs/blocks'
+import { DocsContainer, DocsPage } from '@storybook/addon-docs/blocks'
+import { themes } from 'storybook/theming'
 import isChromatic from 'chromatic'
 import React from 'react'
+import { lightTheme, darkTheme, color } from '@royalnavy/design-tokens'
 import '@royalnavy/fonts'
 import 'iframe-resizer/js/iframeResizer.contentWindow'
 import 'url-search-params-polyfill'
 
 import { GlobalStyleProvider } from '../src/styled-components/GlobalStyle'
+
+const THEMES = {
+  light: lightTheme,
+  dark: darkTheme,
+}
+
+function toThemeMode(globals) {
+  return globals?.theme === 'dark' ? 'dark' : 'light'
+}
+
+// DocsContext doesn't expose globals publicly
+function getDocsThemeMode(context) {
+  return toThemeMode(
+    context?.store?.userGlobals?.globals ?? context?.store?.globals?.get?.()
+  )
+}
+
+const ThemedDocsContainer = ({ context, children }) => {
+  const mode = getDocsThemeMode(context)
+
+  return (
+    <DocsContainer
+      context={context}
+      theme={mode === 'dark' ? themes.dark : themes.light}
+    >
+      <GlobalStyleProvider
+        theme={THEMES[mode]}
+        unstable_colorModes={mode === 'dark'}
+      >
+        {children}
+      </GlobalStyleProvider>
+    </DocsContainer>
+  )
+}
+
+const DarkCanvas = ({ children }) => (
+  <GlobalStyleProvider theme={darkTheme} unstable_colorModes>
+    <div
+      style={{
+        background: color('neutral', 'white', darkTheme),
+        color: color('neutral', '600', darkTheme),
+        minHeight: '100vh',
+        padding: '1rem 0',
+      }}
+    >
+      {children}
+    </div>
+  </GlobalStyleProvider>
+)
+
+export const globalTypes = {
+  theme: {
+    name: 'Theme',
+    description: 'Design System token set',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'paintbrush',
+      items: [
+        { value: 'light', title: 'Light' },
+        { value: 'dark', title: 'Dark' },
+      ],
+      dynamicTitle: true,
+    },
+  },
+}
 
 export const parameters = {
   jsx: {
@@ -21,11 +88,8 @@ export const parameters = {
       // there
       type: typeof WeakSet === undefined ? 'code' : 'auto',
     },
-    page: () => (
-      <GlobalStyleProvider>
-        <DocsPage />
-      </GlobalStyleProvider>
-    ),
+    container: ThemedDocsContainer,
+    page: () => <DocsPage />,
   },
   options: {
     storySort: {
@@ -54,14 +118,32 @@ export const parameters = {
 
 export const decorators = [
   // https://github.com/storybookjs/storybook/issues/15223#issuecomment-1092837912
-  (Story) => {
+  (Story, context) => {
+    const isDark = toThemeMode(context.globals) === 'dark'
     const queryParams = new URLSearchParams(window.location.search)
 
     if (queryParams.get('viewMode') === 'docs') {
-      return Story()
+      if (!isDark) {
+        return Story()
+      }
+
+      return (
+        <div
+          style={{
+            background: color('neutral', '000', darkTheme),
+            color: color('neutral', '600', darkTheme),
+          }}
+        >
+          {Story()}
+        </div>
+      )
     }
 
-    return <GlobalStyleProvider>{Story()}</GlobalStyleProvider>
+    if (!isDark) {
+      return <GlobalStyleProvider>{Story()}</GlobalStyleProvider>
+    }
+
+    return <DarkCanvas>{Story()}</DarkCanvas>
   },
 ]
 

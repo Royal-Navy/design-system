@@ -1,5 +1,12 @@
 import { styled, css } from 'styled-components'
-import { animation, color, spacing } from '@royalnavy/design-tokens'
+import {
+  animation,
+  themeColor,
+  colorByMode,
+  isDarkColorMode,
+  spacing,
+  Theme,
+} from '@royalnavy/design-tokens'
 
 interface StyledButtonProps {
   $isDisabled: boolean
@@ -11,8 +18,17 @@ export const StyledButton = styled.button<StyledButtonProps>`
   outline: none;
   transition: all ${animation('default')};
 
-  background-color: ${color('neutral', '000')};
-  color: ${({ $isDisabled }) => color('neutral', $isDisabled ? '200' : '400')};
+  background-color: ${({ theme }) =>
+    isDarkColorMode(theme as Theme)
+      ? 'transparent'
+      : themeColor('neutral', '000')};
+  color: ${({ $isDisabled, theme }) =>
+    colorByMode(
+      'neutral',
+      $isDisabled ? '200' : '400',
+      $isDisabled ? '300' : '600',
+      theme as Theme
+    )};
   border: 1px solid transparent;
   border-radius: 4px;
   height: 33px;
@@ -22,7 +38,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
     ${({ $isDisabled }) =>
       !$isDisabled &&
       css`
-        background-color: ${color('neutral', '100')};
+        background-color: ${themeColor('neutral', '100')};
       `}
   }
 

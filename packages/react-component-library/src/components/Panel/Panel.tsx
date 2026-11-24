@@ -1,12 +1,12 @@
 import React from 'react'
 import { styled } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { ComponentWithClass } from '../../common/ComponentWithClass'
 
 const StyledPanel = styled.div`
-  background: ${color('neutral', 'white')};
-  border: 1px solid ${color('neutral', '100')};
+  background: ${themeColor('neutral', 'white')};
+  border: 1px solid ${themeColor('neutral', '100')};
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   border-radius: 3px;
   box-sizing: border-box;

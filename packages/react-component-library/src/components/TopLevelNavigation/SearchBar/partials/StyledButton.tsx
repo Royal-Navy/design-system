@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { themeColor, color, spacing } from '@royalnavy/design-tokens'
 import { rgba } from 'polished'
 
 export const StyledButton = styled.button`
@@ -8,7 +8,7 @@ export const StyledButton = styled.button`
   justify-content: center;
   border: 0;
   height: 36px;
-  background: ${color('neutral', '300')};
+  background: ${themeColor('neutral', '300')};
   border-radius: 3px;
   margin: 0 ${spacing('6')};
   text-align: center;

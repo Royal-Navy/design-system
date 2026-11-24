@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { StyledUserItem } from './StyledUserItem'
 
@@ -7,6 +7,6 @@ export const StyledUserItemIcon = styled.div`
   display: inline-flex;
 
   ${StyledUserItem}:hover & {
-    color: ${color('action', '500')};
+    color: ${themeColor('action', '500')};
   }
 `

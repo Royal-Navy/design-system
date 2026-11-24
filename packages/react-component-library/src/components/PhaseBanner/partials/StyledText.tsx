@@ -1,19 +1,24 @@
 import { styled } from 'styled-components'
-import { animation, color, fontSize, spacing } from '@royalnavy/design-tokens'
+import {
+  animation,
+  themeColor,
+  fontSize,
+  spacing,
+} from '@royalnavy/design-tokens'
 
 export const StyledText = styled.span`
   font-size: ${fontSize('base')};
   font-weight: 500;
   margin-left: ${spacing('4')};
-  color: ${color('neutral', '400')};
+  color: ${themeColor('neutral', '400')};
 
   a {
-    color: ${color('neutral', '700')};
+    color: ${themeColor('neutral', '700')};
     text-decoration: underline;
     transition: color ${animation('default')};
 
     &:hover {
-      color: ${color('action', '600')};
+      color: ${themeColor('action', '600')};
     }
   }
 `

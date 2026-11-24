@@ -1,10 +1,10 @@
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing, color } from '@royalnavy/design-tokens'
 import { styled, css } from 'styled-components'
 
 const getColorStyles = (isSecret?: boolean, inSidebar?: boolean) => {
   if (isSecret) {
     return css`
-      background-color: ${color('danger', '600')};
+      background-color: ${themeColor('danger', '600')};
       color: ${color('neutral', '000')};
     `
   }
@@ -17,8 +17,8 @@ const getColorStyles = (isSecret?: boolean, inSidebar?: boolean) => {
   }
 
   return css`
-    background-color: ${color('neutral', '100')};
-    color: ${color('neutral', '400')};
+    background-color: ${themeColor('neutral', '100')};
+    color: ${themeColor('neutral', '400')};
   `
 }
 

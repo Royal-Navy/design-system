@@ -41,6 +41,21 @@ root.render(<App />)`} />
 
 ---
 
+## Dark mode (experimental)
+
+Dark mode is off by default. To opt in, pass the dark theme and enable colour modes on the provider:
+
+<Source dark code={`import { darkTheme } from '@royalnavy/design-tokens'
+import { GlobalStyleProvider } from '@royalnavy/react-component-library'
+
+<GlobalStyleProvider theme={darkTheme} unstable_colorModes>
+  <App />
+</GlobalStyleProvider>`} />
+
+The provider declares the colours as `--rn-color-*` CSS variables on `:root`, so render one provider per page when colour modes are enabled. To make your own styles follow the colour mode, use `themeColor` from `@royalnavy/design-tokens` instead of `color`. This API is unstable and may change in a minor release.
+
+---
+
 ## More examples
 
 <iframe

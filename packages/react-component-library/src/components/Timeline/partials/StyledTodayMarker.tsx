@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color, fontSize, spacing, zIndex } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing, zIndex } from '@royalnavy/design-tokens'
 
 interface StyledTodayMarkerProps {
   $leftPx: string
@@ -12,14 +12,14 @@ export const StyledTodayMarker = styled.div<StyledTodayMarkerProps>`
   display: inline-block;
   width: ${spacing('px')};
   height: 100vh;
-  background-color: ${color('danger', '500')};
+  background-color: ${themeColor('danger', '500')};
   z-index: ${zIndex('body', 999)};
 
   &::before {
     content: 'Today';
     display: inline-block;
-    color: ${color('danger', '500')};
-    background-color: ${color('neutral', 'white')};
+    color: ${themeColor('danger', '500')};
+    background-color: ${themeColor('neutral', 'white')};
     font-size: ${fontSize('xxs')};
     transform: translate(-50%, -200%);
   }

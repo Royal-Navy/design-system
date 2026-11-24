@@ -1,4 +1,5 @@
 import { styled, css } from 'styled-components'
+import { isDarkColorMode, themeColor, Theme } from '@royalnavy/design-tokens'
 
 import { TAB_VARIANT } from '../constants'
 import { TabVariantType } from '../types'
@@ -14,6 +15,10 @@ export const StyledTabs = styled.ol<StyledTabsProps>`
   list-style-type: none;
   padding: 0;
   margin: 0;
+  background-color: ${({ theme }) =>
+    isDarkColorMode(theme as Theme)
+      ? themeColor('neutral', '000')
+      : 'transparent'};
 
   ${({ $variant }) =>
     $variant === TAB_VARIANT.UNDERLINE &&

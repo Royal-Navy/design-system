@@ -1,3 +1,6 @@
+const airbnbRestrictedSyntax = require('eslint-config-airbnb-base/rules/style')
+  .rules['no-restricted-syntax']
+
 module.exports = {
   extends: ['@royalnavy/eslint-config-react', 'plugin:storybook/recommended'],
   parserOptions: {
@@ -5,6 +8,24 @@ module.exports = {
     project: './tsconfig.eslint.json',
   },
   overrides: [
+    {
+      files: ['src/**/*.ts', 'src/**/*.tsx'],
+      excludedFiles: [
+        'src/styled-components/GlobalStyle.tsx',
+        '**/*.stories.tsx',
+      ],
+      rules: {
+        'no-restricted-syntax': [
+          ...airbnbRestrictedSyntax,
+          {
+            selector:
+              "BinaryExpression > MemberExpression[property.name='mode']",
+            message:
+              'Use isDarkColorMode(theme) so dark styles stay behind unstable_colorModes.',
+          },
+        ],
+      },
+    },
     {
       files: ['**/*.stories.tsx'],
       rules: {

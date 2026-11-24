@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, zIndex } from '@royalnavy/design-tokens'
+import { themeColor, zIndex } from '@royalnavy/design-tokens'
 
 import { BORDER_RADIUS, BORDER_WIDTH } from '../../../styled-components'
 import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
@@ -28,7 +28,7 @@ function getTopBorder(position: PopupPosition = 'below') {
         top: 0;
         height: 1px;
         width: 100%;
-        border-bottom: 1px solid ${color('neutral', '200')};
+        border-bottom: 1px solid ${themeColor('neutral', '200')};
       }
     `
   }
@@ -40,15 +40,15 @@ function getTopBorder(position: PopupPosition = 'below') {
       bottom: 0;
       height: 1px;
       width: 100%;
-      border-top: 1px solid ${color('neutral', '200')};
+      border-top: 1px solid ${themeColor('neutral', '200')};
     }
   `
 }
 
 function getBoxShadow(position: PopupPosition, size: ComponentSizeType) {
   const boxShadow = css`
-    box-shadow: 0 0 0 ${BORDER_WIDTH[size]} ${color('action', '500')},
-      0 0 0 ${SECONDARY_BORDER_WIDTH[size]} ${color('action', '100')},
+    box-shadow: 0 0 0 ${BORDER_WIDTH[size]} ${themeColor('action', '500')},
+      0 0 0 ${SECONDARY_BORDER_WIDTH[size]} ${themeColor('action', '100')},
       0 2px 22px rgba(0, 0, 0, 0.2);
   `
 
@@ -106,7 +106,7 @@ export const StyledOptionsWrapper = styled.div<StyledOptionsWrapperProps>`
       : css`
           border-radius: 0 0 ${BORDER_RADIUS[$size]} ${BORDER_RADIUS[$size]};
         `}
-  background: ${color('neutral', 'white')};
+  background: ${themeColor('neutral', 'white')};
   ${({ $position }) => getTopBorder($position)}
   ${({ $position, $size }) => getBoxShadow($position, $size)}
 `

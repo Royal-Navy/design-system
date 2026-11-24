@@ -1,4 +1,4 @@
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 import { styled } from 'styled-components'
 
 import { FloatingBox } from '../../../primitives/FloatingBox'
@@ -15,7 +15,7 @@ export const StyledFloatingBox = styled(FloatingBox)`
   ${StyledContent} {
     border: none;
     border-radius: 15px;
-    box-shadow: 0 0 0 3px ${color('action', '500')},
-      0 0 0 6px ${color('action', '100')}, 0 2px 22px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 3px ${themeColor('action', '500')},
+      0 0 0 6px ${themeColor('action', '100')}, 0 2px 22px rgba(0, 0, 0, 0.2);
   }
 `

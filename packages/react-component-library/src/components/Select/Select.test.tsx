@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render, RenderResult, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { color, ColorDanger800 } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 import {
   IconAgriculture,
   IconAnchor,
@@ -471,9 +471,10 @@ describe('Select', () => {
     it('displays in an error state', () => {
       expect(wrapper.getByTestId('select-outer-wrapper')).toHaveStyleRule(
         'box-shadow',
-        `0 0 0 ${
-          BORDER_WIDTH[COMPONENT_SIZE.FORMS]
-        } ${ColorDanger800.toUpperCase()}`
+        `0 0 0 ${BORDER_WIDTH[COMPONENT_SIZE.FORMS]} ${themeColor(
+          'danger',
+          '800'
+        )}`
       )
     })
   })
@@ -644,7 +645,7 @@ describe('Select', () => {
         const customBadge = wrapper.queryAllByTestId('select-badge')[3]
         expect(customBadge).toHaveTextContent('custom')
 
-        const backgroundColor = color('supf', '200')
+        const backgroundColor = themeColor('supf', '200')
         expect(customBadge).toHaveStyleRule('background-color', backgroundColor)
       })
     })
@@ -683,7 +684,10 @@ describe('Select', () => {
 
     it('applies per-badge props', () => {
       const badge = wrapper.queryAllByTestId('select-badge')[1]
-      expect(badge).toHaveStyleRule('background-color', color('success', '100'))
+      expect(badge).toHaveStyleRule(
+        'background-color',
+        themeColor('success', '100')
+      )
     })
   })
 

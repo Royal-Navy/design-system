@@ -1,5 +1,5 @@
 import { css, styled } from 'styled-components'
-import { color, fontSize } from '@royalnavy/design-tokens'
+import { colorByMode, fontSize, Theme } from '@royalnavy/design-tokens'
 
 interface StyledErrorProps {
   $isReserved?: boolean
@@ -8,7 +8,7 @@ interface StyledErrorProps {
 export const StyledError = styled.span<StyledErrorProps>`
   display: inline-block;
   font-size: ${fontSize('s')};
-  color: ${color('danger', '800')};
+  color: ${({ theme }) => colorByMode('danger', '800', '900', theme as Theme)};
   margin: 0 0 6px 12px;
 
   ${({ $isReserved }) =>

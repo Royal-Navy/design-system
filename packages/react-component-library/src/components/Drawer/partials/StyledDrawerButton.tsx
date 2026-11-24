@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { themeColor, spacing } from '@royalnavy/design-tokens'
 
 export const StyledDrawerButton = styled.button`
   position: absolute;
@@ -12,14 +12,14 @@ export const StyledDrawerButton = styled.button`
   width: 24px;
   height: 24px;
 
-  background: ${color('neutral', '000')};
+  background: ${themeColor('neutral', '000')};
   border-radius: 1000px;
   border: 1px transparent;
   cursor: pointer;
 
   &:hover,
   &:focus {
-    background: ${color('neutral', '100')};
+    background: ${themeColor('neutral', '100')};
     outline: 0;
   }
 `

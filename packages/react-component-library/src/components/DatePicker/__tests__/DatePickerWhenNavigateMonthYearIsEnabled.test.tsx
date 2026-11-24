@@ -1,4 +1,4 @@
-import { color } from '@royalnavy/design-tokens'
+import { themeColor, color } from '@royalnavy/design-tokens'
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import userEvent from '@testing-library/user-event'
@@ -109,11 +109,11 @@ it('applies correct styles to current and selected month', async () => {
     name: `Select ${MONTHS[selectedDate.getMonth()]}`,
   })
 
-  expect(currentMonth).toHaveStyleRule('color', color('warning', '800'))
+  expect(currentMonth).toHaveStyleRule('color', themeColor('warning', '800'))
 
   expect(selectedMonth).toHaveStyleRule(
     'background-color',
-    color('action', '700')
+    themeColor('action', '700')
   )
   expect(selectedMonth).toHaveStyleRule('color', color('neutral', 'white'))
 })
@@ -138,11 +138,11 @@ it('applies correct styles to current and selected year', async () => {
     name: `Select ${selectedDate.getFullYear()}`,
   })
 
-  expect(currentYear).toHaveStyleRule('color', color('warning', '800'))
+  expect(currentYear).toHaveStyleRule('color', themeColor('warning', '800'))
 
   expect(selectedYear).toHaveStyleRule(
     'background-color',
-    color('action', '700')
+    themeColor('action', '700')
   )
   expect(selectedYear).toHaveStyleRule('color', color('neutral', 'white'))
 })

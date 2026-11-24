@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color, spacing, zIndex } from '@royalnavy/design-tokens'
+import { spacing, zIndex, color } from '@royalnavy/design-tokens'
 
 import { StyledInput } from '../../../TextInput/partials/StyledInput'
 import { StyledOuterWrapper } from '../../../TextInput/partials/StyledOuterWrapper'

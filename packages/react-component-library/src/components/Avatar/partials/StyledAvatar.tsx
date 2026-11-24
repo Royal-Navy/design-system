@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor, color } from '@royalnavy/design-tokens'
 
 interface StyledAvatarProps {
   $dark?: boolean
@@ -12,14 +12,14 @@ export const StyledAvatar = styled.span<StyledAvatarProps>`
   height: 30px;
   width: 30px;
   border-radius: 15px;
-  background: ${color('neutral', 'white')};
-  color: ${color('neutral', '600')};
+  background: ${themeColor('neutral', 'white')};
+  color: ${themeColor('neutral', '600')};
   font-size: 12px;
   font-weight: bold;
   text-decoration: none;
 
   &:hover {
-    background: ${color('action', '500')};
+    background: ${themeColor('action', '500')};
     color: ${color('neutral', 'white')};
     cursor: pointer;
   }

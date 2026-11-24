@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color, zIndex } from '@royalnavy/design-tokens'
+import { themeColor, zIndex, color } from '@royalnavy/design-tokens'
 
 import {
   getTransitionOpacity,
@@ -13,7 +13,7 @@ export const StyledHandle = styled.button<TransitionProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: ${color('action', '500')};
+  background-color: ${themeColor('action', '500')};
   border-radius: 9999px;
   width: 2rem;
   height: 2rem;

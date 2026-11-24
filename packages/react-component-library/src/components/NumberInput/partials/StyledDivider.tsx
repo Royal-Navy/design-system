@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
 import { StyledInlineButton } from '../../InlineButtons/partials/StyledInlineButton'
@@ -10,7 +10,7 @@ interface StyledDividerProps {
 
 export const StyledDivider = styled.div<StyledDividerProps>`
   position: relative;
-  border-left: 1px solid ${color('neutral', '200')};
+  border-left: 1px solid ${themeColor('neutral', '200')};
   height: 24px;
   top: 10px;
 

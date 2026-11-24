@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from 'styled-components'
-import { spacing, fontSize, color } from '@royalnavy/design-tokens'
+import { spacing, fontSize, themeColor } from '@royalnavy/design-tokens'
 
 const StyledSwatch = styled.span<{ $backgroundColor: string }>`
   background-color: ${({ $backgroundColor }) => $backgroundColor ?? 'none'};
@@ -23,7 +23,7 @@ export const ExampleComponent = () => {
       Please don't write your code like this
   */
   const borderSize = spacing('4')
-  const borderColor = color('action', '200')
+  const borderColor = themeColor('action', '200')
   const paddingSize = spacing('8')
   const marginSize = spacing('2')
 

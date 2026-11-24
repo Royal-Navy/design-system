@@ -102,6 +102,15 @@ export function getAnimation(index: AnimationTiming, theme?: Theme): string {
   throw new Error(`Invalid animation token for index: '${index}'`)
 }
 
+const COLOR_VARIABLE_PREFIX = '--rn-color'
+
+export function colorVariableName(
+  group: ColorGroup,
+  weight: ColorShade
+): string {
+  return `${COLOR_VARIABLE_PREFIX}-${group}-${weight}`
+}
+
 export function getColor(
   group: ColorGroup,
   weight: ColorShade,
@@ -117,6 +126,65 @@ export function getColor(
   throw new Error(
     `Invalid color token for group: '${group}' weight: '${weight}'`
   )
+}
+
+/**
+ * Resolve a colour token as a `var(--rn-color-*)` reference with the light
+ * value as fallback, so it follows the colour mode enabled by
+ * `GlobalStyleProvider`. An explicit theme resolves to that theme's value.
+ */
+export function getThemeColor(
+  group: ColorGroup,
+  weight: ColorShade,
+  theme?: Theme
+): string {
+  if (theme?.colorsTokens) {
+    return getColor(group, weight, theme)
+  }
+
+  return `var(${colorVariableName(group, weight)}, ${getColor(group, weight)})`
+}
+
+export function isDarkColorMode(theme?: Theme): boolean {
+  return theme?.colorMode === 'dark'
+}
+
+/**
+ * Resolve a themed colour, using a different shade when the dark colour mode
+ * is enabled, e.g.
+ * `({ theme }) => colorByMode('neutral', '000', '100', theme as Theme)`.
+ */
+export function getColorByMode(
+  group: ColorGroup,
+  lightWeight: ColorShade,
+  darkWeight: ColorShade,
+  theme?: Theme
+): string {
+  return getThemeColor(group, isDarkColorMode(theme) ? darkWeight : lightWeight)
+}
+
+/**
+ * Build the `--rn-color-*` custom property declarations for a theme, for
+ * injection by `GlobalStyleProvider`.
+ */
+export function getColorVariables(theme?: Theme): Record<string, string> {
+  const { color } = getTheme(theme).colorsTokens as unknown as {
+    color: Record<string, Record<string, { value?: string }>>
+  }
+
+  const entries = Object.entries(color).flatMap(([group, shades]) =>
+    Object.entries(shades)
+      .filter(([, token]) => isTokenValid(token?.value))
+      .map(
+        ([weight, token]) =>
+          [
+            colorVariableName(group as ColorGroup, weight as ColorShade),
+            token.value as string,
+          ] as const
+      )
+  )
+
+  return Object.fromEntries(entries)
 }
 
 export function getTypography(size: TypographySize, theme?: Theme): string {

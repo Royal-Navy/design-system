@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing } from '@royalnavy/design-tokens'
 
 import { CheckboxRootProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
 import { StyledCheckmark } from './StyledCheckmark'
@@ -19,14 +19,14 @@ const BackgroundColor = css<CheckboxRootProps>`
     }
 
     if ($isDisabled) {
-      return color('neutral', '000')
+      return themeColor('neutral', '000')
     }
 
     if ($isChecked) {
-      return color('action', '000')
+      return themeColor('action', '000')
     }
 
-    return color('neutral', 'white')
+    return themeColor('neutral', 'white')
   }}
 `
 
@@ -36,15 +36,15 @@ const CheckmarkBackgroundColor = css<CheckboxRootProps>`
       return BackgroundColor
     }
 
-    return color('neutral', $isDisabled ? '000' : 'white')
+    return themeColor('neutral', $isDisabled ? '000' : 'white')
   }}
 `
 
 const CheckmarkCheckedFillColor = css<CheckboxRootProps>`
   ${({ $isDisabled, $hasContainer }) =>
     $isDisabled
-      ? color('neutral', $hasContainer ? '200' : '100')
-      : color('action', '500')}
+      ? themeColor('neutral', $hasContainer ? '200' : '100')
+      : themeColor('action', '500')}
 `
 
 export const StyledRadio = styled.div<CheckboxRootProps>`
@@ -72,7 +72,7 @@ export const StyledRadio = styled.div<CheckboxRootProps>`
   ${({ $hasContainer, $size }) =>
     $hasContainer &&
     css`
-      border: 1px solid ${color('neutral', '200')};
+      border: 1px solid ${themeColor('neutral', '200')};
       border-radius: ${CONTAINER_BORDER_RADIUS[$size]};
 
       ${getContainerFocusStyles($size)}
@@ -86,7 +86,7 @@ export const StyledRadio = styled.div<CheckboxRootProps>`
       &:hover ${StyledCheckmark}, ${StyledInput}:active ~ ${StyledCheckmark} {
         &::before {
           box-shadow: 0 0 0 ${RADIO_ACTIVE_BORDER_WIDTH}
-            ${color('action', '500')};
+            ${themeColor('action', '500')};
         }
       }
     `}
@@ -137,7 +137,7 @@ export const StyledRadio = styled.div<CheckboxRootProps>`
   ${({ $isInvalid }) =>
     $isInvalid &&
     css`
-      border-color: ${color('danger', '800')};
-      box-shadow: 0 0 0 2px ${color('danger', '800')};
+      border-color: ${themeColor('danger', '800')};
+      box-shadow: 0 0 0 2px ${themeColor('danger', '800')};
     `}
 `

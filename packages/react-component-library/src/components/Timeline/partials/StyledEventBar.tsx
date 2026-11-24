@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { StyledEventTitle } from './StyledEventTitle'
 
@@ -16,13 +16,18 @@ export const StyledEventBar = styled.div<StyledEventBarProps>`
   position: relative;
   display: inline-block;
   border-radius: 4px;
-  background-color: ${({ $barColor = color('success', '500') }) => $barColor};
+  background-color: ${({ $barColor = themeColor('success', '500') }) =>
+    $barColor};
   height: 16px;
   min-width: 1rem;
   width: ${({ $width }) => $width};
   max-width: ${({ $maxWidth }) => $maxWidth};
 
-  ${({ $startsBeforeStart, $width, $barColor = color('success', '500') }) =>
+  ${({
+    $startsBeforeStart,
+    $width,
+    $barColor = themeColor('success', '500'),
+  }) =>
     $startsBeforeStart &&
     css`
       border-top-left-radius: unset;
@@ -46,7 +51,7 @@ export const StyledEventBar = styled.div<StyledEventBarProps>`
       }
     `}
 
-  ${({ $endsAfterEnd, $maxWidth, $barColor = color('success', '500') }) =>
+  ${({ $endsAfterEnd, $maxWidth, $barColor = themeColor('success', '500') }) =>
     $endsAfterEnd &&
     css`
       border-top-right-radius: unset;

@@ -3,7 +3,12 @@ import selectors from './selectors'
 export * from './types'
 export * from './flat'
 
-export { getTheme } from './getters'
+export {
+  getTheme,
+  getColorVariables,
+  colorVariableName,
+  isDarkColorMode,
+} from './getters'
 
 export { selectors }
 
@@ -14,6 +19,8 @@ const {
   animation,
   breakpoint,
   color,
+  colorByMode,
+  themeColor,
   fontSize,
   mediaQuery,
   mq,
@@ -26,6 +33,8 @@ export {
   animation,
   breakpoint,
   color,
+  colorByMode,
+  themeColor,
   fontSize,
   mediaQuery,
   mq,

@@ -1,4 +1,12 @@
-import { color, fontSize, shadow, spacing } from '@royalnavy/design-tokens'
+import {
+  themeColor,
+  fontSize,
+  shadow,
+  spacing,
+  color,
+  colorByMode,
+  Theme,
+} from '@royalnavy/design-tokens'
 import { styled, css } from 'styled-components'
 
 import {
@@ -75,8 +83,8 @@ const StyledBadgePillMap = {
 const StyledBadgeColorVariantMap = {
   [BADGE_COLOR.NEUTRAL]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
-      background-color: ${color('neutral', '100')};
-      color: ${color('neutral', '400')};
+      background-color: ${themeColor('neutral', '100')};
+      color: ${themeColor('neutral', '400')};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
@@ -87,120 +95,129 @@ const StyledBadgeColorVariantMap = {
   },
   [BADGE_COLOR.ACTION]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
-      background-color: ${color('action', '100')};
-      color: ${color('action', '700')};
+      background-color: ${themeColor('action', '100')};
+      color: ${themeColor('action', '700')};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
-      background-color: ${color('action', '600')};
+      background-color: ${themeColor('action', '600')};
       color: ${color('neutral', 'white')};
       text-shadow: ${shadow('1')};
     `,
   },
   [BADGE_COLOR.SUCCESS]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
-      background-color: ${color('success', '100')};
-      color: ${color('success', '800')};
+      background-color: ${themeColor('success', '100')};
+      color: ${({ theme }) =>
+        colorByMode('success', '800', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
-      background-color: ${color('success', '800')};
+      background-color: ${themeColor('success', '800')};
       color: ${color('neutral', 'white')};
       text-shadow: ${shadow('1')};
     `,
   },
   [BADGE_COLOR.WARNING]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
-      background-color: ${color('warning', '000')};
-      color: ${color('warning', '800')};
+      background-color: ${themeColor('warning', '000')};
+      color: ${({ theme }) =>
+        colorByMode('warning', '800', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
-      background-color: ${color('warning', '300')};
-      color: ${color('warning', '800')};
+      background-color: ${themeColor('warning', '300')};
+      color: ${themeColor('warning', '800')};
       text-shadow: ${shadow('0')};
     `,
   },
   [BADGE_COLOR.DANGER]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
-      background-color: ${color('danger', '100')};
-      color: ${color('danger', '800')};
+      background-color: ${themeColor('danger', '100')};
+      color: ${({ theme }) =>
+        colorByMode('danger', '800', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
-      background-color: ${color('danger', '700')};
+      background-color: ${themeColor('danger', '700')};
       color: ${color('neutral', 'white')};
       text-shadow: ${shadow('1')};
     `,
   },
   [BADGE_COLOR.SUPA]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
-      background-color: ${color('supa', '000')};
-      color: ${color('supa', '600')};
+      background-color: ${themeColor('supa', '000')};
+      color: ${({ theme }) =>
+        colorByMode('supa', '600', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
-      background-color: ${color('supa', '600')};
+      background-color: ${themeColor('supa', '600')};
       color: ${color('neutral', 'white')};
       text-shadow: ${shadow('1')};
     `,
   },
   [BADGE_COLOR.SUPB]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
-      background-color: ${color('supb', '100')};
-      color: ${color('supb', '600')};
+      background-color: ${themeColor('supb', '100')};
+      color: ${({ theme }) =>
+        colorByMode('supb', '600', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
-      background-color: ${color('supb', '600')};
+      background-color: ${themeColor('supb', '600')};
       color: ${color('neutral', 'white')};
       text-shadow: ${shadow('1')};
     `,
   },
   [BADGE_COLOR.SUPC]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
-      background-color: ${color('supc', '100')};
-      color: ${color('supc', '800')};
+      background-color: ${themeColor('supc', '100')};
+      color: ${({ theme }) =>
+        colorByMode('supc', '800', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
-      background-color: ${color('supc', '700')};
+      background-color: ${themeColor('supc', '700')};
       color: ${color('neutral', 'white')};
       text-shadow: ${shadow('1')};
     `,
   },
   [BADGE_COLOR.SUPD]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
-      background-color: ${color('supd', '100')};
-      color: ${color('supd', '800')};
+      background-color: ${themeColor('supd', '100')};
+      color: ${({ theme }) =>
+        colorByMode('supd', '800', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
-      background-color: ${color('supd', '700')};
+      background-color: ${themeColor('supd', '700')};
       color: ${color('neutral', 'white')};
       text-shadow: ${shadow('1')};
     `,
   },
   [BADGE_COLOR.SUPE]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
-      background-color: ${color('supe', '200')};
-      color: ${color('supe', '800')};
+      background-color: ${themeColor('supe', '200')};
+      color: ${({ theme }) =>
+        colorByMode('supe', '800', '900', theme as Theme)};
       text-shadow: ${shadow('0')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
-      background-color: ${color('supe', '800')};
+      background-color: ${themeColor('supe', '800')};
       color: ${color('neutral', 'white')};
       text-shadow: ${shadow('1')};
     `,
   },
   [BADGE_COLOR.SUPF]: {
     [BADGE_COLOR_VARIANT.FADED]: css`
-      background-color: ${color('supf', '200')};
-      color: ${color('supf', '800')};
+      background-color: ${themeColor('supf', '200')};
+      color: ${({ theme }) =>
+        colorByMode('supf', '800', '900', theme as Theme)};
       text-shadow: ${shadow('1')};
     `,
     [BADGE_COLOR_VARIANT.SOLID]: css`
-      background-color: ${color('supf', '700')};
+      background-color: ${themeColor('supf', '700')};
       color: ${color('neutral', 'white')};
       text-shadow: ${shadow('1')};
     `,

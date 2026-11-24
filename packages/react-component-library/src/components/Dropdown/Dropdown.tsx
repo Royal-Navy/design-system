@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactSelect from 'react-select'
 import { ValueType } from 'react-select/src/types'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { themeColor, spacing } from '@royalnavy/design-tokens'
 import { styled } from 'styled-components'
 
 import { DropdownIndicator } from './DropdownIndicator'
@@ -39,7 +39,7 @@ const Select: typeof ReactSelect =
 
 const StyledSelect = styled(Select)`
   .rn-dropdown__control {
-    border-color: ${color('neutral', '200')};
+    border-color: ${themeColor('neutral', '200')};
   }
 
   // ie 11 fix: https://github.com/philipwalton/flexbugs/issues/231#issuecomment-362790042
@@ -50,12 +50,12 @@ const StyledSelect = styled(Select)`
   }
 
   .rn-dropdown__placeholder {
-    color: ${color('neutral', '500')};
+    color: ${themeColor('neutral', '500')};
   }
 
   .rn-dropdown__control--is-focused {
-    border-color: ${color('action', '600')};
-    box-shadow: 0 0 0 1px ${color('action', '600')};
+    border-color: ${themeColor('action', '600')};
+    box-shadow: 0 0 0 1px ${themeColor('action', '600')};
   }
 
   .rn-dropdown__control--menu-is-open {
@@ -64,7 +64,7 @@ const StyledSelect = styled(Select)`
     }
 
     .rn-arrow__fill {
-      fill: ${color('action', '600')};
+      fill: ${themeColor('action', '600')};
     }
   }
 
@@ -85,7 +85,7 @@ const StyledSelect = styled(Select)`
   }
 
   .rn-dropdown__menu-list {
-    border: 2px solid ${color('action', '600')};
+    border: 2px solid ${themeColor('action', '600')};
     border-radius: 4px;
     padding: ${spacing('2')};
   }
@@ -94,7 +94,7 @@ const StyledSelect = styled(Select)`
     display: block;
     border-style: solid;
     border-width: 0 7px 7px;
-    border-color: ${color('action', '600')} transparent;
+    border-color: ${themeColor('action', '600')} transparent;
     position: absolute;
     top: -7px;
     right: 0.9rem;
@@ -107,7 +107,7 @@ const StyledSelect = styled(Select)`
     display: block;
     border-style: solid;
     border-width: 0 6px 6px;
-    border-color: ${color('neutral', 'white')} transparent;
+    border-color: ${themeColor('neutral', 'white')} transparent;
     position: absolute;
     top: -3px;
     right: 0.9rem;
@@ -120,7 +120,7 @@ const StyledSelect = styled(Select)`
   .rn-dropdown__option,
   .rn-dropdown__option--is-selected,
   .rn-dropdown__option--is-focused {
-    color: ${color('neutral', '500')};
+    color: ${themeColor('neutral', '500')};
   }
 
   .rn-dropdown__option {
@@ -129,12 +129,12 @@ const StyledSelect = styled(Select)`
   }
 
   .rn-dropdown__option--is-selected {
-    background-color: ${color('neutral', 'white')};
+    background-color: ${themeColor('neutral', 'white')};
   }
 
   .rn-dropdown__option--is-focused,
   .rn-dropdown__option--is-focused.rn-dropdown__option--is-selected {
-    background-color: ${color('neutral', '100')};
+    background-color: ${themeColor('neutral', '100')};
   }
 
   .rn-dropdown__single-value

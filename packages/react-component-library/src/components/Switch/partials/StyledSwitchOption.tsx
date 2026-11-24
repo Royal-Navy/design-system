@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { themeColor, color, spacing } from '@royalnavy/design-tokens'
 
 import { SWITCH_OPTION_VARIANT } from '../constants'
 import { SwitchOptionVariantType } from '../SwitchOption'
@@ -20,44 +20,44 @@ type VariantActiveStyle = {
 
 const VARIANT_ACTIVE_STYLES: Record<string, VariantActiveStyle> = {
   [SWITCH_OPTION_VARIANT.PRIMARY]: {
-    backgroundColor: color('action', '600'),
+    backgroundColor: themeColor('action', '600'),
     color: color('neutral', 'white'),
-    borderColor: color('action', '600'),
-    focusBorderColor: color('action', '500'),
-    focusBoxShadow: `0 0 0 2px ${color('action', '500')}, 0 0 0 5px ${color(
+    borderColor: themeColor('action', '600'),
+    focusBorderColor: themeColor('action', '500'),
+    focusBoxShadow: `0 0 0 2px ${themeColor(
       'action',
-      '100'
-    )}`,
+      '500'
+    )}, 0 0 0 5px ${themeColor('action', '100')}`,
   },
   [SWITCH_OPTION_VARIANT.SECONDARY]: {
-    backgroundColor: color('action', '100'),
-    color: color('action', '800'),
-    borderColor: color('action', '600'),
-    focusBorderColor: color('action', '500'),
-    focusBoxShadow: `0 0 0 2px ${color('action', '500')}, 0 0 0 5px ${color(
+    backgroundColor: themeColor('action', '100'),
+    color: themeColor('action', '800'),
+    borderColor: themeColor('action', '600'),
+    focusBorderColor: themeColor('action', '500'),
+    focusBoxShadow: `0 0 0 2px ${themeColor(
       'action',
-      '100'
-    )}`,
+      '500'
+    )}, 0 0 0 5px ${themeColor('action', '100')}`,
   },
   [SWITCH_OPTION_VARIANT.TERTIARY]: {
-    backgroundColor: color('neutral', 'white'),
-    color: color('action', '600'),
-    borderColor: color('action', '600'),
-    focusBorderColor: color('action', '500'),
-    focusBoxShadow: `0 0 0 2px ${color('action', '500')}, 0 0 0 5px ${color(
+    backgroundColor: themeColor('neutral', 'white'),
+    color: themeColor('action', '600'),
+    borderColor: themeColor('action', '600'),
+    focusBorderColor: themeColor('action', '500'),
+    focusBoxShadow: `0 0 0 2px ${themeColor(
       'action',
-      '100'
-    )}`,
+      '500'
+    )}, 0 0 0 5px ${themeColor('action', '100')}`,
   },
   [SWITCH_OPTION_VARIANT.DANGER]: {
-    backgroundColor: color('danger', '700'),
+    backgroundColor: themeColor('danger', '700'),
     color: color('neutral', 'white'),
-    borderColor: color('danger', '700'),
-    focusBorderColor: color('danger', '700'),
-    focusBoxShadow: `0 0 0 2px ${color('danger', '700')}, 0 0 0 5px ${color(
+    borderColor: themeColor('danger', '700'),
+    focusBorderColor: themeColor('danger', '700'),
+    focusBoxShadow: `0 0 0 2px ${themeColor(
       'danger',
-      '100'
-    )}`,
+      '700'
+    )}, 0 0 0 5px ${themeColor('danger', '100')}`,
   },
 }
 
@@ -87,8 +87,8 @@ export const StyledSwitchOption = styled.label<StyledSwitchOptionProps>`
   align-items: center;
   justify-content: center;
   padding: 0 ${spacing('6')};
-  border: 1px solid ${color('neutral', '200')};
-  color: ${color('neutral', '400')};
+  border: 1px solid ${themeColor('neutral', '200')};
+  color: ${themeColor('neutral', '400')};
   font-size: inherit;
   font-weight: 600;
   user-select: none;
@@ -127,18 +127,18 @@ export const StyledSwitchOption = styled.label<StyledSwitchOptionProps>`
     !$isActive &&
     css`
       &:hover {
-        background-color: ${color('neutral', '100')};
-        color: ${color('neutral', '400')};
-        border-color: ${color('neutral', '200')};
+        background-color: ${themeColor('neutral', '100')};
+        color: ${themeColor('neutral', '400')};
+        border-color: ${themeColor('neutral', '200')};
       }
 
       &:focus-within,
       &:active {
         z-index: 1;
         outline: none;
-        border-color: ${color('action', '500')};
-        box-shadow: 0 0 0 2px ${color('action', '500')},
-          0 0 0 5px ${color('action', '100')};
+        border-color: ${themeColor('action', '500')};
+        box-shadow: 0 0 0 2px ${themeColor('action', '500')},
+          0 0 0 5px ${themeColor('action', '100')};
       }
     `}
 
@@ -146,16 +146,16 @@ export const StyledSwitchOption = styled.label<StyledSwitchOptionProps>`
     $isDisabled &&
     $isActive &&
     css`
-      background-color: ${color('neutral', '100')};
-      border-color: ${color('neutral', '100')};
-      color: ${color('neutral', '400')};
+      background-color: ${themeColor('neutral', '100')};
+      border-color: ${themeColor('neutral', '100')};
+      color: ${themeColor('neutral', '400')};
       cursor: not-allowed;
 
       &&& {
         &:hover,
         &:focus-within,
         &:active {
-          background-color: ${color('neutral', '100')};
+          background-color: ${themeColor('neutral', '100')};
           border-color: transparent;
           box-shadow: none;
         }

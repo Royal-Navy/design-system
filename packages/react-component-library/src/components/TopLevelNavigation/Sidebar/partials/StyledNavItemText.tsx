@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, fontSize } from '@royalnavy/design-tokens'
+import { fontSize, color } from '@royalnavy/design-tokens'
 
 import {
   getTransitionOpacity,

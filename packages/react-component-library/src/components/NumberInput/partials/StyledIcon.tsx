@@ -1,4 +1,4 @@
-import { color, spacing } from '@royalnavy/design-tokens'
+import { themeColor, spacing } from '@royalnavy/design-tokens'
 import { styled } from 'styled-components'
 
 export const StyledIcon = styled.div`
@@ -9,7 +9,7 @@ export const StyledIcon = styled.div`
   text-align: center;
   padding: ${spacing('6')} 0 ${spacing('6')} ${spacing('6')};
   order: 0;
-  color: ${color('neutral', '400')};
+  color: ${themeColor('neutral', '400')};
 
   & > svg {
     height: 18px;

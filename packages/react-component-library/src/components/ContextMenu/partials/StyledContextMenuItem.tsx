@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { themeColor, spacing } from '@royalnavy/design-tokens'
 
 export const StyledContextMenuItem = styled.li`
   border-radius: 2px;
@@ -12,7 +12,7 @@ export const StyledContextMenuItem = styled.li`
   }
 
   &:hover {
-    background-color: ${color('neutral', '100')};
+    background-color: ${themeColor('neutral', '100')};
 
     > * {
       text-decoration: none;

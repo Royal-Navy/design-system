@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { animation, color, fontSize } from '@royalnavy/design-tokens'
+import { animation, themeColor, fontSize } from '@royalnavy/design-tokens'
 
 import { ComponentSizeType } from '../../components/Forms'
 
@@ -18,7 +18,7 @@ export const StyledLabel = styled.label<StyledLabelProps>`
   overflow: hidden;
   transition: all cubic-bezier(0, 0, 0.2, 1) ${animation('default')};
   pointer-events: none;
-  color: ${color('neutral', '400')};
+  color: ${themeColor('neutral', '400')};
   font-size: ${fontSize('m')};
   text-overflow: ellipsis;
   white-space: nowrap;

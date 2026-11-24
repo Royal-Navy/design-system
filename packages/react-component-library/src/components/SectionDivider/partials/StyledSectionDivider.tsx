@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 export const StyledSectionDivider = styled.div`
   display: grid;
@@ -8,6 +8,6 @@ export const StyledSectionDivider = styled.div`
     'icon title'
     'description description';
   row-gap: 8px;
-  border-bottom: 1px solid ${color('neutral', '100')};
+  border-bottom: 1px solid ${themeColor('neutral', '100')};
   padding: 8px 0;
 `

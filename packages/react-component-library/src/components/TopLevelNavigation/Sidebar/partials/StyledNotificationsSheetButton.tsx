@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled, css } from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { themeColor, spacing, color } from '@royalnavy/design-tokens'
 
 import { SheetButton, SheetButtonProps } from '../../Sheet/SheetButton'
 import { StyledNotificationDot } from './StyledNotificationDot'
@@ -44,7 +44,7 @@ export const StyledNotificationsSheetButton = styled<
         content: '';
         width: 12px;
         height: 12px;
-        background-color: ${color('danger', '600')};
+        background-color: ${themeColor('danger', '600')};
         border-radius: 9999px;
         border: 2px solid ${color('neutral', '700')};
       }

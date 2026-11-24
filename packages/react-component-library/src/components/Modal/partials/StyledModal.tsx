@@ -1,5 +1,10 @@
-import { zIndex } from '@royalnavy/design-tokens'
-import { styled } from 'styled-components'
+import {
+  themeColor,
+  Theme,
+  zIndex,
+  isDarkColorMode,
+} from '@royalnavy/design-tokens'
+import { css, styled } from 'styled-components'
 
 export const StyledModal = styled.dialog`
   position: fixed;
@@ -9,4 +14,10 @@ export const StyledModal = styled.dialog`
   left: 0;
   background: rgba(0, 0, 0, 0.2);
   z-index: ${zIndex('modal', 1)};
+
+  ${({ theme }) =>
+    isDarkColorMode(theme as Theme) &&
+    css`
+      color: ${themeColor('neutral', '600')};
+    `}
 `
