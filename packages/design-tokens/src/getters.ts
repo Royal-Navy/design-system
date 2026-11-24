@@ -102,11 +102,13 @@ export function getAnimation(index: AnimationTiming, theme?: Theme): string {
   throw new Error(`Invalid animation token for index: '${index}'`)
 }
 
+const COLOR_VARIABLE_PREFIX = '--rn-color'
+
 export function colorVariableName(
   group: ColorGroup,
   weight: ColorShade
 ): string {
-  return `--color-${group}-${weight}`
+  return `${COLOR_VARIABLE_PREFIX}-${group}-${weight}`
 }
 
 /**
@@ -138,7 +140,7 @@ export function getColorValue(
  * theme injected by `GlobalStyleProvider`, with the light value as a static
  * fallback for unprovided/SSR contexts.
  */
-export function getColor(
+export function getThemeColor(
   group: ColorGroup,
   weight: ColorShade,
   theme?: Theme
@@ -150,6 +152,14 @@ export function getColor(
   const fallback = getColorValue(group, weight)
 
   return `var(${colorVariableName(group, weight)}, ${fallback})`
+}
+
+export function getColor(
+  group: ColorGroup,
+  weight: ColorShade,
+  theme?: Theme
+): string {
+  return getThemeColor(group, weight, theme)
 }
 
 /**
@@ -171,7 +181,7 @@ export function getColorByMode(
 }
 
 /**
- * Build the `--color-*` custom property declarations for a theme, for
+ * Build the `--rn-color-*` custom property declarations for a theme, for
  * injection by `GlobalStyleProvider`.
  */
 export function getColorVariables(theme?: Theme): Record<string, string> {
@@ -184,7 +194,10 @@ export function getColorVariables(theme?: Theme): Record<string, string> {
       .filter(([, token]) => isTokenValid(token?.value))
       .map(
         ([weight, token]) =>
-          [`--color-${group}-${weight}`, token.value as string] as const
+          [
+            colorVariableName(group as ColorGroup, weight as ColorShade),
+            token.value as string,
+          ] as const
       )
   )
 
