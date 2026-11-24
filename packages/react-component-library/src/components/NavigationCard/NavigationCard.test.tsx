@@ -1,4 +1,4 @@
-import { color } from '@royalnavy/design-tokens'
+import { color, colorValue } from '@royalnavy/design-tokens'
 import { IconHome } from '@royalnavy/icon-library'
 import { tint } from 'polished'
 import { render, screen } from '@testing-library/react'
@@ -149,7 +149,7 @@ describe('NavigationCard', () => {
   })
 
   it('derives the icon panel tint from a design token colour', () => {
-    const tokenColor = color('supa', '500')
+    const tokenColor = colorValue('supa', '500')
 
     render(
       <NavigationCard
