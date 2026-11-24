@@ -30,7 +30,7 @@ describe('GlobalStyleProvider', () => {
 
     it('exposes the light colour tokens as CSS variables', () => {
       expect(css).toContain(
-        `--color-action-500:${colorValue('action', '500', lightTheme)};`
+        `--rn-color-action-500:${colorValue('action', '500', lightTheme)};`
       )
     })
 
@@ -52,7 +52,7 @@ describe('GlobalStyleProvider', () => {
 
     it('exposes the dark colour tokens as CSS variables', () => {
       expect(css).toContain(
-        `--color-neutral-white:${colorValue('neutral', 'white', darkTheme)};`
+        `--rn-color-neutral-white:${colorValue('neutral', 'white', darkTheme)};`
       )
     })
 

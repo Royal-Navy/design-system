@@ -8,6 +8,8 @@ import {
   BreakpointSize,
   ColorGroup,
   ColorShade,
+  darkTheme,
+  getColorVariables,
   selectors,
   ShadowWeight,
   Spacing,
@@ -26,6 +28,7 @@ const {
   shadow,
   zIndex,
   colorValue,
+  themeColor,
 } = selectors
 
 let wrapper: RenderResult
@@ -217,7 +220,7 @@ describe('color', () => {
 
       expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
         'color',
-        'var(--color-neutral-100, #e2e9ee)'
+        'var(--rn-color-neutral-100, #e2e9ee)'
       )
     })
   })
@@ -236,6 +239,39 @@ describe('colorValue', () => {
     it('returns the concrete light value with no theme', () => {
       expect(colorValue('neutral', '100')).toBe('#e2e9ee')
     })
+  })
+})
+
+describe('themeColor', () => {
+  describe('when no theme is provided', () => {
+    it('returns a prefixed CSS variable with the light value as fallback', () => {
+      expect(themeColor('action', '500')).toBe(
+        'var(--rn-color-action-500, #3a8fdd)'
+      )
+    })
+  })
+
+  describe('when a theme is provided', () => {
+    it('returns the concrete value from that theme', () => {
+      expect(themeColor('neutral', 'white', darkTheme)).toBe(
+        colorValue('neutral', 'white', darkTheme)
+      )
+    })
+  })
+})
+
+describe('getColorVariables', () => {
+  it('declares a prefixed variable for every colour token', () => {
+    expect(getColorVariables()).toMatchObject({
+      '--rn-color-action-500': '#3a8fdd',
+      '--rn-color-neutral-white': '#ffffff',
+    })
+  })
+
+  it('uses the values from the provided theme', () => {
+    expect(getColorVariables(darkTheme)['--rn-color-neutral-white']).toBe(
+      colorValue('neutral', 'white', darkTheme)
+    )
   })
 })
 

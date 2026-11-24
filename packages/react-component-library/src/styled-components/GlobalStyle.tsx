@@ -21,7 +21,7 @@ export interface GlobalStyleProviderProps {
 
 /**
  * Expose the active theme's colour tokens as CSS custom properties on the
- * root, so every `color(...)` reference (which resolves to a `var(--color-*)`)
+ * root, so every `color(...)` reference (which resolves to a `var(--rn-color-*)`)
  * reacts to the theme — including content rendered through portals that sits
  * outside the provider's DOM subtree.
  */
