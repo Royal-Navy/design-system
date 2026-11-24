@@ -10,6 +10,7 @@ import {
   ColorShade,
   darkTheme,
   getColorVariables,
+  isDarkColorMode,
   selectors,
   ShadowWeight,
   Spacing,
@@ -27,7 +28,7 @@ const {
   fontSize,
   shadow,
   zIndex,
-  colorValue,
+  colorByMode,
   themeColor,
 } = selectors
 
@@ -215,29 +216,13 @@ describe('color', () => {
       color: ${color('neutral', '100')};
     `
 
-    it('resolves to a themeable CSS variable with the light value as fallback', () => {
+    it('should set styles correctly', () => {
       wrapper = render(<StyledComponent data-testid="test-element" />)
 
       expect(wrapper.getByTestId('test-element')).toHaveStyleRule(
         'color',
-        'var(--rn-color-neutral-100, #e2e9ee)'
+        '#e2e9ee'
       )
-    })
-  })
-})
-
-describe('colorValue', () => {
-  describe('when the group or shade is invalid', () => {
-    it('throws a friendly error', () => {
-      expect(() => colorValue('invalid' as ColorGroup, '400')).toThrow(
-        'Invalid color token'
-      )
-    })
-  })
-
-  describe('when the group and shade are valid', () => {
-    it('returns the concrete light value with no theme', () => {
-      expect(colorValue('neutral', '100')).toBe('#e2e9ee')
     })
   })
 })
@@ -254,9 +239,38 @@ describe('themeColor', () => {
   describe('when a theme is provided', () => {
     it('returns the concrete value from that theme', () => {
       expect(themeColor('neutral', 'white', darkTheme)).toBe(
-        colorValue('neutral', 'white', darkTheme)
+        color('neutral', 'white', darkTheme)
       )
     })
+  })
+})
+
+describe('colorByMode', () => {
+  describe('when the dark colour mode is not enabled', () => {
+    it('uses the light shade', () => {
+      expect(colorByMode('action', '500', '400', darkTheme)).toBe(
+        themeColor('action', '500')
+      )
+    })
+  })
+
+  describe('when the dark colour mode is enabled', () => {
+    it('uses the dark shade', () => {
+      expect(
+        colorByMode('action', '500', '400', { ...darkTheme, colorMode: 'dark' })
+      ).toBe(themeColor('action', '400'))
+    })
+  })
+})
+
+describe('isDarkColorMode', () => {
+  it.each([
+    [undefined, false],
+    [darkTheme, false],
+    [{ ...darkTheme, colorMode: 'light' as const }, false],
+    [{ ...darkTheme, colorMode: 'dark' as const }, true],
+  ])('returns the expected value for %#', (theme, expected) => {
+    expect(isDarkColorMode(theme)).toBe(expected)
   })
 })
 
@@ -270,7 +284,7 @@ describe('getColorVariables', () => {
 
   it('uses the values from the provided theme', () => {
     expect(getColorVariables(darkTheme)['--rn-color-neutral-white']).toBe(
-      colorValue('neutral', 'white', darkTheme)
+      color('neutral', 'white', darkTheme)
     )
   })
 })
