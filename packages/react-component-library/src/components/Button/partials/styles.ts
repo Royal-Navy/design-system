@@ -37,7 +37,7 @@ export type ButtonStyles = {
 export const STYLES_MAP: { [key: string]: ButtonStyles } = {
   [BUTTON_VARIANT.PRIMARY]: {
     default: {
-      backgroundColor: themeColor('action', '600'),
+      backgroundColor: color('action', '600'),
       color: color('neutral', 'white'),
       boxShadow: `0 0 0 1px ${themeColor('action', '600')}`,
       textDecoration: 'none',
@@ -47,7 +47,7 @@ export const STYLES_MAP: { [key: string]: ButtonStyles } = {
       boxShadow: `0 0 0 2px ${themeColor('action', '900')}`,
     },
     focus: {
-      backgroundColor: themeColor('action', '600'),
+      backgroundColor: color('action', '600'),
       boxShadow: `0 0 0 3px ${themeColor('action', '900')}`,
     },
     active: {
@@ -103,16 +103,16 @@ export const STYLES_MAP: { [key: string]: ButtonStyles } = {
   [BUTTON_VARIANT.DANGER]: {
     default: {
       color: color('neutral', 'white'),
-      backgroundColor: themeColor('danger', '700'),
+      backgroundColor: color('danger', '700'),
       textDecoration: 'none',
       boxShadow: `0 0 0 1px ${themeColor('danger', '700')}`,
     },
     hover: {
-      backgroundColor: themeColor('danger', '800'),
+      backgroundColor: color('danger', '800'),
       boxShadow: `0 0 0 2px ${themeColor('danger', '900')}`,
     },
     focus: {
-      backgroundColor: themeColor('danger', '700'),
+      backgroundColor: color('danger', '700'),
       boxShadow: `0 0 0 3px ${themeColor('danger', '900')}`,
     },
     active: {
