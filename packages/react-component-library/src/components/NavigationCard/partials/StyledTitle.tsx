@@ -1,4 +1,4 @@
-import { color, fontSize } from '@royalnavy/design-tokens'
+import { themeColor, fontSize } from '@royalnavy/design-tokens'
 import { styled } from 'styled-components'
 
 import { getShade } from '../helpers'
@@ -18,7 +18,7 @@ export const StyledTitle = styled.span<StyledTitleProps>`
   line-height: 1.3;
 
   a {
-    color: ${color('neutral', '700')};
+    color: ${themeColor('neutral', '700')};
     text-decoration: none;
     outline: 0;
 

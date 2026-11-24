@@ -1,8 +1,8 @@
 import { styled } from 'styled-components'
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledTableCell = styled.td`
   padding: ${spacing('4')} ${spacing('4')};
   font-size: ${fontSize('s')};
-  color: ${color('neutral', '500')};
+  color: ${themeColor('neutral', '500')};
 `

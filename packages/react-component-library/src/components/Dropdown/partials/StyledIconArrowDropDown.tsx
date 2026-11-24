@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { IconArrowDropDown } from '@royalnavy/icon-library'
 
@@ -16,7 +16,7 @@ export const StyledIconArrowDropDown: React.ComponentType<StyledIconArrowDropDow
   left: -4px;
 
   color: ${({ $isOpen }) =>
-    $isOpen ? color('action', '600') : color('neutral', '200')};
+    $isOpen ? themeColor('action', '600') : themeColor('neutral', '200')};
   transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transform: ${({ $isOpen }) =>
     $isOpen ? css`translateY(-2px) rotate(180deg)` : ''};

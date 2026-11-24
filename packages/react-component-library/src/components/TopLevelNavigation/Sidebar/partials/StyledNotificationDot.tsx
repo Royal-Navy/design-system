@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color, fontSize, colorValue } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, color } from '@royalnavy/design-tokens'
 
 export const StyledNotificationDot = styled.span`
   position: absolute;
@@ -11,9 +11,9 @@ export const StyledNotificationDot = styled.span`
   width: 24px;
   height: 24px;
   border-radius: 9999px;
-  background-color: ${color('danger', '600')};
-  border: 3px solid ${colorValue('neutral', '700')};
-  color: ${colorValue('neutral', 'white')};
+  background-color: ${themeColor('danger', '600')};
+  border: 3px solid ${color('neutral', '700')};
+  color: ${color('neutral', 'white')};
   font-size: ${fontSize('s')};
   font-weight: 600;
 `

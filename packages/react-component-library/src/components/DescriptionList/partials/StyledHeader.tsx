@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { animation, color, spacing } from '@royalnavy/design-tokens'
+import { animation, themeColor, spacing } from '@royalnavy/design-tokens'
 
 import { StyledAction } from './StyledAction'
 import { StyledDescriptionListProps } from './StyledDescriptionList'
@@ -19,18 +19,18 @@ export const StyledHeader = styled.button<StyledDescriptionListProps>`
     $isCollapsible &&
     css`
       padding: ${spacing('3')} ${spacing('2')} ${spacing('3')} ${spacing('2')};
-      background-color: ${color('neutral', 'white')};
-      border-bottom: 1px solid ${color('neutral', '100')};
+      background-color: ${themeColor('neutral', 'white')};
+      border-bottom: 1px solid ${themeColor('neutral', '100')};
       transition: color ${animation('default')};
       cursor: pointer;
       outline: none;
       pointer-events: all;
 
       &:hover {
-        background-color: ${color('neutral', '000')};
+        background-color: ${themeColor('neutral', '000')};
 
         ${StyledAction} {
-          background-color: ${color('neutral', '200')};
+          background-color: ${themeColor('neutral', '200')};
         }
       }
     `}

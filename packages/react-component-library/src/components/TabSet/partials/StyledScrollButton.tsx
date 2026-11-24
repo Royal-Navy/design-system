@@ -1,4 +1,4 @@
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 import { styled, css } from 'styled-components'
 import { ACTIVE_TAB_HEIGHT } from '../../TabBase/partials/StyledTab'
 import { TAB_VARIANT } from '../../TabBase/constants'
@@ -9,9 +9,9 @@ export interface StyledScrollButtonProps {
 }
 
 export const StyledScrollButton = styled.button<StyledScrollButtonProps>`
-  background: ${color('neutral', 'white')};
+  background: ${themeColor('neutral', 'white')};
   border: none;
-  color: ${color('action', '500')};
+  color: ${themeColor('action', '500')};
   cursor: pointer;
   display: inline-flex;
   justify-content: center;

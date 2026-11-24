@@ -1,5 +1,5 @@
 import { rgba } from 'polished'
-import { color, colorValue, spacing } from '@royalnavy/design-tokens'
+import { themeColor, color, spacing } from '@royalnavy/design-tokens'
 import { styled } from 'styled-components'
 
 import { MAIN_HEIGHT } from './constants'
@@ -18,14 +18,14 @@ export const StyledBanner = styled.div<{ $withInlineNav?: boolean }>`
 
   & > a {
     text-decoration: none;
-    color: ${color('action', '900')};
+    color: ${themeColor('action', '900')};
 
     &:hover {
       text-decoration: none;
     }
 
     &:focus {
-      box-shadow: 0 0 0 0.2rem ${rgba(colorValue('action', '700'), 0.5)};
+      box-shadow: 0 0 0 0.2rem ${rgba(color('action', '700'), 0.5)};
     }
   }
 `

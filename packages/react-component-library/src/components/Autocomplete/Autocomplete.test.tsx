@@ -1,4 +1,4 @@
-import { color, TypographyS } from '@royalnavy/design-tokens'
+import { themeColor, TypographyS } from '@royalnavy/design-tokens'
 import React from 'react'
 
 import { render, RenderResult, waitFor } from '@testing-library/react'
@@ -9,10 +9,9 @@ import { BORDER_WIDTH } from '../../styled-components'
 import { Autocomplete, AutocompleteOption } from '.'
 import { TEXT_INPUT_INPUT_HEIGHT } from '../TextInput/partials/StyledInput'
 
-const ERROR_BOX_SHADOW = `0 0 0 ${BORDER_WIDTH[COMPONENT_SIZE.FORMS]} ${color(
-  'danger',
-  '800'
-)}`
+const ERROR_BOX_SHADOW = `0 0 0 ${
+  BORDER_WIDTH[COMPONENT_SIZE.FORMS]
+} ${themeColor('danger', '800')}`
 
 describe('Autocomplete', () => {
   let onBlurSpy: jest.Mock

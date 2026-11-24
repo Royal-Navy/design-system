@@ -1,13 +1,13 @@
-import { color, spacing } from '@royalnavy/design-tokens'
+import { themeColor, spacing } from '@royalnavy/design-tokens'
 import { styled } from 'styled-components'
 
 export const StyledItemAction = styled.span`
   align-items: center;
-  background-color: ${color('neutral', 'white')};
-  border: 1px solid ${color('neutral', '200')};
+  background-color: ${themeColor('neutral', 'white')};
+  border: 1px solid ${themeColor('neutral', '200')};
   border-radius: 2px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
-  color: ${color('neutral', '300')};
+  color: ${themeColor('neutral', '300')};
   display: inline-flex;
   height: 1.5rem;
   justify-content: center;

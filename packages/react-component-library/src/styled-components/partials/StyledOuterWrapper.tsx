@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { COMPONENT_SIZE, ComponentSizeType } from '../../components/Forms'
 
@@ -33,10 +33,10 @@ export interface StyledOuterWrapperProps {
 export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
   ${({ $hasFocus, $isDisabled, $isInvalid, $size = COMPONENT_SIZE.FORMS }) => {
     const defaults = css`
-      background-color: ${color('neutral', 'white')};
+      background-color: ${themeColor('neutral', 'white')};
       border: none;
       border-radius: ${BORDER_RADIUS[$size]};
-      box-shadow: 0 0 0 1px ${color('neutral', '200')};
+      box-shadow: 0 0 0 1px ${themeColor('neutral', '200')};
       transition: border-color 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
         box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     `
@@ -44,15 +44,15 @@ export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
     if ($hasFocus) {
       return css`
         ${defaults};
-        box-shadow: 0 0 0 ${BORDER_WIDTH[$size]} ${color('action', '500')},
-          0 0 0 ${SECONDARY_BORDER_WIDTH[$size]} ${color('action', '100')};
+        box-shadow: 0 0 0 ${BORDER_WIDTH[$size]} ${themeColor('action', '500')},
+          0 0 0 ${SECONDARY_BORDER_WIDTH[$size]} ${themeColor('action', '100')};
       `
     }
 
     if ($isDisabled) {
       return css`
         ${defaults};
-        background-color: ${color('neutral', '000')};
+        background-color: ${themeColor('neutral', '000')};
         box-shadow: unset;
 
         * {
@@ -64,7 +64,7 @@ export const StyledOuterWrapper = styled.div<StyledOuterWrapperProps>`
     if ($isInvalid) {
       return css`
         ${defaults};
-        box-shadow: 0 0 0 ${BORDER_WIDTH[$size]} ${color('danger', '800')};
+        box-shadow: 0 0 0 ${BORDER_WIDTH[$size]} ${themeColor('danger', '800')};
       `
     }
 

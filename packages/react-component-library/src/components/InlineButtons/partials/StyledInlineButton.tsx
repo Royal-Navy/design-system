@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { ComponentSizeType } from '../../Forms'
 import { StyledIconWrapper } from './StyledIconWrapper'
@@ -19,12 +19,12 @@ export const StyledInlineButton = styled.button<StyledButtonProps>`
   cursor: pointer;
   background: transparent;
   outline: none;
-  color: ${color('action', '700')};
+  color: ${themeColor('action', '700')};
   border: none;
   height: 100%;
 
   &:disabled {
-    color: ${color('neutral', '300')};
+    color: ${themeColor('neutral', '300')};
     cursor: not-allowed;
   }
 
@@ -35,7 +35,7 @@ export const StyledInlineButton = styled.button<StyledButtonProps>`
   &:enabled:focus,
   &:enabled:hover {
     ${StyledIconWrapper} {
-      background-color: ${color('action', '000')};
+      background-color: ${themeColor('action', '000')};
     }
   }
 
@@ -43,13 +43,13 @@ export const StyledInlineButton = styled.button<StyledButtonProps>`
     $hasHover &&
     css`
       ${StyledIconWrapper} {
-        background-color: ${color('action', '000')};
+        background-color: ${themeColor('action', '000')};
       }
     `}
 
   &:enabled:active {
     ${StyledIconWrapper} {
-      background-color: ${color('action', '100')};
+      background-color: ${themeColor('action', '100')};
     }
   }
 `

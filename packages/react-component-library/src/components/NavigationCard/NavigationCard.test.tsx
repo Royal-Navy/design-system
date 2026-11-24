@@ -1,4 +1,4 @@
-import { color, colorValue } from '@royalnavy/design-tokens'
+import { themeColor, color } from '@royalnavy/design-tokens'
 import { IconHome } from '@royalnavy/icon-library'
 import { tint } from 'polished'
 import { render, screen } from '@testing-library/react'
@@ -129,7 +129,7 @@ describe('NavigationCard', () => {
 
     expect(screen.getByTestId('navigation-card-icon')).toHaveStyleRule(
       'background-color',
-      color(cardColor, '100')
+      themeColor(cardColor, '100')
     )
   })
 
@@ -151,7 +151,7 @@ describe('NavigationCard', () => {
   it('derives the icon panel tint from a design token colour', () => {
     render(
       <NavigationCard
-        color={color('supa', '500')}
+        color={themeColor('supa', '500')}
         icon={<IconHome />}
         link={<a href="/library">File library</a>}
       />
@@ -159,7 +159,7 @@ describe('NavigationCard', () => {
 
     expect(screen.getByTestId('navigation-card-icon')).toHaveStyleRule(
       'background-color',
-      tint(0.85, colorValue('supa', '500'))
+      tint(0.85, color('supa', '500'))
     )
   })
 })

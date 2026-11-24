@@ -7,7 +7,7 @@ import {
   RenderResult,
   waitFor,
 } from '@testing-library/react'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { List, ListItem } from '.'
 
@@ -144,11 +144,11 @@ describe('List', () => {
         return waitFor(() => {
           expect(wrapper.getAllByTestId('list-item')[1]).toHaveStyleRule(
             'background-color',
-            color('neutral', '000')
+            themeColor('neutral', '000')
           )
           expect(wrapper.getAllByTestId('list-item')[2]).toHaveStyleRule(
             'background-color',
-            color('neutral', '000')
+            themeColor('neutral', '000')
           )
         })
       })
@@ -170,11 +170,11 @@ describe('List', () => {
           return waitFor(() => {
             expect(wrapper.getAllByTestId('list-item')[0]).toHaveStyleRule(
               'background-color',
-              color('neutral', '000')
+              themeColor('neutral', '000')
             )
             expect(wrapper.getAllByTestId('list-item')[2]).toHaveStyleRule(
               'background-color',
-              color('neutral', '000')
+              themeColor('neutral', '000')
             )
           })
         })

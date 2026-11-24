@@ -1,5 +1,5 @@
 import { css } from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { themeColor, spacing } from '@royalnavy/design-tokens'
 
 import { COMPONENT_SIZE, ComponentSizeType } from '../Forms'
 
@@ -30,9 +30,9 @@ export function getContainerFocusStyles(size: ComponentSizeType) {
     &:focus-within,
     &:active {
       outline: none;
-      border-color: ${color('action', '500')};
-      box-shadow: 0 0 0 ${inner} ${color('action', '500')},
-        0 0 0 ${outer} ${color('action', '100')};
+      border-color: ${themeColor('action', '500')};
+      box-shadow: 0 0 0 ${inner} ${themeColor('action', '500')},
+        0 0 0 ${outer} ${themeColor('action', '100')};
     }
   `
 }

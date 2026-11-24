@@ -1,8 +1,9 @@
 import { styled, css } from 'styled-components'
 import {
   animation,
-  color,
+  themeColor,
   colorByMode,
+  isDarkColorMode,
   spacing,
   Theme,
 } from '@royalnavy/design-tokens'
@@ -18,9 +19,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
   transition: all ${animation('default')};
 
   background-color: ${({ theme }) =>
-    (theme as Theme)?.mode === 'dark'
+    isDarkColorMode(theme as Theme)
       ? 'transparent'
-      : color('neutral', '000', theme as Theme)};
+      : themeColor('neutral', '000')};
   color: ${({ $isDisabled, theme }) =>
     colorByMode(
       'neutral',
@@ -37,7 +38,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
     ${({ $isDisabled }) =>
       !$isDisabled &&
       css`
-        background-color: ${color('neutral', '100')};
+        background-color: ${themeColor('neutral', '100')};
       `}
   }
 

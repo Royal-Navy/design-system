@@ -1,5 +1,5 @@
 import {
-  color,
+  themeColor,
   colorByMode,
   spacing,
   Theme,
@@ -24,6 +24,6 @@ export const StyledProgressBar = styled.div<StyledProgressBarProps>`
     $isDisabled &&
     css`
       cursor: not-allowed;
-      background-color: ${color('neutral', '000')};
+      background-color: ${themeColor('neutral', '000')};
     `}
 `

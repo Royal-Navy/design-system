@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledEmptyStateCell = styled.td`
   height: 100%;
@@ -40,8 +40,8 @@ export const StyledEmptyStateIcon = styled.div`
   aspect-ratio: 1;
 
   border-radius: 50%;
-  background: ${color('neutral', '100')};
-  color: ${color('neutral', '300')};
+  background: ${themeColor('neutral', '100')};
+  color: ${themeColor('neutral', '300')};
 
   svg {
     width: 45%;
@@ -52,7 +52,7 @@ export const StyledEmptyStateIcon = styled.div`
 export const StyledEmptyStateTitle = styled.p`
   margin: 0;
   flex-shrink: 0;
-  color: ${color('neutral', '600')};
+  color: ${themeColor('neutral', '600')};
   font-size: ${fontSize('l')};
   font-weight: 600;
 `

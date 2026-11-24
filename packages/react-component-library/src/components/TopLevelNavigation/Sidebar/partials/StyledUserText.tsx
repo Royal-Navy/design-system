@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { fontSize, spacing, colorValue } from '@royalnavy/design-tokens'
+import { fontSize, spacing, color } from '@royalnavy/design-tokens'
 
 import {
   getTransitionOpacity,
@@ -27,13 +27,13 @@ export const StyledUserText = styled.div<TransitionProps>`
     }
 
     > span {
-      color: ${colorValue('neutral', 'white')};
+      color: ${color('neutral', 'white')};
       font-size: ${fontSize('m')};
     }
 
     a span {
       margin-top: ${spacing('1')};
-      color: ${colorValue('neutral', '300')};
+      color: ${color('neutral', '300')};
       font-size: ${fontSize('s')};
     }
   }

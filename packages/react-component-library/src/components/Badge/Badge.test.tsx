@@ -2,7 +2,7 @@ import React from 'react'
 
 import 'jest-styled-components'
 import {
-  color,
+  themeColor,
   ColorGroup,
   ColorShade,
   darkTheme,
@@ -71,11 +71,11 @@ describe('Badge', () => {
 
       expect(wrapper.getByTestId('badge')).toHaveStyleRule(
         'color',
-        color(group, lightShade)
+        themeColor(group, lightShade)
       )
     })
 
-    it('uses the dark shade for the text in the dark theme', () => {
+    it('keeps the light shade for the dark theme without colour modes', () => {
       wrapper = render(
         <GlobalStyleProvider theme={darkTheme}>
           {renderBadge()}
@@ -84,7 +84,20 @@ describe('Badge', () => {
 
       expect(wrapper.getByTestId('badge')).toHaveStyleRule(
         'color',
-        color(group, darkShade, darkTheme)
+        themeColor(group, lightShade)
+      )
+    })
+
+    it('uses the dark shade for the dark theme with colour modes', () => {
+      wrapper = render(
+        <GlobalStyleProvider theme={darkTheme} unstable_colorModes>
+          {renderBadge()}
+        </GlobalStyleProvider>
+      )
+
+      expect(wrapper.getByTestId('badge')).toHaveStyleRule(
+        'color',
+        themeColor(group, darkShade)
       )
     })
   })

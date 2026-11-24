@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { colorValue } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 export const StyledSheetList = styled.ol`
   list-style-type: none;
@@ -8,7 +8,7 @@ export const StyledSheetList = styled.ol`
 
   a,
   a:hover {
-    color: ${colorValue('neutral', 'white')};
+    color: ${color('neutral', 'white')};
     text-decoration: none;
   }
 `

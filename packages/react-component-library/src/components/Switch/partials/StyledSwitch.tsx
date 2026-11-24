@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, fontSize } from '@royalnavy/design-tokens'
+import { themeColor, fontSize } from '@royalnavy/design-tokens'
 
 import { StyledContainer } from './StyledContainer'
 import { StyledSwitchOption } from './StyledSwitchOption'
@@ -39,8 +39,8 @@ export const StyledSwitch = styled.div<StyledSwitchProps>`
 
           &:focus-within,
           &:active {
-            box-shadow: 0 0 0 1px ${color('action', '500')},
-              0 0 0 3px ${color('action', '100')};
+            box-shadow: 0 0 0 1px ${themeColor('action', '500')},
+              0 0 0 3px ${themeColor('action', '100')};
           }
         }
       }
@@ -50,7 +50,7 @@ export const StyledSwitch = styled.div<StyledSwitchProps>`
     $isDisabled &&
     css`
       ${StyledContainer} {
-        background-color: ${color('neutral', '000')};
+        background-color: ${themeColor('neutral', '000')};
       }
     `}
 
@@ -59,32 +59,32 @@ export const StyledSwitch = styled.div<StyledSwitchProps>`
     css`
       & {
         ${StyledContainer} {
-          box-shadow: 0 0 0 2px ${color('danger', '800')};
+          box-shadow: 0 0 0 2px ${themeColor('danger', '800')};
         }
 
         ${StyledLegend} {
-          color: ${color('danger', '800')};
+          color: ${themeColor('danger', '800')};
         }
 
         ${StyledSwitchOption} {
-          border-top-color: ${color('danger', '800')};
-          border-bottom-color: ${color('danger', '800')};
+          border-top-color: ${themeColor('danger', '800')};
+          border-bottom-color: ${themeColor('danger', '800')};
 
           &:first-of-type {
-            border-left-color: ${color('danger', '800')};
+            border-left-color: ${themeColor('danger', '800')};
           }
 
           &:last-of-type {
-            border-right-color: ${color('danger', '800')};
+            border-right-color: ${themeColor('danger', '800')};
           }
 
           &:focus-within,
           &:active {
             z-index: 1;
             outline: none;
-            border-color: ${color('action', '500')};
-            box-shadow: 0 0 0 2px ${color('action', '500')},
-              0 0 0 5px ${color('action', '100')};
+            border-color: ${themeColor('action', '500')};
+            box-shadow: 0 0 0 2px ${themeColor('action', '500')},
+              0 0 0 5px ${themeColor('action', '100')};
           }
         }
       }

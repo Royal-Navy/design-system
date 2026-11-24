@@ -1,4 +1,4 @@
-import { color, mq, spacing } from '@royalnavy/design-tokens'
+import { themeColor, mq, spacing } from '@royalnavy/design-tokens'
 import { styled, css } from 'styled-components'
 
 import { StyledButton } from './StyledButton'
@@ -8,14 +8,14 @@ interface StyledFooterProps {
 }
 
 export const StyledFooter = styled.footer<StyledFooterProps>`
-  background-color: ${color('neutral', 'white')};
+  background-color: ${themeColor('neutral', 'white')};
   display: flex;
   justify-content: ${({ $hasTertiaryButton }) =>
     $hasTertiaryButton ? 'space-between' : 'flex-end'};
   width: 100%;
   padding: ${spacing('8')};
   flex-direction: column-reverse;
-  border-top: 1px solid ${color('neutral', '100')};
+  border-top: 1px solid ${themeColor('neutral', '100')};
 
   ${StyledButton} + ${StyledButton} {
     margin-bottom: ${spacing('4')};

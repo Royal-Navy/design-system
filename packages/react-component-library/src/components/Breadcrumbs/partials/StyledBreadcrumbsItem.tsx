@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { animation, color, spacing } from '@royalnavy/design-tokens'
+import { animation, themeColor, spacing } from '@royalnavy/design-tokens'
 
 export const StyledBreadcrumbsItem = styled.li`
   display: inline-flex;
@@ -7,12 +7,12 @@ export const StyledBreadcrumbsItem = styled.li`
   align-items: center;
 
   > a {
-    color: ${color('neutral', '400')};
+    color: ${themeColor('neutral', '400')};
     font-weight: 400;
     text-decoration: none;
 
     &:hover {
-      color: ${color('action', '500')};
+      color: ${themeColor('action', '500')};
     }
   }
 

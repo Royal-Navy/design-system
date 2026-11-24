@@ -1,6 +1,6 @@
 import { position } from 'polished'
 import { styled, css } from 'styled-components'
-import { color, colorValue } from '@royalnavy/design-tokens'
+import { themeColor, color } from '@royalnavy/design-tokens'
 
 import { StyledCheckbox } from './StyledCheckbox'
 import { CheckmarkProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
@@ -8,7 +8,7 @@ import { CheckmarkProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
 function getCheckboxActiveStyle() {
   return css`
     &::before {
-      box-shadow: 0 0 0 2px ${color('action', '500')};
+      box-shadow: 0 0 0 2px ${themeColor('action', '500')};
     }
   `
 }
@@ -18,8 +18,8 @@ export const StyledCheckmark = styled.span<CheckmarkProps>`
   position: relative;
   height: 100%;
   width: 100%;
-  background-color: ${color('neutral', 'white')};
-  border: 1px solid ${color('neutral', '200')};
+  background-color: ${themeColor('neutral', 'white')};
+  border: 1px solid ${themeColor('neutral', '200')};
   border-radius: 3px;
 
   &::before {
@@ -32,7 +32,7 @@ export const StyledCheckmark = styled.span<CheckmarkProps>`
     content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPgogICAgPHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMywgNCkiIGQ9Ik04LjgyMiAwYzEuMDUtLjAyNyAxLjU3NCAxLjMwNC44MjcgMi4wOEw0LjI5OCA3Ljc0YS44My44MyAwIDAgMS0xLjIwNyAwTC4zNzYgNC44NTVDLS43NTIgMy43MTguOTE0IDEuOTU2IDEuOTkgMy4xNDlsMS41MDggMS41OTVjLjEwNS4xMS4yODguMTEuNDA3IDBsNC4xMy00LjM3QTEuMSAxLjEgMCAwIDEgOC44MjMgMHoiCiAgICAgICAgICBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KPC9zdmc+Cg==);
     display: none;
     border-radius: 2px;
-    color: ${colorValue('neutral', 'white')};
+    color: ${color('neutral', 'white')};
     position: absolute;
     top: 50%;
     left: 50%;
@@ -57,8 +57,8 @@ export const StyledCheckmark = styled.span<CheckmarkProps>`
   }}
 
   ${StyledCheckbox} input:indeterminate ~ & {
-    background-color: ${color('action', '500')};
-    border: 1px solid ${color('action', '500')};
+    background-color: ${themeColor('action', '500')};
+    border: 1px solid ${themeColor('action', '500')};
 
     &::after {
       content: '-';
@@ -67,13 +67,13 @@ export const StyledCheckmark = styled.span<CheckmarkProps>`
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: ${colorValue('neutral', 'white')};
+      color: ${color('neutral', 'white')};
     }
   }
 
   ${StyledCheckbox} input:checked ~ & {
-    background-color: ${color('action', '500')};
-    border: 1px solid ${color('action', '500')};
+    background-color: ${themeColor('action', '500')};
+    border: 1px solid ${themeColor('action', '500')};
     text-align: center;
 
     &::after {
@@ -82,9 +82,9 @@ export const StyledCheckmark = styled.span<CheckmarkProps>`
   }
 
   ${StyledCheckbox} input:disabled ~ && {
-    background-color: ${color('neutral', '000')};
+    background-color: ${themeColor('neutral', '000')};
     border-color: ${({ $hasContainer }) =>
-      color('neutral', $hasContainer ? '200' : '100')};
+      themeColor('neutral', $hasContainer ? '200' : '100')};
 
     &::before {
       box-shadow: none;
@@ -93,6 +93,6 @@ export const StyledCheckmark = styled.span<CheckmarkProps>`
 
   ${StyledCheckbox} input:disabled:checked ~ && {
     background-color: ${({ $hasContainer }) =>
-      color('neutral', $hasContainer ? '200' : '100')};
+      themeColor('neutral', $hasContainer ? '200' : '100')};
   }
 `

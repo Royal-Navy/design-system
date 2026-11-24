@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, fontSize } from '@royalnavy/design-tokens'
+import { themeColor, fontSize } from '@royalnavy/design-tokens'
 
 import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
 
@@ -28,7 +28,7 @@ interface StyledLabelProps {
 
 export const StyledLabel = styled.label<StyledLabelProps>`
   color: ${({ $hasContainer, $isDisabled }) =>
-    color('neutral', $isDisabled && !$hasContainer ? '300' : '400')};
+    themeColor('neutral', $isDisabled && !$hasContainer ? '300' : '400')};
   font-size: ${({ $size }) => LABEL_FONT_SIZE[$size]};
   pointer-events: none;
   padding: 4px;

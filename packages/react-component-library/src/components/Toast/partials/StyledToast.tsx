@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, shadow } from '@royalnavy/design-tokens'
+import { themeColor, shadow } from '@royalnavy/design-tokens'
 
 import { StyledLabel } from './StyledLabel'
 import { Appearance } from '../Toast'
@@ -9,20 +9,20 @@ interface StyledToastProps {
 }
 
 const colors = {
-  success: color('success', '500'),
-  error: color('danger', '500'),
-  warning: color('warning', '500'),
-  info: color('action', '500'),
+  success: themeColor('success', '500'),
+  error: themeColor('danger', '500'),
+  warning: themeColor('warning', '500'),
+  info: themeColor('action', '500'),
 }
 
 export const StyledToast = styled.div<StyledToastProps>`
   box-shadow: ${shadow('2')};
   display: flex;
   flex-direction: column;
-  border: 1px solid ${color('neutral', '100')};
+  border: 1px solid ${themeColor('neutral', '100')};
   border-radius: 4px;
   width: 340px;
-  background-color: ${color('neutral', 'white')};
+  background-color: ${themeColor('neutral', 'white')};
 
   ${({ $appearance }) => css`
     ${StyledLabel} > svg {

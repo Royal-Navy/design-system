@@ -1,11 +1,12 @@
 import { DayPicker } from 'react-day-picker'
 import {
-  color,
+  themeColor,
   spacing,
   fontSize,
-  colorValue,
+  color,
   colorByMode,
   Theme,
+  isDarkColorMode,
 } from '@royalnavy/design-tokens'
 import { css, styled } from 'styled-components'
 
@@ -77,7 +78,7 @@ export const StyledDayPicker = styled(DayPicker)`
   .rdp-caption_label {
     width: 100%;
     height: 1.5rem;
-    color: ${color('neutral', '600')};
+    color: ${themeColor('neutral', '600')};
     font-size: ${fontSize('base')};
     font-weight: 400;
     line-height: 1.5rem;
@@ -97,7 +98,7 @@ export const StyledDayPicker = styled(DayPicker)`
     text-align: center;
     text-transform: uppercase;
     font-size: ${fontSize('xs')};
-    color: ${color('neutral', '400')};
+    color: ${themeColor('neutral', '400')};
     font-weight: 600;
   }
 
@@ -107,7 +108,7 @@ export const StyledDayPicker = styled(DayPicker)`
     width: ${DAY_SIZE};
 
     &:not(:empty) {
-      border: 1px solid ${color('neutral', '000')};
+      border: 1px solid ${themeColor('neutral', '000')};
     }
   }
 
@@ -118,7 +119,7 @@ export const StyledDayPicker = styled(DayPicker)`
     font-size: ${fontSize('m')};
     font-weight: 400;
     background: transparent;
-    color: ${color('neutral', '500')};
+    color: ${themeColor('neutral', '500')};
     text-align: center;
     vertical-align: middle;
     height: 100%;
@@ -131,13 +132,13 @@ export const StyledDayPicker = styled(DayPicker)`
     }
 
     &.rdp-day_selected {
-      background-color: ${color('action', '100')};
+      background-color: ${themeColor('action', '100')};
     }
 
     &.rdp-day_start,
     &.rdp-day_end {
-      color: ${colorValue('neutral', 'white')};
-      background-color: ${color('action', '700')};
+      color: ${color('neutral', 'white')};
+      background-color: ${themeColor('action', '700')};
     }
 
     &:focus {
@@ -150,24 +151,24 @@ export const StyledDayPicker = styled(DayPicker)`
         top: 0;
         right: 0;
         bottom: 0;
-        box-shadow: 0 0 0 2px ${color('action', '500')},
-          0 0 0 4px ${color('action', '100')};
+        box-shadow: 0 0 0 2px ${themeColor('action', '500')},
+          0 0 0 4px ${themeColor('action', '100')};
         z-index: 1000;
       }
     }
   }
 
   .rdp-day:not(.rdp-day_disabled):not(.rdp-day_start):not(.rdp-day_end):hover {
-    background-color: ${color('neutral', '100')};
+    background-color: ${themeColor('neutral', '100')};
   }
 
   .rdp-day_disabled {
-    color: ${color('neutral', '200')};
+    color: ${themeColor('neutral', '200')};
     pointer-events: none;
   }
 
   ${({ theme }) =>
-    (theme as Theme)?.mode === 'dark' &&
+    isDarkColorMode(theme as Theme) &&
     css`
       .rdp-nav_button {
         background-image: none;
@@ -179,7 +180,7 @@ export const StyledDayPicker = styled(DayPicker)`
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: ${color('neutral', '500')};
+          background-color: ${themeColor('neutral', '500')};
           -webkit-mask-position: center;
           mask-position: center;
           -webkit-mask-size: 18px;

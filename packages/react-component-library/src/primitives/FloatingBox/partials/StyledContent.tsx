@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, mq, spacing, colorValue } from '@royalnavy/design-tokens'
+import { themeColor, mq, spacing, color } from '@royalnavy/design-tokens'
 
 import { FloatingBoxSchemeType } from '../types'
 import { FLOATING_BOX_SCHEME } from '../constants'
@@ -11,24 +11,24 @@ interface StyledContentProps {
 
 const schemeStyleMap = {
   [FLOATING_BOX_SCHEME.LIGHT]: css`
-    background: ${color('neutral', 'white')};
-    border: ${color('neutral', '100')} solid ${spacing('px')};
+    background: ${themeColor('neutral', 'white')};
+    border: ${themeColor('neutral', '100')} solid ${spacing('px')};
 
     ${StyledArrow} {
       &::before {
-        border-color: ${color('neutral', '100')} transparent;
+        border-color: ${themeColor('neutral', '100')} transparent;
       }
 
       &::after {
-        border-color: ${color('neutral', 'white')} transparent;
+        border-color: ${themeColor('neutral', 'white')} transparent;
       }
     }
   `,
 
   [FLOATING_BOX_SCHEME.DARK]: css`
-    background: ${colorValue('neutral', '700')};
-    border: ${colorValue('neutral', '700')} solid ${spacing('px')};
-    color: ${colorValue('neutral', 'white')};
+    background: ${color('neutral', '700')};
+    border: ${color('neutral', '700')} solid ${spacing('px')};
+    color: ${color('neutral', 'white')};
 
     ${StyledArrow} {
       &::before {
@@ -36,7 +36,7 @@ const schemeStyleMap = {
       }
 
       &::after {
-        border-color: ${colorValue('neutral', '700')} transparent;
+        border-color: ${color('neutral', '700')} transparent;
       }
     }
   `,
@@ -48,7 +48,7 @@ export const StyledContent = styled.div<StyledContentProps>`
   left: 0;
   margin: 0;
   padding: 0;
-  background: ${color('neutral', 'white')};
+  background: ${themeColor('neutral', 'white')};
   box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.12);
 
   ${({ $scheme }) => $scheme && schemeStyleMap[$scheme]}

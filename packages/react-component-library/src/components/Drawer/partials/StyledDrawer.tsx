@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, zIndex } from '@royalnavy/design-tokens'
+import { themeColor, zIndex } from '@royalnavy/design-tokens'
 
 interface StyledDrawerProps {
   $isOpen?: boolean
@@ -13,7 +13,7 @@ export const StyledDrawer = styled.div<StyledDrawerProps>`
   height: 100%;
   z-index: ${zIndex('overlay', 1)};
   overflow: hidden;
-  background-color: ${color('neutral', 'white')};
+  background-color: ${themeColor('neutral', 'white')};
   box-shadow: inset 1px 0px 0px 0px rgb(226, 233, 238),
     -1px 0px 3px 0px rgba(0, 0, 0, 0.04);
 

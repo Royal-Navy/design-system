@@ -1,9 +1,9 @@
-import { color, mq } from '@royalnavy/design-tokens'
+import { themeColor, mq } from '@royalnavy/design-tokens'
 import { styled } from 'styled-components'
 
 export const StyledMain = styled.article`
-  border: 1px solid ${color('neutral', '200')};
-  background: ${color('neutral', 'white')};
+  border: 1px solid ${themeColor('neutral', '200')};
+  background: ${themeColor('neutral', 'white')};
   width: 100%;
   position: fixed;
   left: 0;

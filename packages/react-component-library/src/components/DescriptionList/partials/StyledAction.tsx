@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { animation, color, spacing } from '@royalnavy/design-tokens'
+import { animation, themeColor, spacing } from '@royalnavy/design-tokens'
 import { StyledDescriptionListProps } from './StyledDescriptionList'
 
 export const StyledAction = styled.span<StyledDescriptionListProps>`
@@ -13,7 +13,7 @@ export const StyledAction = styled.span<StyledDescriptionListProps>`
       display: flex;
       align-items: center;
       justify-content: center;
-      background: ${color('neutral', '100')};
+      background: ${themeColor('neutral', '100')};
       transition: background-color ${animation('default')};
 
       svg {

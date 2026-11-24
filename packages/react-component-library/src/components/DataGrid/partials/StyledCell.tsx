@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing } from '@royalnavy/design-tokens'
 
 interface StyledCellProps {
   $alignment?: 'left' | 'right' | 'center'
@@ -16,10 +16,10 @@ export const StyledCell = styled.td<StyledCellProps>`
   }};
   width: ${({ $width }) => ($width ? `${$width}px` : 'auto')};
   font-size: ${fontSize('s')};
-  color: ${color('neutral', '400')};
+  color: ${themeColor('neutral', '400')};
   text-align: ${({ $alignment }) => $alignment || 'left'};
   border-bottom: ${({ $hasBorder }) =>
-    $hasBorder && css`1px solid ${color('neutral', '200')};`}
+    $hasBorder && css`1px solid ${themeColor('neutral', '200')};`}
 
   &:last-of-type {
     border-right: unset;

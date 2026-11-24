@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { StyledLayoutProps } from './types'
 
@@ -8,7 +8,7 @@ export const StyledDataGrid = styled.div<
 >`
   display: inline-flex;
   flex-direction: column;
-  background: ${color('neutral', 'white')};
+  background: ${themeColor('neutral', 'white')};
 
   ${({ $hasScrolling }) =>
     $hasScrolling &&
@@ -16,7 +16,7 @@ export const StyledDataGrid = styled.div<
       height: 100%;
     `}
 
-  border-top: 1px solid ${color('neutral', '200')};
+  border-top: 1px solid ${themeColor('neutral', '200')};
 
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;

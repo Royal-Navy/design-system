@@ -1,22 +1,22 @@
 import { styled } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { StyledAvatar } from '../../../Avatar/partials/StyledAvatar'
 
 export const StyledWrapper = styled.div`
   a,
   a:hover {
-    color: ${color('neutral', '300')};
+    color: ${themeColor('neutral', '300')};
     text-decoration: none;
   }
 
   &:hover {
     ${StyledAvatar} {
-      background: ${color('action', '500')};
+      background: ${themeColor('action', '500')};
     }
 
     strong {
-      color: ${color('action', '500')};
+      color: ${themeColor('action', '500')};
     }
   }
 `

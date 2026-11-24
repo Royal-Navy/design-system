@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing } from '@royalnavy/design-tokens'
 
 import { COMPONENT_SIZE } from '../../Forms'
 import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInput/partials/StyledInput'
@@ -15,22 +15,22 @@ export const StyledOption = styled.li<StyledOptionsProps>`
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: ${color('neutral', '900')};
+  color: ${themeColor('neutral', '900')};
   font-size: ${fontSize('m')};
 
   &:hover:not([disabled]) {
-    background-color: ${color('neutral', '100')};
+    background-color: ${themeColor('neutral', '100')};
   }
 
   &[disabled] {
-    color: ${color('neutral', '400')};
+    color: ${themeColor('neutral', '400')};
     cursor: not-allowed;
   }
 
   ${({ $isHighlighted }) =>
     $isHighlighted &&
     css`
-      background-color: ${color('neutral', '100')};
+      background-color: ${themeColor('neutral', '100')};
     `}
 
   & > svg {

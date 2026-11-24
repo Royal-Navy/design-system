@@ -1,10 +1,10 @@
 import { styled } from 'styled-components'
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledButton = styled.button`
   background: none;
   border: none;
-  color: ${color('neutral', '400')};
+  color: ${themeColor('neutral', '400')};
   font-size: ${fontSize('base')};
   font-weight: 500;
   margin: 0;
@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    color: ${color('neutral', '400')};
-    background-color: ${color('neutral', '000')};
+    color: ${themeColor('neutral', '400')};
+    background-color: ${themeColor('neutral', '000')};
   }
 `

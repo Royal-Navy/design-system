@@ -11,7 +11,7 @@ import type {
   PaginationState,
 } from '@tanstack/react-table'
 import { userEvent, PointerEventsCheckLevel } from '@testing-library/user-event'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { themeColor, spacing } from '@royalnavy/design-tokens'
 
 import { DataGrid } from './DataGrid'
 import { DATA_GRID_PAGINATION_VARIANT } from './constants'
@@ -209,7 +209,10 @@ describe('DataGrid', () => {
 
     await hackyWaitFor()
 
-    expect(rows[1]).toHaveStyleRule('background-color', color('action', '100'))
+    expect(rows[1]).toHaveStyleRule(
+      'background-color',
+      themeColor('action', '100')
+    )
 
     userEvent.click(within(rows[1]).getAllByRole('cell')[1], {
       pointerEventsCheck: PointerEventsCheckLevel.Never,
