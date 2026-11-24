@@ -14,22 +14,19 @@ const THEMES = {
   dark: darkTheme,
 }
 
-function getThemeMode(context) {
-  const globals =
-    context?.store?.userGlobals?.globals ??
-    context?.store?.globals?.get?.() ??
-    context?.globals ??
-    {}
-
-  return globals.theme === 'dark' ? 'dark' : 'light'
+function toThemeMode(globals) {
+  return globals?.theme === 'dark' ? 'dark' : 'light'
 }
 
-function getThemeFromContext(context) {
-  return THEMES[getThemeMode(context)] ?? lightTheme
+// DocsContext doesn't expose globals publicly
+function getDocsThemeMode(context) {
+  return toThemeMode(
+    context?.store?.userGlobals?.globals ?? context?.store?.globals?.get?.()
+  )
 }
 
 const ThemedDocsContainer = ({ context, children }) => {
-  const mode = getThemeMode(context)
+  const mode = getDocsThemeMode(context)
 
   return (
     <DocsContainer
@@ -41,12 +38,12 @@ const ThemedDocsContainer = ({ context, children }) => {
   )
 }
 
-const ThemedCanvas = ({ theme, children }) => (
-  <GlobalStyleProvider theme={theme}>
+const DarkCanvas = ({ children }) => (
+  <GlobalStyleProvider theme={darkTheme}>
     <div
       style={{
-        background: color('neutral', 'white', theme),
-        color: color('neutral', '600', theme),
+        background: color('neutral', 'white', darkTheme),
+        color: color('neutral', '600', darkTheme),
         minHeight: '100vh',
         padding: '1rem 0',
       }}
@@ -117,18 +114,19 @@ export const parameters = {
 export const decorators = [
   // https://github.com/storybookjs/storybook/issues/15223#issuecomment-1092837912
   (Story, context) => {
-    const theme = getThemeFromContext(context)
+    const isDark = toThemeMode(context.globals) === 'dark'
     const queryParams = new URLSearchParams(window.location.search)
 
     if (queryParams.get('viewMode') === 'docs') {
-      // In docs, the surrounding GlobalStyleProvider is supplied by the
-      // themed docs container; only give each embedded preview a themed
-      // background so it doesn't sit on Storybook's default light canvas.
+      if (!isDark) {
+        return Story()
+      }
+
       return (
         <div
           style={{
-            background: color('neutral', '000', theme),
-            color: color('neutral', '600', theme),
+            background: color('neutral', '000', darkTheme),
+            color: color('neutral', '600', darkTheme),
           }}
         >
           {Story()}
@@ -136,7 +134,11 @@ export const decorators = [
       )
     }
 
-    return <ThemedCanvas theme={theme}>{Story()}</ThemedCanvas>
+    if (!isDark) {
+      return <GlobalStyleProvider>{Story()}</GlobalStyleProvider>
+    }
+
+    return <DarkCanvas>{Story()}</DarkCanvas>
   },
 ]
 
