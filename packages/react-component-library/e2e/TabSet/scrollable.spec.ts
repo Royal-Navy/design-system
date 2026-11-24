@@ -32,6 +32,18 @@ test.describe('TabSet, scrollable', () => {
     )
   })
 
+  test('fits the tab list to the active tab with no gap below', async ({
+    page,
+  }) => {
+    const tabItem = await page.locator(selectors.tabItem).nth(0).boundingBox()
+    const tabButton = await page
+      .locator(selectors.tabItemButton)
+      .nth(0)
+      .boundingBox()
+
+    expect(tabItem.height).toBe(tabButton.height)
+  })
+
   test('scrolls right one tab when the scroll right button is clicked', async ({
     page,
   }) => {
