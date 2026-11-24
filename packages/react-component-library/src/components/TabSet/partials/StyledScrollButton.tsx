@@ -25,5 +25,6 @@ export const StyledScrollButton = styled.button<StyledScrollButtonProps>`
     css`
       align-self: stretch;
       height: auto;
+      background: transparent;
     `}
 `

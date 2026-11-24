@@ -420,8 +420,12 @@ describe('TabSet', () => {
       ).not.toHaveStyleRule('border-top', `4px solid ${color('action', '500')}`)
     })
 
-    it('should rule under the tab list', () => {
-      expect(wrapper.getByTestId('tab-set-list')).toHaveStyleRule(
+    it('should rule under the full width of the header', () => {
+      expect(wrapper.getByTestId('tab-set-header')).toHaveStyleRule(
+        'box-shadow',
+        `inset 0 -1px 0 ${color('neutral', '200')}`
+      )
+      expect(wrapper.getByTestId('tab-set-list')).not.toHaveStyleRule(
         'box-shadow',
         `inset 0 -1px 0 ${color('neutral', '200')}`
       )
