@@ -170,9 +170,11 @@ export const GlobalStyleProvider = ({
       <BoxSizing />
       <ThemeVariables $variables={colorVariables} />
       {isDark && <DarkModeResets />}
-      <Hyperlinks />
       <Fonts />
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <Hyperlinks />
+        {children}
+      </ThemeProvider>
     </GlobalStyleContext.Provider>
   )
 }
