@@ -149,11 +149,9 @@ describe('NavigationCard', () => {
   })
 
   it('derives the icon panel tint from a design token colour', () => {
-    const tokenColor = colorValue('supa', '500')
-
     render(
       <NavigationCard
-        color={tokenColor}
+        color={color('supa', '500')}
         icon={<IconHome />}
         link={<a href="/library">File library</a>}
       />
@@ -161,7 +159,7 @@ describe('NavigationCard', () => {
 
     expect(screen.getByTestId('navigation-card-icon')).toHaveStyleRule(
       'background-color',
-      tint(0.85, tokenColor)
+      tint(0.85, colorValue('supa', '500'))
     )
   })
 })
