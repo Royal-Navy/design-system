@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color, fontSize } from '@royalnavy/design-tokens'
+import { themeColor, fontSize } from '@royalnavy/design-tokens'
 
 import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
 
@@ -24,7 +24,7 @@ export const StyledInput = styled.textarea<StyledInputProps>`
   margin: 0;
   border: 0;
   background: none;
-  color: ${color('neutral', '600')};
+  color: ${themeColor('neutral', '600')};
   font-size: ${({ $size }) => TEXT_AREA_FONT_SIZE[$size]};
   resize: vertical;
   overflow: auto;

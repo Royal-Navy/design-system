@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { fontSize, spacing, colorValue } from '@royalnavy/design-tokens'
+import { fontSize, spacing, color } from '@royalnavy/design-tokens'
 
 import {
   getTransitionOpacity,
@@ -9,7 +9,7 @@ import {
 export const StyledNotificationsLabel = styled.span<TransitionProps>`
   flex: 1;
   text-align: left;
-  color: ${colorValue('neutral', '100')};
+  color: ${color('neutral', '100')};
   font-size: ${fontSize('m')};
   margin-left: ${spacing('4')};
   white-space: nowrap;

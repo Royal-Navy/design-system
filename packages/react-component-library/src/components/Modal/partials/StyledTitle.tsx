@@ -1,8 +1,8 @@
-import { color, fontSize } from '@royalnavy/design-tokens'
+import { themeColor, fontSize } from '@royalnavy/design-tokens'
 import { styled } from 'styled-components'
 
 export const StyledTitle = styled.span`
   display: inline-block;
   font-size: ${fontSize('l')};
-  color: ${color('neutral', '500')};
+  color: ${themeColor('neutral', '500')};
 `

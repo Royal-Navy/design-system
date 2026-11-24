@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color, fontSize } from '@royalnavy/design-tokens'
+import { themeColor, fontSize } from '@royalnavy/design-tokens'
 
 interface StyledLabelProps {
   $marginLeft: string
@@ -11,7 +11,7 @@ export const StyledLabel = styled.span<StyledLabelProps>`
   position: absolute;
   margin-top: 14px;
   font-size: ${fontSize('s')};
-  color: ${color('neutral', '400')};
+  color: ${themeColor('neutral', '400')};
   text-align: center;
   margin-left: ${({ $marginLeft }) => $marginLeft};
   width: ${({ $width }) => $width};

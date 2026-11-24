@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, spacing, zIndex } from '@royalnavy/design-tokens'
+import { themeColor, spacing, zIndex } from '@royalnavy/design-tokens'
 
 import { TIMELINE_BORDER_COLOR } from '../constants'
 
@@ -30,9 +30,9 @@ export const StyledMonth = styled.div<StyledMonthProps>`
     height: 100vh;
     border-right: ${({ $hasThickBorder }) =>
       $hasThickBorder
-        ? css`2px solid ${color('neutral', '200')}`
+        ? css`2px solid ${themeColor('neutral', '200')}`
         : css`
-            ${spacing('px')} dashed ${color('neutral', '200')}
+            ${spacing('px')} dashed ${themeColor('neutral', '200')}
           `};
     z-index: ${zIndex('body', 1)};
   }

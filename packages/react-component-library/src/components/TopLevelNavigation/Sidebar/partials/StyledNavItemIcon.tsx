@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { colorValue } from '@royalnavy/design-tokens'
+import { color } from '@royalnavy/design-tokens'
 
 import { StyledNavItem } from './StyledNavItem'
 
@@ -17,10 +17,10 @@ export const StyledNavItemIcon = styled.div<StyledNavItemIconProps>`
   svg {
     width: 18px;
     height: 18px;
-    color: ${colorValue('neutral', '100')};
+    color: ${color('neutral', '100')};
 
     ${StyledNavItem}:hover & {
-      color: ${colorValue('neutral', 'white')};
+      color: ${color('neutral', 'white')};
     }
   }
 

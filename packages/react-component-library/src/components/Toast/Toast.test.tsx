@@ -1,5 +1,5 @@
 import React from 'react'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 import { render, screen, within, waitFor } from '@testing-library/react'
 
 import { TOAST_APPEARANCE, Toast, dismissToast, showToast } from '.'
@@ -54,7 +54,7 @@ it('renders the toast', async () => {
     'true'
   )
   expect(within(lastToast!).getByTestId('icon')).toHaveStyle({
-    color: color('action', '500'),
+    color: themeColor('action', '500'),
   })
 
   expect(screen.getByText(LABEL)).toBeInTheDocument()
@@ -77,7 +77,7 @@ it('sets new props when `showToast` is called with new props', async () => {
   expect(within(lastToast!).getByText(expectedNewLabel)).toBeInTheDocument()
   expect(within(lastToast!).getByText(expectedNewMessage)).toBeInTheDocument()
   expect(within(lastToast!).getByTestId('icon')).toHaveStyle({
-    color: color('danger', '500'),
+    color: themeColor('danger', '500'),
   })
 })
 

@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledViewAll = styled.span`
   font-size: ${fontSize('s')};
@@ -7,7 +7,7 @@ export const StyledViewAll = styled.span`
   text-align: right;
   margin-right: ${spacing('6')};
   margin-bottom: ${spacing('6')};
-  color: ${color('action', '300')};
+  color: ${themeColor('action', '300')};
 
   svg {
     position: relative;

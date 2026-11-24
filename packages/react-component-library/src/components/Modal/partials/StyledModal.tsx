@@ -1,4 +1,9 @@
-import { color, Theme, zIndex } from '@royalnavy/design-tokens'
+import {
+  themeColor,
+  Theme,
+  zIndex,
+  isDarkColorMode,
+} from '@royalnavy/design-tokens'
 import { css, styled } from 'styled-components'
 
 export const StyledModal = styled.dialog`
@@ -11,8 +16,8 @@ export const StyledModal = styled.dialog`
   z-index: ${zIndex('modal', 1)};
 
   ${({ theme }) =>
-    (theme as Theme)?.mode === 'dark' &&
+    isDarkColorMode(theme as Theme) &&
     css`
-      color: ${color('neutral', '600')};
+      color: ${themeColor('neutral', '600')};
     `}
 `

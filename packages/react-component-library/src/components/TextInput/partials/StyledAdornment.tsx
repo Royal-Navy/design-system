@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { themeColor, spacing } from '@royalnavy/design-tokens'
 
 import { COMPONENT_SIZE, ComponentSizeType } from '../../Forms'
 
@@ -32,7 +32,7 @@ export const StyledAdornment = styled.div<StyledAdornmentProps>`
   flex-direction: column;
   text-align: center;
   padding: ${({ $size }) => ADORNMENT_PADDING[$size]};
-  color: ${color('neutral', '400')};
+  color: ${themeColor('neutral', '400')};
 
   ${({ $position }) => positionStyles[$position]}
 `

@@ -1,6 +1,6 @@
 import { format, isValid } from 'date-fns'
 import React, { useState } from 'react'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 import {
   act,
   fireEvent,
@@ -18,10 +18,9 @@ import { TEXT_INPUT_INPUT_HEIGHT } from '../../TextInput/partials/StyledInput'
 
 const NOW = '2019-12-05T11:00:00.000Z'
 
-const ERROR_BOX_SHADOW = `0 0 0 ${BORDER_WIDTH[COMPONENT_SIZE.FORMS]} ${color(
-  'danger',
-  '800'
-)}`
+const ERROR_BOX_SHADOW = `0 0 0 ${
+  BORDER_WIDTH[COMPONENT_SIZE.FORMS]
+} ${themeColor('danger', '800')}`
 
 const PREVIOUS_MONTH_BUTTON_LABEL = 'Go to previous month'
 

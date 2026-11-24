@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { StyledTabSetProps } from '../../TabSet/partials/StyledTabSet'
 
@@ -21,6 +21,6 @@ export const StyledTabItem = styled.li<StyledTabItemProps>`
   }
 
   a {
-    color: ${color('neutral', 'black')};
+    color: ${themeColor('neutral', 'black')};
   }
 `

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { render, RenderResult } from '@testing-library/react'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { Switch, SwitchOption } from '.'
 
@@ -61,7 +61,7 @@ describe('Switch', () => {
     it('should set the value', () => {
       expect(wrapper.getByText('Option 3')).toHaveStyleRule(
         'background-color',
-        color('action', '600')
+        themeColor('action', '600')
       )
     })
 
@@ -73,7 +73,7 @@ describe('Switch', () => {
       it('should set the value', () => {
         expect(wrapper.getByText('Option 1')).toHaveStyleRule(
           'background-color',
-          color('action', '600')
+          themeColor('action', '600')
         )
       })
 

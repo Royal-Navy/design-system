@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 import { Text } from '../components/Text'
 import { Group } from '../components/Group'
 import { Logo } from '../components/TopLevelNavigation/Masthead/Logo'
@@ -24,14 +24,14 @@ export const KitchenSink = () => {
           This document demonstrates how to use the{' '}
           <Text el="code">&lt;Text&gt;</Text> component to create consistent
           blocks of content within your{' '}
-          <Text color={color('action', '700')} el="span">
+          <Text color={themeColor('action', '700')} el="span">
             Royal Navy Design System
           </Text>
           &nbsp; application. Notice how the different font sizes align to the
           vertical baseline
         </Text>
 
-        <Text el="h2" color={color('neutral', '700')}>
+        <Text el="h2" color={themeColor('neutral', '700')}>
           Multi columnar text panels using a &lt;Group&gt; component
         </Text>
         <Group gap="8" grow align="start">
@@ -46,7 +46,7 @@ export const KitchenSink = () => {
               lectus, ultricies vitae fringilla ut, dapibus eget ipsum. Cras
               viverra hendrerit ex, id sollicitudin nibh pulvinar at. Vestibulum
               facilisis sem in bibendum ultricies.{' '}
-              <Text backgroundColor={color('warning', '200')} el="span">
+              <Text backgroundColor={themeColor('warning', '200')} el="span">
                 It is possible to nest and individually style the components
               </Text>{' '}
               Aenean eu lacus ultricies, auctor lacus in, blandit eros. Nunc
@@ -72,7 +72,7 @@ export const KitchenSink = () => {
               <Text
                 el="span"
                 variant="small"
-                backgroundColor={color('supb', '100')}
+                backgroundColor={themeColor('supb', '100')}
               >
                 Which allows us to mix styles (if we really must)
               </Text>{' '}

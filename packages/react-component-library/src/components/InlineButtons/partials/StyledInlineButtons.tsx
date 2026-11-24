@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { StyledIconWrapper } from './StyledIconWrapper'
 import { StyledInlineButton } from './StyledInlineButton'
@@ -10,7 +10,7 @@ export const StyledInlineButtons = styled.div`
   justify-content: center;
   text-align: center;
   align-items: center;
-  border-left: 1px solid ${color('neutral', '200')};
+  border-left: 1px solid ${themeColor('neutral', '200')};
 
   ${StyledInlineButton} + ${StyledInlineButton} {
     & > ${StyledIconWrapper} {

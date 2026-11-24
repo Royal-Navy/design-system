@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, spacing } from '@royalnavy/design-tokens'
+import { themeColor, spacing } from '@royalnavy/design-tokens'
 
 import { StyledWrapper } from '../../CheckboxRadioBase/partials/StyledWrapper'
 import { StyledCheckbox } from '../../Checkbox/partials/StyledCheckbox'
@@ -29,7 +29,7 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   }
 
   & + & {
-    border-left: 1px solid ${color('neutral', '100')};
+    border-left: 1px solid ${themeColor('neutral', '100')};
   }
 
   ${StyledField} {
@@ -72,9 +72,9 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
       &:active,
       &:focus-within {
         z-index: 1;
-        border-color: ${color('action', '500')};
-        box-shadow: 0 0 0 2px ${color('action', '500')},
-          0 0 0 5px ${color('action', '100')};
+        border-color: ${themeColor('action', '500')};
+        box-shadow: 0 0 0 2px ${themeColor('action', '500')},
+          0 0 0 5px ${themeColor('action', '100')};
       }
     }
   }
@@ -90,13 +90,13 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
     ${StyledCheckbox}, ${StyledRadio} {
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
-      border-bottom-color: ${color('neutral', '200')};
+      border-bottom-color: ${themeColor('neutral', '200')};
 
       &:active,
       &:focus-within {
-        border-color: ${color('action', '500')};
-        box-shadow: 0 0 0 2px ${color('action', '500')},
-          0 0 0 5px ${color('action', '100')};
+        border-color: ${themeColor('action', '500')};
+        box-shadow: 0 0 0 2px ${themeColor('action', '500')},
+          0 0 0 5px ${themeColor('action', '100')};
       }
     }
   }
@@ -105,8 +105,8 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
     $isInvalid &&
     css`
       &::after {
-        box-shadow: inset 0 0 0 1px ${color('danger', '800')},
-          0 0 0 2px ${color('danger', '800')};
+        box-shadow: inset 0 0 0 1px ${themeColor('danger', '800')},
+          0 0 0 2px ${themeColor('danger', '800')};
         border-radius: 15px;
         content: '';
         display: block;
@@ -120,7 +120,7 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
 
       ${StyledWrapper} {
         ${StyledCheckbox}, ${StyledRadio} {
-          border-color: ${color('neutral', '200')};
+          border-color: ${themeColor('neutral', '200')};
           box-shadow: none;
           border-right-color: transparent;
           border-left-color: transparent;
@@ -133,7 +133,7 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
 
           &:active,
           &:focus-within {
-            border-top-color: ${color('action', '500')};
+            border-top-color: ${themeColor('action', '500')};
           }
         }
       }
@@ -144,7 +144,7 @@ export const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
 
           &:active,
           &:focus-within {
-            border-bottom-color: ${color('action', '500')};
+            border-bottom-color: ${themeColor('action', '500')};
           }
         }
       }

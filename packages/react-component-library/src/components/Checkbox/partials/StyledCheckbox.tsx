@@ -1,4 +1,4 @@
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing } from '@royalnavy/design-tokens'
 import { styled, css } from 'styled-components'
 
 import { CheckboxRootProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
@@ -24,21 +24,21 @@ export const StyledCheckbox = styled.div<CheckboxRootProps>`
   ${({ $isInvalid }) =>
     $isInvalid &&
     css`
-      border-color: ${color('danger', '800')};
-      box-shadow: 0 0 0 2px ${color('danger', '800')};
+      border-color: ${themeColor('danger', '800')};
+      box-shadow: 0 0 0 2px ${themeColor('danger', '800')};
     `}
 
   ${({ $hasContainer, $isChecked }) =>
     $hasContainer &&
     $isChecked &&
     css`
-      background-color: ${color('action', '000')};
+      background-color: ${themeColor('action', '000')};
     `}
 
   ${({ $hasContainer, $size }) =>
     $hasContainer &&
     css`
-      border: 1px solid ${color('neutral', '200')};
+      border: 1px solid ${themeColor('neutral', '200')};
       border-radius: ${CONTAINER_BORDER_RADIUS[$size]};
 
       ${getContainerFocusStyles($size)}
@@ -65,7 +65,7 @@ export const StyledCheckbox = styled.div<CheckboxRootProps>`
 
       ${$hasContainer &&
       css`
-        background-color: ${color('neutral', '000')};
+        background-color: ${themeColor('neutral', '000')};
       `}
 
       &:focus,

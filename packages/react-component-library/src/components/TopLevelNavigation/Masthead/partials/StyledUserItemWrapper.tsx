@@ -1,4 +1,4 @@
-import { color, colorValue } from '@royalnavy/design-tokens'
+import { themeColor, color } from '@royalnavy/design-tokens'
 import { styled } from 'styled-components'
 
 import { StyledUserItemIcon } from './StyledUserItemIcon'
@@ -8,14 +8,14 @@ export const StyledUserItemWrapper = styled.div`
   position: relative;
 
   a {
-    color: ${colorValue('neutral', 'white')};
+    color: ${color('neutral', 'white')};
     text-decoration: none;
   }
 
   &:hover {
     ${StyledUserItemIcon},
     ${StyledUserItemText} {
-      color: ${color('action', '500')};
+      color: ${themeColor('action', '500')};
     }
   }
 

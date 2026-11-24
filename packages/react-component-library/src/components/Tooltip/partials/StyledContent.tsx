@@ -2,8 +2,9 @@ import { styled, css, CSSProp } from 'styled-components'
 import {
   spacing,
   zIndex,
+  themeColor,
   color,
-  colorValue,
+  isDarkColorMode,
   Theme,
 } from '@royalnavy/design-tokens'
 
@@ -17,9 +18,9 @@ const TOOLTIP_OFFSET = TOOLTIP_OUTER + TOOLTIP_BORDER_THICK
 // near-black; in dark mode it lifts to an elevated slate so it reads clearly
 // above the dark page and surfaces.
 function tooltipDarkBg(theme?: Theme): string {
-  return theme?.mode === 'dark'
-    ? color('neutral', '200', theme)
-    : colorValue('neutral', '700')
+  return isDarkColorMode(theme)
+    ? themeColor('neutral', '200')
+    : color('neutral', '700')
 }
 
 const TOOLTIP_DARK_BG = ({ theme }: { theme?: unknown }) =>
@@ -107,7 +108,7 @@ function getPositionStyles(position: TooltipPositionType): CSSProp {
 export const StyledContent = styled.div<StyledContentProps>`
   z-index: ${zIndex('modal', 1)};
   background: ${TOOLTIP_DARK_BG};
-  color: ${colorValue('neutral', 'white')};
+  color: ${color('neutral', 'white')};
   border: ${TOOLTIP_DARK_BORDER} solid ${TOOLTIP_BORDER_THICK}px;
   border-radius: 5px;
   padding: ${spacing('6')} ${spacing('8')};

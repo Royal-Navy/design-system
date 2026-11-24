@@ -33,13 +33,18 @@ const ThemedDocsContainer = ({ context, children }) => {
       context={context}
       theme={mode === 'dark' ? themes.dark : themes.light}
     >
-      <GlobalStyleProvider theme={THEMES[mode]}>{children}</GlobalStyleProvider>
+      <GlobalStyleProvider
+        theme={THEMES[mode]}
+        unstable_colorModes={mode === 'dark'}
+      >
+        {children}
+      </GlobalStyleProvider>
     </DocsContainer>
   )
 }
 
 const DarkCanvas = ({ children }) => (
-  <GlobalStyleProvider theme={darkTheme}>
+  <GlobalStyleProvider theme={darkTheme} unstable_colorModes>
     <div
       style={{
         background: color('neutral', 'white', darkTheme),

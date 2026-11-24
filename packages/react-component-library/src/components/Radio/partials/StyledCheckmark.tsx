@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { CheckmarkProps } from '../../CheckboxRadioBase/CheckboxRadioBaseProps'
 
@@ -11,7 +11,7 @@ export const StyledCheckmark = styled.span<CheckmarkProps>`
   border-radius: 999px;
   border: 1px solid
     ${({ $hasContainer, $isDisabled }) =>
-      color('neutral', $hasContainer || !$isDisabled ? '200' : '100')};
+      themeColor('neutral', $hasContainer || !$isDisabled ? '200' : '100')};
   outline: none;
 
   &::after,

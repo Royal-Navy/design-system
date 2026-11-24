@@ -1,4 +1,4 @@
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 import { styled } from 'styled-components'
 
 interface StyledItemProps {
@@ -7,10 +7,12 @@ interface StyledItemProps {
 
 export const StyledItem = styled.li<StyledItemProps>`
   background-color: ${({ $isInactive }) =>
-    $isInactive ? color('neutral', '000') : color('neutral', 'white')};
+    $isInactive
+      ? themeColor('neutral', '000')
+      : themeColor('neutral', 'white')};
   margin-bottom: 0;
 
   &:not(:last-child) {
-    box-shadow: inset 0px -1px 0px 0px ${color('neutral', '100')};
+    box-shadow: inset 0px -1px 0px 0px ${themeColor('neutral', '100')};
   }
 `

@@ -2,8 +2,9 @@ import React, { createContext, useMemo } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
 import {
+  ColorMode,
   lightTheme,
-  color,
+  themeColor,
   colorByMode,
   fontSize,
   getColorVariables,
@@ -17,14 +18,14 @@ export interface GlobalStyleContextDefaults {
 export interface GlobalStyleProviderProps {
   children?: React.ReactNode
   theme?: Record<string, unknown>
+  /**
+   * Experimental: enable colour modes, so passing `darkTheme` switches the
+   * components to the dark colour set. This API may change without notice.
+   */
+  unstable_colorModes?: boolean
 }
 
-/**
- * Expose the active theme's colour tokens as CSS custom properties on the
- * root, so every `color(...)` reference (which resolves to a `var(--rn-color-*)`)
- * reacts to the theme — including content rendered through portals that sits
- * outside the provider's DOM subtree.
- */
+// Declared on :root so content rendered through portals is themed too.
 const ThemeVariables = createGlobalStyle<{
   $variables: Record<string, string>
 }>`
@@ -68,20 +69,10 @@ const Hyperlinks = createGlobalStyle`
   }
 `
 
-/**
- * Generate base font size
- */
-/**
- * Dark-mode-only resets. Light mode keeps the original native defaults so it
- * renders exactly as before; these only apply when the dark theme is active.
- *  - Give unstyled text an explicit light colour (native default is black).
- *  - Neutralise the native <button> colour (ButtonText) and background
- *    (buttonface) so currentColor icons inside unstyled icon-buttons stay
- *    legible. Styled buttons set their own colour/background and are unaffected.
- */
+// Native text and <button> colours default to black and buttonface.
 const DarkModeResets = createGlobalStyle`
   html {
-    color: ${color('neutral', '600')};
+    color: ${themeColor('neutral', '600')};
   }
 
   button {
@@ -90,6 +81,9 @@ const DarkModeResets = createGlobalStyle`
   }
 `
 
+/**
+ * Generate base font size
+ */
 const Fonts = createGlobalStyle`
   html {
     font-family: "lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -149,29 +143,36 @@ export const GlobalStyleContext = createContext(globalStyleContextDefaults)
 export const GlobalStyleProvider = ({
   children,
   theme = lightTheme,
+  unstable_colorModes: isColorModesEnabled = false,
 }: GlobalStyleProviderProps) => {
+  const colorMode: ColorMode =
+    isColorModesEnabled && (theme as Theme).mode === 'dark' ? 'dark' : 'light'
+
+  const providedTheme = useMemo(
+    () => ({ ...theme, colorMode }),
+    [theme, colorMode]
+  )
+
   const contextValue = useMemo(
     () => ({
-      theme,
+      theme: providedTheme,
     }),
-    [theme]
+    [providedTheme]
   )
 
   const colorVariables = useMemo(
-    () => getColorVariables(theme as Theme),
-    [theme]
+    () => (isColorModesEnabled ? getColorVariables(theme as Theme) : null),
+    [theme, isColorModesEnabled]
   )
-
-  const isDark = (theme as Theme)?.mode === 'dark'
 
   return (
     <GlobalStyleContext.Provider value={contextValue}>
       <Normalize />
       <BoxSizing />
-      <ThemeVariables $variables={colorVariables} />
-      {isDark && <DarkModeResets />}
+      {colorVariables && <ThemeVariables $variables={colorVariables} />}
+      {colorMode === 'dark' && <DarkModeResets />}
       <Fonts />
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={providedTheme}>
         <Hyperlinks />
         {children}
       </ThemeProvider>

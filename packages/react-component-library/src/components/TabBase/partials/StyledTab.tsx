@@ -1,4 +1,4 @@
-import { color, fontSize, spacing, zIndex } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing, zIndex } from '@royalnavy/design-tokens'
 import { styled, css } from 'styled-components'
 
 import { StyledTabSetProps } from '../../TabSet/partials/StyledTabSet'
@@ -10,21 +10,27 @@ export interface StyledTabProps extends StyledTabSetProps {
   $variant?: TabVariantType
 }
 
-export const ACTIVE_TAB_BORDER = `1px solid ${color('neutral', '300')}`
+export const ACTIVE_TAB_BORDER = `1px solid ${themeColor('neutral', '300')}`
 export const ACTIVE_TAB_HEIGHT = '40px'
-export const UNDERLINE_TAB_RULE = `inset 0 -1px 0 ${color('neutral', '200')}`
-export const UNDERLINE_TAB_ACTIVE_BORDER = `3px solid ${color('action', '700')}`
+export const UNDERLINE_TAB_RULE = `inset 0 -1px 0 ${themeColor(
+  'neutral',
+  '200'
+)}`
+export const UNDERLINE_TAB_ACTIVE_BORDER = `3px solid ${themeColor(
+  'action',
+  '700'
+)}`
 
 function getBoxedActiveStyles() {
   return css`
     text-decoration: none;
     font-weight: bold;
-    background-color: ${color('neutral', 'white')};
+    background-color: ${themeColor('neutral', 'white')};
     height: ${ACTIVE_TAB_HEIGHT};
     margin-top: 0;
     border-left: ${ACTIVE_TAB_BORDER};
     border-right: ${ACTIVE_TAB_BORDER};
-    border-top: ${`4px solid ${color('action', '500')}`};
+    border-top: ${`4px solid ${themeColor('action', '500')}`};
     z-index: ${zIndex('header', 2)};
   `
 }
@@ -34,7 +40,7 @@ function getBoxedStyles($isActive?: boolean) {
     font-weight: normal;
     text-decoration: underline;
 
-    background-color: ${color('neutral', '100')};
+    background-color: ${themeColor('neutral', '100')};
 
     height: 36px;
     margin-top: 4px;
@@ -46,7 +52,7 @@ function getBoxedStyles($isActive?: boolean) {
     padding: 0 16px;
 
     * {
-      color: ${color('neutral', '600')};
+      color: ${themeColor('neutral', '600')};
     }
 
     ${$isActive && getBoxedActiveStyles()}
@@ -60,7 +66,7 @@ function getUnderlineActiveStyles() {
 
     &,
     * {
-      color: ${color('action', '700')};
+      color: ${themeColor('action', '700')};
     }
   `
 }
@@ -80,7 +86,7 @@ function getUnderlineStyles($isActive?: boolean) {
 
     &,
     * {
-      color: ${color('neutral', '600')};
+      color: ${themeColor('neutral', '600')};
     }
 
     ${$isActive && getUnderlineActiveStyles()}

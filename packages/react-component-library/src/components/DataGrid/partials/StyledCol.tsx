@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing } from '@royalnavy/design-tokens'
 
 interface StyledColProps {
   $isSortable?: boolean
@@ -12,8 +12,8 @@ export const StyledCol = styled.th<StyledColProps>`
   position: relative;
   padding: ${spacing('9')} ${spacing('4')} ${spacing('9')} ${spacing('8')};
   width: ${({ $width }) => ($width ? `${$width}px` : 'auto')};
-  border-bottom: 1px solid ${color('neutral', '200')};
-  color: ${color('neutral', '600')};
+  border-bottom: 1px solid ${themeColor('neutral', '200')};
+  color: ${themeColor('neutral', '600')};
   font-weight: 700;
   text-align: left;
   text-transform: capitalize;
@@ -42,7 +42,7 @@ export const StyledCol = styled.th<StyledColProps>`
     transform: translateY(-50%);
     width: 1px;
     height: 16px;
-    background: ${color('neutral', '200')};
+    background: ${themeColor('neutral', '200')};
   }
 
   ${({ $isHeaderGroup }) =>

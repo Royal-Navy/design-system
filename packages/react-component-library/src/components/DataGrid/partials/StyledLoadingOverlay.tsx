@@ -1,5 +1,5 @@
 import { css, styled } from 'styled-components'
-import { color, Theme } from '@royalnavy/design-tokens'
+import { themeColor, Theme, isDarkColorMode } from '@royalnavy/design-tokens'
 
 export const StyledLoadingOverlay = styled.div`
   position: absolute;
@@ -23,7 +23,7 @@ export const StyledLoadingOverlay = styled.div`
   }
 
   ${({ theme }) =>
-    (theme as Theme)?.mode === 'dark' &&
+    isDarkColorMode(theme as Theme) &&
     css`
       background-color: transparent;
 
@@ -34,7 +34,7 @@ export const StyledLoadingOverlay = styled.div`
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: ${color('neutral', 'white')};
+        background-color: ${themeColor('neutral', 'white')};
         opacity: 0.5;
       }
     `}

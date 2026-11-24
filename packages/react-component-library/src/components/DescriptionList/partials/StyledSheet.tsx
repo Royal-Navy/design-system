@@ -1,5 +1,5 @@
 import { styled, css } from 'styled-components'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 
 import { StyledDescriptionListProps } from './StyledDescriptionList'
 
@@ -9,14 +9,14 @@ export const StyledSheet = styled.div<StyledDescriptionListProps>`
   transition: 200ms all linear;
 
   > * + * {
-    border-top: 1px solid ${color('neutral', '100')};
+    border-top: 1px solid ${themeColor('neutral', '100')};
   }
 
   ${({ $isCollapsible }) =>
     $isCollapsible &&
     css`
       transform: translateY(-100%);
-      background-color: ${color('neutral', 'white')};
+      background-color: ${themeColor('neutral', 'white')};
       overflow: hidden;
     `}
 

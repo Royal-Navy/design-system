@@ -1,4 +1,4 @@
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 import React from 'react'
 
 import { fireEvent, render, RenderResult } from '@testing-library/react'
@@ -152,7 +152,7 @@ describe('TabSet', () => {
           const tab = wrapper.getAllByText('Title 2')[0].parentElement
           expect(tab).toHaveStyleRule(
             'background-color',
-            color('neutral', 'white')
+            themeColor('neutral', 'white')
           )
         })
 
@@ -195,7 +195,7 @@ describe('TabSet', () => {
             const tab = wrapper.getAllByText('Title 1')[0].parentElement
             expect(tab).toHaveStyleRule(
               'background-color',
-              color('neutral', 'white')
+              themeColor('neutral', 'white')
             )
           })
 
@@ -208,7 +208,7 @@ describe('TabSet', () => {
               const tab = wrapper.getAllByText('Title 2')[0].parentElement
               expect(tab).toHaveStyleRule(
                 'background-color',
-                color('neutral', 'white')
+                themeColor('neutral', 'white')
               )
             })
           })
@@ -235,7 +235,7 @@ describe('TabSet', () => {
           const tab = wrapper.getAllByText('Title 2')[0].parentElement
           expect(tab).toHaveStyleRule(
             'background-color',
-            color('neutral', 'white')
+            themeColor('neutral', 'white')
           )
         })
       })
@@ -258,11 +258,11 @@ describe('TabSet', () => {
         const tab2 = wrapper.getAllByText('Title 2')[0].parentElement
         expect(tab1).toHaveStyleRule(
           'background-color',
-          color('neutral', '100')
+          themeColor('neutral', '100')
         )
         expect(tab2).toHaveStyleRule(
           'background-color',
-          color('neutral', 'white')
+          themeColor('neutral', 'white')
         )
       })
 
@@ -276,11 +276,11 @@ describe('TabSet', () => {
           const tab2 = wrapper.getAllByText('Title 2')[0].parentElement
           expect(tab1).toHaveStyleRule(
             'background-color',
-            color('neutral', 'white')
+            themeColor('neutral', 'white')
           )
           expect(tab2).toHaveStyleRule(
             'background-color',
-            color('neutral', '100')
+            themeColor('neutral', '100')
           )
         })
       })
@@ -406,7 +406,7 @@ describe('TabSet', () => {
 
       expect(activeTab).toHaveStyleRule(
         'border-bottom',
-        `3px solid ${color('action', '700')}`
+        `3px solid ${themeColor('action', '700')}`
       )
       expect(inactiveTab).toHaveStyleRule(
         'border-bottom',
@@ -417,7 +417,10 @@ describe('TabSet', () => {
     it('should not box the active tab', () => {
       expect(
         wrapper.getAllByTestId('tab-set-tab-button')[0]
-      ).not.toHaveStyleRule('border-top', `4px solid ${color('action', '500')}`)
+      ).not.toHaveStyleRule(
+        'border-top',
+        `4px solid ${themeColor('action', '500')}`
+      )
     })
 
     it('should rule under the full width of the header', () => {
@@ -427,7 +430,7 @@ describe('TabSet', () => {
       )
       expect(wrapper.getByTestId('tab-set-list')).not.toHaveStyleRule(
         'box-shadow',
-        `inset 0 -1px 0 ${color('neutral', '200')}`
+        `inset 0 -1px 0 ${themeColor('neutral', '200')}`
       )
     })
 

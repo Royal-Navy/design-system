@@ -1,5 +1,5 @@
 import React from 'react'
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 import { render, screen } from '@testing-library/react'
 
 import { Link } from '../Link'
@@ -51,7 +51,7 @@ it('applies styles to indicate an active tab', () => {
 
   expect(activeTab).toHaveStyleRule(
     'border-top',
-    `4px solid ${color('action', '500')}`
+    `4px solid ${themeColor('action', '500')}`
   )
 })
 
@@ -68,11 +68,11 @@ describe('when the variant is underline', () => {
   it('underlines the active tab', () => {
     expect(screen.getByText('Bar')).toHaveStyleRule(
       'border-bottom',
-      `3px solid ${color('action', '700')}`
+      `3px solid ${themeColor('action', '700')}`
     )
     expect(screen.getByText('Bar')).toHaveStyleRule(
       'color',
-      color('action', '700')
+      themeColor('action', '700')
     )
     expect(screen.getByText('Foo')).toHaveStyleRule(
       'border-bottom',
@@ -83,7 +83,7 @@ describe('when the variant is underline', () => {
   it('does not box the active tab', () => {
     expect(screen.getByText('Bar')).not.toHaveStyleRule(
       'border-top',
-      `4px solid ${color('action', '500')}`
+      `4px solid ${themeColor('action', '500')}`
     )
   })
 })

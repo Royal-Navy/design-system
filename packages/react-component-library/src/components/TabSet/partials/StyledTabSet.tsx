@@ -1,4 +1,4 @@
-import { color } from '@royalnavy/design-tokens'
+import { themeColor } from '@royalnavy/design-tokens'
 import { styled, css } from 'styled-components'
 
 export interface StyledTabSetProps {
@@ -9,7 +9,7 @@ export interface StyledTabSetProps {
 export const StyledTabSet = styled.article<StyledTabSetProps>`
   display: flex;
   flex-flow: column;
-  background-color: ${color('neutral', 'white')};
+  background-color: ${themeColor('neutral', 'white')};
   height: 100%;
 
   ${({ $isFullWidth }) =>

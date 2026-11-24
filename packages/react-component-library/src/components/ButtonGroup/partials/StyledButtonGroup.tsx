@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { color, shadow } from '@royalnavy/design-tokens'
+import { themeColor, shadow } from '@royalnavy/design-tokens'
 
 import { StyledButton } from '../../Button/partials/StyledButton'
 
@@ -14,9 +14,9 @@ export const StyledButtonGroup = styled.div<StyledButtonGroupProps>`
   border-radius: 4px;
 
   ${StyledButton} {
-    background-color: ${color('neutral', 'white')};
+    background-color: ${themeColor('neutral', 'white')};
     border-radius: 0;
-    border: 1px solid ${color('neutral', '200')};
+    border: 1px solid ${themeColor('neutral', '200')};
     box-shadow: ${shadow('2')};
     margin-right: -1px;
     position: relative;
@@ -33,17 +33,17 @@ export const StyledButtonGroup = styled.div<StyledButtonGroupProps>`
 
     &:hover,
     &:focus {
-      background-color: ${color('neutral', '100')};
-      color: ${color('neutral', '600')};
+      background-color: ${themeColor('neutral', '100')};
+      color: ${themeColor('neutral', '600')};
       box-shadow: ${shadow('2')};
       z-index: 2;
     }
 
     &[disabled] {
       z-index: 0;
-      color: ${color('neutral', '300')};
-      background-color: ${color('neutral', '000')};
-      border: 1px solid ${color('neutral', '200')};
+      color: ${themeColor('neutral', '300')};
+      background-color: ${themeColor('neutral', '000')};
+      border: 1px solid ${themeColor('neutral', '200')};
       box-shadow: none;
     }
   }

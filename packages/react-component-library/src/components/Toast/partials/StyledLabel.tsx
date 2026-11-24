@@ -1,9 +1,9 @@
 import { styled } from 'styled-components'
-import { color, fontSize, spacing } from '@royalnavy/design-tokens'
+import { themeColor, fontSize, spacing } from '@royalnavy/design-tokens'
 
 export const StyledLabel = styled.span`
   display: block;
-  color: ${color('neutral', '500')};
+  color: ${themeColor('neutral', '500')};
   font-size: ${fontSize('m')};
   font-weight: 600;
   padding: 0;
