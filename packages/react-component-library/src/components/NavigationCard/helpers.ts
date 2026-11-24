@@ -12,15 +12,24 @@ const CUSTOM_COLOR_TINT: Record<Shade, number> = {
   '600': 0,
 }
 
-const CSS_VARIABLE_WITH_FALLBACK = /^var\(\s*--[\w-]+\s*,\s*(.+)\)$/
-
 function isPaletteColor(value: string): value is NavigationCardColorType {
   return (Object.values(NAVIGATION_CARD_COLOR) as string[]).includes(value)
 }
 
 // polished can't parse var(), so tint the fallback colour that themeColor() embeds
 function toParseableColor(value: string): string {
-  return value.trim().match(CSS_VARIABLE_WITH_FALLBACK)?.[1].trim() ?? value
+  const trimmed = value.trim()
+  const fallbackStart = trimmed.indexOf(',')
+
+  if (
+    !trimmed.startsWith('var(') ||
+    !trimmed.endsWith(')') ||
+    fallbackStart < 0
+  ) {
+    return value
+  }
+
+  return trimmed.slice(fallbackStart + 1, -1).trim()
 }
 
 export function getShade(value: string, shade: Shade): string {

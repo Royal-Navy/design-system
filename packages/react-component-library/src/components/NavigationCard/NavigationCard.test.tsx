@@ -162,4 +162,33 @@ describe('NavigationCard', () => {
       tint(0.85, color('supa', '500'))
     )
   })
+
+  it('derives the icon panel tint from a CSS variable fallback containing commas', () => {
+    render(
+      <NavigationCard
+        color="var(--brand-colour, rgb(123, 44, 191))"
+        icon={<IconHome />}
+        link={<a href="/library">File library</a>}
+      />
+    )
+
+    expect(screen.getByTestId('navigation-card-icon')).toHaveStyleRule(
+      'background-color',
+      tint(0.85, 'rgb(123, 44, 191)')
+    )
+  })
+
+  it('throws for a CSS variable without a fallback', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => undefined)
+
+    expect(() =>
+      render(
+        <NavigationCard
+          color="var(--brand-colour)"
+          icon={<IconHome />}
+          link={<a href="/library">File library</a>}
+        />
+      )
+    ).toThrow()
+  })
 })
