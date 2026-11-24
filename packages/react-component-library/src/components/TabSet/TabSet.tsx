@@ -142,7 +142,11 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
       $isFullWidth={isFullWidth}
       {...rest}
     >
-      <StyledHeader $isScrollable={isScrollable}>
+      <StyledHeader
+        $isScrollable={isScrollable}
+        $variant={variant}
+        data-testid="tab-set-header"
+      >
         {isScrollable && (
           <StyledScrollLeft
             $variant={variant}
@@ -158,11 +162,7 @@ export const TabSet: React.FC<TabSetProps | ScrollableTabSetProps> = ({
           ref={tabsRef}
           data-testid="tabs"
         >
-          <StyledTabs
-            $variant={variant}
-            role="tablist"
-            data-testid="tab-set-list"
-          >
+          <StyledTabs role="tablist" data-testid="tab-set-list">
             {Children.map(
               children,
               ({ props }: React.ReactElement, index: number) => (
