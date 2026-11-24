@@ -89,6 +89,7 @@ function getUnderlineStyles($isActive?: boolean) {
 
 export const StyledTab = styled.button<StyledTabProps>`
   width: 100%;
+  vertical-align: top;
   text-align: center;
   cursor: pointer;
   font-size: ${fontSize('base')};
