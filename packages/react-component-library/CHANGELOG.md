@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.65.0](https://github.com/Royal-Navy/design-system/compare/4.64.4...4.65.0) (2026-11-24)
+
+### Bug Fixes
+
+- **TabSet:** Extend underline rule across scrollable tab sets ([901e0d1](https://github.com/Royal-Navy/design-system/commit/901e0d135007f8d9eed3a548711953bb4b90b631))
+- **TabSet:** Remove gap under scrollable tabs ([2495661](https://github.com/Royal-Navy/design-system/commit/2495661bd2c52e9d1048e2a2c81b7447ffc53b3f))
+
+### Features
+
+- **TabNav:** Add underline variant ([c5c122c](https://github.com/Royal-Navy/design-system/commit/c5c122c30dc694635322299057c468111c4cf1c7))
+- **TabSet:** Add underline variant ([39e2e2f](https://github.com/Royal-Navy/design-system/commit/39e2e2f5c8df8f3217ef355a16229915d6fb40b8))
+- **TabSet:** Reduce boxed tab height ([d07cd33](https://github.com/Royal-Navy/design-system/commit/d07cd33863b18e67272db3b69e345fef1404ac94))
+
 ## [4.64.4](https://github.com/Royal-Navy/design-system/compare/4.64.3...4.64.4) (2026-11-12)
 
 ### Bug Fixes
