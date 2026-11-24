@@ -426,7 +426,7 @@ describe('TabSet', () => {
     it('should rule under the full width of the header', () => {
       expect(wrapper.getByTestId('tab-set-header')).toHaveStyleRule(
         'box-shadow',
-        `inset 0 -1px 0 ${color('neutral', '200')}`
+        `inset 0 -1px 0 ${themeColor('neutral', '200')}`
       )
       expect(wrapper.getByTestId('tab-set-list')).not.toHaveStyleRule(
         'box-shadow',
