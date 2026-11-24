@@ -18,7 +18,9 @@ const tokens = {
 
 export type Tokens = typeof tokens
 
-export type Theme = Tokens & { mode: string }
+export type ColorMode = 'light' | 'dark'
+
+export type Theme = Tokens & { mode: string; colorMode?: ColorMode }
 
 export type ThemeProps = { theme?: Theme }
 

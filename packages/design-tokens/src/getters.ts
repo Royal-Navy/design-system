@@ -111,12 +111,7 @@ export function colorVariableName(
   return `${COLOR_VARIABLE_PREFIX}-${group}-${weight}`
 }
 
-/**
- * Resolve a colour token to its concrete hex value for the given theme
- * (falling back to the default light theme). Use this where the value
- * must be a parseable colour, e.g. when passed to `polished` helpers.
- */
-export function getColorValue(
+export function getColor(
   group: ColorGroup,
   weight: ColorShade,
   theme?: Theme
@@ -134,11 +129,9 @@ export function getColorValue(
 }
 
 /**
- * Resolve a colour token. When an explicit theme is provided the concrete
- * hex value is returned (preserving threaded-theme behaviour). Otherwise a
- * CSS custom property reference is returned so the colour reacts to the
- * theme injected by `GlobalStyleProvider`, with the light value as a static
- * fallback for unprovided/SSR contexts.
+ * Resolve a colour token as a `var(--rn-color-*)` reference with the light
+ * value as fallback, so it follows the colour mode enabled by
+ * `GlobalStyleProvider`. An explicit theme resolves to that theme's value.
  */
 export function getThemeColor(
   group: ColorGroup,
@@ -146,27 +139,19 @@ export function getThemeColor(
   theme?: Theme
 ): string {
   if (theme?.colorsTokens) {
-    return getColorValue(group, weight, theme)
+    return getColor(group, weight, theme)
   }
 
-  const fallback = getColorValue(group, weight)
-
-  return `var(${colorVariableName(group, weight)}, ${fallback})`
+  return `var(${colorVariableName(group, weight)}, ${getColor(group, weight)})`
 }
 
-export function getColor(
-  group: ColorGroup,
-  weight: ColorShade,
-  theme?: Theme
-): string {
-  return getThemeColor(group, weight, theme)
+export function isDarkColorMode(theme?: Theme): boolean {
+  return theme?.colorMode === 'dark'
 }
 
 /**
- * Resolve a colour token, choosing a different shade per theme mode. Use this
- * to tune a colour for dark mode without changing the light appearance: the
- * light shade is used in light mode and the dark shade in dark mode. Pass the
- * styled-component's theme, e.g.
+ * Resolve a themed colour, using a different shade when the dark colour mode
+ * is enabled, e.g.
  * `({ theme }) => colorByMode('neutral', '000', '100', theme as Theme)`.
  */
 export function getColorByMode(
@@ -175,9 +160,7 @@ export function getColorByMode(
   darkWeight: ColorShade,
   theme?: Theme
 ): string {
-  const weight = theme?.mode === 'dark' ? darkWeight : lightWeight
-
-  return getColor(group, weight, theme)
+  return getThemeColor(group, isDarkColorMode(theme) ? darkWeight : lightWeight)
 }
 
 /**
