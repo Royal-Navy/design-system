@@ -22,4 +22,3 @@ npm-debug.log*
 
 package-lock.json
 
-packages/react-component-library/*.tgz
