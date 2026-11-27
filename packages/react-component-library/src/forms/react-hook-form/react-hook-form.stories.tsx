@@ -14,6 +14,7 @@ import { DatePicker } from '../../components/DatePicker'
 import { NumberInput } from '../../components/NumberInput'
 import { Select, SelectOption } from '../../components/Select'
 import { Switch, SwitchOption } from '../../components/Switch'
+import { Toggle } from '../../components/Toggle'
 import { RangeSlider } from '../../components/RangeSlider'
 import { Button } from '../../components/Button'
 import { Fieldset } from '../../components/Fieldset'
@@ -229,6 +230,21 @@ const Example = ({ initialValues }: { initialValues: FormValues }) => {
             <SwitchOption label="Two" value="2" />
             <SwitchOption label="Three" value="3" />
           </Switch>
+        </Field>
+        <Field hintText="Example hint text.">
+          <Controller
+            control={control}
+            name="exampleToggle"
+            render={({ onChange, value, name, ref }) => (
+              <Toggle
+                name={name}
+                label="Example toggle"
+                ref={ref}
+                onChange={(e) => onChange(e.currentTarget.checked)}
+                checked={value}
+              />
+            )}
+          />
         </Field>
         <Field hintText="Example hint text.">
           <NumberInput

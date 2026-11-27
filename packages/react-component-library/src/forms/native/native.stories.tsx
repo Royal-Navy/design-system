@@ -11,6 +11,7 @@ import { DatePicker } from '../../components/DatePicker'
 import { NumberInput } from '../../components/NumberInput'
 import { Select, SelectOption } from '../../components/Select'
 import { Switch, SwitchOption } from '../../components/Switch'
+import { Toggle } from '../../components/Toggle'
 import { RangeSlider } from '../../components/RangeSlider'
 import { Button } from '../../components/Button'
 import { Fieldset } from '../../components/Fieldset'
@@ -157,6 +158,21 @@ const Example = ({
             <SwitchOption label="Two" value="2" />
             <SwitchOption label="Three" value="3" />
           </Switch>
+        </Field>
+        <Field hintText="Example hint text.">
+          <Toggle
+            name="exampleToggle"
+            label="Example toggle"
+            onChange={(e) =>
+              handleChange({
+                currentTarget: {
+                  name: 'exampleToggle',
+                  value: e.currentTarget.checked,
+                },
+              })
+            }
+            checked={formState.exampleToggle}
+          />
         </Field>
         <Field hintText="Example hint text.">
           <NumberInput
