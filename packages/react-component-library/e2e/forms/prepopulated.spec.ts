@@ -8,6 +8,7 @@ const expectedInitialResult = {
   exampleCheckbox: ['Option 2'],
   exampleRadio: 'Option 2',
   exampleSwitch: '2',
+  exampleToggle: true,
   exampleNumberInput: 156,
   exampleDatePicker: '2022-02-10T00:00:00.000Z',
   exampleSelect: 'three',
@@ -22,6 +23,7 @@ const expectedEditedResult = {
   exampleCheckbox: ['Option 1', 'Option 2'],
   exampleRadio: 'Option 1',
   exampleSwitch: '1',
+  exampleToggle: false,
   exampleNumberInput: 157,
   exampleDatePicker: '2022-01-31T12:00:00.000Z',
   exampleSelect: 'three',
@@ -64,6 +66,7 @@ test.describe('Form examples, pre-populated', () => {
           page.locator(selectors.input.checkbox).nth(0)
         ).toBeVisible()
         await expect(page.locator(selectors.input.switch)).toBeVisible()
+        await expect(page.locator(selectors.input.toggle)).toBeVisible()
         await expect(page.locator(selectors.input.numberInput)).toBeVisible()
         await expect(page.locator(selectors.input.datePicker)).toBeVisible()
         await expect(page.locator(selectors.input.select)).toBeVisible()
@@ -99,6 +102,7 @@ test.describe('Form examples, pre-populated', () => {
           await page.locator(selectors.input.radio).nth(0).click()
           await page.locator(selectors.input.checkbox).nth(0).click()
           await page.locator(selectors.input.switchOption).nth(0).click()
+          await page.click(selectors.input.toggle)
           await page.click(selectors.input.numberInputIncrease)
           await page.fill(selectors.input.datePickerInput, '31/01/2022')
           await page.type(selectors.input.select, 'th')

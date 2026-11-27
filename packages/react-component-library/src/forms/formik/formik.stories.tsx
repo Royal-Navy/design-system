@@ -13,6 +13,7 @@ import { NumberInput } from '../../components/NumberInput'
 import { DatePicker, DatePickerOnChangeData } from '../../components/DatePicker'
 import { Select, SelectOption } from '../../components/Select'
 import { Switch, SwitchOption } from '../../components/Switch'
+import { Toggle } from '../../components/Toggle'
 import { RangeSlider } from '../../components/RangeSlider'
 import { sleep } from '../../helpers'
 import { Field } from '../../components/Field'
@@ -174,6 +175,16 @@ const Example = ({ initialValues }: { initialValues: FormValues }) => {
                   </Field>
                 )
               }}
+            </FormikField>
+            <FormikField name="exampleToggle" type="checkbox">
+              {({ field, meta }: FieldProps) => (
+                <Field
+                  hintText="Example hint text."
+                  errors={[{ error: meta.touched && meta.error }]}
+                >
+                  <Toggle label="Example toggle" {...field} />
+                </Field>
+              )}
             </FormikField>
             <FormikField name="exampleNumberInput">
               {({ field: { name, value }, meta }: FieldProps) => {

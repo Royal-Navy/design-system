@@ -13,7 +13,7 @@ export type FormErrors<FormValues> = Partial<{
 interface SyntheticFormEvent {
   currentTarget: {
     name: string
-    value: string | string[] | number | number[] | Date | null
+    value: boolean | string | string[] | number | number[] | Date | null
   }
 }
 

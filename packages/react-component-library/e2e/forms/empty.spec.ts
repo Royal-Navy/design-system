@@ -8,6 +8,7 @@ const expectedResult = {
   exampleCheckbox: ['Option 2'],
   exampleRadio: 'Option 1',
   exampleSwitch: '1',
+  exampleToggle: true,
   exampleNumberInput: 1,
   exampleDatePicker: '2022-01-31T12:00:00.000Z',
   exampleSelect: 'three',
@@ -50,6 +51,7 @@ test.describe('Form examples, empty', () => {
           page.locator(selectors.input.checkbox).nth(0)
         ).toBeVisible()
         await expect(page.locator(selectors.input.switch)).toBeVisible()
+        await expect(page.locator(selectors.input.toggle)).toBeVisible()
         await expect(page.locator(selectors.input.numberInput)).toBeVisible()
         await expect(page.locator(selectors.input.datePicker)).toBeVisible()
         await expect(page.locator(selectors.input.select)).toBeVisible()
@@ -79,6 +81,7 @@ test.describe('Form examples, empty', () => {
 
           await page.locator(selectors.input.switchOption).nth(0).click()
 
+          await page.click(selectors.input.toggle)
           await page.click(selectors.input.numberInputIncrease)
 
           await page.fill(selectors.input.datePickerInput, '31/01/2022')

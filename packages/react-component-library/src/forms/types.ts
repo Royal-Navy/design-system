@@ -5,6 +5,7 @@ export interface FormValues {
   exampleCheckbox: string[]
   exampleRadio: string
   exampleSwitch: string
+  exampleToggle: boolean
   exampleNumberInput: number | null
   exampleDatePicker: Date | null
   exampleSelect: string | null

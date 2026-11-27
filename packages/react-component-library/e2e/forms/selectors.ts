@@ -7,6 +7,7 @@ export default {
     radio: '[data-testid="radio"]',
     switch: '[data-testid="switch"]',
     switchOption: '[data-testid="switch-option"]',
+    toggle: '[data-testid="toggle"]',
     numberInput: '[data-testid="number-input"]',
     numberInputIncrease: '[data-testid="number-input-increase"]',
     datePicker: '[data-testid="datepicker-outer-wrapper"]',
